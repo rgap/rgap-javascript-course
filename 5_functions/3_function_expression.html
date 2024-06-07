@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Function Expressions in JavaScript
+
+      // Function expressions are another way to define a function in JavaScript.
+
+      const greet = function (name) {
+        return `Hello, ${name}!`;
+      };
+
+      console.log(greet("Bob")); // Hello, Bob!
+
+      // Example: Named function expression
+      const factorial = function fact(n) {
+        if (n === 0) {
+          return 1;
+        } else {
+          return n * fact(n - 1);
+        }
+      };
+
+      console.log(factorial(5)); // 120
+
+      // Example: ANONYMOUS FUNCTION expression
+      const sum = function (a, b) {
+        return a + b;
+      };
+
+      console.log(sum(2, 3)); // 5
+    </script>
+  </head>
+  <body></body>
+</html>

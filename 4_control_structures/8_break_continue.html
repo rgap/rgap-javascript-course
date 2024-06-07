@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Break and Continue Statements in JavaScript
+
+      // The break statement is used to exit a loop or switch statement prematurely.
+
+      for (let i = 0; i < 10; i++) {
+        if (i === 5) {
+          break; // Exit the loop when i is 5
+        }
+        console.log("Value:", i);
+      }
+
+      // The continue statement is used to skip the current iteration of a loop and proceed to the next iteration.
+
+      for (let i = 0; i < 10; i++) {
+        if (i % 2 === 0) {
+          continue; // Skip the current iteration if i is even
+        }
+        console.log("Odd Value:", i);
+      }
+
+      // Break and continue in nested loops
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          if (i === j) {
+            continue; // Skip the current iteration when i equals j
+          }
+          if (i + j === 2) {
+            break; // Exit the inner loop when the sum of i and j is 2
+          }
+          console.log(`i = ${i}, j = ${j}`);
+        }
+      }
+
+      // Break statement in a switch case
+      let fruit = "banana";
+
+      switch (fruit) {
+        case "apple":
+          console.log("Apple is selected.");
+          break;
+        case "banana":
+          console.log("Banana is selected.");
+          break;
+        case "orange":
+          console.log("Orange is selected.");
+          break;
+        default:
+          console.log("No fruit selected.");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

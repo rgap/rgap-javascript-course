@@ -5,8 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-      console.log("Hello world");
-      console.log("%cHello world in blue", "font-size: 20px; color: blue;");
+      // For Loop in JavaScript
+
+      // The for loop is used to repeat a block of code a specified number of times.
+
+      for (let i = 0; i < 5; i++) {
+        console.log("Iteration:", i);
+      }
+
+      // Looping through an array
+      let fruits = ["Apple", "Banana", "Cherry"];
+
+      for (let i = 0; i < fruits.length; i++) {
+        console.log("Fruit:", fruits[i]);
+      }
+
+      // Nested for loops
+      for (let i = 1; i <= 3; i++) {
+        for (let j = 1; j <= 3; j++) {
+          console.log(`i = ${i}, j = ${j}`);
+        }
+      }
+
+      // Loop with a break statement
+      for (let i = 0; i < 10; i++) {
+        if (i === 5) {
+          break; // Exit the loop when i is 5
+        }
+        console.log("Value:", i);
+      }
+
+      // Loop with a continue statement
+      for (let i = 0; i < 10; i++) {
+        if (i % 2 === 0) {
+          continue; // Skip the current iteration if i is even
+        }
+        console.log("Odd Value:", i);
+      }
     </script>
   </head>
   <body></body>

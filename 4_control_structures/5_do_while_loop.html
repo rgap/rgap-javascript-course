@@ -5,8 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-      console.log("Hello world");
-      console.log("%cHello world in blue", "font-size: 20px; color: blue;");
+      // Do-While Loop in JavaScript
+
+      // The do-while loop repeats a block of code at least once, and then continues to repeat as long as a specified condition is true.
+
+      let count = 0;
+
+      do {
+        console.log("Count:", count);
+        count++;
+      } while (count < 5);
+
+      // Looping through an array with a do-while loop
+      let fruits = ["Apple", "Banana", "Cherry"];
+      let i = 0;
+
+      do {
+        console.log("Fruit:", fruits[i]);
+        i++;
+      } while (i < fruits.length);
+
+      // Loop with a break statement
+      let num = 0;
+
+      do {
+        if (num === 5) {
+          break; // Exit the loop when num is 5
+        }
+        console.log("Number:", num);
+        num++;
+      } while (num < 10);
+
+      // Loop with a continue statement
+      let x = 0;
+
+      do {
+        x++;
+        if (x % 2 === 0) {
+          continue; // Skip the current iteration if x is even
+        }
+        console.log("Odd Number:", x);
+      } while (x < 10);
     </script>
   </head>
   <body></body>

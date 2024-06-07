@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Global Scope in JavaScript
+
+      // Variables declared outside of any function or block are in the global scope and can be accessed from anywhere in the code.
+
+      var globalVar = "I am a global variable";
+      let globalLet = "I am also a global variable";
+      const globalConst = "I am a global constant";
+
+      function accessGlobalScope() {
+        console.log(globalVar); // I am a global variable
+        console.log(globalLet); // I am also a global variable
+        console.log(globalConst); // I am a global constant
+      }
+
+      accessGlobalScope();
+
+      // Global variables can be accessed from anywhere
+      console.log(globalVar); // I am a global variable
+      console.log(globalLet); // I am also a global variable
+      console.log(globalConst); // I am a global constant
+    </script>
+  </head>
+  <body></body>
+</html>

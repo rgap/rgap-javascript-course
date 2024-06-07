@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Function Scope in JavaScript
+
+      // Variables declared within a function are in the function scope and cannot be accessed from outside the function.
+
+      function functionScopeExample() {
+        var functionScopedVar = "I am a function-scoped variable";
+        let functionScopedLet = "I am also a function-scoped variable";
+        const functionScopedConst = "I am a function-scoped constant";
+
+        console.log(functionScopedVar); // I am a function-scoped variable
+        console.log(functionScopedLet); // I am also a function-scoped variable
+        console.log(functionScopedConst); // I am a function-scoped constant
+      }
+
+      functionScopeExample();
+
+      // console.log(functionScopedVar); // ReferenceError: functionScopedVar is not defined
+      // console.log(functionScopedLet); // ReferenceError: functionScopedLet is not defined
+      // console.log(functionScopedConst); // ReferenceError: functionScopedConst is not defined
+    </script>
+  </head>
+  <body></body>
+</html>

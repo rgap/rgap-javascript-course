@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 1. Basic Function Declaration
+      function greet() {
+        console.log("Hello, world!");
+      }
+
+      greet(); // Output: Hello, world!
+
+      // 2. Function with Parameters
+      function add(a, b) {
+        return a + b;
+      }
+
+      console.log(add(5, 3)); // Output: 8
+
+      // 3. Function with Default Parameters
+      function greet(name = "World") {
+        console.log(`Hello, ${name}!`);
+      }
+
+      // 4. Function Declaration Inside a Conditional Block
+      if (true) {
+        function sayYes() {
+          console.log("Yes");
+        }
+      } else {
+        function sayYes() {
+          console.log("No");
+        }
+      }
+
+      sayYes();
+    </script>
+  </head>
+  <body></body>
+</html>

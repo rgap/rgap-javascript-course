@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Block Scope in JavaScript
+
+      // Variables declared with let or const within a block (i.e., within curly braces {}) are block-scoped and cannot be accessed outside the block.
+
+      {
+        let blockScopedLet = "I am a block-scoped variable";
+        const blockScopedConst = "I am a block-scoped constant";
+
+        console.log(blockScopedLet); // I am a block-scoped variable
+        console.log(blockScopedConst); // I am a block-scoped constant
+      }
+
+      // console.log(blockScopedLet); // ReferenceError: blockScopedLet is not defined
+      // console.log(blockScopedConst); // ReferenceError: blockScopedConst is not defined
+
+      // Example: Block scope within a function
+      function blockScopeInFunction() {
+        if (true) {
+          var functionScopedVar = "I am a function-scoped variable";
+          let blockScopedLet = "I am a block-scoped variable";
+          const blockScopedConst = "I am a block-scoped constant";
+
+          console.log(functionScopedVar); // I am a function-scoped variable
+          console.log(blockScopedLet); // I am a block-scoped variable
+          console.log(blockScopedConst); // I am a block-scoped constant
+        }
+
+        console.log(functionScopedVar); // I am a function-scoped variable
+        // console.log(blockScopedLet); // ReferenceError: blockScopedLet is not defined
+        // console.log(blockScopedConst); // ReferenceError: blockScopedConst is not defined
+      }
+
+      blockScopeInFunction();
+    </script>
+  </head>
+  <body></body>
+</html>

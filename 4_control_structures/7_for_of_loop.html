@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // For-Of Loop
+
+      // The for-of loop is used to iterate over the values of an iterable object
+      let fruits = ["Apple", "Banana", "Cherry"];
+
+      console.log("For-Of Loop:");
+      for (let fruit of fruits) {
+        console.log("Fruit:", fruit);
+      }
+
+      // Iterating over a string
+      let str = "Hello";
+
+      console.log("For-Of Loop with String:");
+      for (let char of str) {
+        console.log("Character:", char);
+      }
+
+      // Error Scenarios
+
+      // Using for-of on a non-iterable object
+      let person = {
+        name: "Alice",
+        age: 25,
+        city: "New York",
+      };
+
+      console.log("For-In Loop:");
+      for (let key of person) {
+        if (person.hasOwnProperty(key)) {
+          // Check if the property is a direct property of the object
+          console.log(`${key}: ${person[key]}`);
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

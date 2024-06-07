@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Arrow Functions in JavaScript
+
+      // 1. Arrow functions provide a shorter syntax for writing functions and do not have their own 'this' context.
+      const greet = name => `Hello, ${name}!`;
+      console.log(greet("Charlie")); // Hello, Charlie!
+
+      // 2. Example: Arrow function with multiple parameters
+      const add = (a, b) => a + b;
+      console.log(add(2, 3)); // 5
+
+      // 3. Example: Arrow function with a block body
+      const multiply = (a, b) => {
+        return a * b;
+      };
+      console.log(multiply(2, 3)); // 6
+
+      // 4. Example: Arrow function without parameters
+      const getRandomNumber = () => Math.random();
+      console.log(getRandomNumber());
+    </script>
+  </head>
+  <body></body>
+</html>

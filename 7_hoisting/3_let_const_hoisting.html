@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Let and Const Hoisting in JavaScript
+
+      // Variables declared with let and const are hoisted but not initialized.
+      // Accessing them before their declaration results in a ReferenceError.
+
+      console.log(typeof notHoistedLet); // undefined
+      console.log(typeof notHoistedConst); // undefined
+
+      // console.log(notHoistedLet); // ReferenceError: Cannot access 'notHoistedLet' before initialization
+      // console.log(notHoistedConst); // ReferenceError: Cannot access 'notHoistedConst' before initialization
+
+      let notHoistedLet = "I am not hoisted";
+      const notHoistedConst = "I am not hoisted either";
+
+      console.log(notHoistedLet); // I am not hoisted
+      console.log(notHoistedConst); // I am not hoisted either
+
+      // Example: Temporal Dead Zone (TDZ)
+      function temporalDeadZoneExample() {
+        // console.log(hoistedLet); // ReferenceError: Cannot access 'hoistedLet' before initialization
+        let hoistedLet = "I am inside TDZ";
+        console.log(hoistedLet); // I am inside TDZ
+      }
+
+      temporalDeadZoneExample();
+    </script>
+  </head>
+  <body></body>
+</html>

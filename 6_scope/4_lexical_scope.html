@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Lexical Scope in JavaScript
+
+      // Lexical scope refers to the scope of a variable being determined by its position within the source code.
+      // Nested functions have access to variables declared in their outer scope.
+
+      function outerFunction() {
+        const outerVar = "I am an outer variable";
+
+        function innerFunction() {
+          const innerVar = "I am an inner variable";
+          console.log(outerVar); // I am an outer variable (from the outer scope)
+          console.log(innerVar); // I am an inner variable (from the inner scope)
+        }
+
+        innerFunction();
+        // console.log(innerVar); // ReferenceError: innerVar is not defined
+      }
+
+      outerFunction();
+
+      // Example: Lexical scope with nested functions
+      function firstFunction() {
+        const firstVar = "I am a variable in the first function";
+
+        function secondFunction() {
+          const secondVar = "I am a variable in the second function";
+
+          function thirdFunction() {
+            console.log(firstVar); // I am a variable in the first function
+            console.log(secondVar); // I am a variable in the second function
+          }
+
+          thirdFunction();
+        }
+
+        secondFunction();
+      }
+
+      firstFunction();
+    </script>
+  </head>
+  <body></body>
+</html>

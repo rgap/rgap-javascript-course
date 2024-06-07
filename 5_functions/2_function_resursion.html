@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 1. Function that Returns Another Function
+      // Higher-order function,
+      function greaterThan(n) {
+        return function (m) {
+          return m > n;
+        };
+      }
+
+      let greaterThan10 = greaterThan(10);
+      console.log(greaterThan10(11)); // Output: true
+
+      // 2. Recursive Function Declaration
+      function factorial(n) {
+        if (n === 0 || n === 1) {
+          return 1;
+        } else {
+          return n * factorial(n - 1);
+        }
+      }
+
+      console.log(factorial(5)); // Output: 120
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -5,8 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-      console.log("Hello world");
-      console.log("%cHello world in blue", "font-size: 20px; color: blue;");
+      // While Loop in JavaScript
+
+      // The while loop repeats a block of code as long as a specified condition is true.
+
+      let count = 0;
+
+      while (count < 5) {
+        console.log("Count:", count);
+        count++;
+      }
+
+      // Looping through an array with a while loop
+      let fruits = ["Apple", "Banana", "Cherry"];
+      let i = 0;
+
+      while (i < fruits.length) {
+        console.log("Fruit:", fruits[i]);
+        i++;
+      }
+
+      // Loop with a break statement
+      let num = 0;
+
+      while (num < 10) {
+        if (num === 5) {
+          break; // Exit the loop when num is 5
+        }
+        console.log("Number:", num);
+        num++;
+      }
+
+      // Loop with a continue statement
+      let x = 0;
+
+      while (x < 10) {
+        x++;
+        if (x % 2 === 0) {
+          continue; // Skip the current iteration if x is even
+        }
+        console.log("Odd Number:", x);
+      }
     </script>
   </head>
   <body></body>

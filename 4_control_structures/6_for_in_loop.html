@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // For-In Loop
+
+      // The for-in loop iterates over the properties of an object (including inherited properties).
+
+      // Iterating over an array using for-in (not recommended for arrays)
+      let fruits = ["Apple", "Banana", "Cherry"];
+
+      for (let index in fruits) {
+        console.log(`Index: ${index}, Fruit: ${fruits[index]}`);
+      }
+
+      // The for-in loop is used to iterate over the enumerable properties of an object.
+      let person = {
+        name: "Alice",
+        age: 25,
+        city: "New York",
+      };
+
+      console.log("For-In Loop:");
+      for (let key in person) {
+        if (person.hasOwnProperty(key)) {
+          // Check if the property is a direct property of the object
+          console.log(`${key}: ${person[key]}`);
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Immediately Invoked Function Expressions (IIFE) in JavaScript
+
+      // An IIFE is a function that runs as soon as it is defined.
+
+      // 1. Example: IIFE
+      (function () {
+        console.log("This is an IIFE!");
+      })();
+
+      // 2. Example: IIFE with parameters
+      (function (name) {
+        console.log(`Hello, ${name}!`);
+      })("Dave");
+
+      // 3. Example: IIFE to create a private scope
+      const result = (function () {
+        const privateVariable = "I am private";
+        return `This is a result from an IIFE with a ${privateVariable}`;
+      })();
+
+      console.log(result);
+
+      // 4. Example: Using IIFE to avoid polluting the global scope
+      (function () {
+        const localVariable = "I am local to the IIFE";
+        console.log(localVariable);
+      })();
+
+      // console.log(localVariable); // ReferenceError: localVariable is not defined
+    </script>
+  </head>
+  <body></body>
+</html>

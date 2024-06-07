@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Try-Catch-Finally in JavaScript
+
+      // The try-catch-finally statement is used to handle exceptions and execute code regardless of whether an exception was thrown or not.
+
+      try {
+        // Code that may throw an exception
+        let result = 10 / 0;
+        console.log("Result:", result);
+
+        // Throwing an exception
+        throw new Error("Something went wrong!");
+      } catch (error) {
+        // Code to handle the exception
+        console.error("Error:", error.message);
+      } finally {
+        // Code to be executed regardless of an exception
+        console.log("This will always run.");
+      }
+
+      // Example with nested try-catch
+      try {
+        try {
+          throw new Error("Inner error");
+        } catch (innerError) {
+          console.error("Caught inner error:", innerError.message);
+          throw new Error("Outer error");
+        }
+      } catch (outerError) {
+        console.error("Caught outer error:", outerError.message);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

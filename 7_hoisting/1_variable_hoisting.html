@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Variable Hoisting in JavaScript
+
+      // Variable hoisting allows variables to be used before they are declared.
+
+      // 1. The INITIALIZATION is not hoisted, only the DECLARATION.
+      console.log(undeclaredVariable); // ReferenceError: Cannot access 'undeclaredVariable' before initialization
+
+      console.log(hoistedVar); // undefined
+      var hoistedVar = "I am hoisted";
+      console.log(hoistedVar); // I am hoisted
+
+      // 2. Example with function scope
+      function hoistExample() {
+        console.log(hoistedInsideFunction); // undefined
+        var hoistedInsideFunction = "Hoisted inside function";
+        console.log(hoistedInsideFunction); // Hoisted inside function
+      }
+      hoistExample();
+
+      // 3. Example demonstrating lack of hoisting with let and const
+      // var declarations are initialized with "undefined" at the time of hoisting
+      // let and const declarations are not initialized at the time of hoisting
+
+      console.log(letVar); // ReferenceError: Cannot access 'letVar' before initialization
+      console.log(constVar); // ReferenceError: Cannot access 'constVar' before initialization
+      let letVar = "I am a let variable";
+      const constVar = "I am a const variable";
+      console.log(letVar); // I am a let variable
+      console.log(constVar); // I am a const variable
+    </script>
+  </head>
+  <body></body>
+</html>
