@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Special Number Values in JavaScript
+
+      // Infinity and -Infinity
+      let positiveInfinity = Infinity;
+      let negativeInfinity = -Infinity;
+
+      console.log("Positive Infinity:", positiveInfinity); // Infinity
+      console.log("Negative Infinity:", negativeInfinity); // -Infinity
+      console.log("1 / 0:", 1 / 0); // Infinity
+      console.log("-1 / 0:", -1 / 0); // -Infinity
+
+      // NaN (Not-a-Number)
+      let notANumber = NaN;
+      console.log("NaN:", notANumber); // NaN
+      console.log("0 / 0:", 0 / 0); // NaN
+      console.log("Math.sqrt(-1):", Math.sqrt(-1)); // NaN
+
+      // Checking for NaN
+      console.log("isNaN(NaN):", isNaN(NaN)); // true
+      console.log('isNaN("text"):', isNaN("text")); // true (because "text" cannot be converted to a number)
+      console.log("Number.isNaN(NaN):", Number.isNaN(NaN)); // true
+      console.log('Number.isNaN("text"):', Number.isNaN("text")); // false (better way to check)
+    </script>
+  </head>
+  <body></body>
+</html>

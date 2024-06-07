@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Demonstrating Immutability of Primitive Data Types in JavaScript
+      // It refers to the state of an object whose data cannot be modified after it has been created
+
+      // String Immutability
+      // Strings in JavaScript are immutable, meaning any attempt to change the string directly will not alter the original string.
+      let greeting = "Hello";
+      greeting[0] = "J"; // Attempting to change the first character to 'J'
+      console.log("Attempted Modification:", greeting); // "Hello" - the string remains unchanged
+
+      // Correct way to "modify" a string
+      let modifiedGreeting = greeting.replace("H", "J");
+      console.log("Modified Greeting:", modifiedGreeting); // "Jello"
+
+      // Number Immutability
+      // Numbers are immutable. Any operation that seems to modify a number actually creates a new number.
+      let num = 10;
+      let newNum = num + 1;
+      console.log("Original Number:", num); // 10
+      console.log("New Number:", newNum); // 11
+
+      // Boolean Immutability
+      // Similar to numbers, boolean values are immutable. Operations on booleans return new boolean values.
+      let truth = true;
+      let notTruth = !truth;
+      console.log("Original Boolean:", truth); // true
+      console.log("New Boolean:", notTruth); // false
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Primitives are data types that
+      // are NOT OBJECTS
+      // are INMUTABLE
+      // have NO METHODS
+
+      // 1. Number
+      // Standard numeric type for JavaScript. It includes integers, floats, negatives, and specials like NaN and Infinity.
+      let integer = 42;
+      let float = 3.14159;
+      console.log("Integer:", integer);
+      console.log("Float:", float);
+      console.log("NaN example:", 0 / 0); // NaN
+      console.log("Infinity example:", 1 / 0); // Infinity
+
+      // 2. String
+      // Sequence of characters used for representing text. It is immutable.
+      let singleQuote = "Hello, world!";
+      let doubleQuote = "Hello, world!";
+      let backticks = `Hello, ${singleQuote}`; // Template literals for interpolation
+      console.log("Single Quote:", singleQuote);
+      console.log("Double Quote:", doubleQuote);
+      console.log("Backticks:", backticks);
+
+      // 3. Boolean
+      // Logical entity that can have only two values: true or false.
+      let isTrue = true;
+      let isFalse = false;
+      console.log("Boolean true:", isTrue);
+      console.log("Boolean false:", isFalse);
+
+      // 4. undefined
+      // Indicates a variable that has not been assigned a value.
+      let undefinedVariable;
+      console.log("Undefined Variable:", undefinedVariable);
+
+      // 5. Null
+      // Represents a deliberate non-value (and is falsy).
+      let nullVariable = null;
+      console.log("Null Variable:", nullVariable);
+
+      // 6. BigInt
+      // An integer with arbitrary precision. Useful for very large numbers.
+      let bigIntVariable = 1234567890123456789012345678901234567890n;
+      console.log("BigInt Variable:", bigIntVariable);
+
+      // 7. Symbol
+      // A unique and immutable data type used often as the key of an object property.
+      let symbol1 = Symbol("identifier");
+      let symbol2 = Symbol("identifier");
+      console.log("Symbol 1:", symbol1);
+      console.log("Symbol 2:", symbol2);
+      console.log("Symbol comparison:", symbol1 === symbol2); // false, each symbol is unique
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // String Methods in JavaScript
+
+      let text = "JavaScript is awesome!";
+
+      // Changing Case
+      console.log("Upper Case:", text.toUpperCase()); // JAVASCRIPT IS AWESOME!
+      console.log("Lower Case:", text.toLowerCase()); // javascript is awesome!
+
+      // Includes
+      console.log('Includes "awesome":', text.includes("awesome")); // true
+
+      // Starts With and Ends With
+      console.log('Starts with "Java":', text.startsWith("Java")); // true
+      console.log('Ends with "!":', text.endsWith("!")); // true
+
+      // Substring
+      console.log("Substring (0, 10):", text.substring(0, 10)); // JavaScript
+
+      // Split
+      let words = text.split(" ");
+      console.log("Split by space:", words); // ["JavaScript", "is", "awesome!"]
+
+      // Replace
+      let newText = text.replace("awesome", "great");
+      console.log('Replace "awesome" with "great":', newText); // JavaScript is great!
+    </script>
+  </head>
+  <body></body>
+</html>

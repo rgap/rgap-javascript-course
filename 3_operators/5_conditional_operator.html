@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Conditional (Ternary) Operator in JavaScript
+
+      // The conditional (ternary) operator is the only JavaScript operator that takes three operands.
+      // It is often used as a shortcut for the if statement.
+      // Syntax: condition ? exprIfTrue : exprIfFalse
+
+      // Basic usage
+      let age = 18;
+      let canVote = age >= 18 ? "Yes" : "No";
+      console.log("Can vote:", canVote); // Yes
+
+      // Using the ternary operator for default values
+      let user = null;
+      let username = user ? user.name : "Guest";
+      console.log("Username:", username); // Guest
+
+      // Nested ternary operators
+      let score = 85;
+      let grade = score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : score >= 60 ? "D" : "F";
+      console.log("Grade:", grade); // B
+
+      // Conditional rendering (common in UI frameworks)
+      let loggedIn = true;
+      let welcomeMessage = loggedIn ? "Welcome back!" : "Please log in.";
+      console.log("Welcome Message:", welcomeMessage); // Welcome back!
+
+      // Function return value
+      function getMembershipFee(age) {
+        return age < 18 ? 10 : 20;
+      }
+      let membershipFee = getMembershipFee(16);
+      console.log("Membership Fee:", membershipFee); // 10
+    </script>
+  </head>
+  <body></body>
+</html>

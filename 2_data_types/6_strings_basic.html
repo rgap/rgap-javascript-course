@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Basic String Operations in JavaScript
+
+      // Concatenation
+      let firstName = "John";
+      let lastName = "Doe";
+      let fullName = firstName + " " + lastName;
+      console.log("Full Name:", fullName); // John Doe
+
+      // Template Literals
+      let age = 30;
+      let introduction = `Hello, my name is ${fullName} and I am ${age} years old.`;
+      console.log("Introduction:", introduction);
+
+      let age2 = 40;
+      let introduction2 = `Hello, my name is 
+      ${fullName}
+      and I am
+      ${age}
+      years old.`;
+      console.log("Introduction:", introduction2);
+
+      // String Length
+      let message = "Hello, World!";
+      console.log("Message Length:", message.length); // 13
+
+      // Accessing Characters
+      console.log("First Character:", message[0]); // H
+      console.log("Last Character:", message[message.length - 1]); // !
+    </script>
+  </head>
+  <body></body>
+</html>

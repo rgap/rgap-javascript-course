@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Demonstrating Autoboxing in JavaScript
+      // Process where primitive data types (like numbers and strings)
+      // are automatically wrapped in their corresponding object types (like Number and String) when certain operations are performed
+
+      // 1. String Autoboxing
+      // Strings are primitives but can use methods from the String object’s prototype.
+      let primitiveString = "hello world";
+      console.log(primitiveString.toUpperCase()); // "HELLO WORLD"
+      console.log(typeof primitiveString); // "string"
+
+      // Internally, JavaScript does:
+      // (new String(primitiveString)).toUpperCase();
+
+      // 2. Number Autoboxing
+      // Numbers are primitives but can use methods from the Number object’s prototype.
+      let primitiveNumber = 123;
+      console.log(primitiveNumber.toFixed(2)); // "123.00"
+      console.log(typeof primitiveNumber); // "number"
+
+      // Internally, JavaScript does:
+      // (new Number(primitiveNumber)).toFixed(2);
+
+      // 3. Boolean Autoboxing
+      // Booleans are primitives but can use methods from the Boolean object’s prototype.
+      let primitiveBoolean = true;
+      console.log(primitiveBoolean.toString()); // "true"
+      console.log(typeof primitiveBoolean); // "boolean"
+
+      // Internally, JavaScript does:
+      // (new Boolean(primitiveBoolean)).toString();
+
+      // 4. Null and Undefined
+      // `null` and `undefined` do not have corresponding object wrappers and do not participate in autoboxing.
+      let nullValue = null;
+      // console.log(nullValue.toString()); // TypeError: Cannot read properties of null (reading 'toString')
+
+      let undefinedValue = undefined;
+      // console.log(undefinedValue.toString()); // TypeError: Cannot read properties of undefined (reading 'toString')
+    </script>
+  </head>
+  <body></body>
+</html>

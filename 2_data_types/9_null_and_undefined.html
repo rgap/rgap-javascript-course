@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Null and Undefined in JavaScript
+
+      // Undefined indicates a variable has been declared but not assigned a value
+      let undefinedVariable;
+      console.log("Undefined Variable:", undefinedVariable); // undefined
+
+      // Null is an assignment value that represents no value
+      let nullVariable = null;
+      console.log("Null Variable:", nullVariable); // null
+
+      // Checking for Null and Undefined
+      console.log("Type of undefined:", typeof undefinedVariable); // "undefined"
+      console.log("Type of null:", typeof nullVariable); // "object" (a quirk in JavaScript)
+      console.log("undefined == null:", undefinedVariable == nullVariable); // true
+      console.log("undefined === null:", undefinedVariable === nullVariable); // false
+
+      // Function with no return statement implicitly returns undefined
+      function noReturn() {}
+      console.log("Function with no return:", noReturn()); // undefined
+
+      // Using default parameters to handle undefined
+      function greet(name = "Guest") {
+        console.log(`Hello, ${name}`);
+      }
+      greet(); // Hello, Guest
+      greet("Alice"); // Hello, Alice
+    </script>
+  </head>
+  <body></body>
+</html>

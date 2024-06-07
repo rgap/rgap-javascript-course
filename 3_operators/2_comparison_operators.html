@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Comparison Operators in JavaScript
+
+      // Comparison operators are used to compare two values and return a Boolean result.
+      // They include ==, !=, ===, !==, >, <, >=, <=.
+
+      // Basic comparisons
+      let a = 5;
+      let b = 10;
+
+      console.log("a == b:", a == b); // false (checks value equality, type conversion may occur)
+      console.log("a != b:", a != b); // true (checks value inequality, type conversion may occur)
+      console.log("a > b:", a > b); // false (greater than)
+      console.log("a < b:", a < b); // true (less than)
+      console.log("a >= b:", a >= b); // false (greater than or equal to)
+      console.log("a <= b:", a <= b); // true (less than or equal to)
+
+      // Strict equality and inequality
+      // Strict equality (===) and strict inequality (!==) check both value and type without type conversion.
+      console.log("a === b:", a === b); // false (checks value and type equality)
+      console.log("a !== b:", a !== b); // true (checks value and type inequality)
+
+      // Comparison with different types
+      // Loose equality (==) and inequality (!=) perform type conversion before comparison.
+      console.log('5 == "5":', 5 == "5"); // true (number and string are converted to common type)
+      console.log('5 === "5":', 5 === "5"); // false (different types, no conversion)
+    </script>
+  </head>
+  <body></body>
+</html>

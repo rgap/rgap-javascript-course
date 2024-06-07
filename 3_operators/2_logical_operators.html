@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      let isTrue = true;
+      let isFalse = false;
+
+      // Logical AND (&&)
+      console.log("true AND false:", isTrue && isFalse); // false
+
+      // Logical OR (||)
+      console.log("true OR false:", isTrue || isFalse); // true
+
+      // Logical NOT (!)
+      console.log("NOT true:", !isTrue); // false
+
+      // Using logical operators with non-boolean values
+      // Logical operators can also be used with non-boolean values, returning one of the operands.
+      console.log('true AND "hello":', true && "hello"); // "hello" (returns second operand if first is true)
+      console.log('false OR "hello":', false || "hello"); // "hello" (returns second operand if first is false)
+
+      // Example with AND (&&)
+      let isLoggedIn = true;
+      let hasPermission = false;
+
+      // Using AND to check multiple conditions in an if statement
+      if (isLoggedIn && hasPermission) {
+        console.log("Access granted");
+      } else {
+        console.log("Access denied"); // This will print
+      }
+
+      // Short-circuit evaluation
+      // Logical operators use short-circuit evaluation to stop evaluating as soon as the result is determined.
+
+      // Practical use of short-circuit evaluation in if statements
+
+      // Function to simulate an expensive operation
+      function expensiveOperation() {
+        console.log("Expensive operation executed");
+        return true;
+      }
+
+      // Conditional execution of an expensive operation
+      let shouldExecute = false;
+      if (shouldExecute && expensiveOperation()) {
+        console.log("Operation executed");
+      } else {
+        console.log("Operation not executed"); // This will print
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

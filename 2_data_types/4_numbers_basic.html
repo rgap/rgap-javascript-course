@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Basic Information about Numbers in JavaScript
+
+      // Standard numeric type for JavaScript includes integers and floating-point numbers.
+      let integer = 42;
+      let float = 3.14159;
+
+      console.log("Integer:", integer);
+      console.log("Float:", float);
+
+      // Exponential Notation
+      let exponential = 1.23e5; // 1.23 * 10^5
+      console.log("Exponential Notation:", exponential); // 123000
+
+      // Precision and Rounding
+      let precise = 0.1 + 0.2;
+      console.log("Precision Issue (0.1 + 0.2):", precise); // 0.30000000000000004
+      console.log("Fixed Precision (0.1 + 0.2):", precise.toFixed(2)); // "0.30"
+
+      // Number Conversion
+      let stringNumber = "123";
+      let convertedNumber = Number(stringNumber);
+      console.log("Converted Number:", convertedNumber); // 123
+
+      // Parsing Integers and Floats
+      let parsedInt = parseInt("123px");
+      let parsedFloat = parseFloat("3.14text");
+      console.log("Parsed Integer:", parsedInt); // 123
+      console.log("Parsed Float:", parsedFloat); // 3.14
+    </script>
+  </head>
+  <body></body>
+</html>
