@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Object Comparison in JavaScript
+
+      const obj1 = { name: "Alice", age: 25 };
+      const obj2 = { name: "Alice", age: 25 };
+      const obj3 = obj1;
+
+      // Example 1: Direct comparison of objects compares their references, not their content
+      console.log(obj1 === obj2); // false
+      console.log(obj1 === obj3); // true
+
+      // Example 2: Deep comparison function
+      function deepEqual(objA, objB) {
+        if (objA === objB) return true;
+
+        if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) {
+          return false;
+        }
+
+        let keysA = Object.keys(objA);
+        let keysB = Object.keys(objB);
+
+        if (keysA.length !== keysB.length) return false;
+
+        for (let key of keysA) {
+          if (!keysB.includes(key) || !deepEqual(objA[key], objB[key])) return false;
+        }
+
+        return true;
+      }
+
+      console.log(deepEqual(obj1, obj2)); // true
+
+      // Example 3: Comparing nested objects
+      const nestedObj1 = {
+        name: "Alice",
+        address: {
+          city: "New York",
+          zip: "10001",
+        },
+      };
+
+      const nestedObj2 = {
+        name: "Alice",
+        address: {
+          city: "New York",
+          zip: "10001",
+        },
+      };
+
+      console.log(deepEqual(nestedObj1, nestedObj2)); // true
+    </script>
+  </head>
+  <body></body>
+</html>

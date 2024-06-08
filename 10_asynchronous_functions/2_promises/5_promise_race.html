@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Promise.race Example in JavaScript
+
+      // Promise.race is a method that takes an array of promises and returns a single promise that resolves or rejects as soon as one of the promises in the array resolves or rejects.
+
+      const promise1 = new Promise(resolve => setTimeout(resolve, 1000, "First"));
+      const promise2 = new Promise(resolve => setTimeout(resolve, 2000, "Second"));
+      const promise3 = new Promise(resolve => setTimeout(resolve, 3000, "Third"));
+
+      Promise.race([promise1, promise2, promise3])
+        .then(result => {
+          console.log("First promise resolved:", result); // The first result that resolved
+        })
+        .catch(error => {
+          console.error("First promise rejected:", error); // The first error that occurred
+        });
+
+      // Explanation:
+      // - This code demonstrates using `Promise.race` to handle multiple asynchronous operations in parallel and respond to the first one that resolves or rejects.
+      // - `Promise.race` takes an array of promises and returns a single promise that resolves or rejects as soon as the first promise in the array resolves or rejects.
+      // - The `then` method is called with the result of the first resolved promise, and the `catch` method is called with the error of the first rejected promise.
+
+      // Benefits of Promise.race:
+      // - Allows for handling the first result or error among multiple asynchronous operations.
+      // - Useful in scenarios where the fastest response is required, such as timeout handling or selecting the quickest API response.
+
+      // Drawbacks of Promise.race:
+      // - If multiple promises are expected to complete, only the first one to resolve or reject is handled.
+      // - Requires understanding of promise behavior and methods.
+
+      // Alternatives to Promise.race:
+      // - Async/Await: Can be used with `Promise.race` for more readable and maintainable code when handling multiple asynchronous operations.
+    </script>
+  </head>
+  <body></body>
+</html>

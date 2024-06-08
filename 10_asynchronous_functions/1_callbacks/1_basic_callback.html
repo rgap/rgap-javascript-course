@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Callbacks in JavaScript
+
+      // 1. A callback is a function passed as an argument to another function.
+      // This allows you to pass functions as parameters and have them executed inside the calling function.
+
+      function operation(a, b, callback) {
+        // The callback function is called with 'a' and 'b' as arguments
+        return callback(a, b);
+      }
+
+      // Here, we define an anonymous function (arrow function) as a callback to multiply 'a' and 'b'
+      const result = operation(2, 2, (a, b) => a * b);
+      console.log(result); // Outputs: 4
+
+      // 2. This allows a function to call another function once it completes.
+      // Callbacks are often used for asynchronous operations, such as fetching data from a server.
+
+      function fetchData(callback) {
+        // setTimeout simulates an asynchronous operation with a delay of 3 seconds
+        setTimeout(() => {
+          const data = "Some data";
+          callback(data); // The callback function is called with the fetched data
+        }, 3000);
+      }
+
+      function displayData(data) {
+        // This function will be used as a callback to handle the fetched data
+        console.log("Data received:", data);
+      }
+
+      // The fetchData function takes displayData as a callback
+      // When fetchData completes its asynchronous operation, it calls displayData with the fetched data
+      fetchData(displayData);
+
+      // Explanation:
+      // - The 'fetchData' function simulates fetching data with a delay of 3 seconds using setTimeout.
+      // - Once the data is "fetched" (simulated by setTimeout), the 'callback' function (which is 'displayData' in this case) is called with the 'data'.
+      // - 'displayData' is executed, logging the received data to the console.
+    </script>
+  </head>
+  <body></body>
+</html>

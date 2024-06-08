@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Promise.all Example in JavaScript
+
+      // Promise.all is a method that takes an array of promises and returns a single promise that resolves when all of the promises in the array resolve.
+
+      const promise1 = new Promise(resolve => setTimeout(resolve, 1000, "First"));
+      const promise2 = new Promise(resolve => setTimeout(resolve, 2000, "Second"));
+      const promise3 = new Promise(resolve => setTimeout(resolve, 3000, "Third"));
+
+      Promise.all([promise1, promise2, promise3])
+        .then(results => {
+          console.log("All promises resolved:", results); // All results are available here
+        })
+        .catch(error => {
+          console.error("One or more promises failed:", error); // Handle any error that occurred in any of the promises
+        });
+
+      // Explanation:
+      // - This code demonstrates using `Promise.all` to handle multiple asynchronous operations in parallel.
+      // - `Promise.all` takes an array of promises and returns a single promise that resolves when all the promises in the array resolve.
+      // - If all promises resolve successfully, the `then` method is called with an array of results.
+      // - If any of the promises reject, the `catch` method is called with the error from the first rejected promise.
+
+      // Benefits of Promise.all:
+      // - Allows for parallel execution of multiple asynchronous operations.
+      // - Provides a single point to handle the completion of all promises.
+
+      // Drawbacks of Promise.all:
+      // - If any promise in the array rejects, the entire `Promise.all` call rejects, even if some promises have resolved.
+      // - Requires understanding of promise behavior and methods.
+
+      // Alternatives to Promise.all:
+      // - Async/Await: Can be used with `Promise.all` for more readable and maintainable code when handling multiple asynchronous operations.
+    </script>
+  </head>
+  <body></body>
+</html>

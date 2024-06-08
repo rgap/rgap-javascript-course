@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Object Methods in JavaScript
+
+      const person = {
+        name: "Alice",
+        age: 25,
+        greet() {
+          console.log(`Hello, my name is ${this.name}`);
+        },
+      };
+
+      person.greet(); // Hello, my name is Alice
+
+      // Example 1: Object.keys - returns an array of a given object's property names
+      const keys = Object.keys(person);
+      console.log(keys); // ['name', 'age', 'greet']
+
+      // Example 2: Object.values - returns an array of a given object's own enumerable property values
+      const values = Object.values(person);
+      console.log(values); // ['Alice', 25, ƒ]
+
+      // Example 3: Object.entries - returns an array of a given object's own enumerable string-keyed property [key, value] pairs
+      const entries = Object.entries(person);
+      console.log(entries); // [['name', 'Alice'], ['age', 25], ['greet', ƒ]]
+
+      // Example 4: Object.assign - copies all enumerable own properties from one or more source objects to a target object
+      const additionalInfo = { city: "New York", country: "USA" };
+      const updatedPerson = Object.assign({}, person, additionalInfo);
+      console.log(updatedPerson); // { name: 'Alice', age: 25, greet: ƒ, city: 'New York', country: 'USA' }
+
+      // Example 5: Object.freeze - freezes an object, preventing new properties from being added to it and existing properties from being removed or modified
+      const frozenPerson = Object.freeze(person);
+      frozenPerson.age = 30; // TypeError: Cannot assign to read only property 'age'
+      console.log(frozenPerson.age); // 25
+
+      // Example 6: Object.seal - seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable
+      const sealedPerson = Object.seal(person);
+      sealedPerson.age = 30; // Works, since 'age' is already a property of the object
+      delete sealedPerson.name; // TypeError: Cannot delete property 'name'
+      console.log(sealedPerson.age); // 30
+    </script>
+  </head>
+  <body></body>
+</html>

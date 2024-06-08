@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Object Creation in JavaScript
+
+      // Example 1: Creating objects using object literals
+      const person1 = {
+        name: "Alice",
+        age: 25,
+        city: "New York",
+      };
+
+      console.log(person1);
+
+      // Example 2: Creating objects using the Object constructor
+      const person2 = new Object();
+      person2.name = "Bob";
+      person2.age = 30;
+      person2.city = "San Francisco";
+
+      console.log(person2);
+
+      // Example 3: Creating objects using a constructor function
+      function Person(name, age, city) {
+        this.name = name;
+        this.age = age;
+        this.city = city;
+      }
+
+      const person3 = new Person("Charlie", 35, "Los Angeles");
+      console.log(person3);
+
+      // Example 4: Creating objects using Object.create
+      const proto = {
+        greet() {
+          console.log(`Hello, my name is ${this.name}`);
+        },
+      };
+
+      const person4 = Object.create(proto);
+      person4.name = "Dave";
+      person4.age = 40;
+      person4.city = "Chicago";
+      console.log(person4);
+      person4.greet(); // Hello, my name is Dave
+    </script>
+  </head>
+  <body></body>
+</html>

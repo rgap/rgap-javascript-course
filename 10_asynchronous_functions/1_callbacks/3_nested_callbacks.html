@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Nested Callbacks Example in JavaScript
+
+      // Nested callbacks, also known as callback hell, occur when multiple asynchronous operations are performed in sequence using callbacks.
+
+      function firstOperation(callback) {
+        setTimeout(() => {
+          callback(null, "First operation complete");
+        }, 1000);
+      }
+
+      function secondOperation(callback) {
+        setTimeout(() => {
+          callback(null, "Second operation complete");
+        }, 1000);
+      }
+
+      function thirdOperation(callback) {
+        setTimeout(() => {
+          callback(null, "Third operation complete");
+        }, 1000);
+      }
+
+      function performOperations(callback) {
+        firstOperation((error, result1) => {
+          if (error) {
+            callback(error);
+            return;
+          }
+          console.log(result1);
+
+          secondOperation((error, result2) => {
+            if (error) {
+              callback(error);
+              return;
+            }
+            console.log(result2);
+
+            thirdOperation((error, result3) => {
+              if (error) {
+                callback(error);
+                return;
+              }
+              console.log(result3);
+              callback(null, "All operations completed");
+            });
+          });
+        });
+      }
+
+      performOperations((error, result) => {
+        if (error) {
+          console.error("Error:", error);
+        } else {
+          console.log(result);
+        }
+      });
+    </script>
+  </head>
+  <body></body>
+</html>

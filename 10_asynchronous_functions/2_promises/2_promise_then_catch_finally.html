@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Promise.finally Example in JavaScript
+
+      // Promise.finally is a method that allows you to run some code once the promise has been settled, regardless of its outcome.
+
+      let promise = new Promise((resolve, reject) => {
+        let success = true; // Change to false to simulate failure
+
+        if (success) {
+          resolve("The operation was successful."); // Resolve the promise with a success message
+        } else {
+          reject("The operation failed."); // Reject the promise with an error message
+        }
+      });
+
+      promise
+        .then(result => {
+          console.log(result); // Handle the success
+        })
+        .catch(error => {
+          console.error("Error:", error); // Handle the error
+        })
+        .finally(() => {
+          console.log("Promise settled (either resolved or rejected)"); // Runs regardless of the promise outcome
+        });
+
+      // Explanation:
+      // - This code demonstrates using `Promise.finally` to run some code once the promise has been settled, regardless of its outcome.
+      // - A promise is created that either resolves with a success message or rejects with an error message based on the value of `success`.
+      // - The `then` method is used to handle the resolved value, and the `catch` method is used to handle the rejected value.
+      // - The `finally` method is used to run some code after the promise has been settled, regardless of whether it was resolved or rejected.
+    </script>
+  </head>
+  <body></body>
+</html>

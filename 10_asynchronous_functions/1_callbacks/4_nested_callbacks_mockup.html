@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Nested Callbacks Example in JavaScript
+
+      // Nested callbacks, also known as callback hell, occur when multiple asynchronous operations are performed in sequence using callbacks.
+      // This pattern can lead to deeply nested code that is hard to read and maintain.
+
+      // Simulate fetching user data from an API
+      function fetchUserData(callback) {
+        setTimeout(() => {
+          const error = false; // Change to true to simulate an error
+          const userData = { userId: 1, name: "John Doe" };
+
+          if (error) {
+            callback("Error fetching user data", null);
+          } else {
+            callback(null, userData);
+          }
+        }, 1000); // Simulate a 1-second delay
+      }
+
+      // Simulate fetching posts for a user from an API
+      function fetchUserPosts(userId, callback) {
+        setTimeout(() => {
+          const error = false; // Change to true to simulate an error
+          const userPosts = [
+            { postId: 1, content: "Post 1 content" },
+            { postId: 2, content: "Post 2 content" },
+          ];
+
+          if (error) {
+            callback("Error fetching user posts", null);
+          } else {
+            callback(null, userPosts);
+          }
+        }, 1000); // Simulate a 1-second delay
+      }
+
+      // Simulate fetching comments for a post from an API
+      function fetchPostComments(postId, callback) {
+        setTimeout(() => {
+          const error = false; // Change to true to simulate an error
+          const postComments = [
+            { commentId: 1, content: "Comment 1 on post " + postId },
+            { commentId: 2, content: "Comment 2 on post " + postId },
+          ];
+
+          if (error) {
+            callback("Error fetching post comments", null);
+          } else {
+            callback(null, postComments);
+          }
+        }, 1000); // Simulate a 1-second delay
+      }
+
+      // Perform multiple asynchronous operations in sequence using nested callbacks
+      function performOperations(callback) {
+        fetchUserData((error, userData) => {
+          if (error) {
+            callback(error);
+            return;
+          }
+          console.log("User Data:", userData);
+
+          fetchUserPosts(userData.userId, (error, userPosts) => {
+            if (error) {
+              callback(error);
+              return;
+            }
+            console.log("User Posts:", userPosts);
+
+            fetchPostComments(userPosts[0].postId, (error, postComments) => {
+              if (error) {
+                callback(error);
+                return;
+              }
+              console.log("Post Comments:", postComments);
+              callback(null, "All operations completed");
+            });
+          });
+        });
+      }
+
+      // Execute the sequence of operations and handle the final result
+      performOperations((error, result) => {
+        if (error) {
+          console.error("Error:", error);
+        } else {
+          console.log(result);
+        }
+      });
+
+      // Explanation:
+      // - This code demonstrates performing multiple asynchronous operations in sequence using nested callbacks.
+      // - The `performOperations` function coordinates the execution of `fetchUserData`, `fetchUserPosts`, and `fetchPostComments` in sequence.
+      // - Each function simulates an asynchronous operation with a 1-second delay using setTimeout.
+      // - If an error occurs in any operation, the final callback is called with the error and the sequence is terminated.
+      // - If all operations succeed, the final callback is called with a success message after all operations complete.
+
+      // Benefits of Handling Multiple Callbacks:
+      // - Allows sequential execution of multiple asynchronous operations.
+      // - Provides a mechanism to handle errors and propagate them to the final callback.
+
+      // Drawbacks of Handling Multiple Callbacks:
+      // - Can lead to callback hell if there are many nested operations.
+      // - Error handling can become complex and harder to manage.
+
+      // Alternatives to Handling Multiple Callbacks:
+      // - Promises: Use chaining to handle multiple asynchronous operations more elegantly.
+      // - Async/Await: Simplifies the syntax and improves readability for handling multiple asynchronous operations.
+    </script>
+  </head>
+  <body></body>
+</html>

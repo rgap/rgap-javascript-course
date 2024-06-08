@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Promise.any Example in JavaScript
+
+      // Promise.any is a method that takes an array of promises and returns a single promise that resolves as soon as one of the promises in the array resolves.
+
+      const promise1 = new Promise((resolve, reject) => setTimeout(reject, 1000, "First promise rejected"));
+      const promise2 = new Promise(resolve => setTimeout(resolve, 2000, "Second promise resolved"));
+      const promise3 = new Promise(resolve => setTimeout(resolve, 3000, "Third promise resolved"));
+
+      Promise.any([promise1, promise2, promise3])
+        .then(result => {
+          console.log("First promise resolved:", result); // The first result that resolved
+        })
+        .catch(error => {
+          console.error("All promises were rejected:", error); // Handle the case where all promises are rejected
+        });
+
+      // Explanation:
+      // - This code demonstrates using `Promise.any` to handle multiple asynchronous operations and respond to the first one that resolves.
+      // - `Promise.any` takes an array of promises and returns a single promise that resolves as soon as the first promise in the array resolves.
+      // - The `then` method is called with the result of the first resolved promise.
+      // - If all promises in the array are rejected, the `catch` method is called with an AggregateError.
+
+      // Benefits of Promise.any:
+      // - Allows for handling the first successful result among multiple asynchronous operations.
+      // - Useful in scenarios where any successful response is acceptable, and failures can be ignored.
+
+      // Drawbacks of Promise.any:
+      // - If all promises are rejected, an AggregateError containing all rejection reasons is thrown.
+      // - Requires understanding of promise behavior and methods.
+
+      // Alternatives to Promise.any:
+      // - Async/Await: Can be used with `Promise.any` for more readable and maintainable code when handling multiple asynchronous operations.
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Object Properties in JavaScript
+
+      const person = {
+        name: "Alice",
+        age: 25,
+        city: "New York",
+      };
+
+      // Example 1: Accessing properties using dot notation
+      console.log(person.name); // Alice
+
+      // Example 2: Accessing properties using bracket notation
+      console.log(person["age"]); // 25
+
+      // Example 3: Adding new properties
+      person.country = "USA";
+      console.log(person.country); // USA
+
+      // Example 4: Updating properties
+      person.age = 26;
+      console.log(person.age); // 26
+
+      // Example 5: Deleting properties
+      delete person.city;
+      console.log(person.city); // undefined
+
+      // Example 6: Checking if a property exists
+      console.log("name" in person); // true
+      console.log("city" in person); // false
+
+      // Example 7: Looping through properties
+      for (let key in person) {
+        console.log(`${key}: ${person[key]}`);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

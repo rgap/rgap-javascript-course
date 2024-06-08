@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Promise Chaining Example in JavaScript
+
+      // Promises can be chained to perform multiple asynchronous operations in sequence.
+
+      // Simulate fetching user data from an API
+      function fetchUserData(userId) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const userData = { id: userId, name: "John Doe" };
+            resolve(userData); // Resolve the first promise with user data
+          }, 1000); // Simulate a 1-second delay
+        });
+      }
+
+      // Simulate fetching posts for a user from an API
+      function fetchUserPosts(userId) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const userPosts = [
+              { postId: 1, content: "Post 1 content" },
+              { postId: 2, content: "Post 2 content" },
+            ];
+            resolve(userPosts); // Resolve the second promise with user posts
+          }, 1000); // Simulate a 1-second delay
+        });
+      }
+
+      // Fetch user data and then fetch user posts based on the userId
+      fetchUserData(1)
+        .then(userData => {
+          console.log("User Data:", userData); // Handle the first success
+          return fetchUserPosts(userData.id); // Return the promise for fetching user posts
+        })
+        .then(userPosts => {
+          console.log("User Posts:", userPosts); // Handle the second success
+        })
+        .catch(error => {
+          console.error("Error:", error); // Handle any errors
+        });
+
+      // Explanation:
+      // - This code demonstrates chaining multiple promises to perform asynchronous operations in sequence using a more realistic case.
+      // - The `fetchUserData` function simulates fetching user data from an API with a 1-second delay.
+      // - The `fetchUserPosts` function simulates fetching posts for the user from an API with a 1-second delay.
+      // - The `then` method is used to handle the resolved value of fetching user data and then start fetching user posts based on the userId.
+      // - By returning the promise from `fetchUserPosts` in the first `then` callback, the next `then` method in the chain waits for the user posts to be fetched.
+      // - This pattern allows for sequential execution of asynchronous operations without deeply nesting callbacks.
+    </script>
+  </head>
+  <body></body>
+</html>

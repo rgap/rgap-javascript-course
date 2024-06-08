@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Object Methods in JavaScript
+
+      // Example 1: Creating methods in an object
+      const calculator = {
+        add(a, b) {
+          return a + b;
+        },
+        subtract(a, b) {
+          return a - b;
+        },
+        multiply(a, b) {
+          return a * b;
+        },
+        divide(a, b) {
+          return a / b;
+        },
+      };
+
+      console.log(calculator.add(5, 3)); // 8
+      console.log(calculator.subtract(5, 3)); // 2
+      console.log(calculator.multiply(5, 3)); // 15
+      console.log(calculator.divide(5, 3)); // 1.6666666666666667
+
+      // Example 2: Adding methods to existing objects
+      const person = {
+        name: "Alice",
+        greet() {
+          console.log(`Hello, my name is ${this.name}`);
+        },
+      };
+
+      person.greet(); // Hello, my name is Alice
+    </script>
+  </head>
+  <body></body>
+</html>
