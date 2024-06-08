@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // clearTimeout and clearInterval Example in JavaScript
+
+      // clearTimeout cancels a timeout that was set with setTimeout.
+      // clearInterval cancels an interval that was set with setInterval.
+
+      // Example: clearTimeout
+      const timeoutId = setTimeout(() => {
+        console.log("This will not be logged because clearTimeout is called");
+      }, 2000);
+
+      clearTimeout(timeoutId); // Cancels the timeout before it executes
+
+      // Example: clearInterval
+      let counter = 0;
+      const intervalId = setInterval(() => {
+        counter++;
+        console.log(`Counter: ${counter}`);
+
+        if (counter === 3) {
+          clearInterval(intervalId); // Stops the interval after 3 executions
+        }
+      }, 1000); // Executes every 1 second
+
+      // Explanation:
+      // - This code demonstrates the use of clearTimeout to cancel a timeout and clearInterval to cancel an interval.
+      // - In the first example, clearTimeout is called to cancel the timeout before it executes, so the message is not logged to the console.
+      // - In the second example, setInterval schedules a callback function to be executed every 1 second, incrementing and logging the counter.
+      // - After 3 executions, clearInterval is called to stop the repeated execution.
+    </script>
+  </head>
+  <body></body>
+</html>

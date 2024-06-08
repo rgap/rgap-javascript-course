@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // setTimeout with Arguments Example in JavaScript
+
+      // setTimeout can pass arguments to the callback function.
+
+      function greet(name, message) {
+        console.log(`${message}, ${name}!`);
+      }
+
+      setTimeout(greet, 2000, "John", "Hello"); // Passes 'John' and 'Hello' as arguments to the greet function
+
+      // Explanation:
+      // - This code demonstrates the use of setTimeout to pass arguments to the callback function.
+      // - The greet function takes two arguments: name and message.
+      // - setTimeout schedules the greet function to be executed after a 2-second delay, passing 'John' and 'Hello' as arguments.
+      // - The message 'Hello, John!' is logged to the console after a 2-second delay.
+    </script>
+  </head>
+  <body></body>
+</html>

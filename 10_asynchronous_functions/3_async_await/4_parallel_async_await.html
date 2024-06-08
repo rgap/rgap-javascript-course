@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Parallel Async/Await Example in JavaScript
+
+      // Using async/await with Promise.all to perform multiple asynchronous operations in parallel.
+
+      // Simulate fetching user data from an API
+      async function fetchUserData() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve({ userId: 1, name: "John Doe" });
+          }, 1000); // Simulate a 1-second delay
+        });
+      }
+
+      // Simulate fetching posts for a user from an API
+      async function fetchUserPosts() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve([
+              { postId: 1, content: "Post 1 content" },
+              { postId: 2, content: "Post 2 content" },
+            ]);
+          }, 1000); // Simulate a 1-second delay
+        });
+      }
+
+      // Fetch user data and posts in parallel
+      async function performOperations() {
+        try {
+          const [userData, userPosts] = await Promise.all([fetchUserData(), fetchUserPosts()]);
+
+          console.log("User Data:", userData);
+          console.log("User Posts:", userPosts);
+
+          console.log("All operations completed");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      performOperations();
+
+      // Explanation:
+      // - This code demonstrates using async/await with Promise.all to perform multiple asynchronous operations in parallel.
+      // - The performOperations function fetches user data and user posts in parallel using Promise.all.
+      // - Promise.all waits for all promises to resolve and returns an array of results.
+      // - If an error occurs during any operation, it is caught and logged to the console.
+
+      // Benefits of Parallel Async/Await:
+      // - Reduces total execution time by performing operations in parallel.
+      // - Simplifies handling multiple asynchronous operations with async/await.
+
+      // Drawbacks of Parallel Async/Await:
+      // - If one promise rejects, Promise.all rejects, potentially masking successful operations.
+    </script>
+  </head>
+  <body></body>
+</html>

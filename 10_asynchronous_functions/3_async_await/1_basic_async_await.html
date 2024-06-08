@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Basic Async/Await Example in JavaScript
+
+      // Async/Await is syntactic sugar built on top of Promises, making asynchronous code easier to write and understand.
+
+      // Simulate fetching data from an API
+      async function fetchData() {
+        try {
+          // Simulate an asynchronous operation using a promise
+          let response = await new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve({ id: 1, name: "John Doe", age: 30 });
+            }, 2000); // Simulate a 2-second delay
+          });
+
+          console.log("Data fetched successfully:", response);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+
+      fetchData();
+
+      // Explanation:
+      // - This code demonstrates using async/await to handle an asynchronous operation.
+      // - The fetchData function simulates fetching data with a delay using a promise.
+      // - The await keyword pauses the function execution until the promise resolves.
+      // - If the promise resolves, the response is logged to the console.
+      // - If an error occurs, it is caught and logged to the console.
+    </script>
+  </head>
+  <body></body>
+</html>

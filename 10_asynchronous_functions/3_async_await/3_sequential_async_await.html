@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Sequential Async/Await Example in JavaScript
+
+      // Using async/await to perform multiple asynchronous operations in sequence.
+
+      // Simulate fetching user data from an API
+      async function fetchUserData() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve({ userId: 1, name: "John Doe" });
+          }, 1000); // Simulate a 1-second delay
+        });
+      }
+
+      // Simulate fetching posts for a user from an API
+      async function fetchUserPosts(userId) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve([
+              { postId: 1, content: "Post 1 content" },
+              { postId: 2, content: "Post 2 content" },
+            ]);
+          }, 1000); // Simulate a 1-second delay
+        });
+      }
+
+      // Simulate fetching comments for a post from an API
+      async function fetchPostComments(postId) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve([
+              { commentId: 1, content: "Comment 1 on post " + postId },
+              { commentId: 2, content: "Comment 2 on post " + postId },
+            ]);
+          }, 1000); // Simulate a 1-second delay
+        });
+      }
+
+      // Fetch user data, then fetch user posts, and finally fetch comments for a post
+      async function performOperations() {
+        try {
+          const userData = await fetchUserData();
+          console.log("User Data:", userData);
+
+          const userPosts = await fetchUserPosts(userData.userId);
+          console.log("User Posts:", userPosts);
+
+          const postComments = await fetchPostComments(userPosts[0].postId);
+          console.log("Post Comments:", postComments);
+
+          console.log("All operations completed");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      performOperations();
+
+      // Explanation:
+      // - This code demonstrates using async/await to perform multiple asynchronous operations in sequence.
+      // - The performOperations function sequentially fetches user data, user posts, and post comments using await.
+      // - Each await pauses the function execution until the promise resolves, ensuring sequential execution.
+      // - If an error occurs during any operation, it is caught and logged to the console.
+
+      // Benefits of Sequential Async/Await:
+      // - Simplifies writing and reading asynchronous code with multiple sequential operations.
+      // - Avoids callback hell and complex promise chains, providing a clear and linear flow.
+
+      // Drawbacks of Sequential Async/Await:
+      // - Each await pauses the function execution, potentially increasing the total execution time.
+    </script>
+  </head>
+  <body></body>
+</html>

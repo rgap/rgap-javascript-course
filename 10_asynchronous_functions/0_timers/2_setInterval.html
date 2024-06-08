@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // setInterval Example in JavaScript
+
+      // setInterval is an asynchronous function that schedules a callback function to be executed repeatedly at a specified interval.
+
+      let counter = 0;
+      const intervalId = setInterval(() => {
+        counter++;
+        console.log(`Counter: ${counter}`);
+
+        if (counter === 5) {
+          clearInterval(intervalId); // Stops the interval after 5 executions
+        }
+      }, 1000); // Executes every 1 second
+
+      // Explanation:
+      // - This code demonstrates the use of setInterval to schedule a callback function to be executed every 1 second.
+      // - The counter is incremented and logged to the console each second.
+      // - After 5 executions, clearInterval is called to stop the repeated execution.
+    </script>
+  </head>
+  <body></body>
+</html>
