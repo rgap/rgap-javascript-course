@@ -3,6 +3,8 @@
 const path = require("path");
 
 module.exports = {
+  mode: "development", // or 'production', depending on your use case
+
   // Entry point for the application
   entry: "./src/main.js",
 
