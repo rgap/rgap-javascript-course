@@ -1,0 +1,14 @@
+{
+  "name": "rollup-example",
+  "version": "1.0.0",
+  "description": "Simple example of using Rollup",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "rollup": "^2.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
