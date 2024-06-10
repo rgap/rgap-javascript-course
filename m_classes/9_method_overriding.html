@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Method Overriding and Super Calls Example
+
+      class Animal {
+        speak() {
+          console.log("Animal makes a sound");
+        }
+      }
+
+      class Dog extends Animal {
+        speak() {
+          super.speak();
+          console.log("Dog barks");
+        }
+      }
+
+      const dog = new Dog();
+      dog.speak();
+
+      /*
+      Explanation:
+      - This file demonstrates method overriding and the use of `super` calls in JavaScript classes.
+      - The `Dog` class extends `Animal` and overrides the `speak` method.
+      - The `super` keyword is used to call the `speak` method of the parent `Animal` class.
+      - An instance of `Dog` is created and the overridden `speak` method is called.
+      */
+    </script>
+  </head>
+  <body></body>
+</html>

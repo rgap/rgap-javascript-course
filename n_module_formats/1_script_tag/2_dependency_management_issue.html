@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dependency Management Issue</title>
+    <!-- Incorrect order: script2.js depends on script1.js, but is included first -->
+    <script src="script2.js"></script>
+    <script src="script1.js"></script>
+  </head>
+  <body>
+    <h1>Dependency Management Issue</h1>
+  </body>
+</html>
+
+<!--
+Explanation:
+- This HTML file demonstrates the issue of dependency management when using <script> tags.
+- script2.js is included before script1.js, even though script2.js depends on the function defined in script1.js.
+- This will result in an error because the greet function will not be defined when script2.js tries to use it.
+- Proper dependency management is difficult to achieve with <script> tags, especially as the number of scripts grows.
+    -->

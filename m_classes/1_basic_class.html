@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Basic Class Example
+
+      class Person {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+
+        greet() {
+          return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+        }
+      }
+
+      const person = new Person("John", 30);
+      console.log(person.greet());
+
+      /*
+        Explanation:
+        - This file demonstrates the basic usage of classes in JavaScript.
+        - The `Person` class is defined with a constructor that initializes the `name` and `age` properties.
+        - The `greet` method returns a string introducing the person.
+        - An instance of the `Person` class is created and the `greet` method is called.
+        */
+    </script>
+  </head>
+  <body></body>
+</html>

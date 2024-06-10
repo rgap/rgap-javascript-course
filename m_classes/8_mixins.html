@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Mixins Example
+
+      const CanFly = Base =>
+        class extends Base {
+          fly() {
+            console.log(`${this.name} is flying!`);
+          }
+        };
+
+      class Animal {
+        constructor(name) {
+          this.name = name;
+        }
+      }
+
+      class Bird extends CanFly(Animal) {}
+
+      const bird = new Bird("Eagle");
+      bird.fly(); // Eagle is flying!
+
+      /*
+      Explanation:
+      - This file demonstrates the use of mixins to add reusable functionalities to classes.
+      - The `CanFly` mixin adds a `fly` method to any class it is applied to.
+      - The `Bird` class extends `Animal` and includes the `CanFly` mixin.
+      - The `fly` method is called on an instance of `Bird`, demonstrating the mixed-in functionality.
+      */
+    </script>
+  </head>
+  <body></body>
+</html>

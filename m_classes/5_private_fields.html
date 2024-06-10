@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Private Fields Example
+
+      class Person {
+        #name;
+        #age;
+
+        constructor(name, age) {
+          this.#name = name;
+          this.#age = age;
+        }
+
+        getDetails() {
+          return `Name: ${this.#name}, Age: ${this.#age}`;
+        }
+      }
+
+      const person = new Person("John", 30);
+      console.log(person.getDetails()); // Name: John, Age: 30
+      console.log(person.#name); // SyntaxError: Private field '#name' must be declared in an enclosing class
+
+      /*
+      Explanation:
+      - This file demonstrates the use of private fields in JavaScript classes.
+      - The `Person` class defines private fields `#name` and `#age`.
+      - Private fields are only accessible within the class they are defined in.
+      - An instance of the `Person` class is created and the `getDetails` method is called.
+      - Attempting to access the private field `#name` outside the class results in a syntax error.
+      */
+    </script>
+  </head>
+  <body></body>
+</html>

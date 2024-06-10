@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Nested Fetch Requests Example in JavaScript
+
+      // Demonstrating how to make nested fetch requests using async/await in a real-world scenario.
+
+      async function fetchUserData(userId) {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json();
+      }
+
+      async function fetchUserPosts(userId) {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json();
+      }
+
+      async function fetchPostComments(postId) {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json();
+      }
+
+      async function fetchNestedData(userId) {
+        try {
+          // Fetch user data
+          const userData = await fetchUserData(userId);
+          console.log("User Data:", userData);
+
+          // Fetch posts for the user
+          const userPosts = await fetchUserPosts(userId);
+          console.log("User Posts:", userPosts);
+
+          if (userPosts.length > 0) {
+            // Fetch comments for the first post
+            const postComments = await fetchPostComments(userPosts[0].id);
+            console.log("Post Comments:", postComments);
+          } else {
+            console.log("No posts found for the user.");
+          }
+
+          console.log("All nested fetch operations completed successfully.");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      // Fetch nested data for a specific user (user ID 1)
+      fetchNestedData(1);
+
+      // Explanation:
+      // - This code demonstrates making nested fetch requests using async/await to fetch related data in a real-world scenario.
+      // - The fetchUserData function fetches user data by user ID from a placeholder API.
+      // - The fetchUserPosts function fetches posts for the user by user ID from a placeholder API.
+      // - The fetchPostComments function fetches comments for a specific post by post ID from a placeholder API.
+      // - The fetchNestedData function coordinates the nested fetch operations using async/await.
+      // - First, it fetches user data and logs it to the console.
+      // - Then, it fetches posts for the user and logs them to the console.
+      // - If the user has posts, it fetches comments for the first post and logs them to the console.
+      // - If any errors occur during the fetch operations, they are caught and logged to the console.
+
+      // Benefits of Nested Fetch Requests:
+      // - Allows fetching related data in a structured and sequential manner.
+      // - Simplifies handling complex asynchronous operations with async/await, avoiding callback hell.
+
+      // Drawbacks of Nested Fetch Requests:
+      // - Requires proper error handling to ensure robust applications.
+      // - May lead to longer total execution times due to sequential fetch operations.
+
+      // Alternatives:
+      // - Using Promise.all for parallel fetching when appropriate to reduce total execution time.
+    </script>
+  </head>
+  <body></body>
+</html>

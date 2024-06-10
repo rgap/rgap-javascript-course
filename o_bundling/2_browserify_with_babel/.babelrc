@@ -1,0 +1,9 @@
+{
+  "presets": ["@babel/preset-env"]
+}
+
+/*
+  Explanation:
+  - This file is the Babel configuration file.
+  - It specifies the preset to use (@babel/preset-env) to transpile modern JavaScript syntax to a syntax compatible with older browsers.
+  */

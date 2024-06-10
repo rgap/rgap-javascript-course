@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Scope Example</title>
+    <!-- Including script1.js and script2.js using <script> tags -->
+    <script src="script1.js"></script>
+    <script src="script2.js"></script>
+  </head>
+  <body>
+    <h1>Global Scope Example</h1>
+    <script>
+      // Accessing the function and variable defined in script1.js
+      console.log(greet("World")); // Using the function from script1.js
+      console.log(myVar); // Output: 'overwritten' (overwritten by script2.js)
+      myFunction(); // Output: 'This function overwrites the previous one.' (overwritten by script2.js)
+
+      /*
+        Explanation:
+        - This HTML file includes two JavaScript files: script1.js and script2.js.
+        - Both scripts are included using <script> tags, making their variables and functions global.
+        - The function greet and variable myVar defined in script1.js are accessed and potentially overwritten by script2.js.
+        - This demonstrates the issue of global scope pollution, where variables and functions can be accidentally overwritten.
+        */
+    </script>
+  </body>
+</html>
