@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function Context and 'this'</title>
+  </head>
+  <body>
+    <h1>Function Context and 'this'</h1>
+    <script>
+      // In 'strict mode', 'this' inside a function that is not a method of an object is 'undefined'.
+      // This behavior prevents common errors such as inadvertently creating global variables.
+      function showThis() {
+        "use strict";
+        console.log(this); // 'this' is undefined due to strict mode.
+      }
+      showThis(); // Function called in the global context but with strict mode enabled.
+    </script>
+  </body>
+</html>

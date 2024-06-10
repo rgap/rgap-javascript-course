@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document Query Methods Example</title>
+  </head>
+  <body>
+    <div id="example">This is an example div.</div>
+    <p class="example-class">Paragraph 1</p>
+    <p class="example-class">Paragraph 2</p>
+    <p>Another paragraph without class</p>
+
+    <script>
+      // Get element by ID
+      const elementById = document.getElementById("example");
+      console.log("Element by ID:", elementById);
+
+      // Get elements by class name
+      const elementsByClassName = document.getElementsByClassName("example-class");
+      console.log("Elements by Class Name:", elementsByClassName);
+
+      // Get elements by tag name
+      const elementsByTagName = document.getElementsByTagName("p");
+      console.log("Elements by Tag Name:", elementsByTagName);
+
+      // Get element by query selector
+      const elementByQuerySelector = document.querySelector("#example");
+      console.log("Element by Query Selector:", elementByQuerySelector);
+
+      // Get elements by query selector all
+      const elementsByQuerySelectorAll = document.querySelectorAll(".example-class");
+      console.log("Elements by Query Selector All:", elementsByQuerySelectorAll);
+
+      // Example of selecting a single element by attribute
+      const elementByAttribute = document.querySelector('p[class="example-class"]');
+      console.log("Element by Attribute Selector:", elementByAttribute);
+
+      // Example of selecting all elements by attribute
+      const elementsByAttributeAll = document.querySelectorAll('p[class="example-class"]');
+      console.log("Elements by Attribute Selector All:", elementsByAttributeAll);
+
+      // Example of selecting elements by their position in the DOM
+      const firstParagraph = document.querySelector("p:first-of-type");
+      console.log("First paragraph:", firstParagraph);
+
+      const lastParagraph = document.querySelector("p:last-of-type");
+      console.log("Last paragraph:", lastParagraph);
+
+      const nthParagraph = document.querySelector("p:nth-of-type(2)");
+      console.log("Second paragraph:", nthParagraph);
+
+      // Example of selecting direct children
+      const directChild = document.querySelector("body > div");
+      console.log("Direct child of body:", directChild);
+    </script>
+  </body>
+</html>

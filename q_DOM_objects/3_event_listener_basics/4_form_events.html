@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form Submit Event Example</title>
+  </head>
+  <body>
+    <form id="myForm">
+      <input type="text" placeholder="Enter text..." />
+      <button type="submit">Submit</button>
+    </form>
+    <script>
+      document.getElementById("myForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevents form from submitting
+        alert("Form Submitted!");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Understanding 'this' in JavaScript</title>
+  </head>
+  <body>
+    <h1>Understanding 'this' in JavaScript</h1>
+    <script>
+      // In JavaScript, 'this' refers to the object that a function is a method of.
+      // When not in a method, 'this' refers to the global object (window in a browser).
+      function showThis() {
+        console.log(this); // In a browser, it will show the Window object when not in strict mode.
+      }
+      showThis(); // Function called in the global context.
+    </script>
+  </body>
+</html>

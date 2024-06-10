@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Closures allow a function to access variables from an enclosing scope after its outer function has returned.
+      // This example demonstrates how closures capture and remember the environment in which they were created.
+      function outerFunction() {
+        let outerVar = "I am outside!"; // Outer variable
+        function innerFunction() {
+          console.log(outerVar); // Accesses outerVar from the outer function
+        }
+        return innerFunction;
+      }
+
+      const newFunc = outerFunction(); // The outer function returns, but its state is captured by the closure
+      newFunc(); // Output: 'I am outside!', demonstrating the closure's access to the outer variable
+    </script>
+  </head>
+  <body></body>
+</html>

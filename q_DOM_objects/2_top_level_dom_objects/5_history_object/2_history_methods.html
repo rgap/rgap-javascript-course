@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>History Methods Example</title>
+  </head>
+  <body>
+    <button onclick="goBack()">Go Back</button>
+    <button onclick="goForward()">Go Forward</button>
+    <button onclick="goToPage(-2)">Go to Previous Page</button>
+    <script>
+      function goBack() {
+        history.back(); // Go back to the previous page
+      }
+
+      function goForward() {
+        history.forward(); // Go forward to the next page
+      }
+
+      function goToPage(steps) {
+        history.go(steps); // Go to a specific page in the history
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currying Theory in JavaScript</title>
+  </head>
+  <body>
+    <h1>Currying Theory in JavaScript</h1>
+    <script>
+      // Currying transforms a multi-argument function into a chain of single-argument functions.
+      // This allows arguments to be passed one at a time.
+      function curryExample(a) {
+        return function (b) {
+          return function (c) {
+            return a + b + c; // Returns the sum of the three arguments.
+          };
+        };
+      }
+
+      // Example of using a curried function
+      const curriedFunction = curryExample(5)(10);
+      console.log("Result after partial application:", curriedFunction(15)); // Output: 30
+    </script>
+  </body>
+</html>

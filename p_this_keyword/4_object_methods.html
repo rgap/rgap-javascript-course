@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>'this' in Object Methods</title>
+  </head>
+  <body>
+    <h1>'this' in Object Methods</h1>
+    <script>
+      // When a function is called as a method of an object, 'this' is set to the object the method is called on.
+      const person = {
+        name: "John",
+        greet: function () {
+          console.log("Hello, " + this.name); // 'this' refers to 'person' object.
+        },
+      };
+      person.greet(); // The 'greet' method is called on 'person' object.
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Navigator Methods Example</title>
+  </head>
+  <body>
+    <script>
+      // Check if the browser has cookies enabled
+      var cookiesEnabled = navigator.cookieEnabled;
+      console.log("Cookies Enabled:", cookiesEnabled);
+
+      // Vibrate the device (if supported)
+      if (navigator.vibrate) {
+        navigator.vibrate(1000); // Vibrate for 1 second
+      } else {
+        console.log("Vibration API not supported");
+      }
+
+      // Get the geolocation (if supported)
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          console.log("Latitude:", position.coords.latitude);
+          console.log("Longitude:", position.coords.longitude);
+        });
+      } else {
+        console.log("Geolocation API not supported");
+      }
+    </script>
+  </body>
+</html>

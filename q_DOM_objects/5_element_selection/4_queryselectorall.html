@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Advanced querySelectorAll Example</title>
+  </head>
+  <body>
+    <button class="action-button">Action 1</button>
+    <button class="action-button">Action 2</button>
+    <script>
+      // Select all elements that match the CSS selector '.action-button'
+      var buttons = document.querySelectorAll(".action-button");
+      // Add click event listeners to each button
+      buttons.forEach(button => {
+        button.addEventListener("click", function () {
+          alert("Button clicked: " + this.textContent);
+        });
+      });
+    </script>
+  </body>
+</html>

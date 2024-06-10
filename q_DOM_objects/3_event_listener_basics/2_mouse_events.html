@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mouse Events Example</title>
+  </head>
+  <body>
+    <div id="mouseArea" style="width: 200px; height: 200px; background-color: #ccc">Hover over me!</div>
+    <script>
+      var mouseArea = document.getElementById("mouseArea");
+      mouseArea.addEventListener("mouseover", function () {
+        mouseArea.style.backgroundColor = "blue";
+      });
+      mouseArea.addEventListener("mouseout", function () {
+        mouseArea.style.backgroundColor = "#ccc";
+      });
+    </script>
+  </body>
+</html>

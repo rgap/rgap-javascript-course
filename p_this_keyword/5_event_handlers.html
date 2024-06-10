@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>'this' in Event Handlers</title>
+  </head>
+  <body>
+    <h1>'this' in Event Handlers</h1>
+    <button id="myButton">Click me</button>
+    <script>
+      // In DOM event handlers, 'this' refers to the element that the event was dispatched to.
+      // This is a useful feature that simplifies code that interacts with DOM elements.
+      document.getElementById("myButton").addEventListener("click", function () {
+        console.log(this); // 'this' refers to the element that received the event, i.e., 'myButton'.
+      });
+    </script>
+  </body>
+</html>

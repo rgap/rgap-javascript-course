@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- window onload solution -->
     <script>
-      
+      window.onload = function () {
+        document.getElementById("id").innerHTML = "Hello World";
+      };
     </script>
   </head>
-  <body></body>
+  <body>
+    <h1 id="id">[id]</h1>
+  </body>
 </html>

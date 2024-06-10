@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Window Events Example</title>
+  </head>
+  <body>
+    <script>
+      // Event: window resize
+      const handleResize = () => {
+        console.log("Window resized to:", window.innerWidth, "x", window.innerHeight);
+      };
+      window.addEventListener("resize", handleResize);
+
+      // Event: window scroll
+      const handleScroll = () => {
+        console.log("Window scrolled to:", window.scrollX, window.scrollY);
+      };
+      window.addEventListener("scroll", handleScroll);
+
+      // Event: window load
+      const handleLoad = () => {
+        console.log("Window loaded");
+      };
+      window.addEventListener("load", handleLoad);
+
+      // Event: window unload
+      const handleUnload = () => {
+        console.log("Window unloaded");
+      };
+      window.addEventListener("unload", handleUnload);
+
+      // Event: window beforeunload
+      const handleBeforeUnload = event => {
+        event.preventDefault(); // Some browsers may ignore this
+        event.returnValue = ""; // Standard way to show a dialog
+        console.log("Window before unload");
+      };
+      window.addEventListener("beforeunload", handleBeforeUnload);
+
+      // Event: window focus
+      const handleFocus = () => {
+        console.log("Window focused");
+      };
+      window.addEventListener("focus", handleFocus);
+
+      // Event: window blur
+      const handleBlur = () => {
+        console.log("Window blurred");
+      };
+      window.addEventListener("blur", handleBlur);
+
+      // Event: window online
+      const handleOnline = () => {
+        console.log("Window is online");
+      };
+      window.addEventListener("online", handleOnline);
+
+      // Event: window offline
+      const handleOffline = () => {
+        console.log("Window is offline");
+      };
+      window.addEventListener("offline", handleOffline);
+
+      // Event: window orientationchange (for mobile devices)
+      const handleOrientationChange = () => {
+        console.log("Window orientation changed to:", window.orientation);
+      };
+      window.addEventListener("orientationchange", handleOrientationChange);
+
+      // Event: window hashchange (for URL hash changes)
+      const handleHashChange = event => {
+        console.log("Hash changed from:", event.oldURL, "to:", event.newURL);
+      };
+      window.addEventListener("hashchange", handleHashChange);
+
+      // Event: window popstate (for history API state changes)
+      const handlePopState = event => {
+        console.log("Pop state event:", event.state);
+      };
+      window.addEventListener("popstate", handlePopState);
+
+      // Clean up event listeners when not needed
+      // window.removeEventListener("resize", handleResize);
+      // window.removeEventListener("scroll", handleScroll);
+      // window.removeEventListener("load", handleLoad);
+      // window.removeEventListener("unload", handleUnload);
+      // window.removeEventListener("beforeunload", handleBeforeUnload);
+      // window.removeEventListener("focus", handleFocus);
+      // window.removeEventListener("blur", handleBlur);
+      // window.removeEventListener("online", handleOnline);
+      // window.removeEventListener("offline", handleOffline);
+      // window.removeEventListener("orientationchange", handleOrientationChange);
+      // window.removeEventListener("hashchange", handleHashChange);
+      // window.removeEventListener("popstate", handlePopState);
+    </script>
+  </body>
+</html>

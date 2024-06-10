@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 
+        Uncaught TypeError: Cannot set properties of null (setting 'innerHTML') at index.html:8:47
+        
+        element with id="id" is not found
+     -->
+    <script>
+      document.getElementById("id").innerHTML = "Hello World";
+    </script>
+  </head>
+  <body>
+    <h1 id="id">[id]</h1>
+  </body>
+</html>

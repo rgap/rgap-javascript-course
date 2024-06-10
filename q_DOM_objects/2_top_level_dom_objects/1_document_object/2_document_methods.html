@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document Methods Example</title>
+  </head>
+  <body>
+    <div id="example">This is an example div.</div>
+    <div class="example-class">This is a div with a class.</div>
+    <div class="example-class">This is another div with a class.</div>
+    <p>This is a paragraph.</p>
+    <script>
+      // Document methods
+
+      // Creating elements and nodes
+      const newElement = document.createElement("p");
+      newElement.textContent = "This is a new paragraph.";
+
+      // Querying elements
+      const elementById = document.getElementById("example");
+      console.log("Element by ID:", elementById);
+
+      const elementsByClassName = document.getElementsByClassName("example-class");
+      console.log("Elements by Class Name:", elementsByClassName);
+
+      const elementsByTagName = document.getElementsByTagName("div");
+      console.log("Elements by Tag Name:", elementsByTagName);
+
+      const elementByQuerySelector = document.querySelector("#example");
+      console.log("Element by Query Selector:", elementByQuerySelector);
+
+      const elementsByQuerySelectorAll = document.querySelectorAll(".example-class");
+      console.log("Elements by Query Selector All:", elementsByQuerySelectorAll);
+
+      // Writing content directly to the document (use with caution)
+      document.write("<p>This is written directly to the document using document.write.</p>");
+
+      // Open and close the document stream (use with caution)
+      document.open();
+      document.write(
+        '<html lang="en"><head><meta charset="UTF-8"><title>New Document</title></head><body><h1>New Content</h1><p>This is new content replacing the old one.</p></body></html>'
+      );
+      document.close();
+
+      // Accessing and modifying document properties
+      console.log("Document Title:", document.title);
+      document.title = "New Document Title";
+      console.log("Updated Document Title:", document.title);
+
+      // Accessing and modifying cookies
+      document.cookie = "username=John Doe"; // Set a cookie
+      console.log("Document Cookies:", document.cookie); // Get cookies
+
+      // Getting the document referrer
+      console.log("Document Referrer:", document.referrer);
+
+      // Getting the document character set
+      console.log("Document Character Set:", document.characterSet);
+
+      // Getting the document ready state
+      console.log("Document Ready State:", document.readyState);
+
+      // Creating and appending a new text node
+      const textNode = document.createTextNode("This is a new text node.");
+
+      // Creating a document fragment
+      const fragment = document.createDocumentFragment();
+      const newParagraph = document.createElement("p");
+      newParagraph.textContent = "This is a paragraph inside a document fragment.";
+      fragment.appendChild(newParagraph);
+
+      // Getting the doctype of the document
+      console.log("Document Doctype:", document.doctype);
+
+      // Getting the document element (root element)
+      console.log("Document Document Element:", document.documentElement);
+
+      // Getting the head element of the document
+      console.log("Document Head:", document.head);
+
+      // Getting the current script element being processed
+      console.log("Document Current Script:", document.currentScript);
+    </script>
+  </body>
+</html>

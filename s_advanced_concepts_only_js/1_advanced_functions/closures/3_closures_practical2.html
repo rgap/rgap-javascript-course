@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // This script demonstrates the practical use of closures to create private variables through the module pattern.
+      // The module pattern uses closures to encapsulate variables and functions, creating private state.
+      const counterModule = (function () {
+        let count = 0; // Private variable, not accessible outside this function
+        return {
+          increment: function () {
+            count++;
+            console.log(count);
+          },
+          decrement: function () {
+            count--;
+            console.log(count);
+          },
+          value: function () {
+            return count; // Allows external access to the private count variable
+          },
+        };
+      })();
+
+      counterModule.increment(); // Output: 1
+      counterModule.increment(); // Output: 2
+      counterModule.decrement(); // Output: 1
+      console.log(counterModule.value()); // Output: 1
+    </script>
+  </head>
+  <body></body>
+</html>

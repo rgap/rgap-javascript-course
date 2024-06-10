@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Advanced getElementsByClassName Example</title>
+  </head>
+  <body>
+    <div class="clickable">Click me 1</div>
+    <div class="clickable">Click me 2</div>
+    <script>
+      // Select all elements with the class name 'clickable'
+      let elements = document.getElementsByClassName("clickable");
+      // Convert the HTMLCollection to an array and add click event listeners
+      Array.from(elements).forEach(element => {
+        element.addEventListener("click", function () {
+          alert("Clicked: " + this.textContent);
+        });
+      });
+    </script>
+  </body>
+</html>

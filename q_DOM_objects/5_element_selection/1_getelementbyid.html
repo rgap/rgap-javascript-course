@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Advanced getElementById Example</title>
+  </head>
+  <body>
+    <div id="info">Mouse over this text to change its color.</div>
+    <script>
+      // Select the element with the ID 'info'
+      let element = document.getElementById("info");
+      // Add an event listener for the 'mouseover' event
+      element.onmouseover = function () {
+        this.style.color = "red";
+      };
+      // Add an event listener for the 'mouseout' event
+      element.onmouseout = function () {
+        this.style.color = "black";
+      };
+    </script>
+  </body>
+</html>

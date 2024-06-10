@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practical Currying in Event Handling</title>
+  </head>
+  <body>
+    <h1>Practical Currying in Event Handling</h1>
+    <button id="myButton">Click me</button>
+    <script>
+      // Currying can be particularly useful in event handling where you might want to pass additional data.
+      function curryHandler(elementId) {
+        return function (event) {
+          // Logs which element the event was handled for, and what type of event it was.
+          console.log("Event handled for element:", elementId, "with event type:", event.type);
+        };
+      }
+
+      // Applying the curried function to an event listener
+      document.getElementById("myButton").addEventListener("click", curryHandler("myButton"));
+    </script>
+  </body>
+</html>

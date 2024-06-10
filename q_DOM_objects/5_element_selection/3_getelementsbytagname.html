@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Advanced getElementsByTagName Example</title>
+  </head>
+  <body>
+    <input type="text" id="inputField" placeholder="Type something..." />
+    <button onclick="updateParagraphs()">Update Paragraphs</button>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <script>
+      // Function to update paragraphs based on input field value
+      function updateParagraphs() {
+        let text = document.getElementById("inputField").value;
+        let paragraphs = document.getElementsByTagName("p");
+        for (let i = 0; i < paragraphs.length; i++) {
+          paragraphs[i].textContent = text;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Custom Event Example</title>
+  </head>
+  <body>
+    <script>
+      // Create a custom event
+      var event = new CustomEvent("myCustomEvent", { detail: { message: "Hello from custom event!" } });
+
+      // Listen for the custom event
+      window.addEventListener("myCustomEvent", function (e) {
+        alert(e.detail.message);
+      });
+
+      // Dispatch the event
+      window.dispatchEvent(event);
+    </script>
+  </body>
+</html>

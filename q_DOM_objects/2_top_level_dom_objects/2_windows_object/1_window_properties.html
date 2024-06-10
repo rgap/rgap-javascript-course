@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Window Methods Example</title>
+  </head>
+  <body>
+    <script>
+      // Alert method
+      window.alert("This is an alert message");
+
+      // Confirm method
+      const confirmResult = window.confirm("Do you confirm?");
+      console.log("Confirm Result:", confirmResult);
+
+      // Prompt method
+      const promptResult = window.prompt("Please enter your name:");
+      console.log("Prompt Result:", promptResult);
+
+      // Open a new window
+      const newWindow = window.open("https://www.example.com", "_blank", "width=600,height=400");
+      console.log("New Window:", newWindow);
+
+      // Close the new window after 3 seconds
+      setTimeout(() => {
+        newWindow.close();
+        console.log("New window closed");
+      }, 3000);
+
+      // Focus and blur methods
+      newWindow.focus();
+      console.log("New window focused");
+      newWindow.blur();
+      console.log("New window blurred");
+
+      // Move the window (may not work in all browsers due to security settings)
+      // window.moveTo(100, 100);
+      // window.moveBy(50, 50);
+
+      // Resize the window (may not work in all browsers due to security settings)
+      // window.resizeTo(800, 600);
+      // window.resizeBy(100, 100);
+
+      // Scroll the window
+      window.scrollTo(0, 100); // Scrolls to coordinates (0, 100)
+      window.scrollBy(0, 50); // Scrolls by 50 pixels vertically
+
+      // Set timeout and clear timeout
+      const timeoutId = window.setTimeout(() => {
+        console.log("Timeout executed");
+      }, 2000);
+      window.clearTimeout(timeoutId);
+
+      // Set interval and clear interval
+      const intervalId = window.setInterval(() => {
+        console.log("Interval executed");
+      }, 1000);
+      setTimeout(() => {
+        window.clearInterval(intervalId);
+        console.log("Interval cleared");
+      }, 5000);
+
+      // Request animation frame
+      const animationId = window.requestAnimationFrame(timestamp => {
+        console.log("Animation frame executed at:", timestamp);
+      });
+      window.cancelAnimationFrame(animationId);
+
+      // Event listener methods
+      const handleResize = () => {
+        console.log("Window resized to:", window.innerWidth, "x", window.innerHeight);
+      };
+      window.addEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResize);
+
+      // Print the current page
+      // window.print();
+
+      // Find a text string in the window
+      const findResult = window.find("example");
+      console.log("Find Result:", findResult);
+
+      // Get computed style of an element
+      const exampleDiv = document.getElementById("example");
+      const computedStyle = window.getComputedStyle(exampleDiv);
+      console.log("Computed Style:", computedStyle);
+
+      // Stop loading the current page
+      // window.stop();
+
+      // Application Cache methods (deprecated)
+      // console.log("Application Cache:", window.applicationCache);
+      // window.applicationCache.update();
+      // window.applicationCache.swapCache();
+
+      // Managing history
+      // window.history.back();
+      // window.history.forward();
+      // window.history.go(-1);
+
+      // Post a message to another window
+      // newWindow.postMessage("Hello from the parent window", "https://www.example.com");
+
+      // Request idle callback
+      const idleCallbackId = window.requestIdleCallback(deadline => {
+        console.log("Idle callback executed, time remaining:", deadline.timeRemaining());
+      });
+      window.cancelIdleCallback(idleCallbackId);
+
+      // Create a Blob URL
+      const blob = new Blob(["Hello, world!"], { type: "text/plain" });
+      const blobUrl = window.URL.createObjectURL(blob);
+      console.log("Blob URL:", blobUrl);
+
+      // Revoke a Blob URL
+      window.URL.revokeObjectURL(blobUrl);
+      console.log("Blob URL revoked");
+    </script>
+  </body>
+</html>

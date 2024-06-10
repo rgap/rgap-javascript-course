@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      /*
+       * Practical Applications of Closures: State Encapsulation
+       * Closures can be used to encapsulate state in a functional way, providing private states.
+       */
+
+      function setupCounter(label) {
+        let count = 0; // Private state encapsulated by the closure.
+        return function increment() {
+          count++; // Modify the private state.
+          console.log(`${label}: ${count}`);
+        };
+      }
+
+      const counter1 = setupCounter("Counter 1");
+      counter1(); // Counter 1: 1
+      counter1(); // Counter 1: 2
+
+      const counter2 = setupCounter("Counter 2");
+      counter2(); // Counter 2: 1
+      counter2(); // Counter 2: 2
+      counter1(); // Counter 1: 3
+    </script>
+  </head>
+  <body></body>
+</html>

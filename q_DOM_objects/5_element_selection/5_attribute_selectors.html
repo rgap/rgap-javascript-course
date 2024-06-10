@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Advanced CSS Attribute Selectors Example</title>
+  </head>
+  <body>
+    <img src="image1.jpg" alt="Image 1" />
+    <img src="image2.jpg" alt="Image 2" />
+    <img src="photo1.jpg" alt="Photo 1" />
+    <script>
+      // Select all <img> elements whose src attribute contains 'image'
+      var images = document.querySelectorAll('img[src*="image"]');
+      // Loop through the NodeList and add a border to each selected element
+      images.forEach(img => {
+        img.style.border = "2px solid red";
+      });
+    </script>
+  </body>
+</html>
