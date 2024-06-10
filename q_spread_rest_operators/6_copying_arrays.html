@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Copying Arrays with Spread Operator</title>
+  </head>
+  <body>
+    <script>
+      // The spread operator can be used to create a shallow copy of an array.
+
+      const arr1 = [1, 2, 3];
+      const arrCopy = [...arr1];
+      console.log(arrCopy); // [1, 2, 3]
+
+      // Modifying the copy does not affect the original array
+      arrCopy.push(4);
+      console.log(arr1); // [1, 2, 3]
+      console.log(arrCopy); // [1, 2, 3, 4]
+
+      // Advantages:
+      // - Maintains immutability
+      // - Simplifies copying arrays
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Spread Operator in Function Calls</title>
+  </head>
+  <body>
+    <script>
+      // The spread operator can be used to pass elements of an array as arguments to a function.
+
+      const numbers = [1, 2, 3, 4];
+      function sum(a, b, c, d) {
+        return a + b + c + d;
+      }
+
+      console.log(sum(...numbers)); // 10
+
+      // Advantages:
+      // - Simplifies passing array elements as arguments
+      // - Makes code more readable
+    </script>
+  </body>
+</html>

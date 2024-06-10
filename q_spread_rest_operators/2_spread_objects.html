@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Spread Operator with Objects</title>
+  </head>
+  <body>
+    <script>
+      // The spread operator can be used to create shallow copies of objects and merge properties from multiple objects.
+
+      const obj1 = { a: 1, b: 2 };
+      const obj2 = { c: 3, d: 4 };
+      const combinedObj = { ...obj1, ...obj2 };
+      console.log(combinedObj); // { a: 1, b: 2, c: 3, d: 4 }
+
+      // Advantages:
+      // - Combines objects easily
+      // - Maintains immutability
+    </script>
+  </body>
+</html>

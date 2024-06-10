@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Keydown Event Handler</title>
+  </head>
+  <body>
+    <form id="myForm">
+      <input type="text" name="username" placeholder="Username" />
+    </form>
+    <script>
+      // The keydown event is fired when a key is pressed down while an element is focused.
+      // Advantages:
+      // - Can intercept key presses
+      // - Useful for implementing custom shortcuts
+
+      const input = document.querySelector('input[name="username"]');
+      input.addEventListener("keydown", function (event) {
+        console.log("Key pressed down:", event.key);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Destructuring with Rest Operator</title>
+  </head>
+  <body>
+    <script>
+      // The rest operator can be used with destructuring to assign the rest of an array or object to a variable.
+
+      const [first, second, ...rest] = [1, 2, 3, 4, 5];
+      console.log(first); // 1
+      console.log(second); // 2
+      console.log(rest); // [3, 4, 5]
+
+      const { a, b, ...others } = { a: 1, b: 2, c: 3, d: 4 };
+      console.log(a); // 1
+      console.log(b); // 2
+      console.log(others); // { c: 3, d: 4 }
+
+      // Advantages:
+      // - Simplifies extraction of parts of arrays and objects
+      // - Makes code more readable
+    </script>
+  </body>
+</html>

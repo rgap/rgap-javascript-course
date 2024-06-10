@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Copying Objects with Spread Operator</title>
+  </head>
+  <body>
+    <script>
+      // The spread operator can be used to create a shallow copy of an object.
+
+      const obj1 = { a: 1, b: 2 };
+      const objCopy = { ...obj1 };
+      console.log(objCopy); // { a: 1, b: 2 }
+
+      // Modifying the copy does not affect the original object
+      objCopy.c = 3;
+      console.log(obj1); // { a: 1, b: 2 }
+      console.log(objCopy); // { a: 1, b: 2, c: 3 }
+
+      // Advantages:
+      // - Maintains immutability
+      // - Simplifies copying objects
+    </script>
+  </body>
+</html>

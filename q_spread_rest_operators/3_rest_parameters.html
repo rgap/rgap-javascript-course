@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Rest Parameters</title>
+  </head>
+  <body>
+    <script>
+      // The rest parameter syntax allows a function to accept an indefinite number of arguments as an array.
+
+      function sum(...args) {
+        return args.reduce((acc, curr) => acc + curr, 0);
+      }
+
+      console.log(sum(1, 2, 3, 4)); // 10
+
+      // Advantages:
+      // - Handles varying number of function arguments easily
+      // - Simplifies code
+    </script>
+  </body>
+</html>

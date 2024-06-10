@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Combining Spread and Rest Operators</title>
+  </head>
+  <body>
+    <script>
+      // Spread and rest operators can be combined to work together seamlessly.
+
+      // Using spread operator to combine arrays
+      const arr1 = [1, 2];
+      const arr2 = [3, 4];
+      const combinedArr = [...arr1, ...arr2];
+      console.log(combinedArr); // [1, 2, 3, 4]
+
+      // Using rest parameters to handle function arguments
+      function sum(...numbers) {
+        return numbers.reduce((acc, curr) => acc + curr, 0);
+      }
+
+      console.log(sum(...combinedArr)); // 10
+
+      // Advantages:
+      // - Enhances flexibility in handling arrays and function arguments
+    </script>
+  </body>
+</html>

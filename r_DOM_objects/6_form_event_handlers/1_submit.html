@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Submit Event Handler</title>
+  </head>
+  <body>
+    <form id="myForm">
+      <input type="text" name="username" placeholder="Username" required />
+      <button type="submit">Submit</button>
+    </form>
+    <script>
+      // The submit event is fired when a form is submitted.
+      // Advantages:
+      // - Can be used to validate form data before submission
+      // - Can prevent default form submission behavior
+
+      const form = document.getElementById("myForm");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevents default form submission
+        console.log("Form submitted!");
+      });
+    </script>
+  </body>
+</html>

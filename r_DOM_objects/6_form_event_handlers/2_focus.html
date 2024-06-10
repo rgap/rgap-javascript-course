@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Focus Event Handler</title>
+  </head>
+  <body>
+    <form id="myForm">
+      <input type="text" name="username" placeholder="Username" />
+    </form>
+    <script>
+      // The focus event is fired when an element receives focus.
+      // Advantages:
+      // - Useful for highlighting fields
+      // - Can provide user feedback
+
+      const input = document.querySelector('input[name="username"]');
+      input.addEventListener("focus", function (event) {
+        console.log("Input focused!");
+      });
+    </script>
+  </body>
+</html>
