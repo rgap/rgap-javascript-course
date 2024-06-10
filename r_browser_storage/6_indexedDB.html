@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Using IndexedDB</title>
+  </head>
+  <body>
+    <script>
+      // IndexedDB is a low-level API for storing significant amounts of structured data in the browser.
+
+      // Created in: 2010
+
+      // Advantages:
+      // - Very large storage capacity
+      // - Supports transactions
+      // - Can store complex data types
+
+      // Disadvantages:
+      // - More complex API
+      // - Requires asynchronous code
+      // - Limited support in older browsers
+
+      // Open (or create) a database
+      const request = indexedDB.open("myDatabase", 1);
+
+      // Handle database upgrades
+      request.onupgradeneeded = function (event) {
+        const db = event.target.result;
+        // Create an object store (similar to a table in SQL)
+        const objectStore = db.createObjectStore("users", { keyPath: "id", autoIncrement: true });
+        // Create an index to search users by name
+        objectStore.createIndex("name", "name", { unique: false });
+      };
+
+      // Handle successful database opening
+      request.onsuccess = function (event) {
+        const db = event.target.result;
+
+        // Start a transaction
+        const transaction = db.transaction(["users"], "readwrite");
+        const objectStore = transaction.objectStore("users");
+
+        // Add data
+        const user = { name: "John Doe", email: "john@example.com" };
+        objectStore.add(user);
+
+        // Get data
+        const getRequest = objectStore.get(1);
+        getRequest.onsuccess = function (event) {
+          console.log("User data:", event.target.result);
+        };
+
+        // Update data
+        const updateUser = { id: 1, name: "John Doe", email: "john.doe@example.com" };
+        objectStore.put(updateUser);
+
+        // Delete data
+        objectStore.delete(1);
+      };
+
+      // Handle errors
+      request.onerror = function (event) {
+        console.error("IndexedDB error:", event.target.errorCode);
+      };
+    </script>
+  </body>
+</html>

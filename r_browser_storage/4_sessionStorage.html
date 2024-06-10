@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Using sessionStorage</title>
+  </head>
+  <body>
+    <script>
+      // sessionStorage allows you to store key-value pairs in the browser for the duration of the page session.
+
+      // Created in: 2009
+
+      // Advantages:
+      // - Larger storage capacity than cookies
+      // - Simple API
+      // - Data is not shared across tabs or windows
+
+      // Disadvantages:
+      // - Only accessible from client-side JavaScript
+      // - Data is cleared when the tab or window is closed
+
+      // Set an item in sessionStorage
+      sessionStorage.setItem("username", "JohnDoe");
+
+      // Get an item from sessionStorage
+      let username = sessionStorage.getItem("username");
+      console.log("Username:", username);
+
+      // Remove an item from sessionStorage
+      sessionStorage.removeItem("username");
+
+      // Clear all items from sessionStorage
+      sessionStorage.clear();
+    </script>
+  </body>
+</html>

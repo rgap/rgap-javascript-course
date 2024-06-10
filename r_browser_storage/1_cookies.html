@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Working with Cookies</title>
+  </head>
+  <body>
+    <script>
+      // Cookies are a way to store data directly in the browser.
+      // Each cookie is a small piece of data stored by the web browser and sent with every HTTP request.
+
+      // Created in: 1994
+
+      // Advantages:
+      // - Widely supported
+      // - Can be used for server-side sessions
+      // - Expiration dates can be set
+
+      // Disadvantages:
+      // - Limited storage capacity (about 4KB)
+      // - Sent with every HTTP request (can affect performance)
+      // - Requires careful handling for security and privacy
+
+      // Set a cookie
+      document.cookie = "username=JohnDoe; expires=Fri, 31 Dec 2024 12:00:00 UTC; path=/";
+
+      // Get a cookie
+      function getCookie(name) {
+        let cookieArr = document.cookie.split("; ");
+        for (let cookie of cookieArr) {
+          let cookiePair = cookie.split("=");
+          if (name === cookiePair[0]) {
+            return cookiePair[1];
+          }
+        }
+        return null;
+      }
+
+      console.log("Username cookie:", getCookie("username"));
+
+      // Delete a cookie
+      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    </script>
+  </body>
+</html>

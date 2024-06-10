@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Using File System Access API</title>
+  </head>
+  <body>
+    <script>
+      // The File System Access API allows web applications to interact with the file system on the user's device for reading and writing files.
+
+      // Created in: 2019
+
+      // Advantages:
+      // - Can handle large files
+      // - Direct access to the file system
+      // - More control over file operations
+
+      // Disadvantages:
+      // - Security risks
+      // - Limited browser support
+      // - Requires user permission
+
+      async function saveFile() {
+        // Create a new file handle
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: "example.txt",
+          types: [
+            {
+              description: "Text Files",
+              accept: { "text/plain": [".txt"] },
+            },
+          ],
+        });
+
+        // Create a writable stream
+        const writableStream = await fileHandle.createWritable();
+
+        // Write data to the file
+        await writableStream.write("Hello, world!");
+
+        // Close the file and write the contents to disk
+        await writableStream.close();
+      }
+
+      document.body.innerHTML = '<button id="saveButton">Save File</button>';
+      document.getElementById("saveButton").addEventListener("click", saveFile);
+    </script>
+  </body>
+</html>

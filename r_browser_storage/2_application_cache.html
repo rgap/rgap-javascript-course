@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Using Application Cache (Deprecated)</title>
+  </head>
+  <body>
+    <script>
+      // Application Cache is a deprecated feature that allows web applications to be cached, enabling offline access to resources.
+
+      // Created in: 2008 (deprecated in 2015)
+
+      // Advantages:
+      // - Enables offline access
+      // - Simple configuration with a cache manifest
+
+      // Disadvantages:
+      // - Deprecated in favor of service workers
+      // - Limited functionality
+      // - Security risks
+
+      // Sample cache manifest:
+      /*
+        CACHE MANIFEST
+        # v1.0
+        /index.html
+        /style.css
+        /script.js
+        /image.png
+
+        NETWORK:
+        *
+        */
+
+      // Reference the manifest file in the HTML tag:
+      /*
+        <html manifest="/example.appcache">
+        */
+    </script>
+  </body>
+</html>

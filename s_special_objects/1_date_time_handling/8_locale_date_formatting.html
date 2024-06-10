@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Locale Date Formatting</title>
+  </head>
+  <body>
+    <script>
+      const now = new Date();
+
+      console.log("US locale date:", now.toLocaleDateString("en-US"));
+      console.log("German locale date:", now.toLocaleDateString("de-DE"));
+      console.log("Japanese locale date:", now.toLocaleDateString("ja-JP"));
+
+      const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+      console.log("Custom US locale date:", now.toLocaleDateString("en-US", options));
+    </script>
+  </body>
+</html>

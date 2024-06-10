@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formatting Dates</title>
+  </head>
+  <body>
+    <script>
+      const now = new Date();
+
+      // toDateString
+      console.log("Date string:", now.toDateString());
+
+      // toTimeString
+      console.log("Time string:", now.toTimeString());
+
+      // toLocaleDateString
+      console.log("Locale date string:", now.toLocaleDateString());
+
+      // toLocaleTimeString
+      console.log("Locale time string:", now.toLocaleTimeString());
+
+      // toISOString
+      console.log("ISO string:", now.toISOString());
+
+      // Custom formatting
+      const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+      console.log("Custom formatted date:", now.toLocaleDateString(undefined, options));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Using Web SQL (Deprecated)</title>
+  </head>
+  <body>
+    <script>
+      // Web SQL is a deprecated API for storing data in a SQL-based database in the browser.
+
+      // Created in: 2009 (deprecated in 2010)
+
+      // Advantages:
+      // - Allows complex queries using SQL
+      // - Larger storage capacity
+
+      // Disadvantages:
+      // - Deprecated and not recommended for use due to lack of support and standardization
+
+      // Open a database
+      const db = openDatabase("mydb", "1.0", "Test DB", 2 * 1024 * 1024);
+
+      // Create a table and insert data
+      db.transaction(function (tx) {
+        tx.executeSql("CREATE TABLE IF NOT EXISTS LOGS (id unique, log)");
+        tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "foobar")');
+        tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "logmsg")');
+      });
+
+      // Query the database
+      db.transaction(function (tx) {
+        tx.executeSql("SELECT * FROM LOGS", [], function (tx, results) {
+          const len = results.rows.length;
+          for (let i = 0; i < len; i++) {
+            console.log(`LOG ${results.rows.item(i).id}: ${results.rows.item(i).log}`);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

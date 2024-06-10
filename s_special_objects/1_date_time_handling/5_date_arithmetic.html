@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Date Arithmetic</title>
+  </head>
+  <body>
+    <script>
+      const now = new Date();
+      console.log("Current date:", now);
+
+      // Add 5 days
+      const futureDate = new Date(now);
+      futureDate.setDate(now.getDate() + 5);
+      console.log("Future date:", futureDate);
+
+      // Subtract 3 days
+      const pastDate = new Date(now);
+      pastDate.setDate(now.getDate() - 3);
+      console.log("Past date:", pastDate);
+    </script>
+  </body>
+</html>

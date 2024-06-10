@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Using Service Workers Cache</title>
+  </head>
+  <body>
+    <script>
+      // Service Workers Cache enables caching of network requests and responses to enable offline capabilities and improve performance.
+
+      // Created in: 2014
+
+      // Advantages:
+      // - Enables offline access
+      // - Improves performance by caching responses
+      // - Works with service workers
+
+      // Disadvantages:
+      // - Complex API
+      // - Requires understanding of service workers
+      // - Limited browser support
+
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(function (registration) {
+            console.log("Service Worker registered with scope:", registration.scope);
+          })
+          .catch(function (error) {
+            console.error("Service Worker registration failed:", error);
+          });
+      }
+
+      // Sample service-worker.js file content:
+      /*
+        self.addEventListener('install', function(event) {
+            event.waitUntil(
+                caches.open('v1').then(function(cache) {
+                    return cache.addAll([
+                        '/',
+                        '/index.html',
+                        '/style.css',
+                        '/script.js',
+                        '/image.png'
+                    ]);
+                })
+            );
+        });
+
+        self.addEventListener('fetch', function(event) {
+            event.respondWith(
+                caches.match(event.request).then(function(response) {
+                    return response || fetch(event.request);
+                })
+            );
+        });
+        */
+    </script>
+  </body>
+</html>
