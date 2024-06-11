@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function simulateBlockingOperation() {
+        console.log("Start of blocking");
+        let now = new Date().getTime();
+        let end = now + 5000; // Simulate a 5-second delay
+
+        while (new Date().getTime() < end) {
+          // This loop simulates a delay and will block the browser
+        }
+
+        console.log("Finished operation after 5 seconds");
+      }
+    </script>
+  </head>
+  <body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0">
+    <!-- Call the function to simulate a blocking operation -->
+    <button onclick="simulateBlockingOperation()" style="width: 200px; height: 200px">Start blocking</button>
+  </body>
+</html>
