@@ -11,8 +11,11 @@ export default App;
 // After Babel transformation (JS)
 // "use strict";
 
+// Object.defineProperty(exports, "__esModule", {
+//   value: true
+// });
+// exports["default"] = void 0;
 // var App = function App() {
-//   return React.createElement("h1", null, "Hello, world!");
+//   return /*#__PURE__*/React.createElement("h1", null, "Hello, world!");
 // };
-
-// exports.default = App;
+// var _default = exports["default"] = App;
