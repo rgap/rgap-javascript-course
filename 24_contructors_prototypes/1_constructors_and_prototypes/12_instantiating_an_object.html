@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Creating an object 'person' with properties 'name' and 'age'
+      // The object is created using the Object constructor
+      // This is the same as
+      // let person = Object()
+      // person.name = "John";
+      // person.age = 30;
+
+      let person = {
+        name: "John",
+        age: 30,
+      };
+
+      // Checking inherited properties and methods
+
+      // 'toString' is an inherited method from Object.prototype
+      // It returns a string representing the object. By default, it returns "[object Object]" for objects.
+      console.log(person.toString()); // Output: [object Object]
+
+      // 'hasOwnProperty' is a method that checks if the specified property ('name') exists as a direct property of 'person'
+      // and not inherited through the prototype chain. It returns true if 'name' is a direct property.
+      console.log(person.hasOwnProperty("name")); // Output: true
+
+      // 'toString' is not a direct property of 'person' but inherited from Object.prototype
+      // 'hasOwnProperty' checks if 'toString' is a direct property of 'person'. Since it is inherited, it returns false.
+      console.log(person.hasOwnProperty("toString")); // Output: false
+
+      // 'valueOf' is another method inherited from Object.prototype
+      // It returns the primitive value of the specified object, which is the object itself in the case of plain objects.
+      console.log(person.valueOf()); // Output: { name: 'John', age: 30 }
+
+      // 'isPrototypeOf' checks if 'person' exists in another object's prototype chain
+      // Here, it checks if 'person' is in the prototype chain of an empty object, which it is not, so it returns false.
+      console.log(person.isPrototypeOf({})); // Output: false
+
+      // 'propertyIsEnumerable' checks if the specified property ('name') is enumerable
+      // An enumerable property is one that can be iterated over in a 'for...in' loop. Here, 'name' is enumerable, so it returns true.
+      console.log(person.propertyIsEnumerable("name")); // Output: true
+
+      // Checking the __proto__ property (or prototype chain)
+      // '__proto__' is a reference to the prototype of 'person', which is Object.prototype
+      // It is a way to access the internal prototype of an object. Here, it confirms that 'person' inherits from Object.prototype.
+      console.log(person.__proto__ === Object.prototype); // Output: true
+
+      // 'Object.getPrototypeOf' is the standard way to get the prototype of 'person'
+      // It is a method that returns the prototype (i.e., the value of the internal [[Prototype]] property) of the specified object.
+      console.log(Object.getPrototypeOf(person) === Object.prototype); // Output: true
+    </script>
+  </head>
+  <body></body>
+</html>

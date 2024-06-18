@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Define a function
+      function showThis() {
+        // 'this' refers to the object that called the function
+        console.log(this);
+      }
+
+      // Create an object and assign the function as a method
+      let obj = {
+        name: "John",
+        showThis: showThis,
+      };
+
+      // Call the method on the object
+      obj.showThis(); // Output: obj (the object itself)
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Define a simple constructor function
+      function Animal(type) {
+        this.type = type; // Set the 'type' property of the new object
+
+        // Add a method directly in the constructor
+        this.describe = function () {
+          return "This is a " + this.type;
+        };
+      }
+
+      // Create instances of Animal
+      let dog = new Animal("dog");
+      let cat = new Animal("cat");
+
+      console.log(dog.describe()); // Output: "This is a dog"
+      console.log(cat.describe()); // Output: "This is a cat"
+
+      // Checking if the methods are the same
+      console.log(dog.describe === cat.describe); // Output: false
+      // Adding methods directly in the constructor creates a new
+      // copy of the method for each instance, which uses more memory.
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Null
+      const nullValue = null;
+      // console.log('Prototype of null value:', Object.getPrototypeOf(nullValue)); // Throws TypeError
+      console.log("Prototype of null value:", "null does not have a prototype and throws an error when attempting to get it");
+
+      // Undefined
+      const undefinedValue = undefined;
+      // console.log('Prototype of undefined value:', Object.getPrototypeOf(undefinedValue)); // Throws TypeError
+      console.log("Prototype of undefined value:", "undefined does not have a prototype and throws an error when attempting to get it");
+
+      // Boolean
+      const bool = true;
+      console.log("Prototype of boolean value:", Object.getPrototypeOf(bool)); // Boolean.prototype
+      console.log("Boolean.prototype:", Boolean.prototype); // Verify it matches
+
+      // Number
+      const num = 42;
+      console.log("Prototype of number value:", Object.getPrototypeOf(num)); // Number.prototype
+      console.log("Number.prototype:", Number.prototype); // Verify it matches
+
+      // BigInt
+      const bigInt = 123n;
+      console.log("Prototype of BigInt value:", Object.getPrototypeOf(bigInt)); // BigInt.prototype
+      console.log("BigInt.prototype:", BigInt.prototype); // Verify it matches
+
+      // String
+      const str = "hello";
+      console.log("Prototype of string value:", Object.getPrototypeOf(str)); // String.prototype
+      console.log("String.prototype:", String.prototype); // Verify it matches
+
+      // Symbol
+      const sym = Symbol();
+      console.log("Prototype of symbol value:", Object.getPrototypeOf(sym)); // Symbol.prototype
+      console.log("Symbol.prototype:", Symbol.prototype); // Verify it matches
+
+      // Object
+      const obj = {};
+      console.log("Prototype of object value:", Object.getPrototypeOf(obj)); // Object.prototype
+      console.log("Object.prototype:", Object.prototype); // Verify it matches
+
+      // Array
+      const arr = [];
+      console.log("Prototype of array value:", Object.getPrototypeOf(arr)); // Array.prototype
+      console.log("Array.prototype:", Array.prototype); // Verify it matches
+
+      // Function
+      function exampleFunc() {}
+      console.log("Prototype of function value:", Object.getPrototypeOf(exampleFunc)); // Function.prototype
+      console.log("Function.prototype:", Function.prototype); // Verify it matches
+
+      // Date
+      const date = new Date();
+      console.log("Prototype of Date value:", Object.getPrototypeOf(date)); // Date.prototype
+      console.log("Date.prototype:", Date.prototype); // Verify it matches
+
+      // RegExp
+      const regex = /test/;
+      console.log("Prototype of RegExp value:", Object.getPrototypeOf(regex)); // RegExp.prototype
+      console.log("RegExp.prototype:", RegExp.prototype); // Verify it matches
+
+      // ArrayBuffer
+      const buffer = new ArrayBuffer(16);
+      console.log("Prototype of ArrayBuffer value:", Object.getPrototypeOf(buffer)); // ArrayBuffer.prototype
+      console.log("ArrayBuffer.prototype:", ArrayBuffer.prototype); // Verify it matches
+
+      // Typed Arrays (example: Int8Array)
+      const typedArray = new Int8Array();
+      console.log("Prototype of Int8Array value:", Object.getPrototypeOf(typedArray)); // Int8Array.prototype
+      console.log("Prototype of Int8Array.prototype:", Object.getPrototypeOf(Int8Array.prototype)); // TypedArray.prototype
+
+      // Set
+      const set = new Set();
+      console.log("Prototype of Set value:", Object.getPrototypeOf(set)); // Set.prototype
+      console.log("Set.prototype:", Set.prototype); // Verify it matches
+
+      // Map
+      const map = new Map();
+      console.log("Prototype of Map value:", Object.getPrototypeOf(map)); // Map.prototype
+      console.log("Map.prototype:", Map.prototype); // Verify it matches
+
+      // WeakSet
+      const weakSet = new WeakSet();
+      console.log("Prototype of WeakSet value:", Object.getPrototypeOf(weakSet)); // WeakSet.prototype
+      console.log("WeakSet.prototype:", WeakSet.prototype); // Verify it matches
+
+      // WeakMap
+      const weakMap = new WeakMap();
+      console.log("Prototype of WeakMap value:", Object.getPrototypeOf(weakMap)); // WeakMap.prototype
+      console.log("WeakMap.prototype:", WeakMap.prototype); // Verify it matches
+
+      // Promise
+      const promise = Promise.resolve();
+      console.log("Prototype of Promise value:", Object.getPrototypeOf(promise)); // Promise.prototype
+      console.log("Promise.prototype:", Promise.prototype); // Verify it matches
+
+      // Proxy
+      const target = {};
+      const proxy = new Proxy(target, {});
+      console.log("Prototype of Proxy value:", Object.getPrototypeOf(proxy)); // Proxy.prototype
+      // Note: Proxy.prototype is not directly accessible
+      // console.log("Prototype of Proxy.prototype:", Object.getPrototypeOf(Proxy.prototype));
+
+      // Intl Objects (example: Intl.DateTimeFormat)
+      const intl = new Intl.DateTimeFormat();
+      console.log("Prototype of Intl.DateTimeFormat value:", Object.getPrototypeOf(intl)); // Intl.DateTimeFormat.prototype
+      console.log("Intl.DateTimeFormat.prototype:", Intl.DateTimeFormat.prototype); // Verify it matches
+
+      // Error Objects
+      const error = new Error();
+      console.log("Prototype of Error value:", Object.getPrototypeOf(error)); // Error.prototype
+      console.log("Error.prototype:", Error.prototype); // Verify it matches
+    </script>
+  </head>
+  <body></body>
+</html>

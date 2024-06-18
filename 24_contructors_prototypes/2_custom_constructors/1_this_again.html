@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Define a function
+      function showThis() {
+        // 'this' refers to the global object when called in the global context
+        console.log(this); // In a browser, this logs the `window` object
+      }
+
+      // Call the function in the global context
+      showThis(); // Output: window (global object in the browser)
+    </script>
+  </head>
+  <body></body>
+</html>

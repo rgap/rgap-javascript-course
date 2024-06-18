@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Define a constructor function
+      function Person(name) {
+        // 'this' refers to the new object being created
+        this.name = name;
+        console.log(this); // Logs the new instance of `Person`
+      }
+
+      // Create a new instance using the `new` keyword
+      let john = new Person("John"); // Output: Person { name: "John" }
+      console.log(john); // Output: Person { name: "John" }
+    </script>
+  </head>
+  <body></body>
+</html>

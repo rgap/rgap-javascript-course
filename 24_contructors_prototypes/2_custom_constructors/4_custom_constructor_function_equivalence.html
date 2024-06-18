@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Define a constructor function
+      function Person(name) {
+        // 'this' refers to the new object being created
+        this.name = name;
+        console.log(this); // Logs the new instance of `Person`
+      }
+
+      // Create a new instance using the `new` keyword
+      let john = Person("John"); // Output: Window
+      // In this case when 'new' is not used, 'this' refers to the global object (Window in browsers)
+      console.log(john); // Output: undefined
+    </script>
+  </head>
+  <body></body>
+</html>

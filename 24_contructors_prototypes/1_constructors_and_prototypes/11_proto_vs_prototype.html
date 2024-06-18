@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // __proto__ is used to access the prototype of an instance.
+
+      // .prototype is used on constructor functions to define properties
+      // and methods that will be inherited by instances created by the constructor.
+
+      // .prototype is only accessible on constructor functions,
+      // while __proto__ is accessible on all objects
+
+      // Creating a simple object
+      let obj = { name: "John" };
+
+      // Checking the prototype of obj
+      console.log(obj.__proto__); // Output: Object.prototype
+      console.log(obj.__proto__ === Object.prototype); // Output: true
+
+      // Creating a Boolean instance
+      let bool = new Boolean(true);
+
+      // Checking the prototype of the Boolean instance
+      console.log(bool.__proto__); // Output: Boolean.prototype
+      console.log(bool.__proto__ === Boolean.prototype); // Output: true
+
+      // Creating an array
+      let arr = [1, 2, 3];
+
+      // Checking the prototype of arr
+      console.log(arr.__proto__); // Output: Array.prototype
+      console.log(arr.__proto__ === Array.prototype); // Output: true
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      /**
+       * Basic Constructor Example
+       *
+       * Demonstrating a simple constructor function and using `typeof` to
+       * show that instances are objects.
+       */
+
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      let john = new Person("John", 30);
+
+      console.log(john.name); // Output: John
+      console.log(john.age); // Output: 30
+      console.log(typeof john); // Output: object
+
+      // Explanation:
+      // The `Person` constructor function is defined with properties `name` and `age`.
+      // When `new Person('John', 30)` is called, a new object is created with `name` and `age` properties.
+      // Using `typeof` confirms that `john` is an object.
+    </script>
+  </head>
+  <body></body>
+</html>

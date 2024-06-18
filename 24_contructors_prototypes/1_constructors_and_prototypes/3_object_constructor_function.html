@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      /*
+        In JavaScript, Object is a built-in global CONSTRUCTOR FUNCTION
+        that is used to create objects. When you create an object using
+        object literal syntax, such as {}, or by using new Object(), you
+        are creating an instance of Object.
+
+        In this case it will be called Object constructor / Object constructor function
+      */
+
+      // The constructor of an object is the Object constructor
+      // Define an object using the Object constructor
+      let person = new Object();
+      person.name = "John"; // Assign the property 'name' with value 'John'
+      person.age = 30; // Assign the property 'age' with value 30
+
+      // Print the object
+      console.log(typeof person); // Output: 'object'
+      console.log(person); // Output: { name: 'John', age: 30 }
+      console.log(typeof Object); // Output: 'function'
+    </script>
+  </head>
+  <body></body>
+</html>

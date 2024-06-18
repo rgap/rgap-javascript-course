@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Null has no prototype
+      let nullValue = null;
+      console.log(nullValue); // Output: null (no __proto__ property)
+
+      // Undefined has no prototype
+      let undefinedValue;
+      console.log(undefinedValue); // Output: undefined (no __proto__ property)
+
+      // Boolean
+      let boolean = true;
+      console.log(boolean.__proto__); // Output: Boolean.prototype
+
+      // Number
+      let number = 42;
+      console.log(number.__proto__); // Output: Number.prototype
+
+      // BigInt
+      let bigInt = BigInt(123);
+      console.log(bigInt.__proto__); // Output: BigInt.prototype
+
+      // String
+      let string = "Hello";
+      console.log(string.__proto__); // Output: String.prototype
+
+      // Symbol
+      let symbol = Symbol();
+      console.log(symbol.__proto__); // Output: Symbol.prototype
+
+      // Object
+      let object = { name: "John", age: 30 };
+      console.log(object.__proto__); // Output: Object.prototype
+
+      // Array
+      let array = [1, 2, 3];
+      console.log(array.__proto__); // Output: Array.prototype
+
+      // Function
+      let func = function () {};
+      console.log(func.__proto__); // Output: Function.prototype
+
+      // Date
+      let date = new Date();
+      console.log(date.__proto__); // Output: Date.prototype
+
+      // RegExp
+      let regex = /abc/;
+      console.log(regex.__proto__); // Output: RegExp.prototype
+
+      // ArrayBuffer
+      let arrayBuffer = new ArrayBuffer(16);
+      console.log(arrayBuffer.__proto__); // Output: ArrayBuffer.prototype
+
+      // Typed Arrays (e.g., Uint8Array)
+      let typedArray = new Uint8Array();
+      console.log(typedArray.__proto__); // Output: Uint8Array.prototype
+
+      // Set
+      let set = new Set();
+      console.log(set.__proto__); // Output: Set.prototype
+
+      // Map
+      let map = new Map();
+      console.log(map.__proto__); // Output: Map.prototype
+
+      // WeakSet
+      let weakSet = new WeakSet();
+      console.log(weakSet.__proto__); // Output: WeakSet.prototype
+
+      // WeakMap
+      let weakMap = new WeakMap();
+      console.log(weakMap.__proto__); // Output: WeakMap.prototype
+
+      // Promise
+      let promise = new Promise((resolve, reject) => {});
+      console.log(promise.__proto__); // Output: Promise.prototype
+
+      // Proxy
+      let proxy = new Proxy({}, {});
+      console.log(proxy.__proto__); // Output: Proxy.prototype
+
+      // Intl Objects (e.g., Intl.DateTimeFormat)
+      let dateTimeFormat = new Intl.DateTimeFormat();
+      console.log(dateTimeFormat.__proto__); // Output: DateTimeFormat.prototype
+
+      // Error Objects (e.g., Error)
+      let error = new Error();
+      console.log(error.__proto__); // Output: Error.prototype
+    </script>
+  </head>
+  <body></body>
+</html>
