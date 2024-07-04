@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inheritance instanceof Example</title>
+  </head>
+  <body>
+    <h1>Inheritance instanceof Example</h1>
+    <script>
+      // Define a constructor function for Animal
+      function Animal(name) {
+        this.name = name;
+      }
+
+      // Define a constructor function for Dog that inherits from Animal
+      function Dog(name, breed) {
+        Animal.call(this, name); // Call the Animal constructor with 'this' context
+        this.breed = breed;
+      }
+
+      // Set up the prototype chain so Dog inherits from Animal
+      Dog.prototype = Object.create(Animal.prototype);
+      Dog.prototype.constructor = Dog;
+
+      // Create a new Dog object
+      const buddy = new Dog("Buddy", "Golden Retriever");
+
+      // Check if buddy is an instance of Dog
+      console.log(buddy instanceof Dog); // true
+
+      // Check if buddy is also an instance of Animal (due to inheritance)
+      console.log(buddy instanceof Animal); // true
+
+      // Check if buddy is also an instance of Object (as all objects in JS inherit from Object)
+      console.log(buddy instanceof Object); // true
+
+      // Check if buddy is an instance of Array (which it is not)
+      console.log(buddy instanceof Array); // false
+    </script>
+  </body>
+</html>

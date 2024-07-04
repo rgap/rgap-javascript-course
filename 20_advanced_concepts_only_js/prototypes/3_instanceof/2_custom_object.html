@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Objects instanceof Example</title>
+  </head>
+  <body>
+    <h1>Custom Objects instanceof Example</h1>
+    <script>
+      // Define a constructor function for Person
+      function Person(name) {
+        this.name = name;
+      }
+
+      // Create a new Person object
+      const john = new Person("John");
+
+      // Check if john is an instance of Person
+      console.log(john instanceof Person); // true
+
+      // Check if john is also an instance of Object (as all objects in JS inherit from Object)
+      console.log(john instanceof Object); // true
+
+      // Check if john is an instance of Array (which it is not)
+      console.log(john instanceof Array); // false
+    </script>
+  </body>
+</html>

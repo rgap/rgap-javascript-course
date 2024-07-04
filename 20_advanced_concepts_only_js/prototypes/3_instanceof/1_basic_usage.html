@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic instanceof Example</title>
+  </head>
+  <body>
+    <h1>Basic instanceof Example</h1>
+    <script>
+      // Create a new String object
+      const str = new String("Hello, World!");
+
+      // Check if str is an instance of String
+      console.log(str instanceof String); // true
+
+      // Check if str is also an instance of Object (as all objects in JS inherit from Object)
+      console.log(str instanceof Object); // true
+
+      // Check if str is an instance of Number (which it is not)
+      console.log(str instanceof Number); // false
+    </script>
+  </body>
+</html>
