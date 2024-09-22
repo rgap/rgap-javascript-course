@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Example 1: Basic Array Destructuring
+      let fruits = ["Apple", "Banana", "Cherry"];
+
+      // Destructure the array into individual variables
+      let [firstFruit, secondFruit, thirdFruit] = fruits;
+
+      console.log(firstFruit); // Output: Apple
+      console.log(secondFruit); // Output: Banana
+      console.log(thirdFruit); // Output: Cherry
+
+      // Example 2: Skipping elements during destructuring
+      let vegetables = ["Carrot", "Pea", "Broccoli"];
+
+      // Skip the first element and only destructure the second and third
+      let [, veg2, veg3] = vegetables;
+
+      console.log(veg2); // Output: Pea
+      console.log(veg3); // Output: Broccoli
+
+      // Example 3: Destructuring with default values
+      let colors = ["Red"];
+
+      // Destructure with a default value if the element is undefined
+      let [primary, secondary = "Blue"] = colors;
+
+      console.log(primary); // Output: Red
+      console.log(secondary); // Output: Blue (default value)
+
+      // Example 4: Swapping values using destructuring
+      let a = 1;
+      let b = 2;
+
+      // Swap the values of 'a' and 'b'
+      [a, b] = [b, a];
+
+      console.log(a); // Output: 2
+      console.log(b); // Output: 1
+    </script>
+  </head>
+  <body></body>
+</html>
