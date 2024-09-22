@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-      // Object Destructuring in JavaScript
+      // Object Destructuring in JavaScript allows unpacking values from objects into distinct variables
 
+      // 'person' is an object with properties: 'name', 'age', and 'city'
       const person = {
         name: "Alice",
         age: 25,
@@ -14,18 +15,22 @@
       };
 
       // Example 1: Basic destructuring assignment
+      // This syntax extracts 'name', 'age', and 'city' from the 'person' object into separate variables.
       const { name, age, city } = person;
-      console.log(name); // Alice
-      console.log(age); // 25
-      console.log(city); // New York
+      console.log(name); // Output: Alice
+      console.log(age); // Output: 25
+      console.log(city); // Output: New York
 
       // Example 2: Destructuring with default values
+      // Here, 'name' is renamed to 'firstName', 'age' to 'years', and 'country' is given a default value 'USA' if not present in the object.
       const { name: firstName, age: years, country = "USA" } = person;
-      console.log(firstName); // Alice
-      console.log(years); // 25
-      console.log(country); // USA
+      console.log(firstName); // Output: Alice (renamed variable)
+      console.log(years); // Output: 25 (renamed variable)
+      console.log(country); // Output: USA (default value since 'country' is not in the object)
 
       // Example 3: Nested destructuring
+      // Now we have a more complex object with nested properties.
+      // 'personWithAddress' contains 'name' and a nested 'address' object with 'street' and 'city'.
       const personWithAddress = {
         name: "Bob",
         address: {
@@ -34,20 +39,25 @@
         },
       };
 
+      // In this destructuring assignment, we extract 'name' as 'personName', 'street', and rename 'city' to 'addressCity'.
       const {
         name: personName,
         address: { street, city: addressCity },
       } = personWithAddress;
-      console.log(personName); // Bob
-      console.log(street); // 123 Main St
-      console.log(addressCity); // San Francisco
+      console.log(personName); // Output: Bob (renamed variable)
+      console.log(street); // Output: 123 Main St
+      console.log(addressCity); // Output: San Francisco (renamed variable from nested 'city')
 
       // Example 4: Function parameters destructuring
+      // We can also destructure objects directly in function parameters.
+      // This function expects an object with 'name' and 'age' properties.
       function displayPerson({ name, age }) {
         console.log(`Name: ${name}, Age: ${age}`);
       }
 
-      displayPerson(person); // Name: Alice, Age: 25
+      // When calling the function, we pass the 'person' object,
+      // and it automatically destructures the 'name' and 'age' properties for use inside the function.
+      displayPerson(person); // Output: Name: Alice, Age: 25
     </script>
   </head>
   <body></body>
