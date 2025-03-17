@@ -5,16 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-      // For-In Loop
-
-      // The for-in loop iterates over the properties of an object (including inherited properties).
-
-      // Iterating over an array using for-in (not recommended for arrays)
-      let fruits = ["Apple", "Banana", "Cherry"];
-
-      for (let index in fruits) {
-        console.log(`Index: ${index}, Fruit: ${fruits[index]}`);
-      }
+      // For-In Loop with Objects in JavaScript
 
       // The for-in loop is used to iterate over the enumerable properties of an object.
       let person = {
@@ -23,7 +14,7 @@
         city: "New York",
       };
 
-      console.log("For-In Loop:");
+      console.log("For-In Loop with an Object:");
       for (let key in person) {
         if (person.hasOwnProperty(key)) {
           // Check if the property is a direct property of the object

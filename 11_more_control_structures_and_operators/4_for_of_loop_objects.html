@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Iteration Example</title>
+  </head>
+  <body>
+    <script>
+      // For-Of Loop with Objects in JavaScript
+
+      let person = {
+        name: "Alice",
+        age: 25,
+        city: "New York",
+      };
+
+      // 1. Using for-of loop
+      // Arrays are inherently iterable, while plain objects are not.
+      console.log("Attempting to use for-of directly on a plain object:");
+      try {
+        // This for-of loop will throw an error because 'person' is not iterable.
+        for (let key of person) {
+          console.log(`${key}: ${person[key]}`);
+        }
+      } catch (error) {
+        console.error("Error encountered:", error.message);
+        // Expected output (error message): "person is not iterable" or similar.
+      }
+
+
+      // 2. Using for-of loop with Object.keys()
+      console.log("For-Of Loop with Object.keys():");
+      for (let key of Object.keys(person)) {
+        console.log(`${key}: ${person[key]}`);
+      }
+      /* Expected output:
+         name: Alice
+         age: 25
+         city: New York
+      */
+
+
+      // 3. Using for-of loop with Object.values()
+      console.log("For-Of Loop with Object.values():");
+      for (let value of Object.values(person)) {
+        console.log(`Value: ${value}`);
+      }
+      /* Expected output:
+         Value: Alice
+         Value: 25
+         Value: New York
+      */
+
+
+      // 4. Using for-of loop with Object.entries()
+      console.log("For-Of Loop with Object.entries():");
+      for (let [key, value] of Object.entries(person)) {
+        console.log(`${key}: ${value}`);
+      }
+      /* Expected output:
+         name: Alice
+         age: 25
+         city: New York
+      */
+    </script>
+  </body>
+</html>

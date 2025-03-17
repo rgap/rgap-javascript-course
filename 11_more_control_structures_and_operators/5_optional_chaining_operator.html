@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Iteration Example</title>
+  </head>
+  <body>
+    <script>
+      // Optional Chaining Operator (?.) in JavaScript
+
+      // The optional chaining operator (?.) allows you to safely access deeply nested properties.
+      // It short-circuits and returns undefined if an intermediate property is null or undefined.
+
+      let user = {
+        profile: {
+          name: "Alice",
+          age: 30,
+        },
+      };
+
+      console.log("User Name:", user?.profile?.name); // Alice
+      console.log("User Address:", user?.address?.street); // undefined
+
+      // Optional chaining with function calls
+      let userAdmin = {
+        admin() {
+          console.log("Admin access granted");
+        },
+      };
+
+      userAdmin.admin?.(); // Admin access granted
+      userAdmin.nonExistentMethod?.(); // No error
+
+      // Combining with nullish coalescing operator
+      let userData = user?.profile?.data ?? "No data available";
+      console.log("User Data:", userData); // "No data available"
+    </script>
+  </body>
+</html>

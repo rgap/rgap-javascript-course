@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // For-In Loop with Arrays in JavaScript
+
+      // In JavaScript, arrays are special objects where indexes act as keys.
+      // This means that a for-in loop iterates over the keys (indexes), not the values.
+
+      let fruits = ["Apple", "Banana", "Cherry"];
+
+      console.log("Using for-in loop (not recommended for arrays):");
+      for (let index in fruits) {
+        console.log(`Index: ${index}, Fruit: ${fruits[index]}`);
+      }
+
+      // Another alternative: Traditional for-loop
+      console.log("\nUsing traditional for-loop:");
+      for (let i = 0; i < fruits.length; i++) {
+        console.log(`Index: ${i}, Fruit: ${fruits[i]}`);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
