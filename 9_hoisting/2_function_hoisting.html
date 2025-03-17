@@ -7,6 +7,7 @@
     <script>
       // Function Hoisting in JavaScript
 
+
       // 1. Function declarations are hoisted, allowing them to be called before they are defined.
       console.log(greet("Alice")); // Hello, Alice!
 
@@ -14,19 +15,22 @@
         return `Hello, ${name}!`;
       }
 
+
       // 2. Function expressions are not hoisted.
-      console.log(sayHi); // undefined
+      console.log(sayHi); // ❌ ReferenceError: Cannot access 'sayHi' before initialization
       // console.log(sayHi('Bob')); // TypeError: sayHi is not a function
-      var sayHi = function (name) {
+      let sayHi = function (name) {
         return `Hi, ${name}!`;
       };
       console.log(sayHi("Bob")); // Hi, Bob
 
-      // 3. Example with arrow functions
-      // console.log(sayHello); // undefined
+
+      // 3. Arrow functions are not hoisted.
+      console.log(sayHello); // ❌ ReferenceError: Cannot access 'sayHello' before initialization
       // console.log(sayHello('Charlie')); // TypeError: sayHello is not a function
-      var sayHello = name => `Hello, ${name}!`;
+      let sayHello = name => `Hello, ${name}!`;
       console.log(sayHello("Charlie")); // Hello, Charlie
+
     </script>
   </head>
   <body></body>

@@ -8,25 +8,41 @@
       // Variable Hoisting in JavaScript
 
       // Variable hoisting allows variables to be used before they are declared.
+      // It will mainly be useful for FUNCTIONS but here's an intro to hoisting with variables.
 
-      // 1. The INITIALIZATION is not hoisted, only the DECLARATION.
-      console.log(undeclaredVariable); // ReferenceError: Cannot access 'undeclaredVariable' before initialization
 
-      console.log(hoistedVar); // undefined
-      var hoistedVar = "I am hoisted";
-      console.log(hoistedVar); // I am hoisted
+      // 0. Initializations and Declarations
 
-      // 2. Example with function scope
-      function hoistExample() {
-        console.log(hoistedInsideFunction); // undefined
-        var hoistedInsideFunction = "Hoisted inside function";
-        console.log(hoistedInsideFunction); // Hoisted inside function
-      }
-      hoistExample();
+      // DECLARATION: This tells JavaScript that a variable exists.
+      var declaredVariable;
+      // INITIALIZATION: This assigns a value to the variable.
+      declaredVariable = "Now I have a value";
+      // DECLARATION + INITIALIZATION in one step.
+      var anotherVariable = "Declared and initialized at the same time";
 
-      // 3. Example demonstrating lack of hoisting with let and const
+
+      // 1. Only the DECLARATION is hoisted, not the INITIALIZATION.
+
+      // Trying to access an undeclared variable results in an error.
+      console.log(undeclaredVariable); // ❌ ReferenceError: undeclaredVariable is not defined
+
+      // Example of hoisting with `var`
+      console.log(hoistedVar); // ✅ undefined (Declaration is hoisted, but initialization is not)
+
+      // JavaScript internally does this hoisting:
+      // var hoistedVar; // (This happens first, hoisted to the top)
+      hoistedVar = "I am hoisted"; // (This happens later, at runtime)
+
+      console.log(hoistedVar); // ✅ "I am hoisted"
+
+      var hoistedVar; // Variable declaration (this line is not even necessary)
+
+
+      // 2. Example demonstrating lack of hoisting with let and const
+
       // var declarations are initialized with "undefined" at the time of hoisting
-      // let and const declarations are not initialized at the time of hoisting
+      // let and const still get hoisted but enter a Temporal Dead Zone (TDZ) until initialization
+      // This prevents accidental use of variables before assignment, making it seem as if they are not hoisted.
 
       console.log(letVar); // ReferenceError: Cannot access 'letVar' before initialization
       console.log(constVar); // ReferenceError: Cannot access 'constVar' before initialization
