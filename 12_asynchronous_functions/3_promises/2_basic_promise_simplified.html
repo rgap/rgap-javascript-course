@@ -25,20 +25,14 @@
         });
       }
 
-      // Function to execute when the promise is resolved
-      let resolveAction = () => {
-        console.log("Resolved");
-      };
-
-      // Function to execute when the promise is rejected
-      let rejectAction = () => {
-        console.log("Rejected");
-      };
-
       // Execute fetchData and handle promise resolution and rejection
       fetchData()
-        .then(resolveAction) // `resolve()` triggers this function
-        .catch(rejectAction); // `reject()` triggers this function
+        .then(function () {
+          console.log("Resolved");
+        }) // `resolve()` triggers this function
+        .catch(function () {
+          console.log("Rejected");
+        }); // `reject()` triggers this function
 
       // Explanation:
       // - This code demonstrates the creation and usage of a promise in a more realistic case of fetching data from an API.

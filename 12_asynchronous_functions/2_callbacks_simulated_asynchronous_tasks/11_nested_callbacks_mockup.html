@@ -8,7 +8,7 @@
       // Nested Callbacks Example in JavaScript
 
       // Nested callbacks, also known as callback hell, occur when multiple asynchronous operations are performed in sequence using callbacks.
-      // This pattern can lead to deeply nested code that is hard to read and maintain.
+      // This code fetches user data, their posts, and comments on the first post sequentially.
 
       // Simulate fetching user data from an API
       function fetchUserData(callback) {
@@ -87,7 +87,7 @@
       }
 
       // Execute the sequence of operations and handle the final result
-      performOperations((error, result) => {
+      performOperations(function (error, result) {
         if (error) {
           console.error("Error:", error);
         } else {

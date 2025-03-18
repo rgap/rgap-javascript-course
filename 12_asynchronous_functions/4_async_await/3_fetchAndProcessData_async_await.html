@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async/Await Fetch Example with Error Handling</title>
+    <script>
+      // This function fetches a response and extracts the data using async/await
+
+      async function fetchAndProcessData() {
+        try {
+          const response = await fetch("https://example.com/api/data");
+          console.log("Response received:", response); // Logs the response metadata
+
+          const data = await response.json(); // Extracts the actual data from the response
+          console.log("Data received:", data); // Logs the actual JSON data
+        } catch (error) {
+          // Handle network errors and JSON parsing errors
+          console.error("Error:", error.message);
+        }
+      }
+
+      // Explanation:
+      // - This version includes `try...catch` but does not check `response.ok`.
+      // - If a network error occurs (e.g., no internet, bad URL), the `catch` block will handle it.
+      // - If `response.json()` fails (e.g., invalid JSON), the `catch` block will also handle it.
+      // - However, HTTP errors (like `404 Not Found`) will NOT be caught explicitly.
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulated Fetch with Promises</title>
+    <script>
+      // Fetching data using Promises
+
+      // This function simulates fetching a response using setTimeout.
+      // Instead of using a callback, it returns a Promise.
+      function fetchData() {
+        return new Promise(function (resolve) {
+          setTimeout(function () {
+            const response = {
+              status: 200,
+              statusText: "OK",
+              url: "https://example.com/api/data",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({ userId: 1, name: "John Doe" }),
+            };
+
+            console.log("Response received:", response); // Logs after 3 seconds
+            resolve(response); // ✅ Resolve the Promise with the response
+          }, 3000); // Simulated network delay
+        });
+      }
+
+      // This function simulates parsing JSON from the response
+      function parseJSON(response) {
+        return new Promise(function (resolve) {
+          setTimeout(function () {
+            const data = JSON.parse(response.body); // Simulates response.json()
+            console.log("Data received:", data); // Logs after 2 more seconds
+            resolve(data); // ✅ Resolve the Promise with the parsed data
+          }, 2000); // Simulated JSON parsing delay
+        });
+      }
+
+      // Function that will receive the data after processing
+      function processData(data) {
+        console.log("Final data:", data); // ✅ Now the data can be used
+      }
+
+      // Using Promises instead of callbacks
+      // Promises can be chained to perform multiple asynchronous operations in sequence.
+      fetchData()
+        .then(parseJSON) // Parse the response body
+        .then(processData); // Process the final data
+    </script>
+  </head>
+  <body></body>
+</html>

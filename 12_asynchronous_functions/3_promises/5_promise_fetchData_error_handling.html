@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulated Fetch with Promises</title>
+    <script>
+      // Fetching data using Promises
+
+      // This function simulates fetching a response using setTimeout.
+      // Instead of using a callback, it returns a Promise.
+      function fetchData() {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            const response = {
+              status: 200,
+              statusText: "OK",
+              url: "https://example.com/api/data",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({ userId: 1, name: "John Doe" }),
+            };
+
+            console.log("Response received:", response); // Logs after 3 seconds
+
+            if (response.statusText !== "OK") {
+              resolve(response); // ✅ Resolve the Promise with the response
+            } else {
+              reject("Error: Request failed with status " + response.status);
+            }
+          }, 3000); // Simulated network delay
+        });
+      }
+
+      // This function simulates parsing JSON from the response
+      function parseJSON(response) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            try {
+              const data = JSON.parse(response.body); // Simulates response.json()
+              console.log("Data received:", data); // Logs after 2 more seconds
+              resolve(data); // ✅ Resolve the Promise with the parsed data
+            } catch (error) {
+              reject("Error parsing JSON: " + error.message);
+            }
+          }, 2000); // Simulated JSON parsing delay
+        });
+      }
+
+      // Function that will receive the data after all Promises resolve
+      function processData(data) {
+        console.log("Final data:", data); // ✅ Now the data can be used
+      }
+
+      // Using Promises instead of callbacks
+      fetchData()
+        .then(parseJSON) // Parse the response body
+        .then(processData) // Process the final data
+        .catch(function (error) {
+          console.error("Error:", error); // Handles any error in the chain
+        });
+    </script>
+  </head>
+  <body></body>
+</html>

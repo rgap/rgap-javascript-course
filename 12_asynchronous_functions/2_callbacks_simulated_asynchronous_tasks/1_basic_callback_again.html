@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Callbacks in JavaScript
+
+      // A callback is a function passed as an argument to another function.
+      // This allows you to pass functions as parameters and have them executed inside the calling function.
+
+      function operation(a, b, callback) {
+        // The callback function is called with 'a' and 'b' as arguments
+        return callback(a, b);
+      }
+
+      // Here, we define an anonymous function (arrow function) as a callback to multiply 'a' and 'b'
+      const result = operation(2, 2, (a, b) => a * b);
+      console.log(result); // Outputs: 4
+
+    </script>
+  </head>
+  <body></body>
+</html>

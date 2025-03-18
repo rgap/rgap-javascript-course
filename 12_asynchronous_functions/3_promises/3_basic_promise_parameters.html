@@ -17,22 +17,22 @@
             const success = true; // Change to false to simulate failure
 
             if (success) {
-              resolve(); // Resolve the promise
+              const data = { userId: 1, name: "John Doe" };
+              resolve(data); // Resolve the promise with the fetched data
             } else {
-              reject(); // Reject the promise
+              reject("Failed to fetch data."); // Reject the promise with an error message
             }
           }, 2000); // Simulate a 2-second delay
         });
       }
 
-      let resolveAction = () => {
-        console.log("Resolved");
-      };
-      let rejectAction = () => {
-        console.log("Rejected");
-      };
-
-      fetchData().then(resolveAction).catch(rejectAction);
+      fetchData()
+        .then(function (data) {
+          console.log("Data fetched successfully:", data); // Handle the success
+        })
+        .catch(function (error) {
+          console.error("Error:", error); // Handle the error
+        });
 
       // Explanation:
       // - This code demonstrates the creation and usage of a promise in a more realistic case of fetching data from an API.

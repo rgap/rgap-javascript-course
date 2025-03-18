@@ -16,10 +16,9 @@
 
       // Example 1: Basic destructuring assignment
       // This syntax extracts 'name', 'age', and 'city' from the 'person' object into separate variables.
-      const { name, age, city } = person;
+      const { name, age } = person;
       console.log(name); // Output: Alice
       console.log(age); // Output: 25
-      console.log(city); // Output: New York
 
       // Example 2: Destructuring with default values
       // Here, 'name' is renamed to 'firstName', 'age' to 'years', and 'country' is given a default value 'USA' if not present in the object.
@@ -48,16 +47,6 @@
       console.log(street); // Output: 123 Main St
       console.log(addressCity); // Output: San Francisco (renamed variable from nested 'city')
 
-      // Example 4: Function parameters destructuring
-      // We can also destructure objects directly in function parameters.
-      // This function expects an object with 'name' and 'age' properties.
-      function displayPerson({ name, age }) {
-        console.log(`Name: ${name}, Age: ${age}`);
-      }
-
-      // When calling the function, we pass the 'person' object,
-      // and it automatically destructures the 'name' and 'age' properties for use inside the function.
-      displayPerson(person); // Output: Name: Alice, Age: 25
     </script>
   </head>
   <body></body>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error-First Callback Example</title>
+    <script>
+      // 🚀 Error-First Callback Pattern in JavaScript
+
+      // This function simulates an API request and follows the "error-first callback" pattern.
+      // The success or failure is determined based only on response.statusText.
+
+      function fetchData(callback) {
+        setTimeout(() => {
+          // 🔹 Simulating an API response using only statusText
+          // - In a real API response, statusText is based on the HTTP response (e.g., "OK" for success, "Not Found" for failure).
+
+          const response = {
+            statusText: "OK", // Simulating response text
+          };
+
+          if (response.statusText !== "OK") {
+            // 🛑 If statusText is not "OK", treat it as an error
+            callback(`Error: ${response.statusText}`);
+          } else {
+            // ✅ If statusText is "OK", return success
+            callback(null);
+          }
+        }, 3000); // Simulated 3-second delay
+      }
+
+      // This function handles the response from fetchData()
+      function handleData(error) {
+        if (error) {
+          console.error("❌ Error:", error); // Logs the error message if there's an issue
+        } else {
+          console.log("✅ Request successful!"); // Logs success message if no error
+        }
+      }
+
+      // Calling fetchData and passing handleData as the callback function
+      fetchData(handleData);
+
+      /* 📝 Explanation:
+      1️⃣ `fetchData(handleData);` starts an asynchronous operation.
+      2️⃣ After 3 seconds, `fetchData()` generates a simulated API response.
+          - The `statusText` decides success ("OK") or failure ("Internal Server Error").
+      3️⃣ If an error occurs (statusText is NOT "OK"):
+          - `handleData("Error: Internal Server Error");` is called.
+          - `error` contains the error message from response.statusText.
+      4️⃣ If no error occurs (statusText is "OK"):
+          - `handleData(null);` is called.
+          - `error` is `null`, meaning the request was successful.
+      5️⃣ Inside `handleData`, we check if `error` exists:
+          - If so, we log the error.
+          - Otherwise, we log a success message.
+      */
+    </script>
+  </head>
+  <body></body>
+</html>

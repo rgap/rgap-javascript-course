@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async/Await Fetch Example</title>
+    <script>
+      // This function fetches a response and extracts the data using async/await
+
+      async function fetchAndProcessData() {
+        const response = await fetch("https://example.com/api/data");
+        console.log("Response received:", response); // Logs the response
+
+        const data = await response.json(); // Extracts the actual data from the response
+        console.log("Data received:", data); // Logs the JSON data
+      }
+
+      // Explanation:
+      // - This function fetches the response asynchronously using `fetch()`.
+      // - The `await` keyword ensures we wait for the response.
+      // - The response object (which contains metadata like headers and status) is logged first.
+      // - The actual data is extracted using `response.json()`
+
+      fetchAndProcessData(); // Calls the function to execute the fetch operation
+    </script>
+  </head>
+  <body></body>
+</html>

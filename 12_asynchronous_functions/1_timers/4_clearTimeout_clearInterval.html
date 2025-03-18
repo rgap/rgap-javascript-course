@@ -10,14 +10,14 @@
       // clearTimeout cancels a timeout that was set with setTimeout.
       // clearInterval cancels an interval that was set with setInterval.
 
-      // Example: clearTimeout
+      // 1. Example: clearTimeout
       const timeoutId = setTimeout(() => {
         console.log("This will not be logged because clearTimeout is called");
       }, 2000);
 
       clearTimeout(timeoutId); // Cancels the timeout before it executes
 
-      // Example: clearInterval
+      // 2. Example: clearInterval
       let counter = 0;
       const intervalId = setInterval(() => {
         counter++;

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulated Fetch Example</title>
+    <script>
+      // Fetching data
+
+      // This function simulates fetching a response using setTimeout.
+      // However, it does not return the data, nor does it use a callback or a Promise.
+      // Because setTimeout is asynchronous, the data cannot be accessed outside this function.
+
+      function fetchData() {
+        setTimeout(() => {
+          const response = {
+            status: 200,
+            statusText: "OK",
+            url: "https://example.com/api/data",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ userId: 1, name: "John Doe" }),
+          };
+
+          // Logs after 3 seconds
+          console.log("Response received:", response); // Directly logs the simulated response object
+
+          setTimeout(() => {
+            const data = JSON.parse(response.body); // Simulates response.json()
+
+            // Logs after 2 more seconds
+            console.log("Data received:", data); // Logs the extracted data
+
+            // ❌ The `data` variable is only accessible inside this function.
+            // It CANNOT be returned or used outside fetchData() in this version.
+          }, 2000); // Simulated delay for JSON processing
+        }, 3000);
+      }
+
+      fetchData();
+
+      // ❌ Attempting to access the data here would not work
+      // because fetchData() does not return anything and runs asynchronously.
+      // console.log(data); // This would cause a ReferenceError
+
+      // ✅ To properly use the fetched data outside fetchData(),
+      // we need to use a callback function, a Promise, or async/await.
+      // Using a callback makes the code more structured and avoids nesting too much.
+    </script>
+  </head>
+  <body></body>
+</html>

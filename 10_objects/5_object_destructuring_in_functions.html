@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function Parameters Destructuring Examples</title>
+    <script>
+      // Function Parameters Destructuring Examples
+
+      // Example 1: Basic Function Parameters Destructuring
+      // This function expects an object with 'name' and 'age' properties.
+      function displayPerson({ name, age }) {
+        console.log(`Name: ${name}, Age: ${age}`);
+      }
+
+      const person1 = {
+        name: "Alice",
+        age: 25,
+      };
+
+      console.log("Example 1: Basic Function Parameters Destructuring");
+      displayPerson(person1); // Output: Name: Alice, Age: 25
+
+      // Example 2: Function Parameters Destructuring with Default Values
+      // Here, if 'city' is not provided, it defaults to 'Unknown'.
+      function displayPersonWithDefaults({ name, age, city = "Unknown" }) {
+        console.log(`Name: ${name}, Age: ${age}, City: ${city}`);
+      }
+
+      const person2 = {
+        name: "Bob",
+        age: 30,
+      };
+
+      console.log("Example 2: With Default Values");
+      displayPersonWithDefaults(person2); // Output: Name: Bob, Age: 30, City: Unknown
+
+      // Example 3: Nested Destructuring in Function Parameters
+      // This function expects an object with a nested 'address' object.
+      function displayPersonWithAddress({ name, address: { street, city } }) {
+        console.log(`Name: ${name}, Street: ${street}, City: ${city}`);
+      }
+
+      const person3 = {
+        name: "Carol",
+        address: {
+          street: "456 Elm St",
+          city: "Chicago",
+        },
+      };
+
+      console.log("Example 3: Nested Destructuring");
+      displayPersonWithAddress(person3); // Output: Name: Carol, Street: 456 Elm St, City: Chicago
+
+      // Example 4: Destructuring with Renaming in Function Parameters
+      // Renames 'name' to 'userName' and 'age' to 'userAge' within the function.
+      function displayUser({ name: userName, age: userAge }) {
+        console.log(`User: ${userName}, Age: ${userAge}`);
+      }
+
+      const user = {
+        name: "David",
+        age: 40,
+      };
+
+      console.log("Example 4: Destructuring with Renaming");
+      displayUser(user); // Output: User: David, Age: 40
+    </script>
+  </head>
+  <body>
+    <h1>Function Parameters Destructuring Examples</h1>
+    <p>Open your browser console to view the output of the examples.</p>
+  </body>
+</html>

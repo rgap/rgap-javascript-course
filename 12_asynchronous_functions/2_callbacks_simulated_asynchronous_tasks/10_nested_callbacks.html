@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Functions simulating async operations, each with its own error control inside setTimeout
+      function firstOperation(callback) {
+        setTimeout(function () {
+          const error = false; // Change to true to simulate an error in firstOperation
+          if (error) {
+            callback("Error: First operation failed");
+            return;
+          }
+          callback(null, "First operation complete");
+        }, 1000);
+      }
+
+      function secondOperation(callback) {
+        setTimeout(function () {
+          const error = false; // Change to true to simulate an error in secondOperation
+          if (error) {
+            callback("Error: Second operation failed");
+            return;
+          }
+          callback(null, "Second operation complete");
+        }, 1000);
+      }
+
+      function thirdOperation(callback) {
+        setTimeout(function () {
+          const error = false; // Change to true to simulate an error in thirdOperation
+          if (error) {
+            callback("Error: Third operation failed");
+            return;
+          }
+          callback(null, "Third operation complete");
+        }, 1000);
+      }
+
+      function performOperations(callback) {
+        // Start the first operation
+        firstOperation(function (error, result1) {
+          if (error) {
+            console.error("Error:", error); // Logs error if firstOperation fails
+            callback(error);
+            return;
+          }
+          console.log(result1); // (After 1 second) Logs: "First operation complete"
+
+          // Start the second operation
+          secondOperation(function (error, result2) {
+            if (error) {
+              console.error("Error:", error); // Logs error if secondOperation fails
+              callback(error);
+              return;
+            }
+            console.log(result2); // (After 2 seconds) Logs: "Second operation complete"
+
+            // Start the third operation
+            thirdOperation(function (error, result3) {
+              if (error) {
+                console.error("Error:", error); // Logs error if thirdOperation fails
+                callback(error);
+                return;
+              }
+              console.log(result3); // (After 3 seconds) Logs: "Third operation complete"
+
+              // All operations completed successfully
+              callback(null, "All operations completed");
+            });
+          });
+        });
+      }
+
+      // Execute the function
+      performOperations(function (error, result) {
+        if (error) {
+          console.error("Error:", error); // Final error logging if any step fails
+        } else {
+          console.log(result); // (After 3 seconds) Logs: "All operations completed"
+        }
+      });
+    </script>
+  </head>
+  <body></body>
+</html>

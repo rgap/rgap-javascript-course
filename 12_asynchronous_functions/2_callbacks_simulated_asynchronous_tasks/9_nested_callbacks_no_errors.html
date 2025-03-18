@@ -7,58 +7,62 @@
     <script>
       // Nested Callbacks Example in JavaScript
 
-      // Nested callbacks, also known as callback hell, occur when multiple asynchronous operations are performed in sequence using callbacks.
+      // Nested callbacks, also known as callback hell, occur when multiple asynchronous
+      // operations are performed in sequence using callbacks.
 
       function firstOperation(callback) {
-        setTimeout(() => {
+        setTimeout(function () {
           callback(null, "First operation complete");
         }, 1000);
       }
 
       function secondOperation(callback) {
-        setTimeout(() => {
+        setTimeout(function () {
           callback(null, "Second operation complete");
         }, 1000);
       }
 
       function thirdOperation(callback) {
-        setTimeout(() => {
+        setTimeout(function () {
           callback(null, "Third operation complete");
         }, 1000);
       }
 
       function performOperations(callback) {
-        firstOperation((error, result1) => {
+        firstOperation(function (error, result1) {
           if (error) {
             callback(error);
             return;
           }
-          console.log(result1);
+          console.log(result1); // (After 1 second) Logs: "First operation complete"
 
-          secondOperation((error, result2) => {
+          secondOperation(function (error, result2) {
             if (error) {
               callback(error);
               return;
             }
-            console.log(result2);
+            console.log(result2); // (After 2 seconds) Logs: "Second operation complete"
 
-            thirdOperation((error, result3) => {
+            thirdOperation(function (error, result3) {
               if (error) {
                 callback(error);
                 return;
               }
-              console.log(result3);
+              console.log(result3); // (After 3 seconds) Logs: "Third operation complete"
+
+              // All operations are done
               callback(null, "All operations completed");
             });
           });
         });
       }
 
-      performOperations((error, result) => {
+      // Call the function to perform operations
+      performOperations(function (error, result) {
         if (error) {
           console.error("Error:", error);
         } else {
-          console.log(result);
+          console.log(result); // (After 3 seconds) Logs: "All operations completed"
         }
       });
     </script>

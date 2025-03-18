@@ -3,36 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Async/Await Fetch Example</title>
     <script>
-      // Basic Async/Await Example in JavaScript
+      // Simulate an asynchronous operation like fetching data from an API
+      function fetchData() {
+        return new Promise(function (resolve, reject) {
+          // Simulate a delay for the asynchronous operation (e.g., network request)
+          setTimeout(function () {
+            const success = true; // Change to false to simulate failure
 
-      // Async/Await is syntactic sugar built on top of Promises, making asynchronous code easier to write and understand.
+            if (success) {
+              const data = { userId: 1, name: "John Doe" };
+              resolve(data); // Resolve the promise with the fetched data
+            } else {
+              reject("Failed to fetch data."); // Reject the promise with an error message
+            }
+          }, 2000); // Simulate a 2-second delay
+        });
+      }
 
-      // Simulate fetching data from an API
-      async function fetchData() {
+      // Convert promise-based handling into async/await
+      async function fetchAndProcessData() {
         try {
-          // Simulate an asynchronous operation using a promise
-          let response = await new Promise((resolve, reject) => {
-            setTimeout(() => {
-              resolve({ id: 1, name: "John Doe", age: 30 });
-            }, 2000); // Simulate a 2-second delay
-          });
-
-          console.log("Data fetched successfully:", response);
+          const data = await fetchData(); // Wait for fetchData() to complete
+          console.log("Data fetched successfully:", data); // Handle success
         } catch (error) {
-          console.error("Error fetching data:", error);
+          console.error("Error:", error); // Handle error
         }
       }
 
-      fetchData();
+      // Call the async function
+      fetchAndProcessData();
 
       // Explanation:
-      // - This code demonstrates using async/await to handle an asynchronous operation.
-      // - The fetchData function simulates fetching data with a delay using a promise.
-      // - The await keyword pauses the function execution until the promise resolves.
-      // - If the promise resolves, the response is logged to the console.
-      // - If an error occurs, it is caught and logged to the console.
+      // - This code demonstrates the use of async/await instead of .then() and .catch().
+      // - The `fetchData` function remains unchanged as it returns a promise.
+      // - `fetchAndProcessData` is an async function that uses `await` to handle the promise.
+      // - `try...catch` is used to handle success and errors properly.
+
+      // Benefits of Async/Await:
+      // - Simplifies asynchronous code, making it easier to read.
+      // - Avoids deeply nested promise chains.
+      // - Provides built-in error handling with try/catch.
     </script>
   </head>
   <body></body>
