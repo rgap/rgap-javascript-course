@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Method Chaining in JavaScript</title>
+    <script>
+      /*
+        Theory: Method Chaining in JavaScript Classes
+        ---------------------------------------------
+        - Method chaining allows multiple method calls **on the same object in a single statement**.
+        - It works by returning `this` from each method.
+        - This makes code more **concise and readable**.
+        - Commonly used in frameworks like jQuery and builders like Sequelize.
+      */
+
+      class Calculator {
+        constructor(value = 0) {
+          this.result = value;
+        }
+
+        add(num) {
+          this.result += num;
+          return this; // Enables method chaining
+        }
+
+        subtract(num) {
+          this.result -= num;
+          return this; // Enables method chaining
+        }
+
+        multiply(num) {
+          this.result *= num;
+          return this; // Enables method chaining
+        }
+
+        divide(num) {
+          if (num !== 0) {
+            this.result /= num;
+          } else {
+            console.log("Cannot divide by zero.");
+          }
+          return this; // Enables method chaining
+        }
+
+        printResult() {
+          console.log(`Result: ${this.result}`);
+          return this; // Allows continued chaining
+        }
+      }
+
+      /*
+        Using Method Chaining:
+        - Calls multiple methods in a **single statement**.
+        - Works because each method returns `this` (the instance itself).
+      */
+      const calc = new Calculator(10);
+      calc.add(5).subtract(2).multiply(3).divide(2).printResult();
+      // Output: Result: 19.5
+
+    </script>
+  </head>
+  <body></body>
+</html>

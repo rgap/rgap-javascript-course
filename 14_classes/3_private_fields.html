@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Private Fields in JavaScript</title>
+    <script>
+      /*
+        Theory: Private Fields in JavaScript
+        ------------------------------------
+        - Private fields allow truly private properties in JavaScript classes.
+        - They are declared using the `#` prefix and can only be accessed within the class.
+        - Unlike conventionally prefixed properties (`_name`), private fields **cannot** be accessed or modified externally.
+        - Private fields improve encapsulation by restricting direct modification from outside the class.
+      */
+
+      class Person {
+        /*
+          Defining Private Fields:
+          - `#name` and `#age` are private fields.
+          - These cannot be accessed directly outside the class.
+        */
+        #name;
+        #age;
+
+        constructor(name, age) {
+          this.#name = name;
+          this.#age = age;
+        }
+
+        /*
+          Public Method `getDetails`:
+          - This method allows controlled access to the private fields.
+        */
+        getDetails() {
+          return `Name: ${this.#name}, Age: ${this.#age}`;
+        }
+      }
+
+      const person = new Person("John", 30);
+
+      /*
+        Accessing the private fields indirectly via `getDetails`:
+        - Since `#name` and `#age` are private, we use a method to retrieve their values.
+      */
+      console.log(person.getDetails()); // Output: Name: John, Age: 30
+
+      /*
+        Attempting to access a private field directly:
+        - `console.log(person.#name);` will cause a syntax error.
+        - Private fields are not accessible outside the class.
+      */
+      // console.log(person.#name); // SyntaxError: Private field '#name' must be declared in an enclosing class
+
+      /*
+        Accessing the field without the `#` prefix:
+        - `console.log(person.name);` will return `undefined` because no public `name` property exists.
+        - The private field is not exposed as a regular property.
+      */
+      console.log(person.name); // Output: undefined
+
+</script>
+  </head>
+  <body></body>
+</html>

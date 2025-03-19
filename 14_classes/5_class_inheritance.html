@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Inheritance in JavaScript</title>
+    <script>
+      /*
+        Theory: Class Inheritance in JavaScript
+        ---------------------------------------
+        - Inheritance is a fundamental concept in Object-Oriented Programming (OOP).
+        - It allows one class (child class) to inherit properties and methods from another class (parent class).
+        - The `extends` keyword is used in JavaScript to establish this relationship.
+      */
+
+      // Defining a base (parent)
+      class Animal {
+        constructor(name) {
+          this.name = name;
+        }
+
+        /*
+          A method in the parent class:
+          - This method is shared across all instances of `Animal` and its subclasses.
+          - If a subclass does not override it, the subclass will inherit this method.
+        */
+        speak() {
+          console.log(`${this.name} makes a sound.`);
+        }
+      }
+
+      /*
+        Creating a subclass `Dog` that extends `Animal`
+      */
+      class Dog extends Animal {
+        /*
+          Method Overriding
+        */
+        speak() {
+          console.log(`${this.name} barks.`);
+        }
+      }
+
+      /*
+        Creating an instance of `Dog`
+        - The constructor of `Animal` is called first (due to inheritance).
+      */
+      const dog = new Dog("Rex");
+
+      // The output will be: "Rex barks."
+      dog.speak();
+    </script>
+  </head>
+  <body></body>
+</html>

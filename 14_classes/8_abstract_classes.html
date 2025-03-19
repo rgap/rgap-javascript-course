@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abstract Classes and Methods in JavaScript</title>
+    <script>
+      /*
+        Theory: Abstract Classes and Methods in JavaScript
+        ---------------------------------------------------
+        - JavaScript does not have built-in support for **abstract classes** like languages such as Java or C#.
+        - However, we can simulate abstract behavior by:
+          1. Preventing direct instantiation of the class using `new.target`.
+          2. Defining a method that must be overridden, throwing an error if not implemented.
+        - Abstract classes serve as **blueprints** for subclasses.
+        - They **cannot** be instantiated directly and **must** be extended by child classes.
+      */
+
+      class Animal {
+        /*
+          Constructor:
+          - The `new.target` property is checked to prevent direct instantiation of `Animal`.
+          - If an attempt is made to create an instance of `Animal`, an error is thrown.
+          - This enforces `Animal` as an abstract class.
+        */
+        constructor(name) {
+          if (new.target === Animal) {
+            throw new TypeError("Cannot construct Animal instances directly");
+          }
+          this.name = name;
+        }
+
+        /*
+          Abstract Method Simulation:
+          - The `speak()` method is designed to be implemented by subclasses.
+          - If a subclass does not override this method, an error will be thrown.
+        */
+        speak() {
+          throw new Error("Method 'speak()' must be implemented.");
+        }
+      }
+
+      /*
+        Defining a Concrete Subclass: `Dog`
+        - `Dog` extends `Animal`, meaning it inherits its properties and methods.
+        - It **must** implement the `speak()` method to avoid errors.
+      */
+      class Dog extends Animal {
+        speak() {
+          console.log(`${this.name} barks.`);
+        }
+      }
+
+      /*
+        Attempting to Create an Instance of `Animal`:
+        - This will throw an error: "Cannot construct Animal instances directly"
+        - Uncommenting the following line will result in a runtime error.
+      */
+      // const animal = new Animal("Generic Animal"); // ❌ ERROR
+
+      /*
+        Creating an Instance of `Dog`:
+        - Since `Dog` properly extends `Animal` and implements `speak()`, no error occurs.
+      */
+      const dog = new Dog("Rex");
+      dog.speak(); // Output: Rex barks.
+
+    </script>
+  </head>
+  <body></body>
+</html>

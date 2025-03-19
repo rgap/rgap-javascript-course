@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getters and Setters in JavaScript</title>
+    <script>
+      /*
+        Theory: Getters and Setters in JavaScript
+        ----------------------------------------
+        - JavaScript classes support **getter** and **setter** methods, which allow controlled access to object properties.
+        - Getters (`get`) retrieve a property value.
+        - Setters (`set`) modify a property value, allowing validation or transformation before assignment.
+        - Getters and setters make properties more secure and help enforce data integrity.
+      */
+
+      class Person {
+        constructor(name, age) {
+          this._name = name;
+          this._age = age;
+        }
+
+        get name() {
+          return this._name;
+        }
+
+        set name(newName) {
+          this._name = newName;
+        }
+
+        get age() {
+          return this._age;
+        }
+
+        set age(newAge) {
+          if (newAge > 0) {
+            this._age = newAge;
+          } else {
+            console.log("Age must be positive.");
+          }
+        }
+      }
+
+      const person = new Person("John", 30);
+
+      /*
+        Using the getter method:
+        - `person.name` calls `get name()`, returning "John".
+      */
+      console.log(person.name); // Output: John
+
+      /*
+        Using the setter method:
+        - `person.name = "Jane"` calls `set name(newName)`, updating `_name` to "Jane".
+      */
+      person.name = "Jane";
+      console.log(person.name); // Output: Jane
+
+      /*
+        Attempting to set an invalid age:
+        - `person.age = -5` triggers `set age(newAge)`.
+        - Since `-5` is not a valid age, the setter displays an error message.
+        - The `_age` property remains unchanged.
+      */
+      person.age = -5; // Output: Age must be positive.
+
+      console.log(person.age); // Output: 30
+    </script>
+  </head>
+  <body></body>
+</html>

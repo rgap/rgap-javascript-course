@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Keyword in JavaScript</title>
+    <script>
+      /*
+        Theory: The `super` Keyword in JavaScript
+        ----------------------------------------
+        - `super` is used inside a subclass to call methods or constructors from its parent class.
+        - It allows child classes to inherit properties and behaviors from a parent class.
+        - `super()` calls the **parent's constructor** inside a child class.
+        - `super.methodName()` calls a **method from the parent class**.
+      */
+
+      // Defining a Parent Class
+      class Animal {
+        constructor(name) {
+          this.name = name;
+        }
+
+        speak() {
+          console.log(`${this.name} makes a sound.`);
+        }
+      }
+
+      // Defining a Child Class that Inherits from Animal
+      class Dog extends Animal {
+        constructor(name, breed) {
+          super(name); // Calls the parent constructor (Animal)
+          this.breed = breed;
+        }
+
+        // Overriding a Parent Method and Using `super`
+        speak() {
+          super.speak(); // Calls the parent class method
+          console.log(`${this.name} barks.`);
+        }
+      }
+
+      /*
+        Creating an Instance of `Dog`
+        - `super(name)` in `Dog` calls `Animal`'s constructor, setting `this.name = name`.
+      */
+      const dog = new Dog("Rex", "Labrador");
+
+      dog.speak();
+      // Output:
+      // Rex makes a sound.
+      // Rex barks.
+    </script>
+  </head>
+  <body></body>
+</html>

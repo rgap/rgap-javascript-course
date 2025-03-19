@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instanceof Operator in JavaScript</title>
+    <script>
+      /*
+        Theory: The `instanceof` Operator in JavaScript
+        ----------------------------------------------
+        - `instanceof` checks whether an object is an instance of a specific class or its subclass.
+        - It returns `true` if the prototype of the class exists in the object's prototype chain.
+        - The syntax: `object instanceof ClassName`
+        - Useful for **type checking**, **inheritance verification**, and **ensuring object correctness**.
+      */
+
+      // Defining a Base Class
+      class Animal {}
+
+      // Defining a Subclass
+      class Dog extends Animal {}
+
+      // Creating Instances
+      const dog = new Dog();
+      const animal = new Animal();
+
+      /*
+        Using `instanceof` to Check Inheritance:
+        - `dog instanceof Dog` → True, because `dog` is created from `Dog`.
+        - `dog instanceof Animal` → True, because `Dog` extends `Animal`.
+        - `dog instanceof Object` → True, because all objects in JavaScript inherit from `Object`.
+      */
+      console.log(dog instanceof Dog); // Output: true
+      console.log(dog instanceof Animal); // Output: true
+      console.log(dog instanceof Object); // Output: true
+
+      /*
+        Checking `instanceof` with the Base Class:
+        - `animal instanceof Animal` → True, since `animal` was created from `Animal`.
+        - `animal instanceof Dog` → False, because `Animal` is not a subclass of `Dog`.
+      */
+      console.log(animal instanceof Animal); // Output: true
+      console.log(animal instanceof Dog); // Output: false
+
+    </script>
+  </head>
+  <body></body>
+</html>

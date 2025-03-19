@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computed Property Names in JavaScript</title>
+    <script>
+      /*
+        Theory: Computed Property Names in JavaScript Classes
+        -----------------------------------------------------
+        - Computed property names allow **dynamically naming** properties inside a class.
+        - They are useful when property names need to be **generated at runtime**.
+        - The syntax: `[expression]` is used inside an object or class.
+        - This enables **dynamic behavior**, avoiding hardcoded property names.
+      */
+
+      const dynamicKey = "dynamicProperty";
+
+      class Example {
+        constructor(value) {
+          /*
+            Using a Computed Property Name:
+            - The property name is determined by the `dynamicKey` variable.
+            - This allows creating flexible, runtime-defined properties.
+          */
+          this[dynamicKey] = value;
+        }
+      }
+
+      /*
+        Creating an Instance of `Example`
+        - The computed property name (`dynamicProperty`) is set at runtime.
+      */
+      const obj = new Example(42);
+
+      /*
+        Accessing the Computed Property:
+        - `obj.dynamicProperty` retrieves the dynamically set value.
+      */
+      console.log(obj.dynamicProperty); // Output: 42
+
+    </script>
+  </head>
+  <body></body>
+</html>

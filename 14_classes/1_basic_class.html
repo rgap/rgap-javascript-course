@@ -3,31 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Basic JavaScript Class Example</title>
     <script>
-      // Basic Class Example
+      /*
+        Theory: JavaScript Classes
+        --------------------------
+        - JavaScript introduced classes in ES6 (ECMAScript 2015) to provide a more structured way 
+          of working with objects and prototypes.
+        - Classes are essentially syntactic sugar over JavaScript’s prototypal inheritance.
+        - Unlike traditional class-based languages like Java or C++, JavaScript classes are
+          special types of functions.
+        - Classes improve code readability, maintainability, and make object-oriented programming (OOP) in JS easier.
+      */
 
       class Person {
+        /*
+          The constructor method:
+          - This is a special method that runs when an instance (object) of the class is created.
+          - It is used to initialize properties (variables that belong to the instance).
+          - Each instance of the class will have its own copy of these properties.
+        */
         constructor(name, age) {
-          this.name = name;
+          this.name = name; // `this` refers to the instance being created
           this.age = age;
         }
 
+        /*
+          Defining a method inside the class:
+          - A method is a function associated with an object.
+          - Methods in a class are automatically to the instances.
+          - This means that all instances share the same method, improving memory efficiency.
+        */
         greet() {
           return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
         }
       }
 
+      /*
+        Creating an instance of the class:
+        - The `new` keyword is used to create a new object from the class.
+        - When `new Person("John", 30)` is executed, the constructor is called, 
+          setting `name = "John"` and `age = 30` for this specific instance.
+      */
       const person = new Person("John", 30);
+
+      /*
+        Calling the greet method:
+        - Methods are accessed using dot notation (`object.method()`).
+        - `person.greet()` calls the `greet` method for the `person` object.
+      */
       console.log(person.greet());
 
       /*
-        Explanation:
-        - This file demonstrates the basic usage of classes in JavaScript.
-        - The `Person` class is defined with a constructor that initializes the `name` and `age` properties.
-        - The `greet` method returns a string introducing the person.
-        - An instance of the `Person` class is created and the `greet` method is called.
-        */
+        Summary:
+        - The `Person` class encapsulates data (`name`, `age`) and behavior (`greet`).
+        - It provides a reusable blueprint for creating multiple `Person` objects.
+        - The class-based syntax is a more structured and readable way of handling objects.
+      */
     </script>
   </head>
   <body></body>

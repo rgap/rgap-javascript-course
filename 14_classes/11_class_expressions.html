@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Expressions in JavaScript</title>
+    <script>
+      /*
+        Theory: Class Expressions in JavaScript
+        --------------------------------------
+        - JavaScript supports two ways to define classes:
+          1. **Class Declarations** → `class MyClass { ... }`
+          2. **Class Expressions** → `const MyClass = class { ... };`
+
+        - Class expressions are useful when:
+          - Defining a class **dynamically** (e.g., inside a function).
+          - Keeping class names **private** (anonymous class expressions).
+          - Assigning classes conditionally based on runtime logic.
+          - When using temporary classes in middleware, factories, or event-driven programming.
+      */
+
+      // Example of a Named Class Expression:
+      const MyClass = class {
+        /*
+          Constructor Method:
+          - Runs when a new instance of the class is created.
+          - Initializes the `name` property.
+        */
+        constructor(name) {
+          this.name = name;
+        }
+
+        /*
+          Instance Method `greet`:
+          - Returns a greeting message using the `name` property.
+        */
+        greet() {
+          return `Hello, ${this.name}!`;
+        }
+      };
+
+      /*
+        Creating an instance of the class expression:
+        - The `MyClass` variable holds a class, so we can instantiate it with `new MyClass()`.
+        - The `greet()` method is then called on the created instance.
+      */
+      const obj = new MyClass("John");
+      console.log(obj.greet()); // Output: Hello, John!
+
+      /*
+        Example of an Anonymous Class Expression:
+        - When a class expression does not have a name, it is called **anonymous**.
+        - This is useful for one-time use cases, such as immediately invoking a class.
+      */
+      const AnonymousClass = class {
+        constructor(value) {
+          this.value = value;
+        }
+      };
+
+      const instance = new AnonymousClass(42);
+      console.log(instance.value); // Output: 42
+
+      
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mixins in JavaScript</title>
+    <script>
+      /*
+        Theory: Mixins in JavaScript
+        -----------------------------
+        - Mixins are a way to **reuse functionality across multiple classes** without using classical inheritance.
+        - JavaScript does not support **multiple inheritance**, so mixins allow sharing methods across unrelated classes.
+        - A mixin is typically a function that takes a base class and **returns a new class** that extends it.
+        - Mixins allow adding **modular behaviors** that can be mixed into multiple classes.
+      */
+
+      /*
+        Defining a Mixin:
+        - `CanFly` is a higher-order function that takes a class (`Base`) as input.
+        - It returns a new class that **extends** the given `Base` class.
+        - The extended class includes a new method `fly()`, which adds flying behavior.
+      */
+      const CanFly = Base =>
+        class extends Base {
+          fly() {
+            console.log(`${this.name} is flying!`);
+          }
+        };
+
+      /*
+        Defining a Base Class:
+        - The `Animal` class provides a common structure for all animals.
+        - It has a constructor that initializes the `name` property.
+      */
+      class Animal {
+        constructor(name) {
+          this.name = name;
+        }
+      }
+
+      /*
+        Creating a Class with the Mixin:
+        - The `Bird` class extends `Animal`, inheriting the `name` property.
+        - It also applies the `CanFly` mixin, gaining the `fly()` method.
+      */
+      class Bird extends CanFly(Animal) {}
+
+      /*
+        Creating an Instance:
+        - A `Bird` instance is created with the name `"Eagle"`.
+        - Since `Bird` extends `CanFly(Animal)`, it inherits both `name` from `Animal` and `fly()` from `CanFly`.
+      */
+      const bird = new Bird("Eagle");
+
+      /*
+        Calling the `fly` Method:
+        - The `fly()` method is inherited from `CanFly`.
+        - It outputs a message indicating that the bird is flying.
+      */
+      bird.fly(); // Output: Eagle is flying!
+
+    </script>
+  </head>
+  <body></body>
+</html>

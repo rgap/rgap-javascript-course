@@ -3,9 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Static Methods in JavaScript</title>
     <script>
-      // Static Methods Example
+      /*
+        Theory: Static Methods in JavaScript
+        ------------------------------------
+        - A static method is a method that belongs to the class itself, rather than instances of the class.
+        - In JavaScript, static methods are defined using the `static` keyword.
+        - These methods can be called directly on the class without creating an instance.
+        - Static methods are useful for utility functions that don't require instance-specific data.
+      */
 
       class MathUtilities {
         static add(a, b) {
@@ -17,16 +24,11 @@
         }
       }
 
-      console.log(MathUtilities.add(5, 3)); // 8
-      console.log(MathUtilities.subtract(5, 3)); // 2
-
       /*
-      Explanation:
-      - This file demonstrates the use of static methods in JavaScript classes.
-      - The `MathUtilities` class defines two static methods: `add` and `subtract`.
-      - Static methods are called on the class itself, not on instances of the class.
-      - The static methods `add` and `subtract` are called and the results are logged to the console.
+        Calling the static methods:
       */
+      console.log(MathUtilities.add(5, 3)); // Output: 8
+      console.log(MathUtilities.subtract(5, 3)); // Output: 2
     </script>
   </head>
   <body></body>
