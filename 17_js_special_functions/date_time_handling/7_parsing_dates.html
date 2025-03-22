@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Parsing Dates</title>
+  </head>
+  <body>
+    <script>
+      // Parsing a date from an ISO 8601 string
+      const dateString = "2023-06-15T12:00:00Z"; // ISO format (UTC time)
+      const parsedDate = new Date(Date.parse(dateString)); // Convert to Date object
+      console.log("Parsed date:", parsedDate);
+      // Output: Parsed date: Thu Jun 15 2023 12:00:00 GMT+0000 (UTC)
+
+      // Creating a date from individual components
+      // ⚠️ Months are zero-based (0 = January, 5 = June)
+      const dateFromComponents = new Date(2023, 5, 15, 12, 0, 0);
+      console.log("Date from components:", dateFromComponents);
+      // Output: Date from components: Thu Jun 15 2023 12:00:00 GMT+0000 (UTC)
+
+      /*
+        Summary:
+        - `Date.parse(string)` converts a valid date string into a timestamp.
+        - `new Date(Date.parse(string))` creates a Date object from a string.
+        - `new Date(Y, M, D, H, m, s)` creates a Date object from components (⚠️ Months are zero-based).
+      */
+    </script>
+  </body>
+</html>

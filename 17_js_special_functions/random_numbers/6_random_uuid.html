@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Random UUID</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Theory: Generating a Random UUID (Universally Unique Identifier)
+        -----------------------------------------------------------------
+        - A UUID is a 128-bit identifier typically represented as a string:
+          `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx`
+        - The `4xxx` part indicates UUID version 4.
+        - The `y` position is replaced with one of `8`, `9`, `a`, or `b` (hex).
+        - This format ensures a high probability of uniqueness.
+
+        - JavaScript does not have a built-in UUID generator, but we can use:
+          - `crypto.randomUUID()` (modern browsers)
+          - A custom function using `Math.random()`
+      */
+
+      function getRandomUUID() {
+        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+          const r = Math.random() * 16 | 0;
+          const v = c === "x" ? r : (r & 0x3) | 0x8;
+          return v.toString(16);
+        });
+      }
+
+      // Example: Generate a random UUID
+      const randomUUID = getRandomUUID();
+      console.log("Random UUID:", randomUUID);
+      // Example Output: Random UUID: "3f5e1c74-2b7a-4a91-b3f5-12ab45c8ef90" (varies every time)
+
+    </script>
+  </body>
+</html>

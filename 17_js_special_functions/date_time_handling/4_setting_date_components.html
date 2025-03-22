@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Setting Date Components</title>
+  </head>
+  <body>
+    <script>
+      const date = new Date(); // Current date and time
+
+      // Updating the date components
+      date.setFullYear(2025); // Sets the year to 2025
+      date.setMonth(11); // Sets the month to December (Months are 0-based: 11 = December)
+      date.setDate(25); // Sets the day of the month to 25
+      date.setHours(10); // Sets the hour to 10 AM
+      date.setMinutes(30); // Sets the minutes to 30
+      date.setSeconds(15); // Sets the seconds to 15
+      date.setMilliseconds(500); // Sets the milliseconds to 500
+
+      console.log("Updated date:", date);
+      // Example Output: Updated date: Thu Dec 25 2025 10:30:15 GMT+0000 (UTC)
+      // (Output will vary depending on the system's timezone)
+
+      /*
+        Summary:
+        - `.setFullYear(year)` → Updates the year.
+        - `.setMonth(month)` → Updates the month (0 = January, 11 = December).
+        - `.setDate(day)` → Updates the day of the month (1-31).
+        - `.setHours(hours)` → Updates the hour (0-23).
+        - `.setMinutes(minutes)` → Updates the minutes (0-59).
+        - `.setSeconds(seconds)` → Updates the seconds (0-59).
+        - `.setMilliseconds(ms)` → Updates the milliseconds (0-999).
+      */
+    </script>
+  </body>
+</html>

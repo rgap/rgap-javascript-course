@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Timezones</title>
+  </head>
+  <body>
+    <script>
+      const now = new Date(); // Current date and time
+
+      // Convert date to Coordinated Universal Time (UTC) string format
+      console.log("UTC time:", now.toUTCString());
+      // Example Output: UTC time: Tue, 18 Mar 2025 14:30:15 GMT
+
+      // Convert date to local time string (system-dependent)
+      console.log("Local time:", now.toString());
+      // Example Output (US Eastern Time): Local time: Tue Mar 18 2025 10:30:15 GMT-0400 (Eastern Daylight Time)
+      // Example Output (UK Timezone): Local time: Tue Mar 18 2025 14:30:15 GMT+0000 (Greenwich Mean Time)
+
+      // Get the time zone offset in minutes from UTC
+      const timeZoneOffset = now.getTimezoneOffset();
+      console.log("Time zone offset (minutes):", timeZoneOffset);
+      // Example Output (US Eastern Time): Time zone offset (minutes): 240
+      // Example Output (UK Timezone): Time zone offset (minutes): 0
+      // A positive value means the local time is behind UTC.
+
+      /*
+        Summary:
+        - `.toUTCString()` → Converts the date to a UTC string.
+        - `.toString()` → Converts the date to a local string, including time zone info.
+        - `.getTimezoneOffset()` → Returns the time difference in **minutes** (UTC - Local Time).
+          - Positive values mean the local time is **behind** UTC.
+          - Negative values mean the local time is **ahead** of UTC.
+      */
+    </script>
+  </body>
+</html>

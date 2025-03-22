@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Random Number in a Range</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Theory: Generating a Random Number in a Specific Range
+        ------------------------------------------------------
+        - `Math.random()` returns a number between **0 and 1**.
+        - To generate a number in a custom range **[min, max]**, use:
+          `Math.random() * (max - min) + min`
+        - This ensures the result is within the **inclusive range**.
+      */
+
+      function getRandomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      // Example: Generate a random number between 10 and 50
+      const randomNumber = getRandomInRange(10, 50);
+      console.log("Random number between 10 and 50:", randomNumber);
+      // Example Output: Random number between 10 and 50: 27.458932 (varies every time)
+
+    </script>
+  </body>
+</html>

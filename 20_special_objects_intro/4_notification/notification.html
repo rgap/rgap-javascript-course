@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Notification API Example</title>
+  </head>
+  <body>
+    <h1>Notification API Example</h1>
+
+    <button id="showNotification">Show Notification</button>
+
+    <script>
+      /*
+        🔔 **Notification API Overview**
+        ---------------------------------
+        - The **Notification API** allows web applications to display notifications.
+        - Introduced in **2012 (Chrome 22, Firefox 22, Safari 6, Edge 14)**.
+        - Used for **desktop & mobile notifications**, even when the app is in the background.
+
+        📜 **History**
+        --------------
+        - **2012**: Introduced in early browser versions (Chrome, Firefox, Safari).
+        - **2015**: Integrated with **Push API** for real-time web notifications.
+        - **2018**: Further improvements in browser security (permissions).
+
+        ✅ **Advantages**
+        ----------------
+        - Provides **timely updates** to the user.
+        - Works **even when the webpage is minimized**.
+        - Improves **user engagement & retention**.
+        - Can be combined with **Push API** for real-time updates.
+
+        ⚠️ **Limitations**
+        ------------------
+        - Requires **user permission** (must request before showing notifications).
+        - Browsers **block notifications** by default for security reasons.
+        - Some **OS-level restrictions** exist (e.g., iOS has limited support).
+      */
+
+      document.getElementById("showNotification").addEventListener("click", function () {
+        // Check if notifications are already granted
+        if (Notification.permission === "granted") {
+          new Notification("Hello! This is a notification.");
+        }
+        // If permission was never asked, request it
+        else if (Notification.permission !== "denied") {
+          Notification.requestPermission().then((permission) => {
+            if (permission === "granted") {
+              new Notification("Hello! This is a notification.");
+            }
+          });
+        }
+      });
+
+    </script>
+  </body>
+</html>

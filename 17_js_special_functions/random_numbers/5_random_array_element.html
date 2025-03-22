@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Random Array Element</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Theory: Selecting a Random Element from an Array
+        ------------------------------------------------
+        - To pick a random element from an array:
+          1. Generate a **random index** using `Math.floor(Math.random() * array.length)`.
+          2. Access the element at the generated index.
+        - This ensures **equal probability** for each element.
+      */
+
+      function getRandomElement(arr) {
+        const randomIndex = Math.floor(Math.random() * arr.length);
+        return arr[randomIndex];
+      }
+
+      // Example: Selecting a random fruit
+      const fruits = ["Apple", "Banana", "Cherry", "Grapes", "Orange"];
+      const randomFruit = getRandomElement(fruits);
+      console.log("Random fruit:", randomFruit);
+      // Example Output: Random fruit: Cherry (varies every time)
+
+    </script>
+  </body>
+</html>

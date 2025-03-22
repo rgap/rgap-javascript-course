@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Comparing Dates</title>
+  </head>
+  <body>
+    <script>
+      // Creating two date objects
+      const date1 = new Date("2023-06-15"); // June 15, 2023
+      const date2 = new Date("2023-06-20"); // June 20, 2023
+
+      console.log("Date 1:", date1);
+      // Output: Date 1: Thu Jun 15 2023 00:00:00 GMT+0000 (UTC)
+
+      console.log("Date 2:", date2);
+      // Output: Date 2: Tue Jun 20 2023 00:00:00 GMT+0000 (UTC)
+
+      // Comparing if date1 is earlier than date2
+      console.log("Date 1 < Date 2:", date1 < date2);
+      // Output: Date 1 < Date 2: true
+
+      // Comparing if date1 is later than date2
+      console.log("Date 1 > Date 2:", date1 > date2);
+      // Output: Date 1 > Date 2: false
+
+      // Checking if two dates are exactly the same
+      console.log("Date 1 == Date 2:", date1.getTime() === date2.getTime());
+      // Output: Date 1 == Date 2: false
+
+      /*
+        Summary:
+        - JavaScript allows comparing dates using `<`, `>`, and `===`.
+        - `.getTime()` returns the timestamp (milliseconds since 1970) for accurate comparison.
+        - Direct comparison of date objects (`date1 === date2`) **does not work** because objects are reference-based.
+      */
+    </script>
+  </body>
+</html>

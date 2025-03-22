@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>'this' in JavaScript Classes</title>
+  </head>
+  <body>
+    <h1>'this' in JavaScript Classes</h1>
+    <script>
+      /*
+        Theory: 'this' in JavaScript Classes
+        -------------------------------------
+        - In a class, `this` refers to the instance of the class.
+        - Methods inside a class use `this` to access instance properties.
+      */
+
+      class Person {
+        constructor(name) {
+          this.name = name;
+        }
+
+        // Regular class method (bound to instance when called normally)
+        greet() {
+          console.log(`Hello, my name is ${this.name}.`);
+        }
+
+        // Arrow function method (automatically binds `this`)
+        arrowGreet = () => {
+          console.log(`Hello from arrow function, my name is ${this.name}.`);
+        };
+      }
+
+      const person = new Person("Alice");
+      person.greet(); // Output: Hello, my name is Alice.
+
+      /*
+        Losing `this` Context:
+        - When assigning a method to a variable, `this` is lost.
+      */
+      const greetFunction = person.greet;
+      greetFunction(); // Output: undefined (because `this` is lost)
+      
+    </script>
+  </body>
+</html>

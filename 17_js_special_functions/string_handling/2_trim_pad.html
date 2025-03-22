@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trimming & Padding Strings</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Theory: Trimming & Padding Strings
+        ----------------------------------
+        - `.trim()` → Removes **leading and trailing spaces**.
+        - `.trimStart()` → Removes **only leading spaces**.
+        - `.trimEnd()` → Removes **only trailing spaces**.
+        - `.padStart(length, char)` → Pads the string **at the start** until it reaches `length`.
+        - `.padEnd(length, char)` → Pads the string **at the end** until it reaches `length`.
+      */
+
+      const text = "   Hello, World!   ";
+
+      console.log("Original text:", `"${text}"`);
+      // Output: Original text: "   Hello, World!   "
+
+      console.log("Trimmed:", `"${text.trim()}"`);
+      // Output: Trimmed: "Hello, World!"
+
+      console.log("Trim Start:", `"${text.trimStart()}"`);
+      // Output: Trim Start: "Hello, World!   "
+
+      console.log("Trim End:", `"${text.trimEnd()}"`);
+      // Output: Trim End: "   Hello, World!"
+
+      const number = "42";
+      console.log("Padded Start:", number.padStart(5, "0"));
+      // Output: Padded Start: "00042"
+
+      console.log("Padded End:", number.padEnd(5, "*"));
+      // Output: Padded End: "42***"
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formatting Dates</title>
+  </head>
+  <body>
+    <script>
+      const now = new Date(); // Current date and time
+
+      // Converts date to a human-readable format (weekday, month, day, year)
+      console.log("Date string:", now.toDateString());
+      // Example Output: "Tue Mar 18 2025"
+
+      // Returns time part in HH:MM:SS GMT format
+      console.log("Time string:", now.toTimeString());
+      // Example Output: "14:30:15 GMT+0000 (Coordinated Universal Time)"
+
+      // Returns only the date in localized format (format depends on the browser locale)
+      console.log("Locale date string:", now.toLocaleDateString());
+      // Example Output: "3/18/2025" (US) or "18/03/2025" (UK)
+
+      // Returns only the time in localized format
+      console.log("Locale time string:", now.toLocaleTimeString());
+      // Example Output: "2:30:15 PM" (US) or "14:30:15" (24-hour format in some locales)
+
+      // Converts to ISO 8601 format (YYYY-MM-DDTHH:mm:ss.sssZ)
+      console.log("ISO string:", now.toISOString());
+      // Example Output: "2025-03-18T14:30:15.123Z"
+
+      // Custom formatting using locale options
+      const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+      console.log("Custom formatted date:", now.toLocaleDateString(undefined, options));
+      // Example Output: "03/18/2025" (US) or "18/03/2025" (UK)
+
+      /*
+        Summary:
+        - `.toDateString()` → Returns human-readable date.
+        - `.toTimeString()` → Returns only the time with GMT info.
+        - `.toLocaleDateString()` → Returns localized date format.
+        - `.toLocaleTimeString()` → Returns localized time format.
+        - `.toISOString()` → Returns ISO 8601 date string (good for APIs).
+        - `.toLocaleDateString(undefined, options)` → Custom formatted date.
+      */
+    </script>
+  </body>
+</html>

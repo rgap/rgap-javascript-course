@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Replacing Substrings</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Theory: Replacing Substrings in Strings
+        ---------------------------------------
+        - `.replace(old, new)` → Replaces **only the first occurrence** of `old` with `new`.
+        - `.replaceAll(old, new)` → Replaces **all occurrences** of `old` with `new`.
+        - Regular expressions can be used for case-insensitive or global replacements.
+      */
+
+      const text = "JavaScript is awesome. JavaScript is fun!";
+
+      console.log("Original text:", text);
+      // Output: Original text: JavaScript is awesome. JavaScript is fun!
+
+      // Replace only the first occurrence
+      console.log("Replace first 'JavaScript':", text.replace("JavaScript", "JS"));
+      // Output: Replace first 'JavaScript': JS is awesome. JavaScript is fun!
+
+      // Replace all occurrences
+      console.log("Replace all 'JavaScript':", text.replaceAll("JavaScript", "JS"));
+      // Output: Replace all 'JavaScript': JS is awesome. JS is fun!
+
+      // Using a regular expression for case-insensitive replacement
+      console.log("Case-insensitive replace:", text.replace(/javascript/i, "JS"));
+      // Output: Case-insensitive replace: JS is awesome. JavaScript is fun!
+
+      // Using a global regular expression to replace all occurrences
+      console.log("Global replace:", text.replace(/JavaScript/g, "JS"));
+      // Output: Global replace: JS is awesome. JS is fun!
+
+      /*
+        Summary:
+        - `replace("old", "new")` → Replaces the **first** occurrence.
+        - `replaceAll("old", "new")` → Replaces **all** occurrences.
+        - `replace(/old/i, "new")` → Case-insensitive replacement.
+        - `replace(/old/g, "new")` → Global replacement for all matches.
+      */
+    </script>
+  </body>
+</html>

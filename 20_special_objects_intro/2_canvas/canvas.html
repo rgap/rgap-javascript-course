@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canvas API</title>
+  </head>
+  <body>
+    <h1>Canvas API Example</h1>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+    
+    <script>
+      /*
+        🎨 **Canvas API Overview**
+        ------------------------------
+        - The **Canvas API** allows JavaScript to draw 2D graphics dynamically.
+        - Introduced in **HTML5 (2004, WHATWG Draft, later standardized in 2011).**
+        - Provides a `canvas` element with a **bitmap-based** drawing surface.
+        - Used for **game development, data visualization, animations, and image processing**.
+
+        📜 **History**
+        --------------
+        - **2004**: First implemented by Apple for Safari (used in Dashboard widgets).
+        - **2005**: Mozilla and Opera added support, making it widely adopted.
+        - **2009**: The W3C and WHATWG standardized the API as part of HTML5.
+        - **2011**: HTML5 became a **W3C Recommendation**, making `<canvas>` an official standard.
+
+        ✅ **Advantages**
+        ----------------
+        - Lightweight and **highly performant** (works directly with pixels).
+        - Allows for **custom animations, image manipulation, and game graphics**.
+        - Well-supported in **all modern browsers** (Chrome, Firefox, Edge, Safari).
+        - No need for plugins (unlike Flash, which Canvas helped replace).
+
+        ⚠️ **Limitations**
+        ------------------
+        - Does not support **built-in interactivity** (must handle events manually).
+        - Works with pixels, **not scalable like SVG** (no built-in vector scaling).
+        - No built-in scene graph (unlike WebGL or SVG).
+      */
+
+      // Select the <canvas> element by its ID
+      const canvas = document.getElementById("myCanvas");
+
+      // Get the 2D drawing context
+      const context = canvas.getContext("2d");
+
+      /*
+        🎨 **Drawing a Rectangle**
+        - `fillStyle` → Sets the color of the shape.
+        - `fillRect(x, y, width, height)` → Draws a filled rectangle.
+      */
+      context.fillStyle = "blue"; // Set fill color to blue
+      context.fillRect(50, 50, 100, 100); // Draw a blue rectangle
+
+    </script>
+  </body>
+</html>

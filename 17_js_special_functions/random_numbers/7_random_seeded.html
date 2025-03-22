@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Seeded Random Number</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Theory: Generating a Seeded Random Number
+        -----------------------------------------
+        - `Math.random()` generates non-deterministic results (different each time).
+        - A **seeded** random number generator produces **repeatable** results.
+        - Can JavaScript Generate a Seeded Random Number?
+            - 🔹 No, JavaScript does not have a built-in way to generate seeded random numbers.
+            - 🔹 Yes, you can manually implement a seeded random generator using algorithms like Linear Congruential Generator (LCG) or Mulberry32.
+        - The common approach is using a **Linear Congruential Generator (LCG)**.
+
+        Formula for LCG:
+          `Xn+1 = (a * Xn + c) % m`
+        - `Xn` = current random value
+        - `a`, `c`, and `m` = constants
+        - The seed determines the sequence.
+
+        - JavaScript does not provide built-in seeded randomness, so we implement it manually.
+      */
+
+      function seededRandom(seed) {
+        let x = seed % 2147483647; // Use a large prime number
+        return function () {
+          x = (16807 * x) % 2147483647; // LCG step
+          return x / 2147483647;
+        };
+      }
+
+      // Example: Creating a seeded random number generator
+      const seed = 12345; // Change this for different sequences
+      const randomGenerator = seededRandom(seed);
+
+      // Generating a few seeded random numbers
+      console.log("Seeded random 1:", randomGenerator()); // Same output each run
+      console.log("Seeded random 2:", randomGenerator());
+      console.log("Seeded random 3:", randomGenerator());
+    </script>
+  </body>
+</html>

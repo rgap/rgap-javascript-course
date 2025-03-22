@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Closure Demo</title>
+  </head>
+  <body>
+    <h1>Closure Demo</h1>
+    <script>
+      function outerFunction() {
+        console.log("Running outerFunction...");
+
+        // Each invocation of outerFunction creates a new random value
+        let outerVar = "I am outside! " + Math.random();
+
+        return function innerFunction() {
+          console.log("innerFunction says:", outerVar);
+        };
+      }
+
+      // First call to outerFunction:
+      const newFunc1 = outerFunction();
+      // newFunc1 captures its own outerVar (with one random value).
+
+      // Call newFunc1 twice:
+      newFunc1(); // Logs the first random value
+      newFunc1(); // Logs the same random value (same closure)
+
+      // Second call to outerFunction:
+      const newFunc2 = outerFunction();
+      // newFunc2 captures a different outerVar (another random value).
+
+      // Call newFunc2 twice:
+      newFunc2(); // Logs a fresh, different random value
+      newFunc2(); // Logs that same new random value again
+    </script>
+  </body>
+</html>

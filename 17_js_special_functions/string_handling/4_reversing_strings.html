@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Reversing Strings</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Theory: Reversing a String in JavaScript
+        ----------------------------------------
+        - JavaScript does not have a built-in `reverse()` method for strings.
+        - Strings must first be **converted to an array**, then reversed, and joined back.
+        - This is commonly done using:
+          1. `.split("")` → Converts a string into an array of characters.
+          2. `.reverse()` → Reverses the array.
+          3. `.join("")` → Converts the array back into a string.
+      */
+
+      function reverseString(str) {
+        return str.split("").reverse().join("");
+      }
+
+      const text = "Hello, World!";
+      console.log("Original text:", text);
+      // Output: Original text: Hello, World!
+
+      console.log("Reversed text:", reverseString(text));
+      // Output: Reversed text: !dlroW ,olleH
+
+    </script>
+  </body>
+</html>

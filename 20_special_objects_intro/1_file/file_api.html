@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>File API Example</title>
+  </head>
+  <body>
+    <h1>File API Example</h1>
+    
+    <!-- File input element to select a file -->
+    <input type="file" id="fileInput" />
+    <div id="fileContent"></div>
+    
+    <script>
+      /*
+        📂 **File API Overview**
+        ------------------------------
+        - The **File API** enables web applications to interact with local files.
+        - Introduced in **2010** as a draft and standardized as part of the HTML5 specification.
+        - Provides functionality for:
+          - **Reading files** on the client-side without uploading to a server.
+          - **Asynchronous file processing** to prevent UI blocking.
+          - **Handling large files efficiently** using `FileReader`.
+
+        📜 **History**
+        --------------
+        - **2010**: First draft by W3C, introduced in Firefox and Chrome.
+        - **2011-2012**: Adopted by major browsers (Safari, Edge).
+        - **2014**: Became a well-supported standard in HTML5.
+
+        ✅ **Advantages**
+        ----------------
+        - Enables **file uploads** in a more controlled manner.
+        - Allows **reading text, binary, and images** before uploading.
+        - Works **without a server** (purely client-side).
+        - Supports **drag-and-drop** file interactions.
+
+        ⚠️ **Limitations**
+        ------------------
+        - Cannot **create or modify local files** (security restrictions).
+        - Does **not allow writing files directly** to the filesystem.
+        - Limited **by browser permissions and sandboxing rules**.
+      */
+
+      // Select the file input element
+      document.getElementById("fileInput").addEventListener("change", function (event) {
+        const file = event.target.files[0]; // Get the selected file
+
+        if (!file) return; // Exit if no file is selected
+
+        const reader = new FileReader(); // Create a FileReader instance
+
+        /*
+          📌 **onload Event**
+          - Fires when the file reading is complete.
+          - `event.target.result` contains the file's content.
+          - This example reads **text files** only (`readAsText()`).
+        */
+        reader.onload = function (event) {
+          document.getElementById("fileContent").textContent = event.target.result;
+        };
+
+        reader.readAsText(file); // Read the file as text
+      });
+
+    </script>
+  </body>
+</html>

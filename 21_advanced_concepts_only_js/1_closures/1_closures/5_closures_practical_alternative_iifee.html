@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>IIFE Closure Demo</title>
+  </head>
+  <body>
+    <h1>IIFE Closure Demo</h1>
+    <script>
+      /**
+       * This is an Immediately Invoked Function Expression (IIFE). It runs as soon as
+       * the JavaScript engine reads this line — once, and only once.
+       *
+       * 1) The function itself: (function() { ... })
+       * 2) Followed by: () at the end to invoke it immediately.
+       *
+       * Whatever it returns is assigned to the constant 'outerFunction'.
+       */
+      const outerFunction = (function () {
+        console.log("IIFE is running right now...");
+
+        // 'outerVar' is created during the IIFE's single execution.
+        const outerVar = "I am outside! " + Math.random();
+
+        // The IIFE returns this inner function, which can still access 'outerVar'.
+        return function innerFunction() {
+          console.log("innerFunction says:", outerVar);
+        };
+      })();
+      //                              ^^
+      // This '()' at the end causes the function to run immediately.
+
+      /**
+       * At this point, the IIFE has already executed:
+       *   - We logged "IIFE is running right now..."
+       *   - We computed a random string for 'outerVar'
+       *   - We returned the 'innerFunction'
+       *
+       * The returned innerFunction is what gets assigned to 'outerFunction'.
+       */
+
+      // Now, calling 'outerFunction()' does NOT re-run the IIFE.
+      // Instead, it calls the inner function the IIFE returned.
+      outerFunction(); // Logs whatever 'outerVar' was set to during the IIFE
+      outerFunction(); // Logs the same value again, same closure
+    </script>
+  </body>
+</html>

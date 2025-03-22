@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Geolocation API Example</title>
+  </head>
+  <body>
+    <h1>Geolocation API Example</h1>
+
+    <button id="getLocation">Get Location</button>
+    <div id="location"></div>
+
+    <script>
+      /*
+        🌍 **Geolocation API Overview**
+        ----------------------------------
+        - The **Geolocation API** allows web applications to retrieve the user's geographical position.
+        - Introduced in **HTML5 (2008 Draft, standardized in 2010)**.
+        - Uses data from GPS, Wi-Fi networks, cellular networks, and IP addresses.
+
+        📜 **History**
+        --------------
+        - **2008**: First proposed in W3C drafts.
+        - **2010**: Standardized as part of HTML5.
+        - **2011**: Implemented in Chrome, Firefox, and Safari.
+        - **2013**: Expanded to mobile web apps with improved GPS support.
+
+        ✅ **Advantages**
+        ----------------
+        - Enables **location-based services** (maps, navigation, weather apps).
+        - Provides **real-time tracking** for users.
+        - Works on **mobile and desktop devices**.
+        - Uses **multiple sources** (GPS, Wi-Fi, cellular).
+
+        ⚠️ **Limitations**
+        ------------------
+        - Requires **user permission** (security & privacy restrictions).
+        - Accuracy **varies** based on the device and network.
+        - Does **not work offline** (requires network or GPS).
+      */
+
+      document.getElementById("getLocation").addEventListener("click", function () {
+        // Check if Geolocation API is supported
+        if (navigator.geolocation) {
+          /*
+            📌 **getCurrentPosition() Method**
+            - Retrieves the user's current position.
+            - Takes **two arguments**:
+              1. Success callback (`position`) → Returns latitude & longitude.
+              2. Error callback (`error`) → Handles permission denial, timeout, or location unavailability.
+          */
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              document.getElementById("location").textContent =
+                "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
+            },
+            function (error) {
+              // Handle different geolocation errors
+              document.getElementById("location").textContent = "Error getting location: " + error.message;
+            }
+          );
+        } else {
+          document.getElementById("location").textContent = "Geolocation is not supported by this browser.";
+        }
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Random Boolean</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Theory: Generating a Random Boolean Value
+        -----------------------------------------
+        - A boolean value is either `true` or `false`.
+        - Since `Math.random()` generates a number **between 0 and 1**, 
+          we can determine the boolean value using:
+          `Math.random() < 0.5`
+        - This means there is a **50% chance of getting `true` or `false`**.
+      */
+
+      function getRandomBoolean() {
+        return Math.random() < 0.5;
+      }
+
+      // Generate a random boolean value
+      const randomBool = getRandomBoolean();
+      console.log("Random boolean value:", randomBool);
+      // Example Output: Random boolean value: true (or false, varies every time)
+
+    </script>
+  </body>
+</html>

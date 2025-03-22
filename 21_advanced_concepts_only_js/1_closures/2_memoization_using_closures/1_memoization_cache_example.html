@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memoization Theory in JavaScript</title>
+  </head>
+  <body>
+    <h1>Memoization Theory in JavaScript</h1>
+    <script>
+      // Memoization is a technique to store results of expensive function calls and reuse them when the same inputs occur again.
+      function memoize(func) {
+        const cache = {};
+        return function (...args) {
+          const key = args.join(","); // Creating a unique cache key based on arguments.
+          if (key in cache) {
+            console.log("Fetching from cache for:", key);
+            return cache[key]; // Returning cached result.
+          }
+          const result = func(...args); // Calculating result for new inputs.
+          cache[key] = result; // Storing the result in cache.
+          return result;
+        };
+      }
+
+      // Example function that simulates a complex calculation.
+      const complexCalculation = memoize((x, y) => {
+        // Simulate a CPU-intensive calculation
+        for (let i = 0; i < 1000000; i++) {
+          x += y;
+        }
+        return x;
+      });
+
+      console.log("First call:", complexCalculation(5, 10)); // Computation occurs.
+      console.log("Second call (cached):", complexCalculation(5, 10)); // Result from cache.
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Memoization with Async/Await</title>
+  </head>
+  <body>
+    <script>
+      // A simple memoize function that caches results.
+      function memoize(func) {
+        const cache = {};
+        return function (...args) {
+          const key = args.join(",");
+          if (key in cache) {
+            console.log("Fetching from cache:", key);
+            return cache[key];
+          }
+          const result = func(...args);
+          cache[key] = result;
+          return result;
+        };
+      }
+
+      // Async function to fetch user data.
+      const fetchUserData = memoize(async function (userId) {
+        const response = await fetch(`https://api.example.com/users/${userId}`);
+        return response.json();
+      });
+
+      // A named async function to use await.
+      async function showUserData() {
+        const data1 = await fetchUserData(1);
+        console.log("User data fetched:", data1);
+
+        const data2 = await fetchUserData(1);
+        console.log("User data fetched from cache:", data2);
+      }
+
+      // Call the async function.
+      showUserData();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Non-Blocking Sort Example</title>
+    <style>
+      svg {
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Non-Blocking Sort Example (Using Web Workers)</h1>
+    <button id="sortButton">Sort Array</button>
+    <p id="result">Result will appear here...</p>
+    <div id="loadingIcon">
+      <img src="loading.svg" alt="Loading Animation" />
+    </div>
+
+    <script>
+      /*
+        ✅ Non-Blocking Sort Example with SVG Feedback
+        ---------------------------------------------
+        - Uses a Web Worker to prevent the UI from blocking.
+        - The animated SVG continues spinning even during sorting.
+      */
+
+      if (window.Worker) {
+        const worker = new Worker("sort_worker.js");
+
+        document.getElementById("sortButton").addEventListener("click", function () {
+          document.getElementById("result").textContent = "⏳ Sorting... (UI remains responsive)";
+
+          // Generate a large array and send it to the worker
+          const array = [];
+          for (let i = 0; i < 5000000; i++) {
+            array.push(Math.random());
+          }
+
+          worker.postMessage(array);
+        });
+
+        worker.onmessage = function (event) {
+          const lastThreeElements = event.data;
+          document.getElementById("result").textContent = "✅ Sorting Complete! Last 3 Elements: " + lastThreeElements.join(", ");
+        };
+      } else {
+        document.getElementById("result").textContent = "❌ Web Workers are not supported in your browser.";
+      }
+    </script>
+  </body>
+</html>

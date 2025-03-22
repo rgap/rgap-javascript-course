@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Locale Date Formatting</title>
+  </head>
+  <body>
+    <script>
+      const now = new Date(); // Current date and time
+
+      // Format date in US English locale (MM/DD/YYYY)
+      console.log("US locale date:", now.toLocaleDateString("en-US"));
+      // Example Output: US locale date: 3/18/2025
+
+      // Format date in German locale (DD.MM.YYYY)
+      console.log("German locale date:", now.toLocaleDateString("de-DE"));
+      // Example Output: German locale date: 18.3.2025
+
+      // Format date in Japanese locale (YYYY/MM/DD)
+      console.log("Japanese locale date:", now.toLocaleDateString("ja-JP"));
+      // Example Output: Japanese locale date: 2025/03/18
+
+      // Custom formatting with weekday, full month, and numeric year
+      const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+      console.log("Custom US locale date:", now.toLocaleDateString("en-US", options));
+      // Example Output: Custom US locale date: Tuesday, March 18, 2025
+
+      /*
+        Summary:
+        - `.toLocaleDateString(locale)` formats a date based on the given locale.
+        - Common locales:
+          - `"en-US"` → MM/DD/YYYY (US format).
+          - `"de-DE"` → DD.MM.YYYY (German format).
+          - `"ja-JP"` → YYYY/MM/DD (Japanese format).
+        - `toLocaleDateString(locale, options)` allows customization:
+          - `{ weekday: "long", month: "long", day: "numeric", year: "numeric" }`
+          - Example: `"Tuesday, March 18, 2025"` in US English.
+      */
+    </script>
+  </body>
+</html>

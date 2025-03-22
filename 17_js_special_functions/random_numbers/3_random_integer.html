@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Random Integer in a Range</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Theory: Generating a Random Integer in a Range
+        ----------------------------------------------
+        - `Math.random()` generates a floating-point number **between 0 and 1**.
+        - To get an integer in a specific range **[min, max]**, use:
+          `Math.floor(Math.random() * (max - min + 1)) + min`
+        - This ensures the result is an **inclusive integer**.
+      */
+
+      function getRandomInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      // Example: Generate a random integer between 1 and 100
+      const randomInt = getRandomInteger(1, 100);
+      console.log("Random integer between 1 and 100:", randomInt);
+      // Example Output: Random integer between 1 and 100: 57 (varies every time)
+
+    </script>
+  </body>
+</html>
