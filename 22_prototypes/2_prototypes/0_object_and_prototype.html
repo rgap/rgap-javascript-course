@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Every Object Is Linked to a Prototype</title>
+  </head>
+  <body>
+    <script>
+      // Example 1: Object Literal
+      // An object literal is linked to Object.prototype.
+      const obj = { a: 1 };
+      console.log("Prototype of obj (via Object.getPrototypeOf):", Object.getPrototypeOf(obj)); // [object Object] (i.e., Object.prototype with its methods)
+      console.log("obj.__proto__ === Object.prototype:", obj.__proto__ === Object.prototype); // true
+
+      // Example 2: Array
+      // Arrays are objects too, and they are linked to Array.prototype.
+      const arr = [1, 2, 3];
+      console.log("Prototype of arr (via Object.getPrototypeOf):", Object.getPrototypeOf(arr)); // [object Array] (i.e., Array.prototype with its methods)
+      console.log("arr.__proto__ === Array.prototype:", arr.__proto__ === Array.prototype); // true
+
+      // Example 3: Function
+      // Functions are objects as well; their prototype link is to Function.prototype.
+      const func = function () {};
+      console.log("Prototype of func (via Object.getPrototypeOf):", Object.getPrototypeOf(func)); // [object Function] (i.e., Function.prototype with its methods)
+      console.log("func.__proto__ === Function.prototype:", func.__proto__ === Function.prototype); // true
+
+      // Example 4: Boolean Primitive
+      // Although a boolean is a primitive, when accessing its properties,
+      // it is temporarily auto-boxed into a Boolean object linked to Boolean.prototype.
+      const bool = true;
+      console.log("Prototype of bool (via auto-boxing):", bool.__proto__); // [object Boolean] (i.e., Boolean.prototype with its methods)
+      console.log("bool.__proto__ === Boolean.prototype:", bool.__proto__ === Boolean.prototype); // true
+
+      /* Explanation:
+         Every object in JavaScript is associated with an internal property called [[Prototype]]
+         (accessible via __proto__ or Object.getPrototypeOf()). This prototype is another object
+         from which properties and methods are INHERITED.
+         - For object literals, the associated prototype is Object.prototype.
+         - For arrays, it is Array.prototype.
+         - For functions, it is Function.prototype.
+         - For boolean primitives, auto-boxing wraps them in a temporary Boolean object,
+           whose internal prototype is Boolean.prototype.
+      */
+    </script>
+  </body>
+</html>

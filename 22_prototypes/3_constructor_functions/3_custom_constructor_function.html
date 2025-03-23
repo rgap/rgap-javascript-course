@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Define a function called Person.
+      // When this function is called with the 'new' keyword,
+      // it acts as a constructor to create a new object.
+      function Person(name) {
+        // 'this' refers to the new object being created
+        this.name = name;
+        console.log(this); // Logs the new instance of `Person`
+      }
+
+      // Create a new instance of Person using the 'new' keyword.
+      // The 'new' operator does the following:
+      // 1. Creates a new empty object.
+      // 2. Sets the new object's internal prototype (__proto__) to Person.prototype.
+      // 3. Calls the Person function with 'this' bound to the new object.
+      // 4. Returns the new object.
+
+      let john = new Person("John"); // Output: Person { name: "John" }
+      console.log(john); // Output: Person { name: "John" }
+      console.log(john.__proto__ === Person.prototype); // Output: true
+    </script>
+  </head>
+  <body></body>
+</html>

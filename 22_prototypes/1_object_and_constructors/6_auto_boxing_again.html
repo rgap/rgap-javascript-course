@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto-boxing Didactic Example</title>
+    <script>
+      // ================================
+      // Understanding Auto-boxing for Primitives
+      // ================================
+      // "Auto-boxing" means that although a boolean (or other primitive value)
+      // is stored as a simple value (not as an object), JavaScript temporarily wraps
+      // it in an object (in this case, a Boolean object) when you try to access its properties
+      // or methods. This temporary object allows you to use methods defined on the Boolean prototype,
+      // and then it is discarded once the operation is complete.
+
+      // Booleans are not objects but primitives. Booleans are temporarily auto-boxed into Boolean objects when accessing properties.
+      // even if declaring it as Boolean(true) or new Boolean(true), it will be auto-boxed into a Boolean object.
+
+      // Example: Using a primitive boolean value
+      let b = true; // b is a primitive boolean
+      console.log(typeof b); // Output: "boolean"
+
+      // When calling a method on the primitive, auto-boxing occurs:
+      // JavaScript automatically wraps 'b' in a Boolean object temporarily
+      // so that it can access the 'toString()' method from Boolean.prototype.
+      console.log(b.toString()); // Output: "true"
+
+      // After the method call, 'b' remains a primitive.
+      console.log(typeof b); // Output: "boolean"
+
+      // Then if calling a method again, auto-boxing occurs again:
+      console.log(b.valueOf()); // Output: true
+    </script>
+  </head>
+  <body></body>
+</html>

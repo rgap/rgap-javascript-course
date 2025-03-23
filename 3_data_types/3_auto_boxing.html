@@ -6,11 +6,13 @@
     <title>JS Demo</title>
     <script>
       // Demonstrating Autoboxing in JavaScript
-      // Process where primitive data types (like numbers and strings)
+      // Autoboxing: Process where primitive data types (like numbers and strings)
       // are automatically wrapped in their corresponding object types (like Number and String) when certain operations are performed
 
       // 1. String Autoboxing
-      // Strings are primitives but can use methods from the String object’s prototype.
+      // Although strings are primitive values in JavaScript, they can access methods
+      // defined on the String object’s prototype. This is similar to how Java’s String class
+      // offers built-in methods for text manipulation.
       let primitiveString = "hello world";
       console.log(primitiveString.toUpperCase()); // "HELLO WORLD"
       console.log(typeof primitiveString); // "string"
