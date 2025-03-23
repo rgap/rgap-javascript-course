@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Constructors Overview</title>
+    <script>
+      // =====================================================
+      // JavaScript Constructors Overview
+      // This script logs the constructor property of various values
+      // to demonstrate how JavaScript identifies the type of a value.
+      // =====================================================
+
+      // -- Primitive Values --
+
+      // Null: A primitive representing "no value".
+      // It is not an object and does not have a constructor property.
+      let nullValue = null;
+      console.log("nullValue:", nullValue); // Output: null
+
+      // Undefined: A primitive for uninitialized values.
+      // It also does not have a constructor property.
+      let undefinedValue;
+      console.log("undefinedValue:", undefinedValue); // Output: undefined
+
+      // Boolean: A primitive value which, when accessed, is boxed into a Boolean object.
+      let booleanValue = true;
+      console.log("booleanValue.constructor:", booleanValue.constructor); // Output: [Function: Boolean]
+
+      // Number: A numeric primitive, boxed as a Number object.
+      let numberValue = 42;
+      console.log("numberValue.constructor:", numberValue.constructor); // Output: [Function: Number]
+
+      // BigInt: A primitive for arbitrarily large integers.
+      let bigIntValue = BigInt(123);
+      console.log("bigIntValue.constructor:", bigIntValue.constructor); // Output: [Function: BigInt]
+
+      // String: A string primitive, boxed as a String object.
+      let stringValue = "Hello";
+      console.log("stringValue.constructor:", stringValue.constructor); // Output: [Function: String]
+
+      // Symbol: A unique primitive.
+      let symbolValue = Symbol();
+      console.log("symbolValue.constructor:", symbolValue.constructor); // Output: [Function: Symbol]
+
+      // -- Objects and Built-in Types --
+
+      // Object: A generic object literal.
+      let objectValue = { name: "John", age: 30 };
+      console.log("objectValue.constructor:", objectValue.constructor); // Output: [Function: Object]
+
+      // Array: An array literal.
+      let arrayValue = [1, 2, 3];
+      console.log("arrayValue.constructor:", arrayValue.constructor); // Output: [Function: Array]
+
+      // Function: A function expression.
+      let funcValue = function () {};
+      console.log("funcValue.constructor:", funcValue.constructor); // Output: [Function: Function]
+
+      // Date: An instance representing the current date and time.
+      let dateValue = new Date();
+      console.log("dateValue.constructor:", dateValue.constructor); // Output: [Function: Date]
+
+      // RegExp: A regular expression literal.
+      let regexValue = /abc/;
+      console.log("regexValue.constructor:", regexValue.constructor); // Output: [Function: RegExp]
+
+      // ArrayBuffer: An object for handling binary data.
+      let arrayBufferValue = new ArrayBuffer(16);
+      console.log("arrayBufferValue.constructor:", arrayBufferValue.constructor); // Output: [Function: ArrayBuffer]
+
+      // Typed Array: For example, an array of 8-bit unsigned integers.
+      let typedArrayValue = new Uint8Array();
+      console.log("typedArrayValue.constructor:", typedArrayValue.constructor); // Output: [Function: Uint8Array]
+
+      // Set: A collection of unique values.
+      let setValue = new Set();
+      console.log("setValue.constructor:", setValue.constructor); // Output: [Function: Set]
+
+      // Map: A collection of key/value pairs.
+      let mapValue = new Map();
+      console.log("mapValue.constructor:", mapValue.constructor); // Output: [Function: Map]
+
+      // WeakSet: A Set where references to objects are weak.
+      let weakSetValue = new WeakSet();
+      console.log("weakSetValue.constructor:", weakSetValue.constructor); // Output: [Function: WeakSet]
+
+      // WeakMap: A Map where keys are objects held weakly.
+      let weakMapValue = new WeakMap();
+      console.log("weakMapValue.constructor:", weakMapValue.constructor); // Output: [Function: WeakMap]
+
+      // Promise: Represents the eventual completion (or failure) of an asynchronous operation.
+      let promiseValue = new Promise((resolve, reject) => {});
+      console.log("promiseValue.constructor:", promiseValue.constructor); // Output: [Function: Promise]
+
+      // Proxy: Wraps an object and intercepts operations.
+      let proxyValue = new Proxy({}, {});
+      console.log("proxyValue.constructor:", proxyValue.constructor); // Output: [Function: Proxy]
+
+      // Intl.DateTimeFormat: For locale-sensitive date and time formatting.
+      let dateTimeFormatValue = new Intl.DateTimeFormat();
+      console.log("dateTimeFormatValue.constructor:", dateTimeFormatValue.constructor); // Output: [Function: DateTimeFormat]
+
+      // Error: Represents an error object.
+      let errorValue = new Error();
+      console.log("errorValue.constructor:", errorValue.constructor); // Output: [Function: Error]
+    </script>
+  </head>
+  <body></body>
+</html>

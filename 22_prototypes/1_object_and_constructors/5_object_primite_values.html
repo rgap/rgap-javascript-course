@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object() Method Didactic Example</title>
+    <script>
+      // ================================
+      // Creating Wrapper Objects for Primitives
+      // ================================
+      // When you pass a primitive value (number, string, boolean) to Object(),
+      // it returns a corresponding wrapper object.
+      // This wrapper enables access to methods on Number, String, or Boolean prototypes.
+
+      // Create a Number object by wrapping the primitive 42.
+      let numObj = Object(42);
+      // Create a String object by wrapping the primitive "Hello".
+      let strObj = Object("Hello");
+      // Create a Boolean object by wrapping the primitive true.
+      let boolObj = Object(true);
+
+      // Demonstrate the resulting objects and their types.
+      console.log(numObj); // Expected output: [Number: 42] or similar
+      console.log(typeof numObj); // "object"
+      console.log(numObj instanceof Number); // true
+
+      console.log(strObj); // Expected output: [String: 'Hello'] or similar
+      console.log(typeof strObj); // "object"
+      console.log(strObj instanceof String); // true
+
+      console.log(boolObj); // Expected output: [Boolean: true] or similar
+      console.log(typeof boolObj); // "object"
+      console.log(boolObj instanceof Boolean); // true
+
+      /*
+        Explanation:
+        - Object(primitive) converts a primitive value into its respective wrapper object.
+        - This is useful because wrapper objects provide access to various methods (like toFixed for numbers or toUpperCase for strings)
+          that are defined on the corresponding prototype.
+      */
+
+      // ================================
+      // Handling Non-Primitive Values
+      // ================================
+      // When Object() is given a non-primitive (an object), it returns the same object reference.
+
+      let original = { a: 1 };
+      let object = Object(original);
+
+      console.log(object); // Expected output: { a: 1 }
+      console.log(object === original); // true
+
+      /*
+        Explanation:
+        - Passing an object to Object() does not create a copy.
+        - Instead, the same object reference is returned.
+        - As a result, modifying "object" will also modify "original".
+      */
+    </script>
+  </head>
+  <body>
+    <h1>Open the console to see the output</h1>
+  </body>
+</html>
