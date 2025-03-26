@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to Immutability in JavaScript</title>
+    <script>
+      /*
+        The primary immutable (primitive) types include:
+          - String
+          - Number
+          - Boolean
+          - Symbol
+          - BigInt
+          - null and undefined (they represent the absence of value)
+      */
+
+      // ----- Number Immutability -----
+      console.log("----- Number Immutability -----");
+      let num = 10;
+      // Performing operations without creating new variables
+      num + 1; // This doesn't modify 'num'
+      num * 3; // This doesn't modify 'num'
+
+      console.log("Original number after addition attempt:", num); // 10
+      console.log("Original number after multiplication attempt:", num); // 10
+
+      // ----- Boolean Immutability -----
+      console.log("----- Boolean Immutability -----");
+      let truth = true;
+      // Applying operations without storing the result
+      !truth; // This doesn't modify 'truth'
+      5 > 3; // This doesn't modify 'truth' or any variable
+
+      console.log("Original boolean after NOT attempt:", truth); // true
+
+      // ----- Symbol Immutability -----
+      console.log("----- Symbol Immutability -----");
+      let sym1 = Symbol("id");
+      let sym2 = Symbol("id");
+      sym1 === sym2; // This comparison doesn't alter 'sym1' or 'sym2'
+
+      console.log("Are symbols equal?", sym1 === sym2); // false
+
+      // ----- Why Immutability is Important -----
+      /*
+        Immutability leads to:
+          1. Predictability: Values remain constant once created, reducing bugs.
+          2. Safety: Prevents accidental modification of data, especially when passing values around.
+          3. Easier Debugging: Since values don’t change unexpectedly, tracking the flow of data is simpler.
+      */
+
+      // Demonstrating how operations create new values:
+      let originalStr = "Immutable";
+      originalStr + " Value"; // This doesn't modify 'originalStr'
+
+      console.log("Original String after concatenation attempt:", originalStr); // "Immutable"
+    </script>
+  </head>
+  <body></body>
+</html>

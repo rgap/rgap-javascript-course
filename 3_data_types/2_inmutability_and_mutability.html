@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to Immutability in JavaScript</title>
+    <script>
+      /*
+        Introduction to Immutability:
+        
+        In JavaScript, some data types are immutable. This means once you create a value,
+        you cannot change its original content directly. Instead, operations on these values
+        return new values.
+
+        The primary immutable (primitive) types include:
+          - String
+          - Number
+          - Boolean
+          - Symbol
+          - BigInt
+          - null and undefined (they represent the absence of value)
+      */
+
+      // ----- String Immutability -----
+      console.log("----- String Immutability -----");
+      let greeting = "Hello";
+
+      // Attempting to change a character does not affect the original string.
+      greeting[0] = "J";
+      console.log("After attempting to change a character:", greeting); // "Hello"
+
+      // Methods like replace() return a new string.
+      greeting.replace("H", "J"); // This line does not change the original string.
+      console.log("greeting using replace():", greeting); // "Hello"
+
+      let newGreeting = greeting.replace("H", "J");
+      console.log("newGreeting using replace():", newGreeting); // "Jello"
+
+      // Other methods like toUpperCase() also return new strings.
+      let upperGreeting = greeting.toUpperCase();
+      console.log("Using toUpperCase():", upperGreeting); // "HELLO"
+
+      // Concatenation creates a new string.
+      let concatenatedGreeting = greeting + " World";
+      console.log("Using concatenation:", concatenatedGreeting); // "Hello World"
+
+
+
+      // ----- Array Mutability -----
+      // Arrays are mutable in JavaScript, meaning you can change their content directly.
+
+      console.log("----- Array Mutability -----");
+      let numbers = [1, 2, 3];
+      console.log("Original array:", numbers); // Output: [1, 2, 3]
+
+      // Modifying the array with push()
+      numbers.push(4);
+      console.log("After push():", numbers); // Output: [1, 2, 3, 4]
+
+      // Modifying the array by changing an element
+      numbers[0] = 0;
+      console.log("After modifying element:", numbers); // Output: [0, 2, 3, 4]
+
+      // Removing the last element with pop()
+      numbers.pop();
+      console.log("After pop():", numbers); // Output: [0, 2, 3]
+
+      // Splicing the array to remove or add elements
+      numbers.splice(1, 1, 99);
+      console.log("After splice():", numbers); // Output: [0, 99, 3]
+
+</script>
+  </head>
+  <body></body>
+</html>

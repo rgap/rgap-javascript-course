@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo - Immutability and Primitives</title>
+    <script>
+      /* 
+        In JavaScript, primitive data types are immutable. This means that once a primitive value is created, 
+        its value cannot be altered directly. When you perform operations on these values, you are actually 
+        creating new values rather than modifying the original one.
+        
+        The main primitive types in JavaScript include:
+          - String
+          - Number
+          - Boolean
+          - Symbol
+          - BigInt
+          - null and undefined (though these represent absence of value)
+        
+        Note: While variables declared with const cannot be reassigned, immutability here refers to the fact 
+        that the data itself cannot be changed after creation.
+      */
+
+      // ----- String Immutability -----
+      let greeting = "Hello";
+      greeting[0] = "J";  // Attempt to modify the string directly (has no effect)
+      console.log("Attempted Modification:", greeting); // Output: "Hello"
+      
+      greeting.replace("H", "J");  // Does not modify 'greeting'
+      greeting.toUpperCase();      // Does not modify 'greeting'
+      greeting + " World";          // Does not modify 'greeting'
+      greeting.slice(1, 4);         // Does not modify 'greeting'
+
+      console.log("Original Greeting after various attempts:", greeting); // Output: "Hello"
+
+      // ----- Number Immutability -----
+      let num = 10;
+      num + 1;   // This doesn't modify 'num'
+      num * 3;   // This doesn't modify 'num'
+      increment(num);  // This doesn't modify 'num'
+      
+      console.log("Original Number after various attempts:", num); // Output: 10
+
+      // Even using functions to manipulate numbers does not change the original
+      function increment(n) {
+        return n + 1;
+      }
+
+      // ----- Boolean Immutability -----
+      let truth = true;
+      !truth;       // This doesn't modify 'truth'
+      5 > 3;        // This doesn't modify 'truth'
+
+      console.log("Original Boolean after various attempts:", truth); // Output: true
+
+      // ----- Symbol Immutability -----
+      let sym1 = Symbol("id");
+      let sym2 = Symbol("id");
+      sym1 === sym2;  // This doesn't modify 'sym1' or 'sym2'
+      
+      console.log("Are both symbols equal?", sym1 === sym2); // Output: false
+    </script>
+  </head>
+  <body></body>
+</html>

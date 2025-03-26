@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo - Immutability, Pass by Value & Reference</title>
+    <script>
+      /*
+        Why is immutability important?
+          Immutability refers to the inability to modify a value once it has been created. 
+          In JavaScript, primitive data types are immutable, meaning operations on them 
+          create new values rather than modifying the original. This has several benefits:
+
+          1. Predictability: Primitives are copied by value (Pass-by-Value). This ensures functions 
+             that work with these types always produce the same results given the same input. 
+             No unintentional changes occur to the original data.
+          
+          2. Safety: When working with primitive values, you avoid accidental side effects because
+             changes within functions do not affect the original data. This makes debugging easier.
+          
+          3. Performance: Primitive values are lightweight and copied by value. Modifications create
+             new instances rather than altering the original, enhancing data integrity.
+          
+          Mutability vs. Immutability:
+            - Mutable Data: Objects and Arrays are mutable. They are passed by reference (Pass-by-Reference),
+              meaning changes made within functions directly affect the original data.
+            
+            - Immutable Data: Strings, Numbers, Booleans, Symbols, BigInts, null, and undefined are 
+              immutable. Changes to these data types result in the creation of new values rather than 
+              modifying the original.
+      */
+
+      // ----- Pass by Value (Primitive Data Example) -----
+      console.log("----- Pass by Value (Primitive Data Example) -----");
+
+      let userName = "Alice";
+
+      function updateUserName(name) {
+        // Attempting to modify the string
+        // Because strings are immutable, this operation creates a NEW string,
+        // rather than modifying the original one.
+        name = name.toUpperCase();
+        console.log("Inside function (User Name):", name); // "ALICE"
+      }
+
+      updateUserName(userName);
+      console.log("Outside function (User Name):", userName); // "Alice"
+
+      /*
+        Explanation (Immutability - Pass-by-Value):
+        - The original `userName` remains unchanged because strings are immutable and passed by value.
+        - JavaScript creates a copy of the primitive value and passes it to the function. 
+        - Operations on primitives always return new values without modifying the original.
+      */
+
+      ///////////////////////////////////////////////////////////////////////
+
+      // ----- Pass by Reference (Object Example) -----
+      console.log("----- Pass by Reference (Object Example) -----");
+
+      let userProfile = {
+        name: "Alice",
+        age: 25,
+        preferences: { theme: "dark" },
+      };
+
+      function updateProfile(profile) {
+        // Because objects are mutable, modifications to the object are applied to the original.
+        profile.age = 26;
+        profile.preferences.theme = "light";
+        console.log("Inside function (Profile):", profile);
+      }
+
+      updateProfile(userProfile);
+      console.log("Outside function (Profile):", userProfile);
+
+      /*
+        Explanation (Mutability - Pass-by-Reference):
+        - Objects are mutable and passed by reference. 
+        - The function receives a reference (memory address) to the original object, 
+          not a copy of the object itself.
+        - Modifying the properties of the object affects the original object directly.
+      */
+
+      ///////////////////////////////////////////////////////////////////////
+
+      // ----- Pass by Reference (Array Example) -----
+      console.log("----- Pass by Reference (Array Example) -----");
+
+      let shoppingCart = ["Apple", "Banana", "Orange"];
+
+      function addItem(cart) {
+        // Arrays are mutable and are modified directly when passed to functions.
+        cart.push("Grapes");
+        console.log("Inside function (Shopping Cart):", cart);
+      }
+
+      addItem(shoppingCart);
+      console.log("Outside function (Shopping Cart):", shoppingCart);
+
+      /*
+        Explanation (Mutability - Pass-by-Reference):
+        - Arrays are a type of object in JavaScript, and are therefore mutable.
+        - When passed to a function, modifications apply directly to the original array.
+        - This is because only the reference is passed, not a copy of the array.
+      */
+
+      ///////////////////////////////////////////////////////////////////////
+
+      // ----- Proof of Immutability (Primitive Data) -----
+      console.log("----- Proof of Immutability (Primitive Data) -----");
+
+      let productPrice = 100;
+
+      function applyDiscount(price) {
+        // Attempting to modify the number creates a new value.
+        // Numbers are immutable, so `price` remains unchanged outside the function.
+        price = price * 0.9;
+        console.log("Inside function (Discounted Price):", price); // 90
+      }
+
+      applyDiscount(productPrice);
+      console.log("Outside function (Original Price):", productPrice); // 100
+
+      /*
+        Explanation (Immutability - Pass-by-Value):
+        - Numbers are immutable. Performing arithmetic operations results in a new number.
+        - Since the number is passed by value, the original number remains unchanged.
+      */
+
+      ///////////////////////////////////////////////////////////////////////
+
+      // ----- Attempting to Modify Immutable Data (Primitive) -----
+      console.log("----- Attempting to Modify Immutable Data (Primitive) -----");
+
+      let userEmail = "alice@example.com";
+
+      function anonymizeEmail(email) {
+        // Attempting to modify the string results in a new string.
+        // The original string remains unchanged outside the function.
+        email = email.replace("alice", "anonymous");
+        console.log("Inside function (Anonymized Email):", email); // "anonymous@example.com"
+      }
+
+      anonymizeEmail(userEmail);
+      console.log("Outside function (Original Email):", userEmail); // "alice@example.com"
+
+      /*
+        Explanation (Immutability - Pass-by-Value):
+        - Strings are immutable. Operations that appear to modify the string actually create a new string.
+        - The original value is preserved because it is passed by value (a copy is made).
+      */
+    </script>
+  </head>
+  <body></body>
+</html>

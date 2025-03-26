@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo - Mutability in JavaScript</title>
+    <script>
+      /*
+        In JavaScript, non-primitive data types such as objects and arrays are mutable. 
+        This means that once these data structures are created, their contents can be changed 
+        (modified, added to, or removed) without creating an entirely new instance.
+
+        Key points about mutability:
+          - Objects and arrays can be modified directly.
+          - When you pass an object or an array to a function, you pass a reference to that object. 
+            Any changes made inside the function will affect the original data.
+          - Although these structures are mutable by default, you can make them immutable using 
+            methods like Object.freeze().
+
+        Why is understanding mutability important?
+          1. Predictability: Knowing that objects and arrays can change helps prevent unintended side effects.
+          2. Performance: Direct modifications are efficient, but uncontrolled mutations might lead to bugs.
+          3. Functional Programming: Often prefers immutability to avoid side effects and improve reliability.
+      */
+
+      // ----- Object Mutability -----
+      let person = { name: "Alice", age: 25 };
+      console.log("Original person object:", person);
+
+      // Directly modifying a property of the object
+      person.age = 26;
+      console.log("After modifying 'age':", person);
+
+      // Adding a new property to the object
+      person.city = "New York";
+      console.log("After adding 'city':", person);
+
+      // Deleting a property from the object
+      delete person.name;
+      console.log("After deleting 'name':", person);
+
+      // ----- Array Mutability -----
+      let numbers = [1, 2, 3];
+      console.log("Original array:", numbers);
+
+      // Changing an element in the array
+      numbers[0] = 10;
+      console.log("After modifying the first element:", numbers);
+
+      // Adding new elements using push()
+      numbers.push(4);
+      console.log("After push():", numbers);
+
+      // Removing an element using splice()
+      numbers.splice(1, 1); // Removes 1 element at index 1
+      console.log("After splice():", numbers);
+
+      // Reordering the array with reverse()
+      numbers.reverse();
+      console.log("After reverse():", numbers);
+
+      // ----- Mutability in Functions -----
+      let data = { value: 100 };
+
+      function increaseValue(obj) {
+        // Since objects are passed by reference, modifying it here affects the original object.
+        obj.value += 50;
+        console.log("Inside function:", obj);
+      }
+
+      console.log("Before function call:", data);
+      increaseValue(data);
+      console.log("After function call:", data);
+
+      // ----- Making an Object Immutable -----
+      let frozenObject = { item: "Book", price: 20 };
+      Object.freeze(frozenObject);
+      console.log("Frozen object before modification attempt:", frozenObject);
+
+      // Attempting to modify the frozen object will not work.
+      frozenObject.price = 25;
+      console.log("Frozen object after attempted modification:", frozenObject);
+
+      // Note: Freezing only applies to the first level of properties.
+      let nestedObject = { info: { key: "value" } };
+      Object.freeze(nestedObject);
+      // The nested object is still mutable:
+      nestedObject.info.key = "new value";
+      console.log("Nested object after modifying a nested property:", nestedObject);
+    </script>
+  </head>
+  <body></body>
+</html>
