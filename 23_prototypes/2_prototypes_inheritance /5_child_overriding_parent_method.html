@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Child Inheriting from Parent (Method 2)</title>
+  </head>
+  <body>
+    <h1>Child Object Inheriting from Parent Object Using Object.create()</h1>
+    <script>
+      /*
+      Diagram:
+
+          child
+          {
+            name: "John",
+            age: 30,
+            greet: function() [overridden],
+            sayHello: function()
+          }
+                  │
+                  ▼  __proto__
+          parent
+          {
+            greet: function()
+          }
+                  │
+                  ▼  __proto__
+          +-----------------------------+
+          | Object.prototype            |
+          | - toString(), etc.          |
+          +-----------------------------+
+                  │  __proto__
+                  ▼
+                null
+      */
+
+      // Step 1: Create the parent object explicitly
+      const parent = Object.create(Object.prototype);
+      parent.greet = function () {
+        return "Greetings from the parent object!";
+      };
+
+      // Step 2: Create the child object inheriting explicitly from the parent object
+      const child = Object.create(parent);
+      child.name = "John";
+      child.age = 30;
+      child.sayHello = function () {
+        return `Hello, my name is ${this.name}`;
+      };
+
+      // Override the parent's greet method in the child object
+      child.greet = function () {
+        return "Greetings from the child object!";
+      };
+
+      // Demonstrating access
+      console.log("child:", child);
+      console.log("child.sayHello():", child.sayHello()); // child's own method
+      console.log("child.greet():", child.greet()); // overridden in child
+
+      // Check prototype chain explicitly
+      console.log(
+        "child.__proto__ === parent:",
+        Object.getPrototypeOf(child) === parent
+      ); // Expected output: true
+      console.log(
+        "parent.__proto__ === Object.prototype:",
+        Object.getPrototypeOf(parent) === Object.prototype
+      ); // Expected output: true
+    </script>
+  </body>
+</html>

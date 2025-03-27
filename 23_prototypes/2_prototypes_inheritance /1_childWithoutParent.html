@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Object Without a Parent Prototype</title>
+  </head>
+  <body>
+    <h1>Create a Child Object Without a Parent Prototype</h1>
+    <script>
+      /*
+      Diagram:
+            
+            childWithoutParent (object)
+            {
+                name: "John",
+                age: 30
+            }
+                      │
+                      ▼  __proto__
+                    null
+      
+      THEORY:
+        Normally, objects created with literal notation or new Object() inherit from Object.prototype.
+        However, you can create an object with no prototype using Object.create(null).
+        Such an object does not inherit any properties or methods from Object.prototype.
+        In this example, we create an object without a parent and add its own properties.
+      */
+
+      // Create an object with no parent using Object.create(null).
+      const childWithoutParent = Object.create(null);
+      childWithoutParent.name = "John";
+      childWithoutParent.age = 30;
+
+      console.log("childWithoutParent:", childWithoutParent);
+      console.log("childWithoutParent.__proto__:", Object.getPrototypeOf(childWithoutParent)); // Expected output: null
+
+      // Note: Since there is no prototype, methods like toString() are not available.
+    </script>
+  </body>
+</html>

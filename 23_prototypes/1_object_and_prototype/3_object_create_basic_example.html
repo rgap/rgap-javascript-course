@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Object.create(Object.prototype) Example</title>
+  </head>
+  <body>
+    <h1>Example: Creating an Object with Object.create(Object.prototype)</h1>
+    <script>
+      /*
+      Diagram:
+      
+            personWithProto (object)
+            {
+              name: "John",
+              age: 30
+            }
+                      │
+                      ▼  __proto__
+           +--------------------------+
+           | Object.prototype         |
+           | - toString()             |
+           | - hasOwnProperty()       |
+           | - valueOf()              |
+           | ...                      |
+           +--------------------------+
+                      │  __proto__
+                      ▼
+                    null
+      
+      THEORY:
+        The code below creates an object using Object.create(Object.prototype).
+        The resulting object, personWithProto, has its internal [[Prototype]] set to Object.prototype,
+        which provides standard methods like toString(), hasOwnProperty(), etc.
+      */
+
+      const personWithProto = Object.create(Object.prototype);
+      personWithProto.name = "John";
+      personWithProto.age = 30;
+
+      console.log("personWithProto:", personWithProto);
+      console.log("personWithProto.__proto__ === Object.prototype:", Object.getPrototypeOf(personWithProto) === Object.prototype);
+    </script>
+  </body>
+</html>

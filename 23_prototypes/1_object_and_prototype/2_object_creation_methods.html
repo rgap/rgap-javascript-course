@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>1_object - Creating a Basic Object</title>
+  </head>
+  <body>
+    <h1>1_object: Theoretical Creation of a Basic JavaScript Object</h1>
+    <script>
+      /*
+      Creating Objects in JavaScript
+
+      There are several common ways to create an object in JavaScript. 
+      In this example, we focus on creating a simple object 
+      with properties: name: "John" and age: 30
+
+      All of these methods will now result in:
+      - An object with the same own properties
+      - The same prototype (Object.prototype)
+
+      1. Object Literal Notation:
+         - The simplest and most widely used method.
+         - Syntax: 
+               const obj = { key: value, ... };
+         - Resulting prototype: Object.prototype
+
+      2. Using Object.create(Object.prototype):
+         - Creates a new object with its internal [[Prototype]] set to Object.prototype.
+         - Equivalent prototype to literal and constructor.
+         - Properties are then added manually.
+
+      3. Using the built-in Object Constructor:
+         - Uses the "new Object()" syntax to create an empty object.
+         - Resulting prototype: Object.prototype
+         - Properties are then added manually.
+
+      Diagram (for all three):
+
+           +--------------------------+
+           | personX (object)         |
+           +--------------------------+
+           | name: "John"             |
+           | age: 30                  |
+           +--------------------------+
+                      │
+                      ▼  __proto__
+           +--------------------------+
+           | Object.prototype         |
+           | - toString()             |
+           | - hasOwnProperty()       |
+           | ...                      |
+           +--------------------------+
+                      │
+                      ▼
+                    null
+      */
+
+      // EXAMPLE 1: Using Object Literal Notation
+      const personLiteral = {
+        name: "John",
+        age: 30,
+      };
+
+      // EXAMPLE 2: Using Object.create(Object.prototype)
+      const personWithProto = Object.create(Object.prototype);
+      personWithProto.name = "John";
+      personWithProto.age = 30;
+
+      // EXAMPLE 3: Using the new Object() Constructor
+      const personConstructor = new Object();
+      personConstructor.name = "John";
+      personConstructor.age = 30;
+
+      // Output the created objects to compare their structure and prototype
+      console.log("Object created using literal notation:", personLiteral);
+      console.log("Object created using Object.create(Object.prototype):", personWithProto);
+      console.log("Object created using new Object():", personConstructor);
+
+      console.log(
+        "All use Object.prototype?",
+        Object.getPrototypeOf(personLiteral) === Object.prototype &&
+          Object.getPrototypeOf(personWithProto) === Object.prototype &&
+          Object.getPrototypeOf(personConstructor) === Object.prototype
+      ); // Expected: true
+    </script>
+  </body>
+</html>

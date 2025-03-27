@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Object Constructor Example</title>
+  </head>
+  <body>
+    <h1>Example: Creating an Object Using the Built-in Object Constructor</h1>
+    <script>
+      /*
+      Diagram:
+
+            person (object)
+            {
+              name: "John",
+              age: 30
+            }
+                      │
+                      ▼  __proto__
+           +--------------------------+
+           | Object.prototype         |
+           | - toString()             |
+           | - hasOwnProperty()       |
+           | - valueOf()              |
+           | ...                      |
+           +--------------------------+
+                      │  __proto__
+                      ▼
+                    null
+
+      THEORY:
+        The built-in Object() in JavaScript is a constructor function. A constructor function
+        is a function used to create new objects. When called with the "new" keyword, as in
+        "new Object()", it returns a new object instance that inherits from Object.prototype.
+        This inheritance provides access to standard built-in methods like toString(), hasOwnProperty(),
+        valueOf(), and more. Even without the "new" keyword, calling "Object()" directly still
+        returns a new object instance with the same prototype linkage.
+      */
+
+      // Creating an object instance using the Object constructor
+      const person = new Object();
+      person.name = "John";
+      person.age = 30;
+
+      console.log("person:", person);
+      console.log(
+        "person.__proto__ === Object.prototype:",
+        Object.getPrototypeOf(person) === Object.prototype
+      ); // Expected output: true
+
+      // Displaying the constructor property of the person object
+      console.log("person.constructor:", person.constructor); // Expected output: [Function: Object]
+    </script>
+  </body>
+</html>

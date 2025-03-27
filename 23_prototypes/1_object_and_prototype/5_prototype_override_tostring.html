@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Object.create(Object.prototype) Example with toString Override</title>
+  </head>
+  <body>
+    <h1>Creating an Object with Object.create(Object.prototype) and Overriding toString()</h1>
+    <script>
+      /*
+      Diagram:
+      
+            personWithProto (object)
+            {
+              name: "John",
+              age: 30,
+              toString: function() { ... }  // overridden method
+            }
+                      │
+                      ▼  __proto__
+           +--------------------------+
+           | Object.prototype         |
+           | - toString()             |   <-- original toString() exists here
+           | - hasOwnProperty()       |
+           | - valueOf()              |
+           | ...                      |
+           +--------------------------+
+                      │  __proto__
+                      ▼
+                    null
+      
+      THEORY:
+        We create an object using Object.create(Object.prototype), which means that the resulting object,
+        personWithProto, inherits from Object.prototype. By default, Object.prototype provides methods like
+        toString(), hasOwnProperty(), and valueOf().
+
+        In this example, we override the toString() method directly on personWithProto.
+        As a result, when we call personWithProto.toString(), the overridden method is used instead of the one
+        defined on Object.prototype.
+
+      BENEFITS:
+        - Customizing toString() can provide more meaningful output for debugging and logging.
+        - It allows objects to have custom string representations.
+
+      DRAWBACKS:
+        - Overriding standard methods may lead to unexpected behavior in code that relies on the default implementation.
+        - It can cause confusion if other developers expect the standard behavior of toString() on typical objects.
+      */
+
+      const personWithProto = Object.create(Object.prototype);
+      personWithProto.name = "John";
+      personWithProto.age = 30;
+
+      // Override the toString() method for this object.
+      personWithProto.toString = function () {
+        return "Name: " + this.name + ", Age: " + this.age;
+      };
+
+      console.log("personWithProto:", personWithProto);
+      console.log("personWithProto.__proto__ === Object.prototype:", Object.getPrototypeOf(personWithProto) === Object.prototype);
+
+      // Call the overridden toString() method.
+      console.log("Overridden toString():", personWithProto.toString());
+    </script>
+  </body>
+</html>

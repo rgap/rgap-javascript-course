@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Boolean Example - Auto-boxing and Prototype Chain</title>
+  </head>
+  <body>
+    <h1>Boolean Example: Auto-boxing and Prototype Chain</h1>
+    <script>
+      /*
+      Diagram:
+      
+          boolPrimitive (primitive)
+                      │
+                      ▼   (auto-boxed to Boolean object when accessing __proto__)
+         +--------------------------+
+         | Boolean.prototype        |
+         | - toString()             |
+         | - valueOf()              |
+         | ...                      |
+         +--------------------------+
+                      │  __proto__
+                      ▼
+         +--------------------------+
+         | Object.prototype         |
+         | - hasOwnProperty()       |
+         | - toString()             |
+         | ...                      |
+         +--------------------------+
+                      │  __proto__
+                      ▼
+                    null
+      
+      THEORY:
+        Boolean primitives (true, false) are not objects, but when you access a property like __proto__,
+        JavaScript automatically boxes them into a Boolean object. Thus, using boolPrimitive.__proto__
+        returns Boolean.prototype. We then iterate over the prototype chain using __proto__.
+      */
+
+      // Create a boolean primitive.
+      const boolPrimitive = true;
+
+      // Directly access the __proto__ property on the boolean primitive.
+      let currentProto = boolPrimitive.__proto__;
+      console.log("boolPrimitive.__proto__:", currentProto);
+      // Expected output: Boolean.prototype, an object containing methods like toString, valueOf, etc.
+
+      // Inspect the prototype chain
+      console.log("Prototype chain of boolPrimitive:");
+      while (currentProto !== null) {
+        console.log(currentProto);
+        currentProto = currentProto.__proto__;
+      }
+
+      /* Expected outputs:
+         First iteration:
+           currentProto is Boolean.prototype (contains methods like toString, valueOf, etc.)
+         Second iteration:
+           currentProto becomes Object.prototype (contains methods like hasOwnProperty, toString, etc.)
+         Third iteration:
+           currentProto becomes null, and the loop stops.
+        */
+    </script>
+  </body>
+</html>

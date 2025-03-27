@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Constructor Function Example</title>
+  </head>
+  <body>
+    <h1>Child Object Using a Custom Constructor Function</h1>
+    <script>
+      /*
+      Diagram:
+
+          child (object)
+          {
+            name: "John",
+            age: 30,
+            sayHello: function()
+          }
+                      │
+                      ▼  __proto__
+         +-----------------------------+
+         | Child.prototype             |
+         | - constructor: Child        |
+         +-----------------------------+
+                      │  __proto__
+                      ▼
+         +-----------------------------+
+         | Object.prototype            |
+         | - toString(), etc.          |
+         +-----------------------------+
+                      │  __proto__
+                      ▼
+                    null
+
+      THEORY:
+        A constructor function in JavaScript is used to create new objects. It sets the internal [[Prototype]]
+        of the created object to the constructor function's prototype property. Typically, shared methods are defined
+        on the prototype for efficiency. However, methods can also be defined directly within the constructor function
+        so that each instance gets its own copy.
+      */
+
+      // Define a constructor function
+      function Child(name, age) {
+        this.name = name;
+        this.age = age;
+        // Method defined directly on the instance
+        this.sayHello = function () {
+          return "Hello, my name is " + this.name;
+        };
+      }
+
+      // Create a child object instance
+      const child = new Child("John", 30);
+
+      console.log("child:", child);
+      console.log("child.sayHello():", child.sayHello());
+      console.log(
+        "child.__proto__ === Child.prototype:",
+        Object.getPrototypeOf(child) === Child.prototype
+      ); // Expected output: true
+      console.log(
+        "Child.prototype.__proto__ === Object.prototype:",
+        Object.getPrototypeOf(Child.prototype) === Object.prototype
+      ); // Expected output: true
+    </script>
+  </body>
+</html>

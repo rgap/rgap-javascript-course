@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Object.create(Object.prototype) Example with Prototype Chain</title>
+  </head>
+  <body>
+    <h1>Example: Creating an Object with Object.create(Object.prototype) and Inspecting Its Prototype Chain</h1>
+    <script>
+      /*
+      Diagram:
+      
+            personWithProto (object)
+            {
+              name: "John",
+              age: 30
+            }
+                      │
+                      ▼  __proto__
+           +--------------------------+
+           | Object.prototype         |
+           | - toString(), etc.       |
+           +--------------------------+
+                      │  __proto__
+                      ▼
+                    null
+      
+      THEORY:
+        The code below creates an object using Object.create(Object.prototype).
+        The resulting object, personWithProto, inherits directly from Object.prototype,
+        which provides standard methods like toString(), hasOwnProperty(), etc.
+        
+        We then inspect the prototype chain of personWithProto by iteratively logging each level.
+      */
+
+      const personWithProto = Object.create(Object.prototype);
+      personWithProto.name = "John";
+      personWithProto.age = 30;
+
+      console.log("personWithProto:", personWithProto);
+      console.log("personWithProto.__proto__ === Object.prototype:", Object.getPrototypeOf(personWithProto) === Object.prototype);
+
+      // Inspect the prototype chain of personWithProto.
+      console.log("Prototype chain of personWithProto:");
+      let currentProto = personWithProto.__proto__;
+      while (currentProto !== null) {
+        console.log(currentProto);
+        currentProto = currentProto.__proto__;
+      }
+
+      // Expected outputs:
+      // First iteration:
+      //   currentProto is Object.prototype, which is an object containing standard methods such as:
+      //   toString, hasOwnProperty, valueOf, etc.
+      //
+      // Second iteration:
+      //   currentProto becomes null, and the loop stops.
+    </script>
+  </body>
+</html>

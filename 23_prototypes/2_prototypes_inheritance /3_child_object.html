@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Child with Object.prototype Example</title>
+  </head>
+  <body>
+    <h1>Child Object Inheriting from Object.prototype</h1>
+    <script>
+      /*
+      Diagram:
+      
+          child (object)
+          {
+            name: "John",
+            age: 30,
+            sayHello: function() { return "Hello, my name is " + this.name; }
+          }
+                      │
+                      ▼  __proto__
+         +-----------------------------+
+         | Object.prototype            |
+         | - toString(), etc.          |
+         +-----------------------------+
+                      │  __proto__
+                      ▼
+                    null
+      */
+
+      // Method 1: Using object literal notation (default inheritance from Object.prototype)
+      const child = {
+        name: "John",
+        age: 30,
+        sayHello: function () {
+          return "Hello, my name is " + this.name;
+        },
+      };
+
+      console.log("child:", child);
+      console.log("child.sayHello():", child.sayHello());
+      console.log("child.__proto__ === Object.prototype:", Object.getPrototypeOf(child) === Object.prototype);
+
+      // Method 2: Using Object.create with Object.prototype explicitly.
+      const child2 = Object.create(Object.prototype);
+      child2.name = "John";
+      child2.age = 30;
+      child2.sayHello = function () {
+        return "Hello, my name is " + this.name;
+      };
+
+      console.log("child2:", child2);
+      console.log("child2.sayHello():", child2.sayHello());
+      console.log("child2.__proto__ === Object.prototype:", Object.getPrototypeOf(child2) === Object.prototype);
+    </script>
+  </body>
+</html>
