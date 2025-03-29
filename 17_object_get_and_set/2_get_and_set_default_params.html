@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // THEORY:
+      // Getters can be used not only to compute values but also to provide default values
+      // when an internal property is not set or is falsy. This technique is useful for lazy
+      // initialization or when you want to ensure a default setting is always returned.
+
+      const settings = {
+        _language: null, // Internal property (by convention, prefixed with an underscore)
+
+        // Getter: Returns _language if set, or a default value 'en' if not.
+        get language() {
+          return this._language || "en";
+        },
+
+        // Setter: Updates the internal _language property.
+        set language(lang) {
+          this._language = lang;
+        },
+      };
+
+      console.log("\nGetter with Default Value Example:");
+      console.log(settings.language); // Outputs: "en" (default)
+
+      settings.language = "fr";
+      console.log(settings.language); // Outputs: "fr"
+    </script>
+  </head>
+  <body></body>
+</html>

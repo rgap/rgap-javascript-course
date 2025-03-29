@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // THEORY:
+      // In JavaScript, getters and setters are special methods that allow you to define
+      // how an object’s property is accessed and modified. They are defined as part of an
+      // object literal or class definition. Getters are used to compute or retrieve a value,
+      // and setters are used to validate or set a value.
+      //
+      // WHEN TO USE:
+      // Use getters when you want a property value to be calculated dynamically.
+      // Use setters when you want to control or validate changes to a property.
+      //
+      // This simple example demonstrates a computed property "fullName" that combines
+      // firstName and lastName, and also lets you update both by setting fullName.
+
+      const person = {
+        firstName: "John",
+        lastName: "Doe",
+
+        // Getter: Called when person.fullName is accessed.
+        // It computes the full name by combining firstName and lastName.
+        get fullName() {
+          return `${this.firstName} ${this.lastName}`;
+        },
+
+        // Setter: Called when a new value is assigned to person.fullName.
+        // It splits the string to update both firstName and lastName.
+        set fullName(name) {
+          const parts = name.split(" ");
+          this.firstName = parts[0];
+          this.lastName = parts[1];
+        },
+      };
+
+      console.log("Basic Getter/Setter Example:");
+      console.log(person.fullName); // Outputs: "John Doe"
+
+      person.fullName = "Jane Smith";
+      console.log(person.firstName); // Outputs: "Jane"
+      console.log(person.lastName); // Outputs: "Smith"
+      console.log(person.fullName); // Outputs: "Jane Smith"
+    </script>
+  </head>
+  <body></body>
+</html>
