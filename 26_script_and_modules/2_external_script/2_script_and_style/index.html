@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>External CSS and JS Example</title>
+    <!-- 
+    External CSS files should be included in the <head> section.
+
+    BENEFITS:
+      - Styles are loaded and applied as the HTML is parsed.
+      - Prevents a flash of unstyled content (FOUC) and provides a better user experience.
+
+    DRAWBACKS:
+      - CSS files can block rendering if they are very large, but typically they are optimized for quick loading.
+    -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- A DOM element that will be styled by CSS and accessed by JavaScript -->
+    <div id="myElement">Hello from the DOM!</div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Script at End Example</title>
+    <!-- 
+       THEORY:
+       Placing the script at the end of the <body> means that all the HTML elements are loaded and parsed
+       before the script runs. This ensures that any DOM elements the script accesses are already present.
+       This method is commonly used to avoid issues with undefined or null elements.
+    
+       BENEFITS:
+       - Guarantees that the DOM is fully loaded, so accessing elements works correctly.
+       - Improves page load performance as the HTML content is rendered first.
+    
+       DRAWBACKS:
+       - If your script is needed to set up initial page configurations or manage early interactions,
+         delaying its execution might not be desirable.
+
+      ** For most cases—especially when your script interacts with DOM elements,
+      placing it at the end of the body is the preferred approach **
+    -->
+  </head>
+  <body>
+    <!-- The DOM element is defined and will be available when the script runs -->
+    <div id="myElement">Hello from the DOM!</div>
+
+    <!-- Script is placed at the end of the body -->
+    <script>
+      // Now that the entire HTML has been parsed, we can safely access the element.
+      var element = document.getElementById("myElement");
+      // We access the element's innerHTML to verify its content.
+      console.log("Element from end:", element.innerHTML); // Expected output: "Hello from the DOM!"
+    </script>
+  </body>
+</html>

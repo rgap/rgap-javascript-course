@@ -1,0 +1,9 @@
+/* 
+  This CSS file styles the element with the ID "myElement".
+  The CSS is applied as the HTML loads, so the element appears styled immediately.
+*/
+#myElement {
+  font-size: 20px;
+  color: blue;
+  padding: 10px;
+}

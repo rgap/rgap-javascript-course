@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Script in Head Example</title>
+    <script>
+      // THEORY:
+      // When a script is placed in the <head>, the browser executes it immediately when it encounters it.
+      // At this point, the browser may not have parsed the rest of the HTML, particularly the <body> section.
+      // As a result, any DOM elements defined later (in the body) are not yet available.
+      // This is why trying to access them will often return null.
+
+      // BENEFITS:
+      // - Scripts in the head can be used for early initialization (e.g., setting up configurations or polyfills).
+      // - Useful if your script needs to be available immediately for other scripts or for certain browser settings.
+
+      // DRAWBACKS:
+      // - Since the DOM elements in the body are not yet loaded, accessing them will return null.
+      // - It can block rendering, causing a delay in displaying page content.
+
+      // Attempting to access a DOM element with the ID "myElement"
+      var element = document.getElementById("myElement");
+      // Since the <body> hasn't been loaded yet, "element" will likely be null.
+      console.log("Element from head:", element); // Expected output: null
+    </script>
+  </head>
+  <body>
+    <!-- This element is defined in the <body> and isn't available at the time the script runs -->
+    <div id="myElement">Hello from the DOM!</div>
+  </body>
+</html>
