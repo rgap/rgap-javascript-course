@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Methods to Get the Prototype of personWithProto</title>
+  </head>
+  <body>
+    <h1>Methods to Get the Prototype of personWithProto</h1>
+    <p>
+      The example below demonstrates three numbered methods to retrieve the prototype of
+      <code>personWithProto</code>, with benefits and drawbacks noted in the comments. The most recommended method is highlighted below.
+    </p>
+    <script>
+      // Create an object with Object.prototype as its internal prototype.
+      const personWithProto = Object.create(Object.prototype);
+      personWithProto.name = "John";
+      personWithProto.age = 30;
+
+      // 1. Using Object.getPrototypeOf()
+      //    Benefits:
+      //      - Standard, part of ECMAScript 5.
+      //      - Clear and explicit in its purpose.
+      //      - Widely supported in modern environments.
+      //    Drawbacks:
+      //      - None significant.
+      //    Recommendation:
+      //      - This is the most recommended method for retrieving an object's prototype.
+      const proto1 = Object.getPrototypeOf(personWithProto);
+      console.log("1. Using Object.getPrototypeOf(personWithProto):", proto1);
+
+      // 2. Using the __proto__ property
+      //    Benefits:
+      //      - Direct and simple syntax.
+      //      - Historically popular and supported by many browsers.
+      //    Drawbacks:
+      //      - Non-standard in the ECMAScript specification (despite widespread implementation).
+      //      - May result in less maintainable code.
+      const proto2 = personWithProto.__proto__;
+      console.log("2. Using personWithProto.__proto__:", proto2);
+
+      // 3. Using Reflect.getPrototypeOf()
+      //    Benefits:
+      //      - Standard and part of ES6 (ECMAScript 2015).
+      //      - Provides a consistent API alongside other Reflect methods.
+      //    Drawbacks:
+      //      - Functionally equivalent to Object.getPrototypeOf().
+      //      - The choice here is mostly stylistic.
+      const proto3 = Reflect.getPrototypeOf(personWithProto);
+      console.log("3. Using Reflect.getPrototypeOf(personWithProto):", proto3);
+
+      // Verify that all three methods return Object.prototype.
+      const isSame = proto1 === Object.prototype && proto2 === Object.prototype && proto3 === Object.prototype;
+      console.log("Do all methods return Object.prototype?", isSame);
+    </script>
+  </body>
+</html>

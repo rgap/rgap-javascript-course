@@ -17,12 +17,12 @@
             sayHello: function() { return "Hello, my name is " + this.name; }
           }
                       │
-                      ▼  __proto__
+                      ▼  Object.getPrototypeOf(child)
          +-----------------------------+
          | Object.prototype            |
          | - toString(), etc.          |
          +-----------------------------+
-                      │  __proto__
+                      │  Object.getPrototypeOf(Object.prototype)
                       ▼
                     null
       */
@@ -38,7 +38,8 @@
 
       console.log("child:", child);
       console.log("child.sayHello():", child.sayHello());
-      console.log("child.__proto__ === Object.prototype:", Object.getPrototypeOf(child) === Object.prototype);
+      console.log("Object.getPrototypeOf(child) === Object.prototype:",
+                  Object.getPrototypeOf(child) === Object.prototype);
 
       // Method 2: Using Object.create with Object.prototype explicitly.
       const child2 = Object.create(Object.prototype);
@@ -50,7 +51,20 @@
 
       console.log("child2:", child2);
       console.log("child2.sayHello():", child2.sayHello());
-      console.log("child2.__proto__ === Object.prototype:", Object.getPrototypeOf(child2) === Object.prototype);
+      console.log("Object.getPrototypeOf(child2) === Object.prototype:",
+                  Object.getPrototypeOf(child2) === Object.prototype);
+
+      // Inspect the prototype chain of child2.
+      console.log("Prototype chain of child2:");
+      let currentProto = Object.getPrototypeOf(child2);
+      while (currentProto !== null) {
+        console.log("currentProto:", currentProto);
+        currentProto = Object.getPrototypeOf(currentProto);
+      }
+
+      // Expected output:
+      // First iteration: currentProto is Object.prototype
+      // Second iteration: currentProto becomes null and the loop ends.
     </script>
   </body>
 </html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Child Inheriting from Parent (Constructor Functions)</title>
+  </head>
+  <body>
+    <h1>Child Object Inheriting from Parent Object (Constructor Functions)</h1>
+    <script>
+      /*
+      Diagram:
+      
+          child (instance)
+          { name: "John", age: 30, sayHello: function() { ... } }
+                    │  Object.getPrototypeOf(child)
+                    ▼
+          Child.prototype (object, created via new Parent())
+          { ... }  // own properties of this object, if any; primarily inherits from Parent.prototype
+                    │  Object.getPrototypeOf(Child.prototype)
+                    ▼
+          Parent.prototype (object)
+          { greet: function() { return "Greetings from the parent object!"; } }
+                    │  Object.getPrototypeOf(Parent.prototype)
+                    ▼
+          Object.prototype
+          { toString: function(), ... }
+                    │  Object.getPrototypeOf(Object.prototype)
+                    ▼
+                    null
+      
+      THEORY:
+        We use constructor functions to create both Parent and Child objects.
+        - The Parent constructor's prototype is augmented with a greet method.
+        - The Child constructor sets instance-specific properties (name, age, sayHello).
+        - To inherit from Parent, we set Child.prototype to a new Parent instance.
+          This means a Child instance's internal prototype will be an object whose prototype is Parent.prototype.
+          This chain allows the child to access the greet method defined on Parent.prototype.
+      */
+
+      // Define the Parent constructor function.
+      function Parent() {
+        // No instance properties are defined here.
+      }
+
+      // Add a method to Parent's prototype.
+      Parent.prototype.greet = function () {
+        return "Greetings from the parent object!";
+      };
+
+      // Define the Child constructor function.
+      function Child(name, age) {
+        // These properties are stored directly on each Child instance.
+        this.name = name;
+        this.age = age;
+        // Child-specific method stored on the instance.
+        this.sayHello = function () {
+          return `Hello, my name is ${this.name}`;
+        };
+      }
+
+      // Inherit from Parent by setting Child.prototype to a new Parent instance.
+      Child.prototype = new Parent();
+      // The constructor pointer now points to Parent
+      // because Child.prototype.constructor = Parent
+      console.log("Child.prototype.constructor:", Child.prototype.constructor); // Output: Parent
+      // So we need to reset it to Child
+      Child.prototype.constructor = Child;
+
+      // Create an instance of Child.
+      const child = new Child("John", 30);
+
+      // Demonstrating access:
+      console.log("child:", child);
+      // Expected output: { name: "John", age: 30, sayHello: f() }
+
+      console.log("child.sayHello():", child.sayHello());
+      // Expected output: "Hello, my name is John"
+
+      console.log("child.greet():", child.greet());
+      // Expected output: "Greetings from the parent object!" (inherited from Parent.prototype)
+
+      // Check prototype chain explicitly:
+      console.log("Object.getPrototypeOf(child) === Child.prototype:", Object.getPrototypeOf(child) === Child.prototype);
+      // Expected output: true
+
+      console.log("Object.getPrototypeOf(Child.prototype) === Parent.prototype:", Object.getPrototypeOf(Child.prototype) === Parent.prototype);
+      // Expected output: true
+
+      console.log("Object.getPrototypeOf(Parent.prototype) === Object.prototype:", Object.getPrototypeOf(Parent.prototype) === Object.prototype);
+      // Expected output: true
+
+      // ----------------------------------------------------------------
+      // Inspect the prototype chain of child:
+      console.log("Prototype chain of child:");
+      let currentProto = Object.getPrototypeOf(child);
+      while (currentProto !== null) {
+        console.log("currentProto:", currentProto);
+        currentProto = Object.getPrototypeOf(currentProto);
+      }
+      // Expected output:
+      // currentProto: Child.prototype (object created via new Parent())
+      // currentProto: Parent.prototype (object with greet method)
+      // currentProto: Object.prototype (object with toString, etc.)
+      // currentProto: null (end of the chain)
+
+      // --- Constructor chain ---
+      console.log("Constructor chain of child:");
+      let currentObj = child;
+      while (currentObj !== null) {
+        // Check if the current object has a constructor property
+        const ctorName = currentObj.constructor ? currentObj.constructor.name : null;
+        console.log("Constructor:", ctorName);
+        currentObj = Object.getPrototypeOf(currentObj);
+      }
+      // Expected output:
+      // First iteration: Constructor: Child
+      // Second iteration: Constructor: Parent
+      // Third iteration: Constructor: Object
+      // Fourth iteration: Constructor: null (end of the chain)
+    </script>
+  </body>
+</html>

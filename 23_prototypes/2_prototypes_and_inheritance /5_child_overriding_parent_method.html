@@ -14,32 +14,33 @@
           {
             name: "John",
             age: 30,
+            greet: function() [overridden],
             sayHello: function()
           }
                   │
-                  ▼  __proto__
+                  ▼  Object.getPrototypeOf(child)
           parent
           {
             greet: function()
           }
                   │
-                  ▼  __proto__
+                  ▼  Object.getPrototypeOf(parent)
           +-----------------------------+
           | Object.prototype            |
           | - toString(), etc.          |
           +-----------------------------+
-                  │  __proto__
+                  │  Object.getPrototypeOf(Object.prototype)
                   ▼
                 null
       */
 
-      // Step 1: Create the parent object explicitly
+      // Step 1: Create the parent object explicitly.
       const parent = Object.create(Object.prototype);
       parent.greet = function () {
         return "Greetings from the parent object!";
       };
 
-      // Step 2: Create the child object inheriting explicitly from the parent object
+      // Step 2: Create the child object inheriting explicitly from the parent object.
       const child = Object.create(parent);
       child.name = "John";
       child.age = 30;
@@ -47,20 +48,25 @@
         return `Hello, my name is ${this.name}`;
       };
 
-      // Demonstrating access
-      console.log("child:", child);
-      console.log("child.sayHello():", child.sayHello()); // child's own method
-      console.log("child.greet():", child.greet()); // inherited from parent
+      // Override the parent's greet method in the child object.
+      child.greet = function () {
+        return "Greetings from the child object!";
+      };
 
-      // Check prototype chain explicitly
+      // Demonstrating access.
+      console.log("child:", child);
+      console.log("child.sayHello():", child.sayHello()); // child's own method.
+      console.log("child.greet():", child.greet()); // overridden in child.
+
+      // Check prototype chain explicitly.
       console.log(
-        "child.__proto__ === parent:",
+        "Object.getPrototypeOf(child) === parent:",
         Object.getPrototypeOf(child) === parent
-      ); // Expected output: true
+      ); // Expected output: true.
       console.log(
-        "parent.__proto__ === Object.prototype:",
+        "Object.getPrototypeOf(parent) === Object.prototype:",
         Object.getPrototypeOf(parent) === Object.prototype
-      ); // Expected output: true
+      ); // Expected output: true.
     </script>
   </body>
 </html>

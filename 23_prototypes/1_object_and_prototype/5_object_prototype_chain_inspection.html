@@ -16,12 +16,12 @@
               age: 30
             }
                       │
-                      ▼  __proto__
+                      ▼  Object.getPrototypeOf(personWithProto)
            +--------------------------+
            | Object.prototype         |
            | - toString(), etc.       |
            +--------------------------+
-                      │  __proto__
+                      │  Object.getPrototypeOf(Object.prototype)
                       ▼
                     null
       
@@ -30,7 +30,7 @@
         The resulting object, personWithProto, inherits directly from Object.prototype,
         which provides standard methods like toString(), hasOwnProperty(), etc.
         
-        We then inspect the prototype chain of personWithProto by iteratively logging each level.
+        We then inspect the prototype chain of personWithProto by iteratively logging each level using Object.getPrototypeOf().
       */
 
       const personWithProto = Object.create(Object.prototype);
@@ -38,14 +38,15 @@
       personWithProto.age = 30;
 
       console.log("personWithProto:", personWithProto);
-      console.log("personWithProto.__proto__ === Object.prototype:", Object.getPrototypeOf(personWithProto) === Object.prototype);
+      console.log("Object.getPrototypeOf(personWithProto) === Object.prototype:",
+                  Object.getPrototypeOf(personWithProto) === Object.prototype);
 
       // Inspect the prototype chain of personWithProto.
       console.log("Prototype chain of personWithProto:");
-      let currentProto = personWithProto.__proto__;
+      let currentProto = Object.getPrototypeOf(personWithProto);
       while (currentProto !== null) {
         console.log(currentProto);
-        currentProto = currentProto.__proto__;
+        currentProto = Object.getPrototypeOf(currentProto);
       }
 
       // Expected outputs:

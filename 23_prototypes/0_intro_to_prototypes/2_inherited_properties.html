@@ -51,6 +51,11 @@
       // 'Object.getPrototypeOf' is the standard way to get the prototype of 'person'
       // It is a method that returns the prototype (i.e., the value of the internal [[Prototype]] property) of the specified object.
       console.log(Object.getPrototypeOf(person) === Object.prototype); // Output: true
+
+      /* Explanation:
+      Every object in JavaScript inherits properties and methods from its prototype.
+      - For example, the 'toString' method is inherited from Object.prototype and returns a string representation of the object.
+      */
     </script>
   </head>
   <body></body>

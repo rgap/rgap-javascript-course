@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Child with Object.prototype Example</title>
+  </head>
+  <body>
+    <h1>Child Object Inheriting from Object.prototype (Constructor Function)</h1>
+    <script>
+      /*
+      Diagram:
+      
+          child (object)
+          { name: "John", age: 30, ... }
+                    │  Object.getPrototypeOf(child)
+                    ▼
+          Child.prototype (object)
+          { sayHello: function() { return "Hello, my name is " + this.name; } }
+                    │  Object.getPrototypeOf(Child.prototype)
+                    ▼
+          Object.prototype
+          { toString: function(), ... }
+                    │  Object.getPrototypeOf(Object.prototype)
+                    ▼
+                    null
+      
+      THEORY:
+        Using a constructor function, we create an instance that has its own properties (name and age)
+        while inheriting shared methods (sayHello) via its prototype. The instance’s internal prototype
+        is set to the constructor’s prototype object, which by default inherits from Object.prototype.
+      */
+
+      // Define a constructor function.
+      // Child is a constructor function whose prototype will be assigned to all instances created via "new".
+      function Child() {
+        // These are instance properties, stored directly on each new object.
+        this.name = "John"; // Instance property: name
+        this.age = 30;      // Instance property: age
+      }
+
+      // Add a method to the constructor's prototype.
+      // This method is shared by all instances of Child.
+      Child.prototype.sayHello = function () {
+        return "Hello, my name is " + this.name;
+      };
+
+      // ----------------------------------------------------------------
+      // Output .__proto__ and .prototype information using Object.getPrototypeOf()
+
+      // For the Child constructor function:
+      console.log("Child.__proto__ (i.e., Object.getPrototypeOf(Child)):", Object.getPrototypeOf(Child));
+      // Expected output: Child.__proto__ is the prototype of the Child function itself,
+      // typically Function.prototype.
+
+      console.log("Child.prototype:", Child.prototype);
+      // Expected output: Child.prototype is the object that will be the prototype of instances created by Child.
+      // It should display an object with the sayHello method.
+
+      console.log("Object.getPrototypeOf(Child.prototype) === Object.prototype:",
+                  Object.getPrototypeOf(Child.prototype) === Object.prototype);
+      // Expected output: true, because by default Child.prototype inherits from Object.prototype.
+
+      // ----------------------------------------------------------------
+
+      // Create an instance using the constructor function.
+      const child = new Child();
+
+      // The instance "child" has its own properties "name" and "age".
+      console.log("child:", child);
+      // Expected output: { name: "John", age: 30 }
+
+      // The instance's internal prototype is set to Child.prototype.
+      console.log("Object.getPrototypeOf(child) === Child.prototype:",
+                  Object.getPrototypeOf(child) === Child.prototype);
+      // Expected output: true
+
+      // Attempting to log child.prototype will output undefined,
+      // because only functions have a "prototype" property.
+      console.log("child.prototype:", child.prototype);
+      // Expected output: undefined
+
+      // Testing the method inherited from the prototype:
+      console.log("child.sayHello():", child.sayHello());
+      // Expected output: "Hello, my name is John"
+
+      // ----------------------------------------------------------------
+      // Inspect the prototype chain of child:
+      console.log("Prototype chain of child:");
+      let currentProto = Object.getPrototypeOf(child);
+      while (currentProto !== null) {
+        console.log("currentProto:", currentProto);
+        currentProto = Object.getPrototypeOf(currentProto);
+      }
+      // Expected output:
+      // currentProto: Child.prototype (object with sayHello method)
+      // currentProto: Object.prototype (object with toString, etc.)
+      // currentProto: null (end of the chain)
+      
+      // --- Constructor chain ---
+      console.log("Constructor chain of child:");
+      let currentObj = child;
+      while (currentObj !== null) {
+        // Check if the current object has a constructor property.
+        const ctorName = currentObj.constructor ? currentObj.constructor.name : null;
+        console.log("Constructor:", ctorName);
+        currentObj = Object.getPrototypeOf(currentObj);
+      }
+      // Expected output:
+      // First iteration: Child
+      // Second iteration: Object
+      // Third iteration: null (end of the chain)
+    </script>
+  </body>
+</html>

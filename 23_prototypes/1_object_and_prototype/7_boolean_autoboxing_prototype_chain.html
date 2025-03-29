@@ -12,14 +12,14 @@
       
           boolPrimitive (primitive)
                       │
-                      ▼   (auto-boxed to Boolean object when accessing __proto__)
+                      ▼   (auto-boxed to Boolean object when accessing Object.getPrototypeOf(boolPrimitive))
          +--------------------------+
          | Boolean.prototype        |
          | - toString()             |
          | - valueOf()              |
          | ...                      |
          +--------------------------+
-                      │  __proto__
+                      │  Object.getPrototypeOf(Boolean.prototype)
                       ▼
          +--------------------------+
          | Object.prototype         |
@@ -27,29 +27,29 @@
          | - toString()             |
          | ...                      |
          +--------------------------+
-                      │  __proto__
+                      │  Object.getPrototypeOf(Object.prototype)
                       ▼
                     null
       
       THEORY:
-        Boolean primitives (true, false) are not objects, but when you access a property like __proto__,
-        JavaScript automatically boxes them into a Boolean object. Thus, using boolPrimitive.__proto__
-        returns Boolean.prototype. We then iterate over the prototype chain using __proto__.
+        Boolean primitives (true, false) are not objects, but when you access their prototype via Object.getPrototypeOf(),
+        JavaScript automatically boxes them into a Boolean object. Thus, using Object.getPrototypeOf(boolPrimitive)
+        returns Boolean.prototype. We then iterate over the prototype chain using Object.getPrototypeOf().
       */
 
       // Create a boolean primitive.
       const boolPrimitive = true;
 
-      // Directly access the __proto__ property on the boolean primitive.
-      let currentProto = boolPrimitive.__proto__;
-      console.log("boolPrimitive.__proto__:", currentProto);
+      // Access the prototype of the auto-boxed Boolean object.
+      let currentProto = Object.getPrototypeOf(boolPrimitive);
+      console.log("Object.getPrototypeOf(boolPrimitive):", currentProto);
       // Expected output: Boolean.prototype, an object containing methods like toString, valueOf, etc.
 
-      // Inspect the prototype chain
+      // Inspect the prototype chain.
       console.log("Prototype chain of boolPrimitive:");
       while (currentProto !== null) {
         console.log(currentProto);
-        currentProto = currentProto.__proto__;
+        currentProto = Object.getPrototypeOf(currentProto);
       }
 
       /* Expected outputs:
@@ -59,7 +59,7 @@
            currentProto becomes Object.prototype (contains methods like hasOwnProperty, toString, etc.)
          Third iteration:
            currentProto becomes null, and the loop stops.
-        */
+      */
     </script>
   </body>
 </html>

@@ -13,11 +13,11 @@
       // This wrapper enables access to methods on Number, String, or Boolean prototypes.
 
       // Create a Number object by wrapping the primitive 42.
-      let numObj = Object(42);
+      let numObj = Object(42); // this is the same as new Number(42)
       // Create a String object by wrapping the primitive "Hello".
-      let strObj = Object("Hello");
+      let strObj = Object("Hello"); // this is the same as new String("Hello")
       // Create a Boolean object by wrapping the primitive true.
-      let boolObj = Object(true);
+      let boolObj = Object(true); // this is the same as new Boolean(true)
 
       // Demonstrate the resulting objects and their types.
       console.log(numObj); // Expected output: [Number: 42] or similar

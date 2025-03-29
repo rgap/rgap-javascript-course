@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Object Without a Parent Prototype</title>
+  </head>
+  <body>
+    <h1>Create a Child Object Without a Parent Prototype</h1>
+    <script>
+      /*
+      Diagram:
+            
+      childWithoutParent (object)
+              { name: "John", age: 30 }
+                    │  Object.getPrototypeOf(childWithoutParent)
+                    ▼
+      (object created with Object.create(null))  <-- We set its constructor explicitly
+              { constructor: Person }
+                    │  Object.getPrototypeOf(Person.prototype)
+                    ▼
+                  null  (end of prototype chain)
+
+      THEORY:
+        Normally, objects created with literal notation or new Object() inherit from Object.prototype.
+        However, you can create an object with no prototype using Object.create(null).
+        Such an object does not inherit any properties or methods from Object.prototype.
+        In this example, we create an object without a parent and add its own properties.
+      */
+
+      // Define a constructor function
+      function Person() {
+        this.name = "John";
+        this.age = 30;
+      }
+
+      // Output the constructor function's prototype:
+      console.log("Object.getPrototypeOf(Person):", Object.getPrototypeOf(Person)); // Expected output: Function.prototype
+      console.log("Person.constructor", Person.constructor); // Expected output: Function
+      console.log("Person.prototype", Person.prototype); // Expected output: Person.prototype
+
+      // Modify the constructor’s prototype:
+      // Instead of setting it to null directly (which would be ignored),
+      // we assign it to an object created with Object.create(null)
+      // so that it does not inherit from Object.prototype.
+      Person.prototype = Object.create(null);
+      // Restore the constructor property on the new prototype:
+      Person.prototype.constructor = Person;
+
+      // Create an instance using the constructor function.
+      const childWithoutParent = new Person();
+
+      console.log("childWithoutParent:", childWithoutParent); // { name: "John", age: 30 }
+      console.log("Prototype of childWithoutParent:", Object.getPrototypeOf(childWithoutParent));
+      // Expected output: the object created with Object.create(null) (with a restored constructor property)
+
+      // Inspect the prototype chain of childWithoutParent.
+      console.log("Prototype chain of childWithoutParent:");
+      let currentProto = Object.getPrototypeOf(childWithoutParent);
+      while (currentProto !== null) {
+        console.log("currentProto:", currentProto);
+        currentProto = Object.getPrototypeOf(currentProto);
+      }
+      // Expected output:
+      // First iteration: the object created with Object.create(null) (with constructor: Person)
+      // Second iteration: null (end of the chain)
+
+      // --- Constructor chain ---
+      console.log("Constructor chain of childWithoutParent:");
+      let currentObj = childWithoutParent;
+      while (currentObj !== null) {
+        // Check if the current object has a constructor property
+        const ctorName = currentObj.constructor ? currentObj.constructor.name : null;
+        console.log("Constructor:", ctorName);
+        currentObj = Object.getPrototypeOf(currentObj);
+      }
+      // Expected output:
+      // First iteration: Person
+      // Second iteration: null (end of the chain)
+    </script>
+  </body>
+</html>

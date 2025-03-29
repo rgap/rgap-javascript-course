@@ -9,7 +9,7 @@
     <script>
       /*
       Diagram:
-      
+
           childWithoutParent (object)
           {
             name: "John",
@@ -17,9 +17,9 @@
             sayHello: function() { return "Hello, my name is " + this.name; }
           }
                       │
-                      ▼  __proto__
+                      ▼  Object.getPrototypeOf(childWithoutParent)
                     null
-      
+
       THEORY:
         Normally, objects created with literal notation or new Object() inherit from Object.prototype.
         However, you can create an object with no prototype using Object.create(null).
@@ -37,9 +37,20 @@
       };
 
       console.log("childWithoutParent:", childWithoutParent);
-      console.log("childWithoutParent.__proto__:", Object.getPrototypeOf(childWithoutParent)); // Expected output: null
+      console.log("Object.getPrototypeOf(childWithoutParent):", Object.getPrototypeOf(childWithoutParent)); // Expected output: null
 
       // Note: Since there is no prototype, methods like toString() are not available.
+
+      // Inspect the prototype chain of childWithoutParent.
+      console.log("Prototype chain of childWithoutParent:");
+      let currentProto = Object.getPrototypeOf(childWithoutParent);
+      while (currentProto !== null) {
+        console.log("currentProto:", currentProto);
+        currentProto = Object.getPrototypeOf(currentProto);
+      }
+
+      // Expected output:
+      // Since Object.getPrototypeOf(childWithoutParent) returns null, the loop does not iterate.
     </script>
   </body>
 </html>

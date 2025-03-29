@@ -16,7 +16,7 @@
               age: 30
             }
                       │
-                      ▼  __proto__
+                      ▼  Object.getPrototypeOf(personWithProto)
            +--------------------------+
            | Object.prototype         |
            | - toString()             |
@@ -24,7 +24,7 @@
            | - valueOf()              |
            | ...                      |
            +--------------------------+
-                      │  __proto__
+                      │  Object.getPrototypeOf(Object.prototype)
                       ▼
                     null
       
@@ -39,7 +39,7 @@
       personWithProto.age = 30;
 
       console.log("personWithProto:", personWithProto);
-      console.log("personWithProto.__proto__ === Object.prototype:", Object.getPrototypeOf(personWithProto) === Object.prototype);
+      console.log("Object.getPrototypeOf(personWithProto) === Object.prototype:", Object.getPrototypeOf(personWithProto) === Object.prototype);
     </script>
   </body>
 </html>

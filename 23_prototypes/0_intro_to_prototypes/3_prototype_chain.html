@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototype Chain Examples</title>
+  </head>
+  <body>
+    <script>
+      // Creating a plain object using an object literal.
+      let obj = { name: "John" };
+
+      // Accessing the prototype chain of the plain object:
+      console.log("Object.getPrototypeOf(obj):", Object.getPrototypeOf(obj)); // Object.prototype with its methods
+      // The next level in the chain:
+      console.log("Object.getPrototypeOf(Object.getPrototypeOf(obj)):", Object.getPrototypeOf(Object.getPrototypeOf(obj))); // null (Object.prototype is at the top)
+
+      // Creating a string object using the String constructor.
+      let str = new String("Hello");
+
+      // Accessing the prototype chain of the string object:
+      console.log("Object.getPrototypeOf(str):", Object.getPrototypeOf(str)); // String.prototype with its methods
+      console.log("Object.getPrototypeOf(Object.getPrototypeOf(str)):", Object.getPrototypeOf(Object.getPrototypeOf(str))); // Object.prototype with its methods
+      console.log("Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(str))):", Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(str)))); // null (end of the chain)
+
+      // Creating an array.
+      let arr = [1, 2, 3];
+
+      // Accessing the prototype chain of the array:
+      console.log("Object.getPrototypeOf(arr):", Object.getPrototypeOf(arr)); // Array.prototype with its methods
+      console.log("Object.getPrototypeOf(Object.getPrototypeOf(arr)):", Object.getPrototypeOf(Object.getPrototypeOf(arr))); // Object.prototype with its methods
+      console.log("Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(arr))):", Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(arr)))); // null (end of the chain)
+
+      // Creating a function.
+      function func() {}
+
+      // Accessing the prototype chain of the function:
+      console.log("Object.getPrototypeOf(func):", Object.getPrototypeOf(func)); // Function.prototype with its methods
+      console.log("Object.getPrototypeOf(Object.getPrototypeOf(func)):", Object.getPrototypeOf(Object.getPrototypeOf(func))); // Object.prototype with its methods
+      console.log("Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(func))):", Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(func)))); // null (end of the chain)
+
+      /* Explanation:
+         The prototype chain starts with the object's prototype obtained via Object.getPrototypeOf()
+         - For a plain object (obj), the chain is: obj -> Object.prototype -> null.
+         - For a string object (str), the chain is: str -> String.prototype -> Object.prototype -> null.
+         - For an array (arr), the chain is: arr -> Array.prototype -> Object.prototype -> null.
+         - For a function (func), the chain is: func -> Function.prototype -> Object.prototype -> null.
+      */
+    </script>
+  </body>
+</html>

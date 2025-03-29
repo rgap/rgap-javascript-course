@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Object Without a Parent Prototype With Method</title>
+  </head>
+  <body>
+    <h1>Create a Child Object Without a Parent Prototype (with Method)</h1>
+    <script>
+      /*
+      Diagram:
+      
+          childWithoutParent (object)
+          { name: "John", age: 30 }
+                    │  Object.getPrototypeOf(childWithoutParent)
+                    ▼
+      (object created with Object.create(null))
+          { sayHello: function() { return "Hello, my name is " + this.name; } }
+                    │  Object.getPrototypeOf(Person.prototype)
+                    ▼
+                   null
+      
+      THEORY:
+        Normally, objects created with literal notation or new Object() inherit from Object.prototype.
+        However, you can create an object with no prototype using Object.create(null).
+        Such an object does not inherit any properties or methods from Object.prototype.
+        In this example, we create an object without a parent, add its own properties (name and age),
+        and define a method (sayHello) that returns a greeting.
+      */
+
+      // Define a constructor function.
+      // When invoked with "new", it assigns properties directly to the instance.
+      function Person() {
+        this.name = "John"; // Instance property: name
+        this.age = 30;      // Instance property: age
+      }
+
+      // Modify the constructor’s prototype:
+      // Instead of setting it to null directly (which is ignored),
+      // we assign it to an object created with Object.create(null)
+      // so that it doesn't inherit from Object.prototype.
+      Person.prototype = Object.create(null);
+
+      // Add a method to the prototype.
+      // This method will be shared among all instances created with new Person().
+      Person.prototype.sayHello = function () {
+        return "Hello, my name is " + this.name;
+      };
+
+      // ----------------------------------------------------------------
+      // Output prototype properties for clarity:
+
+      console.log("Object.getPrototypeOf(Person):", Object.getPrototypeOf(Person));
+      // Expected output: Function.prototype, since Person is a function.
+
+      console.log("Person.prototype:", Person.prototype);
+      // Expected output: an object with the sayHello method, whose internal prototype is null.
+      console.log("Object.getPrototypeOf(Person.prototype):", Object.getPrototypeOf(Person.prototype));
+      // Expected output: null
+
+      // ----------------------------------------------------------------
+
+      // Create an instance using the constructor function.
+      const childWithoutParent = new Person();
+
+      console.log("childWithoutParent:", childWithoutParent);
+      // Expected output: { name: "John", age: 30 }
+
+      console.log("Object.getPrototypeOf(childWithoutParent):", Object.getPrototypeOf(childWithoutParent));
+      // Expected output: the object created with Object.create(null) containing the sayHello method
+
+      // Attempting to log childWithoutParent.prototype will output undefined,
+      // because only functions have a "prototype" property.
+      console.log("childWithoutParent.prototype:", childWithoutParent.prototype);
+      // Expected output: undefined
+
+      // Testing the method:
+      console.log("childWithoutParent.sayHello():", childWithoutParent.sayHello());
+      // Expected output: "Hello, my name is John"
+    </script>
+  </body>
+</html>

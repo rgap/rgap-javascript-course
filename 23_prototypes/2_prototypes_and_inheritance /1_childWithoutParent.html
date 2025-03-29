@@ -16,7 +16,7 @@
                 age: 30
             }
                       │
-                      ▼  __proto__
+                      ▼  Object.getPrototypeOf(childWithoutParent)
                     null
       
       THEORY:
@@ -32,7 +32,7 @@
       childWithoutParent.age = 30;
 
       console.log("childWithoutParent:", childWithoutParent);
-      console.log("childWithoutParent.__proto__:", Object.getPrototypeOf(childWithoutParent)); // Expected output: null
+      console.log("Object.getPrototypeOf(childWithoutParent):", Object.getPrototypeOf(childWithoutParent)); // Expected output: null
 
       // Note: Since there is no prototype, methods like toString() are not available.
     </script>

@@ -11,9 +11,6 @@
       }
 
       // Add a method to the prototype
-      // This is like adding a method directly to the Animal constructor function
-      // but it is done in such a way that all instances of Animal share the same method.
-      // When you add a method to Animal.prototype, it becomes available to all instances of Animal because those instances inherit from Animal.prototype
       Animal.prototype.describe = function () {
         return "This is a " + this.type;
       };
@@ -27,18 +24,16 @@
 
       // Checking if the methods are the same
       console.log(dog.describe === cat.describe); // Output: true
-      // Adding methods to the prototype is more memory-efficient
-      // because all instances share the same method.
 
       // Prototype chain for 'dog'
-      console.log(dog.__proto__); // Output: Animal.prototype
-      console.log(Animal.prototype.__proto__); // Output: Object.prototype
-      console.log(Object.prototype.__proto__); // Output: null
+      console.log(Object.getPrototypeOf(dog)); // Output: Animal.prototype
+      console.log(Object.getPrototypeOf(Animal.prototype)); // Output: Object.prototype
+      console.log(Object.getPrototypeOf(Object.prototype)); // Output: null
 
       // Prototype chain for 'cat'
-      console.log(cat.__proto__); // Output: Animal.prototype
-      console.log(Animal.prototype.__proto__); // Output: Object.prototype
-      console.log(Object.prototype.__proto__); // Output: null
+      console.log(Object.getPrototypeOf(cat)); // Output: Animal.prototype
+      console.log(Object.getPrototypeOf(Animal.prototype)); // Output: Object.prototype
+      console.log(Object.getPrototypeOf(Object.prototype)); // Output: null
     </script>
   </head>
   <body></body>
