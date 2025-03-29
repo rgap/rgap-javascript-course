@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call Example: Basic Invocation</title>
+    <script>
+      /**
+       * Basic Function Invocation Using call
+       *
+       * In JavaScript, every function has a built-in method called call.
+       * call() allows you to invoke a function with a specified `this` context and individual arguments.
+       *
+       * Syntax:
+       *    functionName.call(thisArg, arg1, arg2, ...);
+       *
+       * Key Concepts:
+       * - `thisArg` is the object that becomes `this` within the function.
+       * - Subsequent arguments are passed as individual parameters.
+       * - If `thisArg` is null or undefined (in non-strict mode), the global object is used.
+       *
+       * In this basic example, we define a function `greet` that constructs a greeting
+       * using the `name` property from its `this` context.
+       */
+
+      // Define a simple function that uses `this.name`
+      function greet(greeting, punctuation) {
+        console.log(greeting + ", " + this.name + punctuation);
+      }
+
+      // Define an object that will serve as the context for greet()
+      const person = { name: "Alice" };
+
+      // Invoke greet() with 'person' as the context using call
+      greet.call(person, "Hello", "!"); // Expected Output: "Hello, Alice!"
+    </script>
+  </head>
+  <body></body>
+</html>

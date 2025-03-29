@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call Example: Constructor Inheritance</title>
+    <script>
+      /**
+       * Constructor Inheritance Pattern Using call
+       *
+       * Before ES6 classes, one common way to implement inheritance in JavaScript was to call
+       * a parent constructor from within a child constructor using call().
+       *
+       * In this example:
+       * - The Parent constructor initializes properties for a name.
+       * - The Child constructor calls Parent.call(this, name) to inherit the name property.
+       * - The Child constructor then defines its own property, age.
+       *
+       * This technique ensures that all properties defined in the Parent constructor are added
+       * to the Child instance.
+       */
+
+      // Define the Parent constructor function
+      function Parent(name) {
+        this.name = name;
+      }
+
+      // Define the Child constructor function
+      function Child(name, age) {
+        // Inherit properties from Parent by calling it with Child's instance as `this`
+        Parent.call(this, name);
+        this.age = age;
+      }
+
+      // Create an instance of Child
+      const childInstance = new Child("Bob", 12);
+      console.log("Child instance:", childInstance);
+      // Expected Output: { name: "Bob", age: 12 }
+    </script>
+  </head>
+  <body></body>
+</html>

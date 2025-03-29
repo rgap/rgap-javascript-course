@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call Example: Borrowing Methods</title>
+    <script>
+      /**
+       * Borrowing Methods Using call
+       *
+       * Functions in JavaScript can be borrowed from one object and used on another.
+       * This is achieved by using call() to set the `this` context dynamically.
+       *
+       * In this example, we have an object `obj1` with a method `increment`
+       * that increases a value. We then borrow this method and apply it to `obj2`
+       * which doesn't originally have the method.
+       *
+       * Why Borrow Methods?
+       * - Avoid duplication: reuse functionality across multiple objects.
+       * - Enable dynamic method invocation on different contexts.
+       */
+
+      // Define obj1 with a property and an increment method
+      const obj1 = {
+        value: 10,
+        increment: function (num) {
+          this.value += num;
+        },
+      };
+
+      // Define obj2 with a different initial value and no increment method
+      const obj2 = { value: 20 };
+
+      // Borrow the increment method from obj1 and use it on obj2 using call()
+      obj1.increment.call(obj2, 5);
+      console.log("After increment, obj2.value:", obj2.value); // Expected Output: 25
+    </script>
+  </head>
+  <body></body>
+</html>

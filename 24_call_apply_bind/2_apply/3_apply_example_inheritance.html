@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply Example: Constructor Inheritance</title>
+    <script>
+      /**
+       * Constructor Inheritance Using apply
+       *
+       * Before ES6 classes, one common way to implement inheritance in JavaScript was
+       * to call a parent constructor from within a child constructor using apply().
+       *
+       * In this example:
+       * - The Parent constructor initializes properties for a name and a hobby.
+       * - The Child constructor calls Parent.apply(this, [name, hobby]) to inherit these properties.
+       * - The Child constructor then adds its own property, age.
+       *
+       * This approach allows the Child instance to be initialized with properties defined
+       * in the Parent constructor.
+       *
+       * How apply differs from call in this context:
+       * - With call(), you would invoke the Parent constructor like this:
+       *       Parent.call(this, name, hobby);
+       *   Here, the arguments (name and hobby) are passed individually.
+       *
+       * - With apply(), the arguments are passed as a single array:
+       *       Parent.apply(this, [name, hobby]);
+       *   This can be particularly useful when the arguments are dynamic or already stored in an array.
+       *
+       * Both methods achieve the same result of setting the Parent's properties on the Child instance,
+       * but apply() offers more flexibility in scenarios where argument handling is dynamic.
+       */
+
+      // Define the Parent constructor function.
+      function Parent(name, hobby) {
+        this.name = name;
+        this.hobby = hobby;
+      }
+
+      // Define the Child constructor function.
+      function Child(name, hobby, age) {
+        // Use apply to call Parent with Child's context and pass arguments as an array.
+        Parent.apply(this, [name, hobby]);
+        this.age = age;
+      }
+
+      // Create a Child instance.
+      const childInstance = new Child("Charlie", "painting", 10);
+      console.log("Child instance using apply for inheritance:", childInstance);
+      // Expected Output: { name: "Charlie", hobby: "painting", age: 10 }
+    </script>
+  </head>
+  <body></body>
+</html>

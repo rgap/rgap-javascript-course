@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply Example: Basic Invocation</title>
+    <script>
+      /**
+       * Basic Function Invocation Using apply
+       *
+       * The apply() method is similar to call(), but instead of listing arguments individually,
+       * it accepts them as an array (or array-like object).
+       *
+       * Syntax:
+       *    functionName.apply(thisArg, [arg1, arg2, ...]);
+       *
+       * Key Concepts:
+       * - `thisArg` is the object to be used as `this` within the function.
+       * - The second parameter is an array of arguments.
+       * - This is useful when you already have arguments in an array or when the number of arguments is dynamic.
+       */
+
+      // Define a function that sums three numbers.
+      function sum(a, b, c) {
+        return a + b + c;
+      }
+
+      // Prepare an array of numbers to be summed.
+      const numbers = [1, 2, 3];
+
+      // Invoke sum() using apply, passing null as the context (not used here).
+      const result = sum.apply(null, numbers);
+      console.log("Result of sum using apply:", result); // Expected Output: 6
+    </script>
+  </head>
+  <body></body>
+</html>

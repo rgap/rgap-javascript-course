@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bind Example: Partial Application</title>
+    <script>
+      /**
+       * Example 2: Partial Application Using bind()
+       *
+       * Partial application is a technique where some arguments of a function are pre-set,
+       * resulting in a new function that requires fewer arguments when called.
+       *
+       * With bind(), you can fix some arguments for a function. In this example, we use a simple
+       * add function and create a new function that always adds 10 to its input.
+       *
+       * Syntax:
+       *    let boundFunction = originalFunction.bind(thisArg, presetArg1, presetArg2, ...);
+       *
+       * Note:
+       * - The `thisArg` is irrelevant if the function doesn't use `this`, so it can be set to null.
+       */
+
+      // Define a simple function that adds two numbers.
+      function add(a, b) {
+        return a + b;
+      }
+
+      // Create a new function with the first argument permanently set to 10.
+      // - Bind add() to "null" and preset the first argument to 10
+      const addTen = add.bind(null, 10);
+
+      // Now calling addTen only requires one argument.
+      console.log("10 + 5 =", addTen(5)); // Expected Output: 15
+      console.log("10 + 20 =", addTen(20)); // Expected Output: 30
+    </script>
+  </head>
+  <body></body>
+</html>

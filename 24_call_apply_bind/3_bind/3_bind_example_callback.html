@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bind Example: Maintaining Context in Callbacks</title>
+    <script>
+      /**
+       * Example 3: Maintaining Context in Callbacks Using bind()
+       *
+       * When a method is passed as a callback, its original context (`this`) can be lost.
+       * The bind() method ensures that the function retains its original context regardless
+       * of how it's called.
+       *
+       * In this example, we have an object with a counter and an increment method.
+       * By binding the increment method to its object, we ensure that the correct context is maintained
+       * when the function is passed as a callback (for example, to setTimeout).
+       *
+       * Without bind(), the value of `this` inside the callback might default to the global object,
+       * resulting in unexpected behavior.
+       */
+
+      // Define an object with a counter and an increment method.
+      const counter = {
+        count: 0,
+        increment: function () {
+          this.count++;
+          console.log("Current count:", this.count);
+        },
+      };
+
+      // Bind the increment method to the counter object to maintain context.
+      // - Bind counter.increment() to counter to ensure `this` remains the counter object
+      const boundIncrement = counter.increment.bind(counter);
+
+      // Use setTimeout to call the bound function after 1 second.
+      setTimeout(boundIncrement, 1000); // Expected Output after 1 second: "Current count: 1"
+
+      // For further demonstration, call the bound function directly.
+      boundIncrement(); // Expected Output: "Current count: 2"
+    </script>
+  </head>
+  <body></body>
+</html>

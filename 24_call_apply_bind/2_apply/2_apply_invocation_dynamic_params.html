@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply Example: Dynamic Arguments</title>
+    <script>
+      /**
+       * Handling Dynamic Number of Arguments Using apply
+       *
+       * Sometimes a function needs to handle a variable number of arguments.
+       * With apply(), you can pass an array of arguments even if their count isn't known in advance.
+       *
+       * In this example, we define a function called `multiply` that multiplies all of its arguments.
+       * We then use apply() to pass an array of numbers to the function.
+       *
+       * Benefits:
+       * - Flexibility: Works with any number of arguments.
+       * - Convenience: Ideal when the arguments are already in an array.
+       */
+
+      // Define a function to multiply all given arguments.
+      function multiply() {
+        let product = 1;
+        // 'arguments' is an array-like object containing all passed parameters.
+        for (let i = 0; i < arguments.length; i++) {
+          product *= arguments[i];
+        }
+        return product;
+      }
+
+      // Define an array of factors.
+      const factors = [2, 3, 4];
+
+      // Use apply to call multiply with an array of factors.
+      // We pass 'null' as the context because multiply doesn't rely on 'this'.
+      const productResult = multiply.apply(null, factors);
+      console.log("Product using apply with dynamic arguments:", productResult); // Expected Output: 24
+
+      // Additional demonstration: Using a different number of arguments.
+      const moreFactors = [1, 5, 10, 2];
+      const productResultMore = multiply.apply(null, moreFactors);
+      console.log("Product for more factors:", productResultMore); // Expected Output: 100
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bind Example: Basic Binding</title>
+    <script>
+      /**
+       * Example 1: Basic Binding Using bind()
+       *
+       * The bind() method returns a new function with a permanently bound `this` value.
+       * This means that regardless of how the new function is invoked, its `this` will always
+       * refer to the object provided to bind().
+       *
+       * Syntax:
+       *    let boundFunction = originalFunction.bind(thisArg, arg1, arg2, ...);
+       *
+       * Key Concepts:
+       * - Unlike call() or apply(), bind() does not execute the function immediately.
+       * - Instead, it returns a new function that you can call later.
+       * - This is especially useful when passing a method as a callback where the original context
+       *   might otherwise be lost.
+       *
+       * In this example, we define a function `greet` that constructs a greeting using `this.name`.
+       * We then bind the function to a specific object (`person`) and preset the greeting.
+       */
+
+      // Define a function that uses `this.name`
+      function greet(greeting, punctuation) {
+        console.log(greeting + ', ' + this.name + punctuation);
+      }
+
+      // Define an object to be used as the context for greet()
+      const person = { name: 'Diana' };
+
+      // Bind greet() to `person` and preset the greeting to "Hello"
+      const greetDiana = greet.bind(person, 'Hello');
+
+      // Now greetDiana only needs the punctuation argument
+      greetDiana('!');  // Expected Output: "Hello, Diana!"
+    </script>
+  </head>
+  <body></body>
+</html>
