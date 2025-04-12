@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * `Symbol` was introduced in ECMAScript 2015 (ES6) as a new primitive type.
+       *
+       * It was the **first new primitive** in JS since its creation (after `string`, `number`, `boolean`, `null`, `undefined`).
+       * Its main use is to create **unique and immutable identifiers**, especially for object property keys.
+       */
+
+      const id1 = Symbol("userID");
+      const id2 = Symbol("userID");
+
+      console.log(id1); // → Symbol(userID)
+      console.log(id2); // → Symbol(userID)
+      console.log(id1 === id2); // → false (symbols are always unique)
+
+      // Even though they have the same description, each Symbol is unique.
+    </script>
+  </head>
+  <body></body>
+</html>

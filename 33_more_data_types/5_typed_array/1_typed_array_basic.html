@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * Typed arrays were introduced in ES2011 (part of ECMAScript 5.1)
+       * alongside `ArrayBuffer` and `DataView` to handle raw binary data.
+       *
+       * JavaScript originally lacked tools for efficient binary operations
+       * like image processing, audio manipulation, or working with WebGL buffers.
+       *
+       * Typed arrays allow you to store data in **fixed-size binary formats**
+       * (e.g. 8-bit integers, 32-bit floats) for high-performance tasks.
+       */
+
+      const bytes = new Uint8Array(4); // 4 unsigned 8-bit integers (0–255)
+
+      // Default values are all 0
+      console.log("Initial bytes:", bytes); // → Uint8Array(4) [ 0, 0, 0, 0 ]
+
+      // Set values manually
+      bytes[0] = 255;
+      bytes[1] = 128;
+      bytes[2] = 0;
+      bytes[3] = 64;
+
+      console.log("Updated bytes:", bytes); // → Uint8Array(4) [ 255, 128, 0, 64 ]
+    </script>
+  </head>
+  <body></body>
+</html>

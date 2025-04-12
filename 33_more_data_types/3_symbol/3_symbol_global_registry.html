@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 🗃️ Global Symbol Registry
+       *
+       * You can use Symbol.for("key") to create or retrieve a global symbol.
+       * This allows different parts of code to share the same symbol.
+       */
+
+      const a = Symbol.for("shared");
+      const b = Symbol.for("shared");
+
+      console.log(a === b); // → true (retrieved from global symbol registry)
+
+      // 🔍 You can also get the key for a symbol in the global registry
+      console.log(Symbol.keyFor(a)); // → "shared"
+
+      // 🧠 Symbols created with Symbol() are NOT in the global registry:
+      const c = Symbol("shared");
+      console.log(Symbol.keyFor(c)); // → undefined
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * `Proxy` was introduced in ECMAScript 2015 (ES6).
+       *
+       * It allows developers to **intercept and redefine fundamental operations**
+       * on objects, such as property access, assignment, enumeration, function calls, etc.
+       *
+       * Proxies are powerful tools used in frameworks like Vue.js (reactivity),
+       * ORMs, validation libraries, and more.
+       */
+
+      // 👤 Original object
+      const user = {
+        name: "Alice",
+        age: 25,
+      };
+
+      // 🪞 Proxy to intercept property access
+      const userProxy = new Proxy(user, {
+        get(target, prop) {
+          console.log(`Accessed: ${prop}`);
+          return target[prop];
+        },
+      });
+
+      console.log(userProxy.name); // Logs "Accessed: name" then "Alice"
+      console.log(userProxy.age); // Logs "Accessed: age" then 25
+    </script>
+  </head>
+  <body></body>
+</html>

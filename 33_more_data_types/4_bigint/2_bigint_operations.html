@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * ➕ Arithmetic with BigInts
+       *
+       * You can use most standard arithmetic operators with BigInts:
+       * +, -, *, /, %, ** — but you can't mix BigInt and Number types directly.
+       */
+
+      const a = 123456789012345678901234567890n;
+      const b = 100000000000000000000n;
+
+      // ✅ Works
+      console.log("Addition:", a + b);
+      console.log("Multiplication:", a * 2n);
+
+      // ❌ Mixing with Number throws TypeError
+      const regular = 5;
+      // console.log(a + regular); // ❌ TypeError
+
+      // ✅ You must convert explicitly
+      console.log("With conversion:", a + BigInt(regular));
+    </script>
+  </head>
+  <body></body>
+</html>

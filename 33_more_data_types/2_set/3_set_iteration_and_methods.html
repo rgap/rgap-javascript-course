@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * -------------------------------
+       * 🔁 Iterating and Manipulating Sets
+       * -------------------------------
+       * Sets preserve insertion order and are iterable.
+       * They also provide methods to add, delete, and check values.
+       */
+
+      const colors = new Set(["red", "green", "blue"]);
+
+      // 🔁 Iterate over Set values
+      console.log("🎨 Available colors:");
+      for (const color of colors) {
+        console.log(color);
+      }
+
+      // 🔍 Check for a value
+      console.log("Has 'green'?", colors.has("green")); // → true
+
+      // ❌ Delete a value
+      colors.delete("red");
+
+      // 📏 Check size
+      console.log("Current size:", colors.size); // → 2
+
+      // 🧹 Uncomment to clear all values
+      // colors.clear();
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * JavaScript uses the IEEE 754 double-precision floating-point format
+       * for its `Number` type. This format limits integers to a "safe" range.
+       *
+       * 🔸 The MAX SAFE INTEGER is: 2^53 - 1 → 9007199254740991
+       * 🔸 Beyond this, JS Numbers can't guarantee precision.
+       *
+       * For example, 9007199254740991 + 1 === 9007199254740992 (✅)
+       * But 9007199254740991 + 2 === 9007199254740992 (❌ wrong!)
+       *
+       * So, values > 2^53 or < -2^53 become unreliable.
+       *
+       * 💡 To solve this, `BigInt` was introduced in ES2020.
+       * It allows us to represent arbitrarily large **whole numbers**
+       * without losing precision.
+       */
+
+      // 🚫 Number loses precision beyond MAX_SAFE_INTEGER
+      console.log("Max safe integer:", Number.MAX_SAFE_INTEGER); // → 9007199254740991
+
+      console.log("Incorrect addition:");
+      console.log(9007199254740991 + 1); // → 9007199254740992
+      console.log(9007199254740991 + 2); // → 9007199254740992 (❌ wrong!)
+
+      /**
+       * ✅ BigInt to the rescue!
+       *
+       * To create a BigInt, append "n" to the end of the integer.
+       * This makes it a distinct primitive type.
+       */
+
+      const big = 9007199254740991n;
+
+      console.log("Correct BigInt addition:");
+      console.log(big + 1n); // → 9007199254740992n
+      console.log(big + 2n); // → 9007199254740993n
+
+      // BigInts maintain precision even for huge values.
+
+      // 🔹 There is **no fixed maximum value** for BigInt.
+      //  *     - You can represent **very large or very small integers**,
+      //  *       as long as your system has memory to store them.
+      //  *     - For example:
+      //  */
+
+      const giant = 12345678901234567890123456789012345678901234567890n;
+      console.log("Huge BigInt:", giant);
+    </script>
+  </head>
+  <body></body>
+</html>

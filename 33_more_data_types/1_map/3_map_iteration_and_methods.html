@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 🔁 Iteration and Utilities
+       * --------------------------
+       * Maps preserve the order of insertion and are iterable.
+       * This makes them ideal for ordered key-value storage and lookup.
+       */
+
+      const settings = new Map();
+
+      // 🔧 Set some key-value pairs
+      settings.set("theme", "dark");
+      settings.set("volume", 80);
+      settings.set("language", "es");
+
+      // 🔁 Iterate over entries
+      console.log("📝 Settings:");
+      for (const [key, value] of settings) {
+        console.log(`${key} → ${value}`);
+      }
+
+      // 🔍 Check if a key exists
+      console.log("Is 'volume' defined?", settings.has("volume")); // → true
+
+      // ❌ Delete a key
+      settings.delete("volume");
+
+      // 📏 Check size
+      console.log("Remaining settings:", settings.size); // → 2
+
+      // 🧹 Uncomment below to clear all entries
+      // settings.clear();
+    </script>
+  </head>
+  <body></body>
+</html>

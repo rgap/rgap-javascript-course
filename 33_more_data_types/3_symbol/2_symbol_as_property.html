@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 💡 Use Case: Symbols as object property keys
+       *
+       * Symbols can be used to define non-colliding properties,
+       * especially useful in libraries and frameworks to avoid name conflicts.
+       */
+
+      const user = {
+        name: "Alice",
+      };
+
+      // 🔑 Create a symbol key
+      const secretKey = Symbol("secret");
+
+      // 🔐 Add symbol-keyed property
+      user[secretKey] = "hidden info";
+
+      console.log("User name:", user.name); // → "Alice"
+      console.log("Secret info:", user[secretKey]); // → "hidden info"
+
+      // 🔎 Symbol-keyed properties are not visible in for...in or Object.keys()
+      for (const key in user) {
+        console.log("Looped key:", key); // Only logs "name"
+      }
+
+      console.log("All keys:", Object.keys(user)); // → [ 'name' ]
+      console.log("All symbols:", Object.getOwnPropertySymbols(user)); // → [ Symbol(secret) ]
+    </script>
+  </head>
+  <body></body>
+</html>

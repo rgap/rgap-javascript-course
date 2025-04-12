@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 💡 Use Case: Input Validation
+       *
+       * With `set`, we can intercept assignments to object properties.
+       * This allows us to apply validation logic before modifying the object.
+       */
+
+      const product = {
+        price: 100,
+      };
+
+      const productProxy = new Proxy(product, {
+        set(target, prop, value) {
+          if (prop === "price" && value < 0) {
+            console.error("❌ Price must be non-negative");
+            return false;
+          }
+          target[prop] = value;
+          return true;
+        },
+      });
+
+      productProxy.price = 200; // ✅ OK
+      console.log("Updated price:", productProxy.price);
+
+      productProxy.price = -50; // ❌ Rejected
+      console.log("Final price:", productProxy.price); // → 200
+    </script>
+  </head>
+  <body></body>
+</html>

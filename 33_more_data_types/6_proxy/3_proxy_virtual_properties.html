@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * ⚙️ Virtual Properties or Computed Values
+       *
+       * We can use Proxy to **create fake properties** that don’t exist
+       * but are calculated dynamically when accessed.
+       */
+
+      const person = {
+        firstName: "John",
+        lastName: "Doe",
+      };
+
+      const virtualPerson = new Proxy(person, {
+        get(target, prop) {
+          if (prop === "fullName") {
+            return `${target.firstName} ${target.lastName}`;
+          }
+          return target[prop];
+        },
+      });
+
+      console.log("Full name:", virtualPerson.fullName); // → "John Doe"
+      console.log("First name:", virtualPerson.firstName); // → "John"
+    </script>
+  </head>
+  <body></body>
+</html>

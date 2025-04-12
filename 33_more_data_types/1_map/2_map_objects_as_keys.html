@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 💡 Why Maps Matter
+       * --------------------------
+       * Unlike plain objects, Maps allow **non-string keys**.
+       * This is extremely useful when you want to associate data
+       * with objects, DOM nodes, or functions without stringifying them.
+       */
+
+      // 🧍 Define objects as keys
+      const user1 = { name: "charlie" };
+      const user2 = { name: "dana" };
+
+      // 🗺️ Create a Map to store roles
+      const userRoles = new Map();
+
+      userRoles.set(user1, "viewer");
+      userRoles.set(user2, "moderator");
+
+      // 🔍 Access roles using the original object reference
+      console.log("Charlie's role:", userRoles.get(user1)); // → "viewer"
+      console.log("Dana's role:", userRoles.get(user2)); // → "moderator"
+
+      /**
+       * 🧠 NOTE: This wouldn't work with plain JavaScript objects.
+       *
+       * If we tried to do the same thing with a regular object:
+       *
+       * const rolesObj = {};
+       * rolesObj[user1] = "viewer";
+       * rolesObj[user2] = "moderator";
+       *
+       * console.log(rolesObj);
+       *
+       * The output would be:
+       * {
+       *   "[object Object]": "moderator"
+       * }
+       *
+       * ⚠️ Why? Because in regular objects, object keys are automatically
+       * converted to strings. Both `user1` and `user2` become "[object Object]",
+       * and the second assignment **overwrites** the first.
+       *
+       * ✅ With Map, the keys remain **actual objects**, not strings.
+       */
+    </script>
+  </head>
+  <body></body>
+</html>

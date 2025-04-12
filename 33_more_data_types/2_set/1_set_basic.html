@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * Before ES6 (2015), JavaScript didn't offer a native data structure
+       * for storing unique values. Developers had to manually filter arrays
+       * or use objects with extra logic to avoid duplicates.
+       *
+       * The `Set` object was introduced in ECMAScript 2015 (ES6) as a
+       * **collection of unique values** of any type (primitive or object).
+       *
+       * Common uses:
+       * - Removing duplicates from arrays
+       * - Checking value existence efficiently
+       * - Storing unique flags, tokens, or IDs
+       */
+
+      // 🔰 Create an empty Set
+      const fruits = new Set();
+
+      // ✅ Add elements to the Set
+      fruits.add("🍎 apple");
+      fruits.add("🍌 banana");
+      fruits.add("🍎 apple"); // Duplicate — will be ignored
+
+      // 📏 Check size (only unique values are stored)
+      console.log("Number of unique fruits:", fruits.size); // → 2
+
+      // 🔍 Check if a value exists
+      console.log("Has banana?", fruits.has("🍌 banana")); // → true
+      console.log("Has orange?", fruits.has("🍊 orange")); // → false
+
+      // 🧠 Notes:
+      // - Adding the same value multiple times has no effect.
+      // - Useful when you need a collection without repetitions.
+    </script>
+  </head>
+  <body></body>
+</html>

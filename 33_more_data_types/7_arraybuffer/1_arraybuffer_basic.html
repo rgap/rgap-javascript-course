@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * `ArrayBuffer` was introduced in ES2011 (ES5.1) to enable low-level
+       * manipulation of binary data — useful for tasks like:
+       * - Image/audio processing
+       * - WebGL
+       * - File APIs
+       * - Communicating with binary protocols (e.g. WebSockets)
+       *
+       * It represents a fixed-length **raw binary buffer** of memory.
+       * You can’t read/write it directly — use a view like `Uint8Array`.
+       */
+
+      // Create a 4-byte buffer (32 bits)
+      const buffer = new ArrayBuffer(4);
+
+      // You can't access data directly:
+      console.log("Buffer:", buffer); // → ArrayBuffer { byteLength: 4 }
+
+      // View it using a typed array (e.g., Uint8Array)
+      const view = new Uint8Array(buffer);
+
+      view[0] = 10;
+      view[1] = 20;
+      view[2] = 30;
+      view[3] = 40;
+
+      console.log("Viewed as bytes:", view); // → Uint8Array(4) [10, 20, 30, 40]
+    </script>
+  </head>
+  <body></body>
+</html>

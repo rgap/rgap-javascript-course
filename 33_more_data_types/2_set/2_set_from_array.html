@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * -------------------------------
+       * 💡 Common Use Case: Remove Duplicates
+       * -------------------------------
+       * Since a Set only stores unique values, it's often used
+       * to remove duplicates from an array.
+       */
+
+      const numbersWithDuplicates = [1, 2, 3, 2, 1, 4, 5, 3];
+
+      // ✅ Convert array to Set to eliminate duplicates
+      const uniqueNumbers = new Set(numbersWithDuplicates);
+
+      console.log("Unique values:", [...uniqueNumbers]); // → [1, 2, 3, 4, 5]
+
+      /**
+       * We spread the Set into an array using [...set]
+       * because Sets are iterable, but not arrays by default.
+       */
+    </script>
+  </head>
+  <body></body>
+</html>

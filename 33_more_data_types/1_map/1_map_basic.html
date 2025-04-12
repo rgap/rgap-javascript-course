@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * Before ES6 (2015), JavaScript developers used plain objects `{}`
+       * as maps (key-value stores). But objects had limitations:
+       * - Keys were always strings (or symbols).
+       * - Inherited properties (like `toString`) could conflict with keys.
+       *
+       * ES6 introduced the `Map` object to provide a clean, efficient,
+       * and more flexible way to associate data with keys of any type.
+       */
+
+      // 🔰 Create a new Map object
+      const roles = new Map();
+
+      // ✅ Set key-value pairs
+      roles.set("alice", "admin");
+      roles.set("bob", "editor");
+
+      // 🔎 Retrieve values by keys
+      console.log("Alice's role:", roles.get("alice")); // → "admin"
+      console.log("Bob's role:", roles.get("bob")); // → "editor"
+
+      // 🎯 Keys are not converted to strings — "alice" is a string key
+    </script>
+  </head>
+  <body></body>
+</html>

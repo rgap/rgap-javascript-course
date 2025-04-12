@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 📦 Practical Use Case: Dealing with large IDs or cryptographic data.
+       *
+       * Some databases or blockchain systems use 64-bit or 128-bit integer IDs
+       * that are too large for JS Numbers.
+       */
+
+      const userIdFromDatabase = 9876543210123456789n;
+
+      function isEven(bigint) {
+        return bigint % 2n === 0n;
+      }
+
+      console.log("User ID:", userIdFromDatabase);
+      console.log("Is even?", isEven(userIdFromDatabase)); // → false
+    </script>
+  </head>
+  <body></body>
+</html>
