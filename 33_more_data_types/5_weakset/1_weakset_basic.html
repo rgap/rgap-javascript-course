@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * `WeakSet` was introduced in ES2015 (ES6), alongside `WeakMap`.
+       *
+       * Like `Set`, it stores **unique values** — but:
+       * - Only objects (no primitives)
+       * - Stored objects are **weakly referenced**
+       * - It is **not iterable**
+       *
+       * WeakSet is mainly used for **tracking object presence** without preventing
+       * garbage collection (e.g., to flag objects as "seen").
+       */
+
+      const ws = new WeakSet();
+
+      const obj1 = { name: "Object 1" };
+      const obj2 = { name: "Object 2" };
+
+      ws.add(obj1);
+      ws.add(obj2);
+
+      console.log("Has obj1?", ws.has(obj1)); // → true
+    </script>
+  </head>
+  <body></body>
+</html>

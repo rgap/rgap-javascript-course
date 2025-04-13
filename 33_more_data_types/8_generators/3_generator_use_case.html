@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 📦 Use Case: Infinite sequences (e.g., ID generator)
+       *
+       * Since generators don't compute all values at once, they're great
+       * for generating values on-demand (lazy evaluation).
+       */
+
+      function* idGenerator(start = 1) {
+        let id = start;
+        while (true) {
+          yield id++;
+        }
+      }
+
+      const getId = idGenerator();
+
+      console.log("Generated IDs:");
+      console.log(getId.next().value); // → 1
+      console.log(getId.next().value); // → 2
+      console.log(getId.next().value); // → 3
+      // ... can go on forever
+    </script>
+  </head>
+  <body></body>
+</html>

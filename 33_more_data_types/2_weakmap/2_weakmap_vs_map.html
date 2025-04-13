@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * WeakMap vs Map
+       *
+       * - `Map` can use any value as a key: objects, strings, numbers, etc.
+       * - `WeakMap` can only use **objects** as keys.
+       * - `WeakMap` keys are weakly held (garbage-collectable).
+       * - `WeakMap` is NOT iterable (no .forEach, .size, or spread).
+       */
+
+      const map = new Map();
+      const weakMap = new WeakMap();
+
+      const person = { name: "Jane" };
+
+      // ✅ Both work with objects as keys
+      map.set(person, "data");
+      weakMap.set(person, "private data");
+
+      console.log("Map has:", map.get(person)); // → "data"
+      console.log("WeakMap has:", weakMap.get(person)); // → "private data"
+
+      /**
+       * ❌ WeakMap cannot use primitive keys
+       */
+      try {
+        weakMap.set("hello", "This will fail");
+      } catch (err) {
+        console.error("🚫 WeakMap.set('hello', ...):", err.message);
+      }
+
+      try {
+        weakMap.set(42, "Also fails");
+      } catch (err) {
+        console.error("🚫 WeakMap.set(42, ...):", err.message);
+      }
+
+      // ✅ Map accepts all key types
+      map.set("hello", "This is fine");
+      map.set(42, "This too");
+
+      console.log("Map has 'hello':", map.get("hello")); // → "This is fine"
+      console.log("Map has 42:", map.get(42)); // → "This too")
+    </script>
+  </head>
+  <body></body>
+</html>

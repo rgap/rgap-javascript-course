@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 📦 Use Case: Store metadata without modifying objects
+       *
+       * Libraries often use WeakMap to store private data or metadata
+       * tied to an object without exposing or modifying the object directly.
+       */
+
+      const metadata = new WeakMap();
+
+      function trackUser(user) {
+        metadata.set(user, {
+          lastActive: new Date(),
+          accessLevel: "admin",
+        });
+      }
+
+      const user = { id: 123 };
+
+      // Add metadata without changing the object
+      trackUser(user);
+
+      // Read it back later
+      console.log("User metadata:", metadata.get(user)); // → { lastActive: ..., accessLevel: "admin" }
+
+      // When `user` is dereferenced, its metadata is garbage-collected automatically
+    </script>
+  </head>
+  <body></body>
+</html>

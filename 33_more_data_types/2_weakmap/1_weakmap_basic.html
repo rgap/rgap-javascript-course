@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * `WeakMap` was introduced in ES2015 (ES6) to allow key-value storage
+       * where keys are **objects only** and values are **held weakly**.
+       *
+       * A weak reference means:
+       * - The key (object) can be garbage-collected if there are no other references.
+       * - You don’t prevent memory cleanup accidentally.
+       *
+       * This is useful for things like caching or metadata storage.
+       */
+
+      // Create a WeakMap
+      const wm = new WeakMap();
+
+      const obj = { name: "secret" };
+
+      // Set a key-value pair
+      wm.set(obj, "This is hidden");
+
+      // Get the value later
+      console.log("Value:", wm.get(obj)); // → "This is hidden"
+
+      // Delete the object reference
+      // Once `obj` is no longer referenced, it can be garbage collected
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 📦 Use Case: Tracking objects without retaining them
+       *
+       * WeakSet is useful when you want to **mark objects**
+       * (e.g., "already processed") without modifying them
+       * or preventing them from being garbage collected.
+       */
+
+      const processed = new WeakSet();
+
+      function process(obj) {
+        if (processed.has(obj)) {
+          console.log("Already processed:", obj.name);
+          return;
+        }
+
+        console.log("Processing:", obj.name);
+        processed.add(obj);
+      }
+
+      const a = { name: "A" };
+      const b = { name: "B" };
+
+      process(a); // → Processing: A
+      process(b); // → Processing: B
+      process(a); // → Already processed: A
+    </script>
+  </head>
+  <body></body>
+</html>

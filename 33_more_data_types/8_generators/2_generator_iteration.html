@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 🔁 Generators are iterable!
+       * You can loop through them using `for...of` or the spread operator.
+       */
+
+      function* countToThree() {
+        yield 1;
+        yield 2;
+        yield 3;
+      }
+
+      console.log("With for...of:");
+      for (const num of countToThree()) {
+        console.log(num);
+      }
+
+      console.log("With spread:");
+      console.log([...countToThree()]); // → [1, 2, 3]
+    </script>
+  </head>
+  <body></body>
+</html>

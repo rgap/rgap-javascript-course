@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * ⚖️ WeakSet vs Set
+       *
+       * - `Set` stores any type of value (primitives or objects)
+       * - `WeakSet` only stores objects
+       * - `WeakSet` is not iterable and has no .size or .forEach
+       * - `WeakSet` supports weak referencing (objects can be GC’d)
+       */
+
+      const set = new Set();
+      const weakSet = new WeakSet();
+
+      const obj = { id: 1 };
+
+      // ✅ Both work with objects
+      set.add(obj);
+      weakSet.add(obj);
+
+      // ❌ WeakSet does NOT work with primitives
+      try {
+        weakSet.add("hello"); // Throws TypeError
+      } catch (err) {
+        console.error("🚫 Cannot add primitive to WeakSet:", err.message);
+      }
+
+      // ✅ Set supports primitives
+      set.add("hello");
+      console.log("Set has 'hello':", set.has("hello")); // → true
+
+      // ❌ WeakSet can't be looped over
+      // for (let item of weakSet) {} // → TypeError
+    </script>
+  </head>
+  <body></body>
+</html>

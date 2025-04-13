@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * Generators were introduced in **ES2015 (ES6)** as a new kind of function.
+       *
+       * A generator function can "pause" execution using `yield`, and then
+       * "resume" from where it left off. It's useful for:
+       * - Lazy iteration
+       * - Controlling flow manually
+       * - Handling infinite or large sequences
+       */
+
+      function* greetGenerator() {
+        yield "Hello";
+        yield "World";
+      }
+
+      const greeter = greetGenerator();
+
+      console.log(greeter.next()); // → { value: "Hello", done: false }
+      console.log(greeter.next()); // → { value: "World", done: false }
+      console.log(greeter.next()); // → { value: undefined, done: true }
+    </script>
+  </head>
+  <body></body>
+</html>
