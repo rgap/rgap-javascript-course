@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Infinite ID Generator with [Symbol.iterator]</title>
+  </head>
+  <body>
+    <h1>♾️ Infinite ID Iterator (no generator)</h1>
+
+    <script>
+      /**
+       * 📚 THEORY: Manual [Symbol.iterator] for Infinite Sequences
+       *
+       * Instead of using `function*` and `yield`, you can build an infinite sequence
+       * using the iterator protocol directly.
+       *
+       * This shows how JavaScript generators work under the hood —
+       * You define an object that implements [Symbol.iterator]() and returns
+       * an iterator object with a `.next()` method.
+       *
+       * ✅ WHY THIS IS USEFUL:
+       * - Useful in library or framework internals where fine control is needed.
+       * - Avoids using generator syntax (some environments don't support it).
+       * - Helps understand how iteration works behind generators.
+       */
+
+      // Custom object that produces an endless stream of IDs
+      const infiniteIdIterator = {
+        currentId: 1,
+
+        // Define the iterable protocol
+        [Symbol.iterator]() {
+          return {
+            // Note: currentId is accessed through closure
+            next: () => {
+              return { value: infiniteIdIterator.currentId++, done: false };
+            },
+          };
+        },
+      };
+
+      // 🔁 Use it manually:
+      const iterator = infiniteIdIterator[Symbol.iterator]();
+
+      console.log("Manual ID generation:");
+      console.log(iterator.next().value); // → 1
+      console.log(iterator.next().value); // → 2
+      console.log(iterator.next().value); // → 3
+    </script>
+  </body>
+</html>

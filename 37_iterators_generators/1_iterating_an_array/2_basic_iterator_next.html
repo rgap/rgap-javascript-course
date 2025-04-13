@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Array Iterator with .next()</title>
+  </head>
+  <body>
+    <h1>🔁 Array Iterator using .next()</h1>
+
+    <script>
+      /**
+       * 📚 THEORY: JavaScript Iterable Protocol
+       *
+       * An object is iterable if it implements a method called `[Symbol.iterator]`
+       * that returns an **iterator** object.
+       *
+       * The iterator object must have a `.next()` method that returns:
+       *  - `{ value: ..., done: false }` for each value
+       *  - `{ value: undefined, done: true }` when finished
+       *
+       * Built-in arrays, strings, maps, sets are all iterable.
+       */
+
+      const fruits = ["🍎", "🍌", "🍇"];
+
+      // 🔧 Get the iterator object from the array using [Symbol.iterator]
+      const iterator = fruits[Symbol.iterator]();
+
+      console.log(iterator.next()); // → { value: "🍎", done: false }
+      console.log(iterator.next()); // → { value: "🍌", done: false }
+      console.log(iterator.next()); // → { value: "🍇", done: false }
+      console.log(iterator.next()); // → { value: undefined, done: true }
+    </script>
+  </body>
+</html>

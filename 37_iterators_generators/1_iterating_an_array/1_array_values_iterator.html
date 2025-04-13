@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Array Iterator with .values()</title>
+  </head>
+  <body>
+    <h1>🔁 Array Iteration with .values() and .next()</h1>
+
+    <script>
+      /**
+       * 📚 THEORY: Iterator via Array.prototype.values()
+       *
+       * Instead of using [Symbol.iterator]() directly, modern arrays offer a simpler method: `.values()`.
+       * It returns the same kind of iterator, which we can manually walk using `.next()`.
+       *
+       * This makes the iterator protocol easier to learn without exposing Symbol-related syntax.
+       */
+
+      const animals = ["🐶", "🐱", "🐰"];
+
+      // ✅ Get the iterator using .values()
+      const iterator = animals.values();
+
+      // 🔁 Step through the array using .next()
+      console.log(iterator.next()); // { value: "🐶", done: false }
+      console.log(iterator.next()); // { value: "🐱", done: false }
+      console.log(iterator.next()); // { value: "🐰", done: false }
+      console.log(iterator.next()); // { value: undefined, done: true }
+    </script>
+  </body>
+</html>

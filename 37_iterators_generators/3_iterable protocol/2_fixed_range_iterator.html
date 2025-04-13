@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Finite ID Generator with [Symbol.iterator]</title>
+  </head>
+  <body>
+    <h1>🔢 Finite ID Iterator (no generator)</h1>
+
+    <script>
+      /**
+       * 📚 THEORY: Manual [Symbol.iterator] with start and end values
+       *
+       * Instead of an infinite sequence, we can define a **finite range**
+       * (e.g., from `start` to `end`) using the same iterator protocol.
+       *
+       * ✅ Why this version is useful:
+       * - You can define a reusable counter/range object
+       * - You control the sequence manually (without generator functions)
+       * - Great for understanding how iteration state is tracked
+       */
+
+      // Custom iterable that counts from `start` to `end` (inclusive)
+      const finiteIdIterator = {
+        start: 101,
+        end: 105,
+
+        [Symbol.iterator]() {
+          let current = this.start; // initialize local counter
+          const last = this.end;
+
+          return {
+            next() {
+              if (current <= last) {
+                return { value: current++, done: false };
+              } else {
+                return { value: undefined, done: true };
+              }
+            },
+          };
+        },
+      };
+
+      // 🔁 Manual use of the iterator
+      const iterator = finiteIdIterator[Symbol.iterator]();
+
+      console.log("Generated IDs:");
+      console.log(iterator.next().value); // → 101
+      console.log(iterator.next().value); // → 102
+      console.log(iterator.next().value); // → 103
+      console.log(iterator.next().value); // → 104
+      console.log(iterator.next().value); // → 105
+      console.log(iterator.next().value); // → undefined (done: true)
+    </script>
+  </body>
+</html>

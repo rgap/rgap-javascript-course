@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Check if a Value is Iterable</title>
+  </head>
+  <body>
+    <h1>🔍 Is it Iterable?</h1>
+
+    <script>
+      /**
+       * 📚 THEORY: Checking for Iterability
+       *
+       * In JavaScript, an object is **iterable** if it implements the iterable protocol.
+       * This means it has a `[Symbol.iterator]` method that returns an iterator.
+       *
+       * Most built-in types like Array, String, Set, and Map are iterable.
+       * Plain objects are NOT iterable by default.
+       *
+       * ✅ Why this matters:
+       * - Prevent runtime errors when using `for...of`, spread `...`, etc.
+       * - Good for defensive programming when working with unknown input
+       */
+
+      function isIterable(value) {
+        return value != null && typeof value[Symbol.iterator] === "function";
+      }
+
+      // Test examples
+      const tests = [
+        "hello",
+        [1, 2, 3],
+        new Set([1, 2]),
+        new Map(),
+        { a: 1, b: 2 }, // ❌ not iterable
+        42,
+        null,
+        undefined,
+      ];
+
+      tests.forEach((item, i) => {
+        console.log(`Test ${i + 1}:`, item, "→", isIterable(item));
+      });
+    </script>
+  </body>
+</html>
