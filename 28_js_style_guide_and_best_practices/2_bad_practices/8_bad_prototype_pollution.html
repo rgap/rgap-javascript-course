@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bad Practice: Polluting Native Prototypes</title>
+  </head>
+  <body>
+    <script>
+      // ❌ BAD PRACTICE: Modifying built-in prototypes like Object, Array, etc.
+      Array.prototype.randomItem = function () {
+        return this[Math.floor(Math.random() * this.length)];
+      };
+
+      let numbers = [1, 2, 3];
+      console.log(numbers.randomItem());
+
+      // ✅ Better Practice: Use utility functions instead of modifying native prototypes
+      // function getRandomItem(arr) {
+      //   return arr[Math.floor(Math.random() * arr.length)];
+      // }
+
+      // let numbers = [1, 2, 3];
+      // console.log(getRandomItem(numbers));
+    </script>
+  </body>
+</html>

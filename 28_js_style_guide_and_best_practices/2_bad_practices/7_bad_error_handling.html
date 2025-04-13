@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bad Practice: No Error Handling</title>
+  </head>
+  <body>
+    <script>
+      // ❌ BAD PRACTICE: No try/catch for potentially dangerous code
+      let data = JSON.parse('{ name: "Rel" }'); // This will throw an error due to invalid JSON
+      console.log(data);
+
+      // ✅ Better Practice: Use try/catch to handle possible errors
+      // try {
+      //   let data = JSON.parse('{ name: "Rel" }');
+      //   console.log(data);
+      // } catch (error) {
+      //   console.error("Parsing failed:", error.message);
+      // }
+    </script>
+  </body>
+</html>

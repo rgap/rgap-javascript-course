@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bad Practice: Mixing Logic and Presentation</title>
+</head>
+<body>
+  <!-- ❌ BAD PRACTICE: Overwrites content, mixes logic with structure -->
+  <script>
+    document.body.innerHTML = "<h2>This replaces everything</h2>";
+  </script>
+
+  <!-- ✅ Better Practice (inject into specific element) -->
+  <!--
+  <div id="container"></div>
+  <script>
+    document.getElementById("container").innerHTML = "<h2>This is safe</h2>";
+  </script>
+  -->
+</body>
+</html>

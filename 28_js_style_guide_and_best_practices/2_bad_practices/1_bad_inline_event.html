@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bad Practice: Inline Event Handler</title>
+  </head>
+  <body>
+    <!-- ❌ BAD PRACTICE: Mixing JavaScript directly in HTML -->
+    <button onclick="alert('Clicked!')">Click Me</button>
+
+    <!-- ✅ Better Practice (separate behavior from structure) -->
+    <!--
+    <button id="clickBtn">Click Me</button>
+    <script>
+        document.getElementById("clickBtn").addEventListener("click", function () {
+        alert("Clicked!");
+        });
+    </script>
+    -->
+  </body>
+</html>

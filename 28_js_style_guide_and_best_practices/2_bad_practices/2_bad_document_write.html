@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bad Practice: document.write()</title>
+  </head>
+  <body>
+    <!-- ❌ BAD PRACTICE: document.write() can overwrite the entire document and is blocked in modern browsers -->
+    <script>
+      document.write("<h1>Welcome!</h1>");
+    </script>
+
+    <!-- ✅ Better Practice (manipulate DOM safely) -->
+    <!--
+    <h1 id="welcome"></h1>
+    <script>
+        document.getElementById("welcome").textContent = "Welcome!";
+    </script>
+    -->
+</body>
+</html>

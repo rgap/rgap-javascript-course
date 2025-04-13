@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bad Practice: Using eval()</title>
+  </head>
+  <body>
+    <script>
+      // ❌ BAD PRACTICE: eval() executes code from a string (dangerous!)
+      let expression = "2 + 2";
+      let result = eval(expression); // Can execute malicious code
+      console.log(result);
+
+      // ✅ Better Practice: Use Function or evaluate logic directly
+      // let result = Function("return 2 + 2")();
+      // console.log(result);
+    </script>
+  </body>
+</html>

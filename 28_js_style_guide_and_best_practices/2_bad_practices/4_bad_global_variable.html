@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bad Practice: Global Variables</title>
+  </head>
+  <body>
+    <script>
+      // ❌ BAD PRACTICE: Implicit global variable (no var, let, or const)
+      count = 0; // Declares a variable without let/const/var, becomes global
+
+      function increment() {
+        count++;
+        console.log(count);
+      }
+
+      increment();
+
+      // ✅ Better Practice (declare variables properly with let/const)
+      // let count = 0;
+
+      // function increment() {
+      //   count++;
+      //   console.log(count);
+      // }
+
+      // increment();
+    </script>
+  </body>
+</html>
