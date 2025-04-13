@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Set URL Parameters</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      button {
+        margin: 5px;
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+      code {
+        background-color: #eee;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🛠️ Set or Modify a URL Parameter</h1>
+
+    <p><strong>Current URL:</strong></p>
+    <code id="currentUrl"></code>
+
+    <p>
+      <button id="changeBtn">Change/Add mode=dark</button>
+      <button onclick="window.location.href='1_set_mode_param.html'">Reset URL</button>
+    </p>
+
+    <script>
+      /**
+       * 📚 We can modify query parameters by creating a URL object,
+       * then calling .searchParams.set() and updating window.location.href.
+       * This will reload the page with the new parameters.
+       */
+
+      const url = new URL(window.location.href);
+      document.getElementById("currentUrl").textContent = url.href;
+
+      document.getElementById("changeBtn").onclick = () => {
+        url.searchParams.set("mode", "dark"); // updates or adds it
+        window.location.href = url.href; // reload with new URL
+      };
+    </script>
+  </body>
+</html>

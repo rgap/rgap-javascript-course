@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Drag & Drop File Upload Zone</title>
+    <style>
+      #dropZone {
+        width: 100%;
+        max-width: 400px;
+        height: 150px;
+        border: 3px dashed #888;
+        background-color: #f3f3f3;
+        color: #666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        transition: background-color 0.2s ease;
+      }
+
+      #dropZone.hover {
+        background-color: #e0f7fa;
+        border-color: #00acc1;
+      }
+
+      #fileList {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Drag and Drop – File Upload Zone</h1>
+    <div id="dropZone">📁 Drop files here</div>
+    <ul id="fileList"></ul>
+
+    <script>
+      /**
+       * 📚 Theory:
+       * The `dataTransfer.files` object on the drop event gives access to dropped files.
+       * You can loop through the files and read them using `FileReader`, or just list names.
+       *
+       * Drag-and-drop file zones are common in file upload UIs.
+       */
+
+      const dropZone = document.getElementById("dropZone");
+      const fileList = document.getElementById("fileList");
+
+      // 🟢 Allow dropping
+      dropZone.addEventListener("dragover", event => {
+        event.preventDefault();
+        dropZone.classList.add("hover");
+      });
+
+      dropZone.addEventListener("dragleave", () => {
+        dropZone.classList.remove("hover");
+      });
+
+      dropZone.addEventListener("drop", event => {
+        event.preventDefault();
+        dropZone.classList.remove("hover");
+
+        // This loads the files that were dropped
+        const files = event.dataTransfer.files;
+        fileList.innerHTML = ""; // Clear previous list
+
+        if (files.length === 0) {
+          fileList.innerHTML = "<li>No files dropped</li>";
+          return;
+        }
+
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          const listItem = document.createElement("li");
+          listItem.textContent = `📄 ${file.name} (${file.type || "unknown type"})`;
+          fileList.appendChild(listItem);
+        }
+      });
+    </script>
+  </body>
+</html>

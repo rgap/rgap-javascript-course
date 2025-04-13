@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Data Transfer Example</title>
+    <style>
+      #dragItem {
+        width: 120px;
+        padding: 10px;
+        background-color: #d0e1ff;
+        border: 2px solid #005;
+        cursor: grab;
+        margin-bottom: 20px;
+      }
+
+      #dropTarget {
+        width: 300px;
+        height: 100px;
+        border: 2px dashed #555;
+        background-color: #f3f3f3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Drag and Drop – Transfer Text Data</h1>
+
+    <!-- 👇 This is the source -->
+    <div id="dragItem" draggable="true">📦 Drop me into the box</div>
+
+    <!-- 🕳️ This is the target -->
+    <div id="dropTarget">⬇ Drop here</div>
+
+    <script>
+      /**
+       * 📚 Theory:
+       * You can attach custom data (usually plain text or HTML) to a drag operation
+       * using `event.dataTransfer.setData(type, value)` during dragstart.
+       * Then retrieve it during `drop` using `getData(type)`.
+       *
+       * This is how you pass values across components via drag & drop.
+       */
+
+      const dragItem = document.getElementById("dragItem");
+      const dropTarget = document.getElementById("dropTarget");
+
+      dragItem.addEventListener("dragstart", event => {
+        // Attach custom text data to the drag
+        event.dataTransfer.setData("text/plain", "🎉 Dragged text content!");
+        console.log("📤 Data attached to drag.");
+      });
+
+      dropTarget.addEventListener("dragover", event => {
+        event.preventDefault(); // Required to allow drop
+      });
+
+      dropTarget.addEventListener("drop", event => {
+        event.preventDefault();
+        const receivedText = event.dataTransfer.getData("text/plain");
+        dropTarget.textContent = `📥 Received: ${receivedText}`;
+        console.log("📩 Data received:", receivedText);
+      });
+    </script>
+  </body>
+</html>

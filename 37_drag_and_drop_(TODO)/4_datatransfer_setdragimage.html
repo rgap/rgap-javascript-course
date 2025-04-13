@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Custom Drag Image</title>
+    <style>
+      #dragItem {
+        width: 150px;
+        padding: 20px;
+        background-color: lightcoral;
+        border: 2px solid #444;
+        cursor: grab;
+        user-select: none;
+      }
+
+      #ghost {
+        position: absolute;
+        top: -1000px; /* hide off screen */
+        padding: 10px;
+        background: yellow;
+        border: 1px solid #000;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Drag and Drop – Custom Drag Image</h1>
+
+    <!-- 📦 Element to drag -->
+    <div id="dragItem" draggable="true">🔥 Drag me</div>
+
+    <!-- 👻 Custom drag image element (not visible on screen) -->
+    <div id="ghost">🚀 Custom Image</div>
+
+    <script>
+      /**
+       * 📚 Theory:
+       * By default, the browser shows a "ghost image" when dragging.
+       * But you can customize it using `event.dataTransfer.setDragImage(element, xOffset, yOffset)`.
+       *
+       * The element used as a drag image should NOT be visible on screen.
+       * Typically it’s moved offscreen using CSS (like top: -9999px).
+       */
+
+      const dragItem = document.getElementById("dragItem");
+      const ghost = document.getElementById("ghost");
+
+      dragItem.addEventListener("dragstart", event => {
+        // Set the custom image as the ghost during drag
+        event.dataTransfer.setDragImage(ghost, 10, 10);
+        console.log("👻 Custom drag image used.");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirect with window.location.assign()</title>
+  </head>
+  <body>
+    <h1>Redirecting with JavaScript</h1>
+    <button id="goBtn">Go to Wikipedia</button>
+
+    <script>
+      /**
+       * 📚 Theory:
+       * `window.location.assign(url)` navigates to a new page — like clicking a link.
+       * It **adds** a new entry to the browser history.
+       *
+       * If you want to simulate a user navigating somewhere (like after a login),
+       * `assign()` is the most straightforward method.
+       *
+       * Other methods:
+       * - `replace(url)` replaces the current entry (no back button).
+       * - `href = url` is equivalent to `assign()`.
+       */
+
+      document.getElementById("goBtn").onclick = () => {
+        window.location.assign("https://www.wikipedia.org");
+      };
+    </script>
+  </body>
+</html>

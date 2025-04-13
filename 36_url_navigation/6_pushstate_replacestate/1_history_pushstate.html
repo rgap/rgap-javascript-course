@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>history.pushState() Example</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      button {
+        margin: 8px;
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+      code {
+        background-color: #f0f0f0;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🧭 Push State Navigation</h1>
+
+    <p>
+      <button onclick="changeToPage(2)">Go to page 2 (no reload)</button>
+      <button onclick="changeToPage(1)">Go back to page 1</button>
+    </p>
+
+    <div>
+      <strong>Current Page:</strong>
+      <code id="pageDisplay"></code>
+    </div>
+
+    <script>
+      /**
+       * 📚 THEORY: history.pushState(stateObj, title, url)
+       * - Updates the browser's address bar to the given URL without reloading the page.
+       * - Adds a new entry to the session history stack.
+       * - Common in Single Page Applications (SPAs) for simulating navigation.
+       *
+       * Parameters:
+       * - stateObj: an object attached to the new entry (can store useful app data)
+       * - title: ignored by most browsers (safe to set to "")
+       * - url: the new URL to appear in the address bar (same origin only)
+       */
+
+      function changeToPage(pageNumber) {
+        const newUrl = window.location.pathname + "?page=" + pageNumber;
+        history.pushState({ page: pageNumber }, "Page " + pageNumber, newUrl);
+        updateDisplay(); // update visible content
+      }
+
+      function updateDisplay() {
+        const params = new URLSearchParams(window.location.search);
+        const page = params.get("page") || "1";
+        document.getElementById("pageDisplay").textContent = page;
+      }
+
+      // ✅ Update content if user navigates with back/forward
+      window.addEventListener("popstate", updateDisplay);
+
+      // ✅ Initial display
+      updateDisplay();
+    </script>
+  </body>
+</html>

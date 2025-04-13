@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Read URL Parameters</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      code {
+        background-color: #f0f0f0;
+        padding: 2px 5px;
+        border-radius: 4px;
+      }
+      .output {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🔎 Reading URL Parameters</h1>
+
+    <p><strong>Click to test:</strong></p>
+    <ul>
+      <li><a href="?user=admin&mode=dark">?user=admin&mode=dark</a></li>
+      <li><a href="?user=guest">?user=guest</a></li>
+      <li><a href="?mode=light">?mode=light</a></li>
+      <li><a href="1_show_params.html">No parameters</a></li>
+    </ul>
+
+    <div class="output">
+      <h2>📋 Extracted Parameters:</h2>
+      <p><strong>User:</strong> <code id="userOutput"></code></p>
+      <p><strong>Mode:</strong> <code id="modeOutput"></code></p>
+    </div>
+
+    <script>
+      /**
+       * 📚 URL parameters are added after a "?" in the URL.
+       * Example: ?user=admin&mode=dark
+       *
+       * We can extract them using the URLSearchParams API.
+       */
+
+      const params = new URLSearchParams(window.location.search);
+
+      const user = params.get("user") || "(not provided)";
+      const mode = params.get("mode") || "(not provided)";
+
+      document.getElementById("userOutput").textContent = user;
+      document.getElementById("modeOutput").textContent = mode;
+    </script>
+  </body>
+</html>

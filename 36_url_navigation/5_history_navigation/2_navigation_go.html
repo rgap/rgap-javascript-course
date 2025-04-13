@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Browser History Navigation</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      .info {
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #f0f8ff;
+        border-left: 4px solid #00f;
+      }
+      button {
+        margin: 5px;
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+      .nav-links a {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px 10px;
+        background: #ddd;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📖 Browser History Navigation</h1>
+
+    <p>Use these buttons to navigate your session history:</p>
+    <button onclick="goBack()">⬅ Back</button>
+    <button onclick="goForward()">➡ Forward</button>
+    <button onclick="goSteps(-2)">⬅⬅ Go Back 2 Steps</button>
+    <button onclick="goSteps(1)">➡ Go Forward 1 Step</button>
+    <button onclick="goSteps(0)">🔄 Reload</button>
+
+    <p>Click any of these links to add history entries:</p>
+    <div class="nav-links">
+      <a href="?page=1">Page 1</a>
+      <a href="?page=2">Page 2</a>
+      <a href="?page=3">Page 3</a>
+    </div>
+
+    <div class="info">
+      <p><strong>Current URL:</strong> <code id="currentUrl"></code></p>
+      <p><strong>History length:</strong> <span id="historyLength"></span></p>
+    </div>
+
+    <script>
+      function goBack() {
+        history.back();
+      }
+
+      function goForward() {
+        history.forward();
+      }
+
+      /**
+       * 📚 `history.go(n)`:
+       * Allows jumping multiple steps in either direction:
+       * - n < 0: go back n pages
+       * - n > 0: go forward n pages
+       * - n = 0: reload the current page
+       */
+      function goSteps(n) {
+        history.go(n);
+      }
+
+      // Update display on load
+      const url = window.location.href;
+      document.getElementById("currentUrl").textContent = url;
+      document.getElementById("historyLength").textContent = history.length;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Drop Target Example</title>
+    <style>
+      #dragItem {
+        width: 150px;
+        padding: 20px;
+        background-color: lightblue;
+        border: 2px solid #333;
+        cursor: grab;
+        margin-bottom: 20px;
+      }
+
+      #dropZone {
+        width: 300px;
+        height: 150px;
+        border: 3px dashed gray;
+        background-color: #f9f9f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+      }
+
+      #dropZone.hover {
+        background-color: #e0ffe0;
+        border-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Drag and Drop – Drop Target</h1>
+
+    <div id="dragItem" draggable="true">🟦 Drag me</div>
+    <div id="dropZone">⬇ Drop here</div>
+
+    <script>
+      /**
+       * 📚 Theory:
+       * To make an element accept a drop, we MUST call `event.preventDefault()` in `dragover`.
+       * Otherwise, the drop event will never fire.
+       *
+       * We can also add visual feedback by toggling CSS classes on dragover/leave.
+       */
+
+      const dragItem = document.getElementById("dragItem");
+      const dropZone = document.getElementById("dropZone");
+
+      // 🟢 Required to allow dropping
+      dropZone.addEventListener("dragover", event => {
+        event.preventDefault();
+        dropZone.classList.add("hover");
+      });
+
+      dropZone.addEventListener("dragleave", () => {
+        dropZone.classList.remove("hover");
+      });
+
+      dropZone.addEventListener("drop", event => {
+        event.preventDefault();
+        dropZone.classList.remove("hover");
+
+        console.log("✅ Dropped:", dragItem.textContent);
+        dropZone.textContent = "✅ Item dropped!";
+      });
+    </script>
+  </body>
+</html>

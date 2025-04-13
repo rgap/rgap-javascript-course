@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Browser History Navigation</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      .info {
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #f0f8ff;
+        border-left: 4px solid #00f;
+      }
+      button {
+        margin-right: 10px;
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+      .nav-links a {
+        display: inline-block;
+        margin-right: 10px;
+        padding: 5px 10px;
+        background: #ddd;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📖 Browser History Navigation</h1>
+
+    <p>Use these buttons to navigate your session history:</p>
+    <button onclick="goBack()">⬅ Back</button>
+    <button onclick="goForward()">➡ Forward</button>
+
+    <p>Click one of these links to create navigation history:</p>
+    <div class="nav-links">
+      <a href="?page=1">Page 1</a>
+      <a href="?page=2">Page 2</a>
+      <a href="?page=3">Page 3</a>
+    </div>
+
+    <div class="info">
+      <p><strong>Current URL:</strong> <code id="currentUrl"></code></p>
+      <p><strong>History length:</strong> <span id="historyLength"></span></p>
+    </div>
+
+    <script>
+      /**
+       * 📚 Theory:
+       * The `window.history` object gives us control over the session history of the browser.
+       *
+       * - `history.back()` goes to the previous page in history (same as ⬅ button).
+       * - `history.forward()` goes to the next page if you’ve gone back before (same as ➡ button).
+       * - `history.length` returns the number of entries in the session history stack.
+       *
+       * This works only if there is actually a history stack (pages visited during the same tab session).
+       */
+
+      function goBack() {
+        history.back();
+      }
+
+      function goForward() {
+        history.forward();
+      }
+
+      // Update display on load
+      const url = window.location.href;
+      document.getElementById("currentUrl").textContent = url;
+      document.getElementById("historyLength").textContent = history.length;
+    </script>
+  </body>
+</html>

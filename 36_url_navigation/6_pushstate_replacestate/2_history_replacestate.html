@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>history.replaceState() Example</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      button {
+        margin: 8px;
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+      code {
+        background-color: #f0f0f0;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>✏️ Replace State Navigation</h1>
+
+    <p>
+      <button onclick="replacePage(1)">Replace with ?page=1</button>
+      <button onclick="replacePage(2)">Replace with ?page=2</button>
+    </p>
+
+    <div>
+      <strong>Current Page (from URL):</strong>
+      <code id="pageDisplay"></code>
+    </div>
+
+    <p style="margin-top: 20px; color: gray">⚠️ This does <strong>not</strong> create a history entry. You cannot go back to the previous page.</p>
+
+    <script>
+      /**
+       * 📚 history.replaceState(stateObj, title, url)
+       *
+       * This method replaces the **current** entry in the browser’s session history.
+       * It’s different from pushState(), which creates a new entry.
+       *
+       * Use cases:
+       * - After form submission, to clean up the URL
+       * - When filtering/searching but you don’t want to allow back navigation
+       * - To correct the current state without cluttering the history
+       */
+
+      function replacePage(pageNumber) {
+        const newUrl = window.location.pathname + "?page=" + pageNumber;
+        history.replaceState({ page: pageNumber }, "Page " + pageNumber, newUrl);
+        updateDisplay();
+      }
+
+      function updateDisplay() {
+        const params = new URLSearchParams(window.location.search);
+        const page = params.get("page") || "(not set)";
+        document.getElementById("pageDisplay").textContent = page;
+      }
+
+      // Update display on popstate too (if needed)
+      window.addEventListener("popstate", updateDisplay);
+
+      // Initial display
+      updateDisplay();
+    </script>
+  </body>
+</html>
