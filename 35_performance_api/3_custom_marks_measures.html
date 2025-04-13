@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Custom Performance Marks and Measures</title>
+  </head>
+  <body>
+    <h1>Performance.mark() and measure() Demo</h1>
+
+    <script>
+      /**
+       * 📚 Background:
+       * Introduced in the W3C Performance Timeline spec (around 2012),
+       * `performance.mark()` and `performance.measure()` were designed to let
+       * developers insert **custom timing checkpoints** in their code.
+       *
+       * These marks and measures let you benchmark *specific app logic*,
+       * unlike navigation/resource timing which only tracks browser-level behavior.
+       *
+       * The entries are stored in the browser’s **performance timeline** and can
+       * be accessed via `performance.getEntriesByType("mark")` or `"measure"`.
+       */
+
+      // ✅ Step 1: Mark the beginning of a task
+      performance.mark("start-task");
+
+      // Simulated task — could be anything like rendering, parsing, loading, etc.
+      const bigArray = [];
+      for (let i = 0; i < 500_000; i++) {
+        bigArray.push(i ** 0.5); // Just something that takes a bit of time
+      }
+
+      // ✅ Step 2: Mark the end of the task
+      performance.mark("end-task");
+
+      // ✅ Step 3: Measure the time between the two marks
+      performance.measure("task-duration", "start-task", "end-task");
+
+      // 🔍 Step 4: Get all measure entries
+      const measures = performance.getEntriesByType("measure");
+
+      measures.forEach(entry => {
+        console.log(`📏 Custom Measure → ${entry.name}: ${entry.duration.toFixed(2)} ms`);
+      });
+
+      // Optional: See the raw marks
+      const marks = performance.getEntriesByType("mark");
+      marks.forEach(mark => {
+        console.log(`🕵️‍♂️ Mark: ${mark.name} at ${mark.startTime.toFixed(2)} ms`);
+      });
+
+      // Optional cleanup (recommended if running benchmarks repeatedly)
+      performance.clearMarks();
+      performance.clearMeasures();
+    </script>
+  </body>
+</html>

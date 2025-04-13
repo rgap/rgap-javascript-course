@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>XHR Download Progress Example</title>
+  </head>
+  <body>
+    <h1>XMLHttpRequest - Progress Tracking</h1>
+
+    <script>
+      /**
+       * 📚 Explanation:
+       * `xhr.onprogress` lets you track download progress while the response is arriving.
+       * This is especially useful for large files or slow connections.
+       *
+       * Not all servers provide a Content-Length header, but if they do, we can
+       * calculate the percentage downloaded.
+       */
+
+      const xhr = new XMLHttpRequest();
+
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/photos"); // Large JSON array
+
+      // 📦 Fires repeatedly as data is received
+      xhr.onprogress = function (event) {
+        if (event.lengthComputable) {
+          const percent = (event.loaded / event.total) * 100;
+          console.log(`📥 Downloaded: ${percent.toFixed(1)}%`);
+        } else {
+          console.log(`📥 Downloaded: ${event.loaded} bytes (total size unknown)`);
+        }
+      };
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          console.log("✅ Download complete.");
+        } else {
+          console.log("❌ Error during download. Status:", xhr.status);
+        }
+      };
+
+      xhr.send();
+    </script>
+  </body>
+</html>

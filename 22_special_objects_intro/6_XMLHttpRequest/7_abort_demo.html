@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Abort XMLHttpRequest Demo</title>
+  </head>
+  <body>
+    <h1>XMLHttpRequest - Abort Demo</h1>
+    <button id="startBtn">Start Request</button>
+    <button id="abortBtn">Abort Request</button>
+
+    <script>
+      /**
+       * 📚 Theory:
+       * The `abort()` method cancels a request if it's no longer needed.
+       * This is useful for:
+       *  - live searches (abort the previous query)
+       *  - large file downloads
+       *  - navigation or tab changes
+       *
+       * When aborted, `xhr.onabort` will fire.
+       */
+
+      let xhr = null;
+
+      document.getElementById("startBtn").onclick = () => {
+        xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/photos"); // Large payload
+
+        xhr.onload = () => {
+          console.log("✅ Request completed.");
+        };
+
+        xhr.onabort = () => {
+          console.log("🚫 Request was aborted.");
+        };
+
+        xhr.send();
+        console.log("📡 Request started...");
+      };
+
+      document.getElementById("abortBtn").onclick = () => {
+        if (xhr) {
+          xhr.abort(); // ❌ Cancel the request
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Basic XMLHttpRequest Example</title>
+  </head>
+  <body>
+    <h1>XMLHttpRequest - Basic GET</h1>
+
+    <script>
+      /**
+       * 📚 Historical Context:
+       * XMLHttpRequest (XHR) was introduced by Microsoft in the early 2000s as part of Internet Explorer.
+       * It allowed web pages to send/receive data asynchronously without reloading, enabling "AJAX".
+       *
+       * Although `fetch()` is more modern (introduced ~2015), XHR is still widely supported and used in older codebases.
+       *
+       * This basic example fetches placeholder JSON data using the GET method.
+       */
+
+      // Step 1: Create an XHR object
+      const xhr = new XMLHttpRequest();
+
+      // Step 2: Set up the request (GET to a fake JSON API)
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1");
+
+      // Step 3: Define what happens when the request loads
+      xhr.onload = function () {
+        console.log("✅ Response received!");
+
+        // Status 200 = OK
+        if (xhr.status === 200) {
+          console.log("🔹 Raw response text:", xhr.responseText);
+
+          // Optional: Parse response as JSON
+          const data = JSON.parse(xhr.responseText);
+          console.log("🔸 Parsed JSON:", data);
+        } else {
+          console.log("⚠️ Request failed with status:", xhr.status);
+        }
+      };
+
+      // Step 4: Send the request
+      xhr.send();
+    </script>
+  </body>
+</html>

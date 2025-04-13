@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>XHR Status Code Handling</title>
+  </head>
+  <body>
+    <h1>XMLHttpRequest - Status Handling</h1>
+
+    <script>
+      /**
+       * 📚 Explanation:
+       * HTTP status codes indicate whether the request was successful or failed.
+       *
+       * • 200–299: Success
+       * • 400–499: Client error (e.g., 404 = not found)
+       * • 500–599: Server error
+       *
+       * In XHR, we must check `xhr.status` after the request completes to know what happened.
+       */
+
+      const xhr = new XMLHttpRequest();
+
+      // ❌ Intentionally use a non-existent resource to trigger a 404
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/invalid-url");
+
+      xhr.onload = function () {
+        console.log("📡 Request completed");
+
+        if (xhr.status === 200) {
+          console.log("✅ Success:", xhr.responseText);
+        } else if (xhr.status === 404) {
+          console.log("❌ Error 404: Resource not found");
+        } else {
+          console.log(`⚠️ Other error. Status ${xhr.status}:`, xhr.statusText);
+        }
+      };
+
+      xhr.send();
+    </script>
+  </body>
+</html>

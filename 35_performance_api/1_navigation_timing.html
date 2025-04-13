@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Navigation Timing API Example</title>
+  </head>
+  <body>
+    <h1>Navigation Timing API Demo</h1>
+
+    <script>
+      /**
+       * 📚 Background:
+       * The Navigation Timing API was introduced in 2012 as part of the W3C Performance API
+       * to allow developers to access precise metrics about the loading of a document.
+       *
+       * This replaced the old method of measuring page load times using `Date.now()`,
+       * which was inaccurate due to lack of granularity and no info about DNS/redirects/etc.
+       *
+       * `performance.getEntriesByType("navigation")` returns an array of navigation entries.
+       * Modern browsers return only one (the current page), as a PerformanceNavigationTiming object.
+       */
+
+      // ✅ This runs after all page resources are fully loaded
+      window.addEventListener("load", () => {
+        // 🔍 Grab all "navigation" type performance entries
+        const navEntries = performance.getEntriesByType("navigation");
+
+        if (navEntries.length > 0) {
+          const nav = navEntries[0];
+
+          console.log("📊 Navigation Timing Metrics:");
+
+          // ⏱️ Time from request start to first byte received
+          console.log("Time to First Byte (TTFB):", nav.responseStart - nav.requestStart, "ms");
+
+          // ⏱️ Time from navigation start to DOMContentLoaded event
+          console.log("DOM Content Loaded:", nav.domContentLoadedEventEnd - nav.startTime, "ms");
+
+          // ⏱️ Time from navigation start to full page load
+          console.log("Total Load Time:", nav.loadEventEnd - nav.startTime, "ms");
+
+          // 🔎 Extra: You can also explore redirect time, DNS, TCP, etc.
+          console.log("DNS Lookup Time:", nav.domainLookupEnd - nav.domainLookupStart, "ms");
+          console.log("TCP Handshake Time:", nav.connectEnd - nav.connectStart, "ms");
+        } else {
+          console.log("❌ Navigation Timing not supported or no entry found.");
+        }
+      });
+    </script>
+  </body>
+</html>

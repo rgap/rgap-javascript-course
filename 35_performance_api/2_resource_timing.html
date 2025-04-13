@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Resource Timing API Example</title>
+
+    <!-- 📦 Including resources that will be measured -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" defer></script>
+  </head>
+  <body>
+    <h1>Resource Timing API Demo</h1>
+
+    <script>
+      /**
+       * 📚 Background:
+       * The Resource Timing API (part of W3C Performance APIs since ~2012) allows
+       * developers to analyze how long it took to load each external file: images,
+       * CSS, JS, fonts, etc.
+       *
+       * Before this, devs had to rely on manual profiling or dev tools.
+       *
+       * `performance.getEntriesByType("resource")` returns an array of all resources
+       * loaded by the document, each as a PerformanceResourceTiming object.
+       */
+
+      window.addEventListener("load", () => {
+        // 🧪 Get all performance entries for loaded resources
+        const resources = performance.getEntriesByType("resource");
+
+        console.log("📦 Resource Load Times:");
+        resources.forEach(res => {
+          console.log(`🔹 Resource: ${res.name}`);
+          console.log(`   • Initiator: ${res.initiatorType}`); // e.g., 'script', 'link'
+          console.log(`   • Duration: ${res.duration.toFixed(2)} ms`);
+
+          // Extra metrics:
+          console.log(`   • DNS Lookup Time: ${(res.domainLookupEnd - res.domainLookupStart).toFixed(2)} ms`);
+          console.log(`   • TCP Connect Time: ${(res.connectEnd - res.connectStart).toFixed(2)} ms`);
+          console.log(`   • Time to First Byte: ${(res.responseStart - res.startTime).toFixed(2)} ms`);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple Event Loop Delay</title>
+  </head>
+  <body>
+    <h1>Simple Event Loop Delay</h1>
+
+    <script>
+      /**
+       * 📚 JavaScript runs code one task at a time in a single thread.
+       * If one task takes too long, other tasks (like timers or clicks) have to wait.
+       *
+       * In this example, we check how long setTimeout() is delayed if something blocks the thread.
+       */
+
+      // ⏱️ Record the current time before the task
+      const startTime = performance.now();
+
+      // ⌛ Block the event loop for 100 milliseconds
+      const blockTime = 100;
+      const now = performance.now();
+      while (performance.now() - now < blockTime) {
+        // just wait (simulate something slow)
+      }
+
+      // 🕒 Schedule something to run ASAP
+      setTimeout(() => {
+        const endTime = performance.now();
+        console.log("Expected delay:", 0, "ms");
+        console.log("Actual delay:", Math.round(endTime - startTime), "ms");
+      }, 0);
+    </script>
+  </body>
+</html>

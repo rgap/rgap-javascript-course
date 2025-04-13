@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>XHR JSON Response Example</title>
+  </head>
+  <body>
+    <h1>XMLHttpRequest - Parse JSON Response</h1>
+
+    <script>
+      /**
+       * 📚 Background:
+       * When an API returns JSON data, we must manually parse it using JSON.parse().
+       * Many APIs return arrays — like a list of posts, users, etc.
+       *
+       * This example fetches a list of posts and displays the first few titles.
+       */
+
+      const xhr = new XMLHttpRequest();
+
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts");
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          // ✅ Parse the JSON string into a real JS object (here: an array of posts)
+          const posts = JSON.parse(xhr.responseText);
+
+          console.log(`✅ Received ${posts.length} posts`);
+          console.log("📝 First 3 post titles:");
+
+          for (let i = 0; i < 3; i++) {
+            console.log(`  • (${posts[i].id}) ${posts[i].title}`);
+          }
+        } else {
+          console.log("❌ Failed to load data. Status:", xhr.status);
+        }
+      };
+
+      xhr.send();
+    </script>
+  </body>
+</html>

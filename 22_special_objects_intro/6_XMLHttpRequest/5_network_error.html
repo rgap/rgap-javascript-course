@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>XHR Network Error Handling</title>
+  </head>
+  <body>
+    <h1>XMLHttpRequest - Network Error Demo</h1>
+
+    <script>
+      /**
+       * 📚 Theory:
+       * Not all failures show up in `onload` — some are **network-level errors**
+       * (like DNS failure, offline mode, server unreachable).
+       *
+       * For those, we must use `xhr.onerror` instead.
+       * This example tries to contact a fake/invalid domain to trigger an error.
+       */
+
+      const xhr = new XMLHttpRequest();
+
+      // ❌ Non-existent domain simulates a network failure
+      xhr.open("GET", "https://this-domain-does-not-exist1234.com");
+
+      // This will NOT run because the request never completes successfully
+      xhr.onload = function () {
+        console.log("✅ Response received:", xhr.responseText);
+      };
+
+      // This will run if there’s a network-level error
+      xhr.onerror = function () {
+        console.log("❌ Network error occurred! Possibly offline or bad domain.");
+      };
+
+      xhr.send();
+    </script>
+  </body>
+</html>
