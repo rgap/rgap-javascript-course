@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Year introduced: 2015 (ES6 / ECMAScript 2015)
+
+      // THEORY:
+      // Int16Array is a typed array view that treats the underlying buffer
+      // as a series of 16-bit **signed integers** (2 bytes per value).
+      // Each value can range from -32,768 to 32,767.
+
+      // This is useful when working with audio data, sensors, or binary protocols
+      // that require signed numbers in 2-byte chunks.
+
+      // STEP 1: Create a buffer of 6 bytes.
+      // Since each Int16 takes 2 bytes, we can store 3 values.
+      const buffer = new ArrayBuffer(6);
+
+      // STEP 2: Create an Int16Array view on top of the buffer.
+      const view = new Int16Array(buffer);
+
+      // STEP 3: Store values — both positive and negative
+      view[0] = 32000;
+      view[1] = -1000;
+      view[2] = 123;
+
+      // Output contents of the Int16Array
+      console.log("Int16Array contents:", view); // Output: Int16Array(3) [32000, -1000, 123]
+
+      // Each index represents a 2-byte signed integer.
+      // We can also verify how many bytes the buffer has:
+      console.log("Byte length of buffer:", buffer.byteLength); // Output: 6
+
+      // NOTE:
+      // If you try to assign a value outside the valid range (-32768 to 32767),
+      // it will overflow:
+      // view[0] = 40000 will wrap around and store a wrong value due to overflow.
+    </script>
+  </head>
+  <body></body>
+</html>

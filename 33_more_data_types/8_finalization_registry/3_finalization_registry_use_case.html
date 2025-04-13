@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 📦 Use Case: Auto-cleanup of resources (e.g., closing database connections)
+       *
+       * Imagine we want to automatically log or release something
+       * once an object is no longer in use.
+       */
+
+      class DBConnection {
+        constructor(id) {
+          this.id = id;
+          console.log(`🔌 Connected to DB ${id}`);
+          registry.register(this, `DB ${id}`);
+        }
+      }
+
+      const registry = new FinalizationRegistry(dbLabel => {
+        console.log(`⚠️ Connection for ${dbLabel} was GC'd — clean up!`);
+      });
+
+      let conn = new DBConnection(101);
+
+      // Now we lose reference to the DBConnection
+      conn = null;
+
+      // Eventually GC will trigger the cleanup callback
+    </script>
+  </head>
+  <body></body>
+</html>

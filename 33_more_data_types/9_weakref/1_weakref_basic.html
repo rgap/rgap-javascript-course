@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * `WeakRef` was introduced in **ES2021**, alongside `FinalizationRegistry`.
+       *
+       * It allows holding a **weak reference** to an object, meaning:
+       * - It doesn't prevent the object from being garbage collected.
+       * - You can "peek" at the object if it's still around.
+       *
+       * ⚠️ Important:
+       * WeakRefs should be used **only when absolutely needed**, e.g. in caches.
+       */
+
+      let user = { name: "Alice" };
+
+      // Create a weak reference to the user
+      const weakUser = new WeakRef(user);
+
+      console.log("Weak reference dereferenced:", weakUser.deref()); // → { name: "Alice" }
+
+      // Drop the strong reference
+      user = null;
+
+      // 🔁 Later, we *might* still be able to access it
+      console.log("After GC (maybe):", weakUser.deref()); // Could be undefined
+    </script>
+  </head>
+  <body></body>
+</html>

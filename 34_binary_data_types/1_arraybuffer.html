@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Year introduced: 2015 (ES6 / ECMAScript 2015)
+
+      // THEORY:
+      // ArrayBuffer is a fundamental JavaScript object that represents
+      // a fixed-length raw binary data buffer.
+      // Think of it like an empty memory space — a container that holds binary data
+      // but does not let you directly read or write into it.
+
+      // You must use a "view" (like Uint8Array or DataView) to interpret
+      // or manipulate the binary data stored in an ArrayBuffer.
+
+      // ArrayBuffer is useful when working with binary data from:
+      // - WebSockets
+      // - the Fetch API (response.arrayBuffer())
+      // - binary file formats (images, PDFs, etc.)
+
+      // BASIC EXAMPLE:
+      // Allocate an ArrayBuffer of 8 bytes (64 bits)
+      const buffer = new ArrayBuffer(8);
+
+      // The buffer now holds 8 zeroed bytes.
+      // We can't see or edit them yet — just check the size:
+      console.log("Byte length of buffer:", buffer.byteLength); // Output: 8
+
+      // To actually work with the data (e.g., store numbers),
+      // we’ll use a TypedArray or DataView in the next examples.
+    </script>
+  </head>
+  <body></body>
+</html>

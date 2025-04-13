@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // GOAL: Simulate pixel manipulation on a grayscale image (1 million pixels)
+
+      // Uint8Array version — 1 byte per pixel
+      const binaryPixels = new Uint8Array(1_000_000);
+
+      // Fill with 128 (mid-gray)
+      for (let i = 0; i < binaryPixels.length; i++) {
+        binaryPixels[i] = 128;
+      }
+
+      // Invert grayscale using binary
+      const t1 = performance.now();
+      for (let i = 0; i < binaryPixels.length; i++) {
+        binaryPixels[i] = 255 - binaryPixels[i];
+      }
+      const t2 = performance.now();
+      console.log("Binary image inversion time (ms):", t2 - t1);
+
+      // Now same thing using JS Array
+      const jsPixels = new Array(1_000_000).fill(128);
+      const t3 = performance.now();
+      for (let i = 0; i < jsPixels.length; i++) {
+        jsPixels[i] = 255 - jsPixels[i];
+      }
+      const t4 = performance.now();
+      console.log("JS array inversion time (ms):", t4 - t3);
+
+      // WHY BINARY IS FASTER:
+      // - No boxing/unboxing of values
+      // - Less garbage collection pressure
+      // - Typed arrays use compact memory layout
+    </script>
+  </head>
+  <body></body>
+</html>

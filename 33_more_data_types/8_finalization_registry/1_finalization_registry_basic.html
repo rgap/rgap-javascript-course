@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * --------------------------
+       * 📜 Historical Context
+       * --------------------------
+       * `FinalizationRegistry` was introduced in **ES2021**.
+       *
+       * It allows you to register a **cleanup callback** that runs
+       * *after* an object is garbage collected.
+       *
+       * 🧠 This is useful when working with external resources
+       * (like file handles or sockets) tied to JavaScript objects.
+       *
+       * ⚠️ WARNING:
+       * - This feature is **non-deterministic** — GC timing is unpredictable.
+       * - Meant for very advanced use cases.
+       */
+
+      const registry = new FinalizationRegistry(heldValue => {
+        console.log(`Object with label "${heldValue}" was garbage collected.`);
+      });
+
+      let obj = { name: "temporary" };
+
+      // Register the object with the registry
+      registry.register(obj, "temporary object");
+
+      // Now we drop all references to `obj`
+      obj = null;
+
+      // 🧼 Eventually, when GC runs, the registry will log the cleanup message
+      // ⚠️ This may not happen immediately or at all in short-lived programs.
+    </script>
+  </head>
+  <body></body>
+</html>

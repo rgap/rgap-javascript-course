@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 🧪 Optional Token: Used to unregister cleanup callbacks
+       *
+       * If you want to cancel the cleanup registration before GC,
+       * you can use a token to unregister the object.
+       */
+
+      const registry = new FinalizationRegistry(value => {
+        console.log(`Cleaned up: ${value}`);
+      });
+
+      let fileRef = { path: "/tmp/file.txt" };
+      const cleanupToken = {}; // Just a plain object
+
+      // Register the file with a cleanup callback and a token
+      registry.register(fileRef, "temp file", cleanupToken);
+
+      // 🚫 Cancel the cleanup (if needed)
+      registry.unregister(cleanupToken);
+
+      // Drop the reference
+      fileRef = null;
+
+      // If GC runs, the callback won't be called because we unregistered it.
+    </script>
+  </head>
+  <body></body>
+</html>

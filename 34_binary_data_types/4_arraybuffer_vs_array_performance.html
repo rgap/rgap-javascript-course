@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // GOAL: Allocate and write 1 million values using ArrayBuffer + Uint8Array
+      // VS using a regular JS array.
+
+      // ✅ Binary: Uint8Array (each value = 1 byte)
+      const binaryStart = performance.now();
+      const binaryBuffer = new ArrayBuffer(1_000_000); // 1 MB
+      const binaryView = new Uint8Array(binaryBuffer);
+
+      for (let i = 0; i < binaryView.length; i++) {
+        binaryView[i] = i % 256;
+      }
+      const binaryEnd = performance.now();
+      console.log("Binary write time (ms):", binaryEnd - binaryStart);
+
+      // ❌ Plain JS Array: (each value = full JS number object, not 1 byte)
+      const arrayStart = performance.now();
+      const plainArray = new Array(1_000_000);
+      for (let i = 0; i < plainArray.length; i++) {
+        plainArray[i] = i % 256;
+      }
+      const arrayEnd = performance.now();
+      console.log("JS array write time (ms):", arrayEnd - arrayStart);
+
+      // WHY BINARY IS FASTER:
+      // - Plain JS arrays store *boxed* numbers — each number is a full JS object,
+      //   which adds memory overhead and slows down access due to garbage collection.
+      // - In contrast, Uint8Array stores raw bytes directly in memory (no boxing),
+      //   leading to faster read/write operations and better use of CPU cache.
+      // - This difference becomes significant when handling large datasets,
+      //   like images, audio buffers, or real-time streaming data.
+    </script>
+  </head>
+  <body></body>
+</html>

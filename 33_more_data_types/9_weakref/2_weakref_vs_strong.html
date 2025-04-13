@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 💡 WeakRef vs Strong Reference
+       *
+       * A strong reference keeps an object alive in memory.
+       * A WeakRef lets the object be collected if nothing else points to it.
+       */
+
+      let bigObject = { data: new Array(1_000_000).fill(0) };
+
+      const strongRef = bigObject;
+      const weakRef = new WeakRef(bigObject);
+
+      console.log("Strong ref still alive?", !!strongRef); // true
+      console.log("Weak ref still alive?", !!weakRef.deref()); // true
+
+      // Now drop the strong reference
+      bigObject = null;
+
+      // Later: strongRef keeps it alive, weakRef might still see it
+      console.log("Still alive via strongRef:", !!strongRef); // true
+      console.log("Still alive via weakRef:", !!weakRef.deref()); // Possibly true
+    </script>
+  </head>
+  <body></body>
+</html>

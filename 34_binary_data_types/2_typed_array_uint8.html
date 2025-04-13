@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      // Year introduced: 2015 (ES6 / ECMAScript 2015)
+
+      // THEORY:
+      // Uint8Array is a "typed array view" that lets you access and modify
+      // an ArrayBuffer using 8-bit **unsigned integers** (values from 0 to 255).
+
+      // It's called a "view" because it gives meaning to the raw bytes
+      // in the ArrayBuffer. Without it, the buffer is just a blank binary space.
+
+      // Uint8Array is often used to read or write binary streams,
+      // image data, or byte-level communication protocols.
+
+      // STEP 1: Create a buffer of 4 bytes
+      const buffer = new ArrayBuffer(4); // 4 bytes = room for 4 x 8-bit values
+
+      // STEP 2: Create a view on top of the buffer
+      const view = new Uint8Array(buffer);
+
+      // Now we can set values using regular array syntax
+      view[0] = 42;
+      view[1] = 255;
+      view[2] = 128;
+      view[3] = 0;
+
+      // Output all values
+      console.log("Uint8Array contents:", view); // Output: Uint8Array(4) [42, 255, 128, 0]
+
+      // Each value is stored in one byte (8 bits)
+      console.log("Byte length of underlying buffer:", view.buffer.byteLength); // Output: 4
+
+      // You can also loop through it like a regular array:
+      for (let i = 0; i < view.length; i++) {
+        console.log(`Byte ${i}:`, view[i]);
+      }
+
+      // NOTE:
+      // If you try to assign a value greater than 255, it will wrap around:
+      // e.g., view[0] = 300 will result in 44 (because 300 % 256 = 44)
+    </script>
+  </head>
+  <body></body>
+</html>

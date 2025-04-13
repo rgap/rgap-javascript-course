@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Demo</title>
+    <script>
+      /**
+       * 📦 Use Case: Cache that doesn't prevent GC
+       *
+       * This is a simplified example of a WeakRef-based cache.
+       * If the value is still in memory, return it.
+       * If not, reload it (simulate with a fallback).
+       */
+
+      const cache = new Map();
+
+      function loadUser(id) {
+        const cached = cache.get(id);
+        const user = cached?.deref();
+
+        if (user) {
+          console.log("✅ Loaded from cache:", user.name);
+          return user;
+        }
+
+        const newUser = { id, name: `User${id}` };
+        console.log("🔄 Re-creating user:", newUser.name);
+        cache.set(id, new WeakRef(newUser));
+        return newUser;
+      }
+
+      // Use the cache
+      let u = loadUser(1); // Loads new
+      u = null; // Drop reference, might be GC'd
+
+      setTimeout(() => loadUser(1), 2000); // Might load again if GC occurred
+    </script>
+  </head>
+  <body></body>
+</html>
