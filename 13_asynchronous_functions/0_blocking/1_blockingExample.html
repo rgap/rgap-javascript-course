@@ -3,10 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Blocking Example</title>
+    <style>
+      button {
+        width: 200px;
+        height: 60px;
+        font-size: 1.1rem;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        margin: 10px;
+        transition: background-color 0.3s, transform 0.1s;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+
+      button:active {
+        transform: scale(0.97);
+        background-color: #2471a3;
+      }
+
+      button:focus {
+        outline: 3px solid #f1c40f;
+      }
+    </style>
+
     <script>
-      function simulateBlockingOperation() {
-        console.log("Start of blocking");
+      function simulateBlockingOperation(event) {
+        console.log("Start blocking operation");
         let now = new Date().getTime();
         let end = now + 5000; // Simulate a 5-second delay
 
@@ -15,11 +43,24 @@
         }
 
         console.log("Finished operation after 5 seconds");
+
+        // Remove focus from the button after the blocking ends
+        event.target.blur();
+      }
+
+      function alwaysClickable() {
+        console.log("You clicked the other button!");
       }
     </script>
   </head>
-  <body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0">
-    <!-- Call the function to simulate a blocking operation -->
-    <button onclick="simulateBlockingOperation()" style="width: 200px; height: 200px">Start blocking</button>
+  <body style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0">
+    
+    <!-- Button that triggers blocking operation -->
+    <button onclick="simulateBlockingOperation(event)" style="width: 200px; height: 200px">Start blocking</button>
+
+
+    <!-- Button that should respond immediately -->
+    <button onclick="alwaysClickable()">Always clickable (unless blocked!)</button>
+
   </body>
 </html>

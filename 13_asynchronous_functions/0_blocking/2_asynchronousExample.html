@@ -3,21 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Asynchronous Example</title>
+    <style>
+      button {
+        width: 200px;
+        height: 60px;
+        font-size: 1.1rem;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        margin: 10px;
+        transition: background-color 0.3s, transform 0.1s;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+
+      button:active {
+        transform: scale(0.97);
+        background-color: #2471a3;
+      }
+
+      button:focus {
+        outline: 3px solid #f1c40f;
+      }
+    </style>
     <script>
       // Change the function to be asynchronous using setTimeout
-      function simulateNonBlockingOperation() {
-        console.log("Start of blocking");
+      function simulateNonBlockingOperation(event) {
+        console.log("Start non blocking operation");
 
         // Use setTimeout to delay the completion log without blocking
         setTimeout(() => {
           console.log("Finished operation after 5 seconds");
         }, 5000);
+
+                // Remove focus from the button after the blocking ends
+        event.target.blur();
+      }
+
+      function alwaysClickable() {
+        console.log("You clicked the other button!");
       }
     </script>
   </head>
-  <body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0">
+  <body style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0">
+    
     <!-- Updated onclick to call the new asynchronous function -->
-    <button onclick="simulateNonBlockingOperation()" style="width: 200px; height: 200px">Start non-blocking</button>
+    <button onclick="simulateNonBlockingOperation(event)" style="width: 200px; height: 200px">Start non-blocking</button>
+
+    <!-- Button that should respond immediately -->
+    <button onclick="alwaysClickable()">Always clickable (unless blocked!)</button>
   </body>
 </html>
