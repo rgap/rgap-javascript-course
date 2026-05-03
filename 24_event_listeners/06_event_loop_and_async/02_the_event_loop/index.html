@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02 - The Event Loop</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .box { padding: 1.5rem; border: 2px solid #8b5cf6; border-radius: 8px; margin-bottom: 1rem; background: white; }
+    button { padding: 0.5rem 1rem; cursor: pointer; background: #8b5cf6; color: white; border: none; border-radius: 4px; font-weight: bold; }
+    #log { margin-top: 1rem; background: #1e293b; color: #38bdf8; padding: 1rem; font-family: monospace; border-radius: 4px; min-height: 100px; }
+  </style>
+</head>
+<body>
+  <h1>02. The Event Loop in Action</h1>
+  
+  <div class="box">
+    <p><strong>Try this experiment:</strong></p>
+    <p>Click the button. Notice the order of the `console.log` messages in the screen. Even though the timeout is set to 0 milliseconds, it executes last!</p>
+    
+    <button id="btn-test">Run Event Loop Test</button>
+    <div id="log"></div>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 2. The Event Loop
+      ========================================
+      Synchronous code runs first (Call Stack).
+      Asynchronous callbacks (like setTimeout or event listeners) 
+      go to the Web APIs -> Task Queue -> Event Loop.
+    */
+    const logDiv = document.getElementById('log');
+
+    function log(msg, color) {
+      logDiv.innerHTML += `<div style="color: ${color}">> ${msg}</div>`;
+      console.log(msg);
+    }
+
+    document.getElementById('btn-test').addEventListener('click', () => {
+      logDiv.innerHTML = ''; // clear previous logs
+      
+      // 1. Synchronous Code (goes straight to the Call Stack)
+      log('1. Sync: This runs immediately.', '#fef08a');
+      
+      // 2. Asynchronous Code (goes to Web API, then Task Queue)
+      setTimeout(() => {
+        log('3. Async: This runs from the Task Queue (setTimeout 0ms)', '#10b981');
+      }, 0);
+      
+      // 3. More Synchronous Code
+      log('2. Sync: This also runs immediately, blocking the Task Queue from emptying.', '#fef08a');
+    });
+  </script>
+</body>
+</html>
