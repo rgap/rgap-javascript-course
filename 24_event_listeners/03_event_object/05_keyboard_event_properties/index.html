@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>05 - Keyboard Properties</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    input { padding: 1rem; width: 100%; max-width: 400px; font-size: 1.2rem; border: 2px solid #cbd5e1; border-radius: 8px; margin-bottom: 2rem;}
+    .dashboard { background: #1e293b; color: #38bdf8; padding: 2rem; border-radius: 8px; font-family: monospace; font-size: 1.2rem;}
+    .row { margin: 0.5rem 0; }
+    .val { color: #10b981; font-weight: bold;}
+  </style>
+</head>
+<body>
+  <h1>Analyzing the KeyboardEvent</h1>
+  <p>Click on the text box and type to analyze the difference between .key and .code.</p>
+  
+  <input type="text" id="keyboardField" placeholder="Press keys here...">
+
+  <div class="dashboard">
+    <div class="row">event.key (Logical): <span id="valKey" class="val">-</span></div>
+    <div class="row">event.code (Physical): <span id="valCode" class="val">-</span></div>
+    <div class="row">event.shiftKey: <span id="valShift" class="val">-</span></div>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 5. KeyboardEvent Properties
+      ========================================
+      - e.key: Shows the final character (recognizes uppercase, accents, symbols).
+      - e.code: Shows the physical key (e.g., KeyA, ArrowUp), ideal for video games.
+      - e.shiftKey / e.ctrlKey: Useful for detecting shortcuts (keyboard shortcuts like Ctrl+S).
+    */
+
+    const field = document.getElementById("keyboardField");
+    const valKey = document.getElementById("valKey");
+    const valCode = document.getElementById("valCode");
+    const valShift = document.getElementById("valShift");
+
+    field.addEventListener("keydown", function(e) {
+      // Update the dashboard in real-time
+      valKey.innerText = `"${e.key}"`;
+      valCode.innerText = `"${e.code}"`;
+      valShift.innerText = e.shiftKey ? "TRUE" : "false";
+      
+      // Shortcut demonstration
+      if (e.ctrlKey && e.key === "b") {
+        console.log("You have activated a special shortcut: Ctrl + B!");
+      }
+    });
+  </script>
+</body>
+</html>

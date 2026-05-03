@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02 - Capture Phase</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .box { padding: 2rem; border: 2px solid #cbd5e1; border-radius: 8px; margin: 1rem 0; background: white; text-align: center; cursor: pointer; }
+    .box:hover { background: #f1f5f9; }
+  </style>
+</head>
+<body>
+  <h1>The Capture Phase (Going Downwards ↓)</h1>
+  <p>Open the console. We will make all listeners catch the event while it's "going down".</p>
+  
+  <div id="container" class="box">
+    <strong>Outer Container</strong>
+    <div id="button" class="box" style="border-color: #ef4444;">
+      <strong>Inner Button (Click)</strong>
+    </div>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 2. Capture Phase
+      ========================================
+      It is activated by passing `true` (or {capture: true}) as the third argument.
+      The event will first execute the Window listener, then the Document's, 
+      then the Container's, and finally the Button's.
+    */
+
+    const container = document.getElementById("container");
+    const button = document.getElementById("button");
+
+    // All set to { capture: true }
+    window.addEventListener("click", () => console.log("1. Window detected the click going down ↓"), true);
+    document.addEventListener("click", () => console.log("2. Document detected the click going down ↓"), true);
+    container.addEventListener("click", () => console.log("3. Container detected the click going down ↓"), true);
+    button.addEventListener("click", () => console.log("4. Button reached its Target 🎯"), true);
+  </script>
+</body>
+</html>

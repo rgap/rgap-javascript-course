@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nodes vs Elements</title>
+</head>
+<body>
+  <div id="container">
+    <!-- This is a comment node -->
+    <p>This is an element node with text.</p>
+  </div>
+  
+  <!--
+    THEORY: Nodes vs Elements
+    
+    Every single part of an HTML document is represented by a "Node" in the DOM tree.
+    However, not all Nodes are created equal!
+    
+    1. ELEMENT Nodes (nodeType: 1)
+       - These represent actual HTML tags: <div>, <p>, <body>.
+       - They are the nodes you usually want to manipulate.
+       
+    2. TEXT Nodes (nodeType: 3)
+       - These represent the actual text inside elements.
+       - IMPORTANT: The whitespace (line breaks, spaces) between tags in your HTML 
+         file also creates Text nodes!
+         
+    3. COMMENT Nodes (nodeType: 8)
+       - These represent HTML comments (<\!-- --\>).
+       
+    The distinction is crucial when navigating the tree:
+    - .childNodes returns ALL nodes (elements, text, comments).
+    - .children returns ONLY Element nodes.
+  -->
+  <script>
+    const container = document.getElementById('container');
+    
+    console.log("--- Child Nodes (All Node Types) ---");
+    // Returns a NodeList containing text (whitespace), the comment, text, the <p>, and text.
+    console.log("container.childNodes:", container.childNodes);
+    
+    console.log("Detailed breakdown of childNodes:");
+    container.childNodes.forEach((node, index) => {
+      // Mapping nodeType numbers to readable strings for demonstration
+      let typeName = "";
+      if (node.nodeType === 1) typeName = "Element";
+      else if (node.nodeType === 3) typeName = "Text (often whitespace)";
+      else if (node.nodeType === 8) typeName = "Comment";
+      
+      console.log(`[${index}] Type: ${typeName} | Name: ${node.nodeName} | Value:`, node.nodeValue?.trim() || node.textContent.trim());
+    });
+    
+    console.log("\n--- Children (ONLY Elements) ---");
+    // Returns an HTMLCollection containing JUST the <p> element.
+    console.log("container.children:", container.children);
+    console.log("Number of element children:", container.children.length); // 1
+  </script>
+</body>
+</html>
+

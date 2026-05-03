@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>getElementById</title>
+  </head>
+  <body>
+    <h1 id="page-title">Element Selection</h1>
+    <p id="description">This page demonstrates how to select a single element by its unique ID.</p>
+    <p id="note">IDs must be unique within a document — there should only ever be one element with a given ID.</p>
+
+    <!--
+      THEORY: getElementById
+      - Searches the entire document for the element with the given id="" attribute.
+      - Returns a single Element object (or null if not found).
+      - This is the FASTEST selector — the browser uses an internal hash map for O(1) lookup.
+      - Only works with IDs. For classes or tags, use other methods.
+    -->
+    <script>
+      // Returns the Element object directly (not a collection)
+      const title = document.getElementById("page-title");
+      console.log("Selected element:", title);
+      console.log("Tag name:", title.tagName);         // "H1"
+      console.log("Text content:", title.textContent); // "Element Selection"
+
+      // Directly read or write properties on the returned element
+      const desc = document.getElementById("description");
+      console.log("Inner HTML:", desc.innerHTML);
+
+      // If the ID doesn't exist, getElementById returns null (not an error)
+      const missing = document.getElementById("does-not-exist");
+      console.log("Non-existent ID:", missing); // null
+    </script>
+  </body>
+</html>
+

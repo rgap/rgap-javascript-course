@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01 - Introduction to the Flow</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .box { padding: 2rem; border: 2px solid #cbd5e1; border-radius: 8px; margin: 1rem 0; background: white; text-align: center; }
+    #grandparent { border-color: #ef4444; }
+    #parent { border-color: #3b82f6; }
+    #child { border-color: #10b981; cursor: pointer;}
+    #child:hover { background: #d1fae5; }
+  </style>
+</head>
+<body>
+  <h1>The Event Flow (The 3 Phases)</h1>
+  <p>Open the console and click on the green box (Child). You will see that a single click triggers multiple events on different layers, traveling downwards and then upwards.</p>
+  
+  <div id="grandparent" class="box">
+    <strong>Grandparent</strong>
+    <div id="parent" class="box">
+      <strong>Parent</strong>
+      <div id="child" class="box">
+        <strong>Child (Click here!)</strong>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 1. Introduction to the Flow
+      ========================================
+      When you click on the "Child", the event starts at the `window` object,
+      goes down through its ancestors (Capture), reaches the Child (Target), 
+      and then goes back up (Bubbling).
+    */
+
+    const grandparent = document.getElementById("grandparent");
+    const parent = document.getElementById("parent");
+    const child = document.getElementById("child");
+
+    // Registering in ALL phases to demonstrate the full journey
+    grandparent.addEventListener("click", () => console.log("1. Grandparent (Capture) ↓"), true);
+    parent.addEventListener("click", () => console.log("2. Parent (Capture) ↓"), true);
+    
+    child.addEventListener("click", () => console.log("3. Child (Target) 🎯"));
+    
+    parent.addEventListener("click", () => console.log("4. Parent (Bubbling) ↑"));
+    grandparent.addEventListener("click", () => console.log("5. Grandparent (Bubbling) ↑"));
+  </script>
+</body>
+</html>

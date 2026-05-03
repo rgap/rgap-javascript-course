@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manipulating Attributes</title>
+</head>
+<body>
+  <img id="myImage" src="https://picsum.photos/200" alt="Random photo" width="200">
+  <br><br>
+  <a id="myLink" href="https://example.com" target="_blank" data-category="reference">Example.com</a>
+  <br><br>
+  <button id="disableBtn" disabled>I am disabled</button>
+  <br><br>
+  <!-- onclick used here; addEventListener is covered in 20a_event_listeners -->
+  <button onclick="updateAttributes()">Update Attributes</button>
+
+  <!--
+    THEORY: Manipulating HTML Attributes
+
+    Standard attributes often have a DIRECT PROPERTY on the element object:
+      img.src, img.alt, img.width, a.href, input.value, input.disabled
+
+    But the generic API works on ANY attribute (including custom ones):
+      el.getAttribute('name')        — reads the attribute value as a string
+      el.setAttribute('name', val)   — sets the attribute value
+      el.removeAttribute('name')     — removes the attribute entirely
+      el.hasAttribute('name')        — returns true/false
+
+    data-* attributes (dataset)
+    - Custom attributes you define yourself: data-id="42", data-category="ref"
+    - Accessed via el.dataset.category (camelCase, no "data-" prefix)
+    - Stored as strings; use Number() or JSON.parse() if you need other types.
+
+    Attributes vs Properties
+    - An attribute is the INITIAL value written in HTML.
+    - A property is the CURRENT live value on the JS object.
+    - They often stay in sync, but not always (e.g. input.value vs input attribute).
+  -->
+  <script>
+    const img = document.getElementById('myImage');
+    const link = document.getElementById('myLink');
+
+    // --- READING ---
+    console.log("Image src:", img.getAttribute('src'));
+    console.log("Image alt:", img.alt);           // direct property
+    console.log("Image width:", img.width);        // number, not string
+
+    console.log("Link href:", link.href);
+    console.log("Has target?", link.hasAttribute('target')); // true
+
+    // data-* attributes via dataset
+    console.log("data-category:", link.dataset.category); // "reference"
+
+    function updateAttributes() {
+      // setAttribute — works on any attribute
+      img.setAttribute('alt', 'Updated alt text');
+      console.log("New alt:", img.getAttribute('alt'));
+
+      // Direct property — equivalent for standard attributes
+      img.width = 300;
+      console.log("New width:", img.width);
+
+      // removeAttribute — removes the attribute entirely from the element
+      const btn = document.getElementById('disableBtn');
+      btn.removeAttribute('disabled');
+      console.log("Button disabled?", btn.hasAttribute('disabled')); // false
+
+      // Update a data-* attribute
+      link.dataset.category = 'updated';
+      console.log("Updated dataset:", link.dataset.category);
+    }
+  </script>
+</body>
+</html>
+

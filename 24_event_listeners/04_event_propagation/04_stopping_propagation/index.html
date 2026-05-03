@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>04 - Stopping Propagation</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .card { padding: 2rem; border: 2px solid #cbd5e1; border-radius: 8px; background: white; cursor: pointer; text-align: center; }
+    .card:hover { background: #f1f5f9; }
+    button { padding: 0.5rem 1rem; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 1rem;}
+    button:hover { background: #dc2626; }
+  </style>
+</head>
+<body>
+  <h1>Stopping the Bubble</h1>
+  <p>Open the console. Click on the white background of the card, and then try clicking the red button.</p>
+  
+  <div id="card" class="card">
+    <h3>Product Card</h3>
+    <p>Click me to see details.</p>
+    <button id="btnLike">Add to Favorites ❤️</button>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 4. Stopping propagation
+      ========================================
+      We use event.stopPropagation() to prevent the event 
+      from continuing to go up the DOM tree.
+    */
+
+    const card = document.getElementById("card");
+    const btnLike = document.getElementById("btnLike");
+
+    // Main card event
+    card.addEventListener("click", () => {
+      console.log("Navigating to product details page... 📦");
+    });
+
+    // Inner button event
+    btnLike.addEventListener("click", (event) => {
+      // 💥 We destroy the bubble right here
+      event.stopPropagation();
+      
+      console.log("Product added to favorites ❤️. The main card will NOT be triggered!");
+    });
+  </script>
+</body>
+</html>

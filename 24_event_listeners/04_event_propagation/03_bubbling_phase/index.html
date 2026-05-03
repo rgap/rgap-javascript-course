@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03 - Bubbling Phase</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    button { padding: 1rem 2rem; background: #3b82f6; border: none; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; }
+    button:hover { background: #2563eb; }
+    span { background: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: bold; pointer-events: auto; }
+  </style>
+</head>
+<body>
+  <h1>The Bubbling Phase (Going Upwards ↑)</h1>
+  <p>Open the console. Click exactly on the white text inside the button.</p>
+  
+  <div id="container">
+    <button id="myButton">
+      <span id="icon">Inner Icon</span>
+      Button Text
+    </button>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 3. Bubbling Phase
+      ========================================
+      By default, events are registered in the bubbling phase (going up).
+      If you click on the span (icon), the event "bubbles" and triggers the button's click,
+      and then the container's.
+    */
+
+    const container = document.getElementById("container");
+    const button = document.getElementById("myButton");
+    const icon = document.getElementById("icon");
+
+    icon.addEventListener("click", (e) => {
+      console.log("1. Target Reached: span (The click will bubble upwards) ↑");
+    });
+
+    button.addEventListener("click", () => {
+      console.log("2. Bubble went up to the <button> ↑");
+    });
+
+    container.addEventListener("click", () => {
+      console.log("3. Bubble went up to the container <div> ↑");
+    });
+
+    document.addEventListener("click", () => {
+      console.log("4. Bubble reached the Document ↑");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Handler vs Listener</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .box { padding: 2rem; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 2rem; background: white; }
+    button { padding: 0.5rem 1rem; cursor: pointer; color: white; border: none; border-radius: 4px; font-weight: bold; margin-right: 1rem; }
+    #btn-handler { background: #eab308; }
+    #btn-listener { background: #22c55e; }
+  </style>
+</head>
+<body>
+  <h1>Event Handler vs Event Listener</h1>
+  <p>Open the console to see the difference.</p>
+
+  <div class="box">
+    <h3>1. Event Handler (.onclick)</h3>
+    <button id="btn-handler">Test Handler</button>
+    <p>Only the last assigned function will execute, because the previous one gets overwritten.</p>
+  </div>
+
+  <div class="box">
+    <h3>2. Event Listener (addEventListener)</h3>
+    <button id="btn-listener">Test Listener</button>
+    <p>Both assigned functions will execute in order, without overwriting each other.</p>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: Handler vs Listener
+      ========================================
+      - Handler (e.g., .onclick): A property on the DOM node. Assigning a new function overwrites the old one.
+      - Listener (e.g., addEventListener): Subscribes a function to an internal array of callbacks. Never overwrites.
+    */
+
+    // --- 1. EVENT HANDLER ---
+    const btnHandler = document.getElementById("btn-handler");
+
+    // We assign the first action
+    btnHandler.onclick = function() {
+      console.log("🔴 Handler Action 1: This will never run!");
+    };
+
+    // We assign a second action, overwriting the first one
+    btnHandler.onclick = function() {
+      console.log("🔴 Handler Action 2: I completely overwrote Action 1.");
+    };
+
+
+    // --- 2. EVENT LISTENER ---
+    const btnListener = document.getElementById("btn-listener");
+
+    // We register the first listener
+    btnListener.addEventListener("click", function() {
+      console.log("🟢 Listener Action A: Saving data...");
+    });
+
+    // We register a second listener
+    btnListener.addEventListener("click", function() {
+      console.log("🟢 Listener Action B: Showing success notification!");
+    });
+  </script>
+</body>
+</html>

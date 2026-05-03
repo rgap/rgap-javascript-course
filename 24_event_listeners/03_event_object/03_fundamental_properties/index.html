@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03 - Fundamental Properties</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    ul { background: #e2e8f0; padding: 2rem; border-radius: 8px; list-style: none; margin: 0; }
+    li { background: white; padding: 1rem; margin: 0.5rem 0; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; }
+    li:hover { background: #f1f5f9; }
+  </style>
+</head>
+<body>
+  <h1>Key Properties: target vs currentTarget</h1>
+  <p>Open the console and click on one of the white list items.</p>
+  
+  <!-- The listener will be on the UL -->
+  <ul id="parentList">
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+  </ul>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 3. Fundamental Properties
+      ========================================
+      - e.type: What event occurred? (click)
+      - e.target: Where EXACTLY did the user click? (On the LI)
+      - e.currentTarget: Who has the addEventListener attached? (The UL)
+    */
+
+    const parentList = document.getElementById("parentList");
+
+    // Attach the event to the parent (UL)
+    parentList.addEventListener("click", function(e) {
+      console.log("=== Event Analysis ===");
+      console.log("e.type:", e.type);
+      console.log("e.target (Exact origin of the click):", e.target.tagName);
+      console.log("e.currentTarget (Owner of the listener):", e.currentTarget.tagName);
+      
+      // If the e.target is an LI, we can manipulate it directly
+      if(e.target.tagName === 'LI') {
+        e.target.style.backgroundColor = '#d1fae5'; // Paint the LI light green
+      }
+    });
+  </script>
+</body>
+</html>

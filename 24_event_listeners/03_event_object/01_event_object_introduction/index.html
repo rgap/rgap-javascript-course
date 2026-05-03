@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01 - Introduction to the Event Object</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    button { padding: 0.5rem 1rem; cursor: pointer; background: #3b82f6; color: white; border: none; border-radius: 4px; font-weight: bold;}
+    button:hover { background: #2563eb; }
+  </style>
+</head>
+<body>
+  <h1>Injecting the Event Object</h1>
+  <p>Open the console. You will see a huge object full of properties. That is the Event Object!</p>
+  
+  <button id="btnExample">Explore the Object in Console</button>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 1. The Event Object (Introduction)
+      ========================================
+      When an event occurs, the browser collects the data 
+      (coordinates, exact time, pressed element) and creates an Object.
+      
+      This object is ALWAYS passed as the first argument to the function
+      you provided in your addEventListener.
+    */
+
+    const button = document.getElementById("btnExample");
+
+    // We receive the parameter 'e' (or 'event')
+    button.addEventListener('click', function(e) {
+      console.log("Click detected! The browser sent me this object:");
+      console.dir(e); // console.dir helps to unfold complex objects in the console
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02 - Hierarchy and Subclasses</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .box { padding: 2rem; border: 2px dashed #cbd5e1; border-radius: 8px; margin-bottom: 1rem; background: white; text-align: center;}
+    input { padding: 0.5rem; width: 80%; }
+  </style>
+</head>
+<body>
+  <h1>Different Types of Events</h1>
+  <p>Open the console and try interacting with the areas to see how the browser generates different object Classes.</p>
+  
+  <div class="box" id="mouseZone">Click or move the mouse here</div>
+  
+  <div class="box">
+    <input type="text" id="keyboardZone" placeholder="Type something here (Press keys)">
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 2. Hierarchy and Subclasses
+      ========================================
+      Depending on the type of action, the browser instantiates a different class.
+      The generic Event is extended into MouseEvent, KeyboardEvent, etc.
+    */
+
+    const mouseZone = document.getElementById("mouseZone");
+    const keyboardZone = document.getElementById("keyboardZone");
+
+    // 1. Mouse Event (Could be PointerEvent in modern browsers)
+    mouseZone.addEventListener('click', function(e) {
+      console.log("Click detected. Object type:", e.constructor.name);
+    });
+
+    // 2. Keyboard Event
+    keyboardZone.addEventListener('keydown', function(e) {
+      console.log("Key detected. Object type:", e.constructor.name);
+    });
+
+    // 3. General Document Event
+    document.addEventListener('DOMContentLoaded', function(e) {
+      console.log("DOM loaded. Object type:", e.constructor.name);
+    });
+  </script>
+</body>
+</html>

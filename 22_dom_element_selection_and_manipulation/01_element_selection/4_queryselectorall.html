@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>querySelector & querySelectorAll</title>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="nav-link active">Home</a>
+      <a href="#" class="nav-link">About</a>
+      <a href="#" class="nav-link">Contact</a>
+    </nav>
+    <main>
+      <p class="intro">Introduction paragraph.</p>
+      <p>Regular paragraph.</p>
+    </main>
+
+    <!--
+      THEORY: querySelector & querySelectorAll
+      - Both accept any valid CSS selector string — far more powerful than
+        getElement* methods.
+      - querySelector   → returns the FIRST matching Element, or null.
+      - querySelectorAll → returns a STATIC NodeList of ALL matching elements.
+      - "Static" means: it does NOT update when the DOM changes (snapshot).
+        This is the key difference from the LIVE HTMLCollection returned by
+        getElementsByClassName / getElementsByTagName.
+      - NodeList has .forEach() natively; HTMLCollection does not.
+    -->
+    <script>
+      // querySelector — returns the FIRST match (one element, not a list)
+      const firstLink = document.querySelector(".nav-link");
+      console.log("First .nav-link:", firstLink.textContent); // "Home"
+
+      // querySelector with a complex CSS selector
+      const activeLink = document.querySelector("nav .nav-link.active");
+      console.log("Active link:", activeLink.textContent); // "Home"
+
+      // querySelector returns null when no element matches
+      const missing = document.querySelector(".does-not-exist");
+      console.log("No match:", missing); // null
+
+      // querySelectorAll — returns ALL matches as a static NodeList
+      const allLinks = document.querySelectorAll(".nav-link");
+      console.log("NodeList:", allLinks);
+      console.log("Count:", allLinks.length); // 3
+
+      // NodeList supports forEach natively (unlike HTMLCollection)
+      allLinks.forEach(function (link, index) {
+        console.log("Link " + index + ":", link.textContent);
+      });
+
+      // DEMO: NodeList is STATIC — adding a new link does NOT update it
+      const newLink = document.createElement("a");
+      newLink.className = "nav-link";
+      newLink.textContent = "Blog";
+      document.querySelector("nav").appendChild(newLink);
+
+      console.log("Count after adding link:", allLinks.length); // Still 3 — static!
+      console.log("Re-query count:", document.querySelectorAll(".nav-link").length); // 4
+    </script>
+  </body>
+</html>
+

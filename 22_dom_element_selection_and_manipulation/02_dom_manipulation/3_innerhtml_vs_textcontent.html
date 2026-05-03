@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>innerHTML vs textContent</title>
+</head>
+<body>
+  <div id="box">
+    <p>Original <strong>HTML</strong> content.</p>
+  </div>
+  <div id="write-html"></div>
+  <div id="write-text"></div>
+
+  <!--
+    THEORY: innerHTML vs textContent vs outerHTML
+
+    innerHTML
+    - READ:  Returns the HTML markup of all children as a string.
+    - WRITE: Parses the string as HTML and replaces the element's content.
+             Fast for bulk updates, but destroys existing child nodes.
+    - RISK:  Never set innerHTML from user-controlled data — it executes
+             <script> tags and event attributes → XSS vulnerability.
+
+    textContent
+    - READ:  Returns the concatenated text of all descendants (no tags).
+    - WRITE: Sets the raw text, escaping any HTML characters automatically.
+             This makes it SAFE against XSS attacks.
+
+    outerHTML
+    - READ:  Like innerHTML but also includes the element's own opening/closing tags.
+    - WRITE: Replaces the entire element (including itself) in the DOM.
+  -->
+  <script>
+    const box = document.getElementById('box');
+
+    // --- READING ---
+    console.log("innerHTML:", box.innerHTML);
+    // → '\n    <p>Original <strong>HTML</strong> content.</p>\n  '
+
+    console.log("textContent:", box.textContent.trim());
+    // → 'Original HTML content.'  (tags stripped)
+
+    console.log("outerHTML:", box.outerHTML);
+    // → '<div id="box">...</div>'  (includes the element itself)
+
+    // --- WRITING with innerHTML: parses HTML, renders <strong> as bold ---
+    const writeHtml = document.getElementById('write-html');
+    writeHtml.innerHTML = '<strong>Bold</strong> via innerHTML.';
+
+    // --- WRITING with textContent: treats tags as literal text (safe) ---
+    const writeText = document.getElementById('write-text');
+    writeText.textContent = '<strong>Not bold</strong> via textContent.';
+
+    // ⚠ NEVER DO THIS with user input:
+    // box.innerHTML = userInput; // could execute malicious scripts (XSS)
+    // SAFE alternative:
+    // box.textContent = userInput; // always renders as plain text
+  </script>
+</body>
+</html>
+

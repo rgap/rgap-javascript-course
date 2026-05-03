@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>06 - Event Loop y Asincronía</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .box { padding: 1.5rem; border: 2px solid #cbd5e1; border-radius: 8px; margin-bottom: 1rem; background: white; }
+    button { padding: 0.5rem 1rem; cursor: pointer; color: white; border: none; border-radius: 4px; font-weight: bold; margin-right: 0.5rem; }
+    #btn-heavy { background: #ef4444; }
+    #btn-click { background: #10b981; }
+    #log { margin-top: 1rem; background: #1e293b; color: #38bdf8; padding: 1rem; font-family: monospace; border-radius: 4px; min-height: 100px; }
+    .loader { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(0,0,0,0.1); border-radius: 50%; border-top-color: #3b82f6; animation: spin 1s ease-in-out infinite; opacity: 0;}
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <h1>06. El Call Stack y los Eventos</h1>
+  
+  <div class="box">
+    <p><strong>El problema de bloquear el hilo:</strong></p>
+    <ol>
+      <li>Haz clic rápidamente varias veces en el botón verde. Verás que responde al instante.</li>
+      <li>Ahora, haz clic UNA VEZ en el botón rojo (Bloquear Hilo).</li>
+      <li>Mientras el hilo está bloqueado, haz clic varias veces en el verde de nuevo.</li>
+    </ol>
+    
+    <button id="btn-heavy">Bloquear Hilo (Call Stack) 3 seg</button>
+    <button id="btn-click">Clic Asíncrono</button>
+    <div id="loader" class="loader"></div>
+
+    <div id="log"></div>
+  </div>
+
+  <script>
+    const logDiv = document.getElementById('log');
+    const loader = document.getElementById('loader');
+
+    function log(msg, color) {
+      logDiv.innerHTML += `<div style="color: ${color}">> ${msg}</div>`;
+      console.log(msg);
+    }
+
+    // Evento normal (Asíncrono, va a la Cola de Tareas)
+    document.getElementById('btn-click').addEventListener('click', () => {
+      log('🟢 Clic registrado y ejecutado desde la Cola de Tareas.', '#10b981');
+    });
+
+    // Código Síncrono Pesado (Bloquea el Call Stack)
+    document.getElementById('btn-heavy').addEventListener('click', () => {
+      log('🔴 Iniciando tarea pesada síncrona. ¡La UI está bloqueada!', '#ef4444');
+      loader.style.opacity = 1;
+      
+      // Simulamos un bloqueo forzado del hilo principal durmiendo JS por 3 segundos
+      const start = Date.now();
+      while (Date.now() - start < 3000) {
+        // Bloqueando el V8 Engine...
+        // Los clics que hagas ahora se guardarán en el Task Queue (Web API),
+        // pero NO se ejecutarán hasta que este bucle termine.
+      }
+      
+      log('🔴 Tarea pesada terminada. Call Stack vacío. Ahora procesará la Cola.', '#ef4444');
+      loader.style.opacity = 0;
+    });
+  </script>
+</body>
+</html>

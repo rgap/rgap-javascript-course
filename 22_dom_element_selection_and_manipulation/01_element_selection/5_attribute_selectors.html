@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Attribute Selectors</title>
+  </head>
+  <body>
+    <a href="https://example.com" target="_blank" data-role="external">External Link</a>
+    <a href="/about" data-role="internal">About Page</a>
+    <a href="/contact">Contact</a>
+
+    <input type="text" placeholder="Name" required />
+    <input type="email" placeholder="Email" />
+    <input type="password" placeholder="Password" required />
+
+    <!--
+      THEORY: CSS Attribute Selectors with querySelector / querySelectorAll
+      You can pass ANY valid CSS attribute selector into querySelector/querySelectorAll.
+
+      Syntax summary:
+        [attr]       — has the attribute at all
+        [attr="val"] — exact match
+        [attr^="v"]  — value STARTS with "v"
+        [attr$="v"]  — value ENDS with "v"
+        [attr*="v"]  — value CONTAINS "v"
+
+      These work on any attribute: href, src, type, data-*, aria-*, etc.
+    -->
+    <script>
+      // [attr] — elements that simply have the attribute
+      const withTarget = document.querySelectorAll("a[target]");
+      console.log("Links with target attribute:", withTarget.length); // 1
+
+      // [attr="val"] — exact match
+      const externalLinks = document.querySelectorAll('[data-role="external"]');
+      console.log("External role links:", externalLinks.length); // 1
+
+      // [attr^="val"] — href starts with "https"
+      const absoluteLinks = document.querySelectorAll('a[href^="https"]');
+      console.log("Absolute links (https):", absoluteLinks.length); // 1
+
+      // [attr*="val"] — href contains "/"  
+      const relativeLinks = document.querySelectorAll('a[href*="/"]');
+      console.log("Links containing '/':", relativeLinks.length); // 3 (all of them)
+
+      // [attr$="val"] — href ends with "contact"
+      const contactLink = document.querySelector('a[href$="contact"]');
+      console.log("Link ending in 'contact':", contactLink.textContent); // "Contact"
+
+      // Multiple attribute selectors combined
+      const requiredTextInputs = document.querySelectorAll('input[type="text"][required]');
+      console.log("Required text inputs:", requiredTextInputs.length); // 1
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Window Methods</title>
+</head>
+<body>
+  <h1>Window Methods</h1>
+
+  <!-- 
+    THEORY: BUILT-IN WINDOW METHODS
+
+    In the browser, `window` is the Global Object.
+
+    This means many browser functions live inside `window`.
+
+    Examples:
+
+      window.alert()
+      window.confirm()
+      window.prompt()
+      window.open()
+
+    However, we do NOT always need to write `window.`.
+
+    These two examples do the same thing:
+
+      window.alert("Hello");
+      alert("Hello");
+
+    Why?
+
+    Because `alert` is a global browser function.
+    Since the browser global object is `window`, JavaScript can find `alert`
+    directly from the global scope.
+
+    So when we write:
+
+      alert("Hello");
+
+    JavaScript can understand it as:
+
+      window.alert("Hello");
+
+    The same idea applies here:
+
+      window.confirm(...)
+      confirm(...)
+
+      window.prompt(...)
+      prompt(...)
+
+      window.open(...)
+      open(...)
+
+    In this file, we write `window.` because we are learning where these
+    methods come from.
+
+    Writing `window.` makes the origin clearer:
+
+      window.alert()   -> method from the browser window object
+      window.confirm() -> method from the browser window object
+      window.prompt()  -> method from the browser window object
+      window.open()    -> method from the browser window object
+
+    In many real projects, developers usually omit `window.` for common
+    global methods.
+
+    Example:
+
+      alert("Message");
+      setTimeout(...);
+      fetch(...);
+
+    But writing `window.` can be useful when:
+
+      1. We are learning the BOM and the Global Object.
+      2. We want to be explicit.
+      3. We want to avoid confusion with local variables or functions.
+      4. We want to show that the method belongs to the browser environment.
+
+    IMPORTANT:
+    The correct object name is `window`, not `windows`.
+
+    Correct:
+
+      window.alert("Hello");
+
+    Incorrect:
+
+      windows.alert("Hello");
+
+    Note:
+    `onclick` is used here as a simple trigger.
+    Event listeners are covered properly in the next module:
+    20a_event_listeners.
+  -->
+
+  <button onclick="window.alert('This pauses JS execution until dismissed!')">
+    Alert
+  </button>
+
+  <button onclick="console.log('User clicked OK?', window.confirm('Are you sure you want to proceed?'))">
+    Confirm
+  </button>
+
+  <button onclick="console.log('User typed:', window.prompt('What is your name?', 'Guest'))">
+    Prompt
+  </button>
+
+  <button onclick="window.open('https://www.google.com', '_blank')">
+    Open Tab
+  </button>
+</body>
+</html>

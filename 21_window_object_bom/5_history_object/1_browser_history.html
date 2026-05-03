@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The History Object</title>
+</head>
+<body>
+  <!-- onclick used here; addEventListener is covered in 20a_event_listeners -->
+  <button onclick="history.back()">Go Back</button>
+  <button onclick="history.forward()">Go Forward</button>
+
+  <!-- 
+    THEORY: THE HISTORY OBJECT
+    The `window.history` object lets you interact with the browser's 
+    session history (the pages the user visited in THIS specific tab).
+
+    This is heavily used in Modern Single Page Applications (React, Vue) 
+    to change the URL without actually triggering a full page refresh.
+  -->
+  <script>
+    console.log("The History Object:", history);
+
+    // How many pages are in the session history for this tab?
+    console.log("History Length:", history.length);
+
+    // history.back()    — equivalent to browser's Back button
+    // history.forward() — equivalent to browser's Forward button
+    // history.go(-1) is the same as history.back()
+    // history.go(1)  is the same as history.forward()
+  </script>
+</body>
+</html>

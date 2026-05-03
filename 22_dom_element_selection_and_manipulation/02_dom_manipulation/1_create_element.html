@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>createElement</title>
+</head>
+<body>
+  <ul id="list">
+    <li>Item 1 (in HTML)</li>
+  </ul>
+
+  <!--
+    THEORY: createElement & appendChild
+    - document.createElement('tag') creates a new Element node IN MEMORY.
+      It is NOT yet part of the DOM — it has no parent and is not rendered.
+    - You must explicitly insert it into the DOM using a method like:
+        parent.appendChild(child)   — adds to END
+        parent.prepend(child)       — adds to BEGINNING
+        parent.insertBefore(new, ref) — inserts before a reference node
+    - Until inserted, you can freely build up the element (set text,
+      classes, attributes) without causing any browser repaints.
+  -->
+  <script>
+    const list = document.getElementById('list');
+
+    // Step 1: Create the element — it only exists in memory at this point
+    const newItem = document.createElement('li');
+    console.log("Created element:", newItem);          // <li></li>
+    console.log("Has parent yet?", newItem.parentNode); // null — not in DOM
+
+    // Step 2: Configure it before inserting
+    newItem.textContent = 'Item 2 (created by JS)';
+    newItem.className = 'dynamic-item';
+    newItem.id = 'item-2';
+
+    // Step 3: Insert into the DOM — only NOW does the browser render it
+    list.appendChild(newItem);
+    console.log("Has parent now?", newItem.parentNode); // <ul id="list">
+
+    // You can also build up a more complex structure before inserting
+    const anotherItem = document.createElement('li');
+    const strong = document.createElement('strong');
+    strong.textContent = 'Bold Item 3';
+    anotherItem.appendChild(strong);  // nest strong inside li
+    list.appendChild(anotherItem);    // then add li to the list
+
+    console.log("List children count:", list.children.length); // 3
+  </script>
+</body>
+</html>
+

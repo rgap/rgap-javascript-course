@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>getElementsByTagName</title>
+  </head>
+  <body>
+    <article>
+      <h2>Section A</h2>
+      <p>First paragraph.</p>
+      <p>Second paragraph.</p>
+    </article>
+    <article>
+      <h2>Section B</h2>
+      <p>Third paragraph.</p>
+    </article>
+
+    <!--
+      THEORY: getElementsByTagName
+      - Returns a LIVE HTMLCollection of all elements with the given tag name.
+      - Like getElementsByClassName, it is NOT an Array — convert with Array.from().
+      - Passing "*" selects ALL elements in the document.
+      - Useful when you want every element of a given type regardless of class or ID.
+    -->
+    <script>
+      // Select all <p> elements in the document
+      const paragraphs = document.getElementsByTagName("p");
+
+      console.log("HTMLCollection:", paragraphs);
+      console.log("Count:", paragraphs.length); // 3
+
+      // Loop with a classic for loop (works directly on HTMLCollection)
+      for (let i = 0; i < paragraphs.length; i++) {
+        console.log("Paragraph " + i + ":", paragraphs[i].textContent);
+      }
+
+      // Select all <h2> elements
+      const headings = document.getElementsByTagName("h2");
+      console.log("H2 headings found:", headings.length); // 2
+
+      // Passing "*" selects EVERY element in the document
+      const allElements = document.getElementsByTagName("*");
+      console.log("Total elements in document:", allElements.length);
+
+      // DEMO: Live collection — adding a new <p> updates the collection
+      const newP = document.createElement("p");
+      newP.textContent = "Fourth paragraph (added by JS).";
+      document.querySelector("article").appendChild(newP);
+
+      console.log("Count after adding <p>:", paragraphs.length); // Now 4 — live!
+    </script>
+  </body>
+</html>
+

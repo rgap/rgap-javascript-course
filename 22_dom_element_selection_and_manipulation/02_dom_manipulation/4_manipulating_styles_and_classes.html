@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Styles & Classes</title>
+  <style>
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+      padding: 8px;
+    }
+    .muted {
+      color: gray;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <p id="myText">This text can be styled via JavaScript.</p>
+  <!-- onclick used here; addEventListener is covered in 20a_event_listeners -->
+  <button onclick="applyInlineStyle()">Apply Inline Style</button>
+  <button onclick="toggleHighlight()">Toggle .highlight</button>
+  <button onclick="showClasses()">Log Class Info</button>
+
+  <!--
+    THEORY: Inline Styles vs CSS Classes
+
+    element.style.property
+    - Sets a single INLINE style directly on the element.
+    - Uses camelCase property names: fontSize (not font-size), backgroundColor, etc.
+    - Only reads/writes inline styles — cannot read styles from stylesheets.
+    - Use sparingly. Inline styles have highest specificity and are hard to override.
+
+    element.classList
+    - The modern, preferred way to style elements dynamically.
+    - Lets you ADD/REMOVE/TOGGLE pre-defined CSS classes from a stylesheet.
+    - Key methods:
+        .add('cls')           — adds a class
+        .remove('cls')        — removes a class
+        .toggle('cls')        — adds if absent, removes if present
+        .contains('cls')      — returns true/false
+        .replace('old','new') — swaps one class for another
+
+    getComputedStyle(element)
+    - Returns the FINAL computed style (after all stylesheets + inline styles).
+    - Read-only. Useful for inspecting what the browser actually applied.
+  -->
+  <script>
+    const text = document.getElementById('myText');
+
+    function applyInlineStyle() {
+      text.style.color = 'royalblue';
+      text.style.fontSize = '20px';    // camelCase, not font-size
+      text.style.letterSpacing = '2px';
+      console.log("Inline color set to:", text.style.color);
+    }
+
+    function toggleHighlight() {
+      text.classList.toggle('highlight');
+
+      // .add() and .remove() are explicit alternatives to toggle
+      // text.classList.add('highlight');
+      // text.classList.remove('highlight');
+
+      // .replace() swaps one class for another
+      // text.classList.replace('highlight', 'muted');
+    }
+
+    function showClasses() {
+      console.log("Current classes:", text.className);
+      console.log("Has .highlight?", text.classList.contains('highlight'));
+      console.log("Has .muted?", text.classList.contains('muted'));
+
+      // getComputedStyle reads the FINAL style (stylesheet + inline combined)
+      const computed = getComputedStyle(text);
+      console.log("Computed font-size:", computed.fontSize);
+      console.log("Computed color:", computed.color);
+    }
+  </script>
+</body>
+</html>
+

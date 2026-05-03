@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What is the DOM?</title>
+</head>
+<body>
+  <h1>The DOM Tree</h1>
+  <p>Open your console to explore the document object.</p>
+  
+  <!--
+    THEORY: What is the DOM?
+    
+    DOM stands for Document Object Model.
+    
+    When a web browser loads an HTML document, it parses the HTML and creates 
+    a tree-like structure in memory. This structure is called the DOM Tree.
+    
+    What are DOM Objects?
+    When the browser reads an HTML tag (like <h1> or <p>), it converts that tag 
+    into a JavaScript Object in memory. These are called DOM Objects.
+    
+    Because they are standard JavaScript objects, they have:
+    - Properties (e.g., .id, .className, .innerHTML, .style)
+    - Methods (e.g., .remove(), .appendChild(), .setAttribute())
+    
+    This is the key to DOM manipulation: you are not editing raw HTML text. 
+    You are reading and changing the properties of JavaScript objects, and the 
+    browser automatically updates the visual screen to match those objects!
+    
+    Without the DOM, JavaScript wouldn't have any idea what a web page is. 
+    The DOM bridges the gap between the static HTML code and the dynamic JavaScript.
+  -->
+  <script>
+    console.log("--- The Document Object ---");
+    // The 'document' object represents the entire loaded HTML page.
+    // It is the entry point into the DOM tree.
+    console.dir(document);
+
+    console.log("--- The Root Element ---");
+    // 'document.documentElement' represents the root element, which is the <html> tag.
+    console.dir(document.documentElement);
+    
+    console.log("--- The Body Element ---");
+    // We can also directly access the <body> element:
+    console.dir(document.body);
+  </script>
+</body>
+</html>
+

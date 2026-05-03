@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>04 - Mouse Properties</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; min-height: 200vh; }
+    .radar { height: 300px; background: #1e293b; color: #38bdf8; display: flex; flex-direction: column; align-items: center; justify-content: center; user-select: none; border-radius: 8px; font-family: monospace; font-size: 1.2rem;}
+    .info { margin-top: 1rem; color: #94a3b8; font-size: 0.9rem;}
+  </style>
+</head>
+<body>
+  <h1>Analyzing the MouseEvent</h1>
+  <p>Move the mouse over the dark box. Notice how (if you scroll down), clientY and pageY will start to show different values.</p>
+  
+  <div class="radar" id="radar">
+    <div id="clientPos">clientX: 0 | clientY: 0</div>
+    <div id="pagePos">pageX: 0 | pageY: 0</div>
+    <div class="info">(Scroll down to notice the difference)</div>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 4. MouseEvent Properties
+      ========================================
+      - clientX / clientY: Relative to what your eyes see on the monitor (viewport).
+      - pageX / pageY: Relative to the real and total length of the HTML document.
+    */
+
+    const radar = document.getElementById("radar");
+    const clientPos = document.getElementById("clientPos");
+    const pagePos = document.getElementById("pagePos");
+
+    radar.addEventListener("mousemove", function(e) {
+      // Coordinates relative to the visible window
+      clientPos.innerText = `clientX: ${e.clientX} | clientY: ${e.clientY}`;
+      
+      // Coordinates relative to the entire document
+      pagePos.innerText = `pageX: ${e.pageX} | pageY: ${e.pageY}`;
+    });
+  </script>
+</body>
+</html>

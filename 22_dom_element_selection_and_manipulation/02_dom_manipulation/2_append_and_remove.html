@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Appending & Removing Elements</title>
+</head>
+<body>
+  <ul id="todo-list">
+    <li id="middle">Middle item (in HTML)</li>
+  </ul>
+  <!-- onclick used here; addEventListener is covered in 20a_event_listeners -->
+  <button onclick="removeFirst()">Remove First Item</button>
+
+  <!--
+    THEORY: Insertion & Removal Methods
+    - parent.appendChild(el)          — appends el as the LAST child (old API)
+    - parent.prepend(el)              — inserts el as the FIRST child (modern)
+    - parent.append(el)               — inserts el as the LAST child (modern, accepts strings too)
+    - parent.insertBefore(new, ref)   — inserts new BEFORE ref child
+    - el.remove()                     — removes el from the DOM entirely
+    - el.replaceWith(newEl)           — swaps el out for newEl in-place
+
+    After any insertion, the inserted element is LIVE in the DOM.
+    After removal, the element still exists in memory — you can re-insert it.
+  -->
+  <script>
+    const list = document.getElementById('todo-list');
+
+    // prepend() — inserts as the FIRST child
+    const firstItem = document.createElement('li');
+    firstItem.textContent = 'First item (prepended)';
+    list.prepend(firstItem);
+
+    // append() — inserts as the LAST child
+    const lastItem = document.createElement('li');
+    lastItem.textContent = 'Last item (appended)';
+    list.append(lastItem);
+
+    // insertBefore(newNode, referenceNode) — inserts before a specific child
+    const beforeMiddle = document.createElement('li');
+    beforeMiddle.textContent = 'Before middle (insertBefore)';
+    const middleEl = document.getElementById('middle');
+    list.insertBefore(beforeMiddle, middleEl);
+
+    console.log("First child:", list.firstElementChild.textContent);
+    console.log("Last child:", list.lastElementChild.textContent);
+    console.log("Total items:", list.children.length); // 4
+
+    // remove() — called from the onclick button above
+    function removeFirst() {
+      if (list.firstElementChild) {
+        const removed = list.firstElementChild;
+        removed.remove();
+        console.log("Removed:", removed.textContent);
+        console.log("Items remaining:", list.children.length);
+      }
+    }
+  </script>
+</body>
+</html>
+

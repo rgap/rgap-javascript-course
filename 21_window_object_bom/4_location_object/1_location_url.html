@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Location Object</title>
+</head>
+<body>
+  <!-- onclick used here; addEventListener is covered in 20a_event_listeners -->
+  <button onclick="location.reload()">Reload Page</button>
+  <button onclick="location.assign('https://www.google.com')">Redirect to Google</button>
+
+  <!-- 
+    THEORY: THE LOCATION OBJECT
+    The `window.location` object holds information about the current URL.
+    It provides a much more detailed breakdown of the URL than `document.URL`.
+
+    It also provides methods to navigate the user to new pages or reload.
+  -->
+  <script>
+    console.log("The Location Object:", location);
+
+    // Parsing the URL
+    console.log("Full URL (href):", location.href);
+    console.log("Host (domain + port):", location.host);
+    console.log("Hostname (domain only):", location.hostname);
+    console.log("Pathname:", location.pathname);
+    console.log("Protocol:", location.protocol);
+
+    // location.reload() — reloads the current page
+    // location.assign("url") — navigates to a new page
+    // Note: location.href = "..." does the exact same thing as assign()!
+  </script>
+</body>
+</html>

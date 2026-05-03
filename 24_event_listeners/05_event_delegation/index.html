@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>05 - Delegación de Eventos</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .box { padding: 1.5rem; border: 2px solid #cbd5e1; border-radius: 8px; margin-bottom: 1rem; background: white; }
+    ul { list-style: none; padding: 0; }
+    li { background: #e2e8f0; margin: 0.5rem 0; padding: 1rem; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+    li:hover { background: #cbd5e1; }
+    button { padding: 0.5rem 1rem; cursor: pointer; background: #8b5cf6; color: white; border: none; border-radius: 4px; font-weight: bold; }
+    #log { margin-top: 1rem; background: #1e293b; color: #10b981; padding: 1rem; font-family: monospace; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>05. Delegación de Eventos</h1>
+  
+  <div class="box">
+    <button id="add-item-btn">+ Añadir Nuevo Elemento</button>
+    
+    <ul id="item-list">
+      <li>Elemento Estático 1</li>
+      <li>Elemento Estático 2</li>
+      <li>Elemento Estático 3</li>
+    </ul>
+
+    <div id="log">Haz clic en un elemento de la lista...</div>
+  </div>
+
+  <script>
+    const itemList = document.getElementById('item-list');
+    const logDiv = document.getElementById('log');
+
+    // 🌟 DELEGACIÓN DE EVENTOS 🌟
+    // Agregamos UN SOLO listener al padre (UL)
+    itemList.addEventListener('click', function(event) {
+      
+      // event.target = El nodo específico (ej. un LI) donde el usuario hizo clic
+      // event.currentTarget = El nodo al que le pusimos addEventListener (el UL)
+      
+      // Verificamos si lo que se clickeó fue un LI (evita responder si clican en el margen del UL)
+      if (event.target.tagName === 'LI') {
+        const text = event.target.textContent;
+        logDiv.innerHTML = `Detectado clic por delegación en: <strong>${text}</strong>`;
+        
+        // Efecto visual temporal
+        const originalBg = event.target.style.backgroundColor;
+        event.target.style.backgroundColor = '#fef08a';
+        setTimeout(() => event.target.style.backgroundColor = originalBg, 300);
+      }
+    });
+
+    // --- Demostrando elementos dinámicos ---
+    // Los elementos creados dinámicamente funcionarán automáticamente
+    // gracias a la delegación, ya que sus clics burbujearán al UL.
+    const addItemBtn = document.getElementById('add-item-btn');
+    let count = 4;
+    
+    addItemBtn.addEventListener('click', () => {
+      const newLi = document.createElement('li');
+      newLi.textContent = `Elemento Dinámico ${count++}`;
+      newLi.style.borderLeft = '4px solid #8b5cf6'; // Para diferenciarlo visualmente
+      
+      itemList.appendChild(newLi);
+      logDiv.innerHTML = `Nuevo elemento añadido. ¡Hazle clic!`;
+    });
+  </script>
+</body>
+</html>

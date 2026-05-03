@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>05 - Prevent Default</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .box { padding: 2rem; border: 2px solid #cbd5e1; border-radius: 8px; margin: 1rem 0; background: white; }
+    input { padding: 0.5rem; }
+    button { padding: 0.5rem 1rem; background: #10b981; color: white; border: none; border-radius: 4px; cursor: pointer;}
+    a { color: #3b82f6; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>event.preventDefault()</h1>
+  <p>Open the console and try submitting the form or clicking the fake link.</p>
+  
+  <div class="box" id="formBox">
+    <form id="myForm">
+      <input type="text" placeholder="Type your name..." required>
+      <button type="submit">Submit without reloading</button>
+    </form>
+  </div>
+
+  <div class="box" id="linkBox">
+    <a href="https://google.com" id="fakeLink">Go to Google (Canceled by JS)</a>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 5. event.preventDefault()
+      ========================================
+      Prevents the browser from executing the native action of the HTML tag,
+      BUT it does not stop the propagation (bubbling) of the event to parents.
+    */
+
+    const form = document.getElementById("myForm");
+    const formBox = document.getElementById("formBox");
+    
+    const link = document.getElementById("fakeLink");
+
+    // 1. Preventing form reload
+    form.addEventListener("submit", (event) => {
+      // 🚫 We cancel the page reload!
+      event.preventDefault();
+      
+      console.log("Form caught! Here we would do a fetch() with the data.");
+    });
+
+    // Demonstrating that the event DID bubble despite preventDefault
+    formBox.addEventListener("submit", () => {
+      console.log("The parent box (div) found out about the submit because preventDefault DOES NOT stop bubbles ↑");
+    });
+
+
+    // 2. Preventing link navigation
+    link.addEventListener("click", (event) => {
+      // 🚫 We cancel the navigation to Google!
+      event.preventDefault();
+      
+      console.log("The link was clicked, but JS canceled the navigation.");
+    });
+  </script>
+</body>
+</html>

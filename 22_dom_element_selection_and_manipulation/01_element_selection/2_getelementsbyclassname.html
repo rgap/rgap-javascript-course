@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>getElementsByClassName</title>
+  </head>
+  <body>
+    <ul id="fruit-list">
+      <li class="fruit">Apple</li>
+      <li class="fruit">Banana</li>
+      <li class="fruit">Cherry</li>
+      <li class="vegetable">Carrot</li>
+    </ul>
+
+    <!--
+      THEORY: getElementsByClassName
+      - Returns a LIVE HTMLCollection of all elements with the given class.
+      - "Live" means: if you add/remove matching elements from the DOM, the
+        collection updates automatically — no need to re-query.
+      - It is NOT an Array. It has .length and numeric indexing, but no forEach/map.
+      - To use array methods, convert it first: Array.from(collection)
+    -->
+    <script>
+      // Returns an HTMLCollection — only elements with class="fruit"
+      const fruits = document.getElementsByClassName("fruit");
+
+      console.log("HTMLCollection:", fruits);
+      console.log("Count:", fruits.length); // 3
+
+      // Index directly into the collection
+      console.log("First fruit:", fruits[0].textContent); // "Apple"
+
+      // Convert to Array to use forEach, map, filter, etc.
+      const fruitsArray = Array.from(fruits);
+      fruitsArray.forEach(function (el) {
+        console.log("  -", el.textContent);
+      });
+
+      // DEMO: HTMLCollection is LIVE
+      // Adding a new .fruit element updates the collection automatically
+      const newFruit = document.createElement("li");
+      newFruit.className = "fruit";
+      newFruit.textContent = "Mango";
+      document.getElementById("fruit-list").appendChild(newFruit);
+
+      console.log("Count after adding Mango:", fruits.length); // Now 4 — live!
+    </script>
+  </body>
+</html>
+
