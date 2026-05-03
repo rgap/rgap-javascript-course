@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -22,7 +22,8 @@
       // - Requires careful handling for security and privacy
 
       // Set a cookie
-      document.cookie = "username=JohnDoe; expires=Fri, 31 Dec 2024 12:00:00 UTC; path=/";
+      document.cookie =
+        "username=JohnDoe; expires=Fri, 18 Feb 2027 12:00:00 GMT; path=/";
 
       // Get a cookie
       function getCookie(name) {
@@ -38,8 +39,8 @@
 
       console.log("Username cookie:", getCookie("username"));
 
-      // Delete a cookie
-      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      // Delete a cookie (NO borrarla al instante, porque si no parece que no funciona)
+      // document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
     </script>
   </body>
 </html>
