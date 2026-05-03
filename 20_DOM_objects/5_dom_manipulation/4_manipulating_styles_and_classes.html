@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Styles and Classes</title>
+  <style>
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <p id="myText">This text will change styles.</p>
+  <button id="inlineBtn">Change Inline Style</button>
+  <button id="classBtn">Toggle Class</button>
+  
+  <script>
+    const text = document.getElementById('myText');
+    
+    // Manipulating inline styles directly
+    document.getElementById('inlineBtn').addEventListener('click', () => {
+      text.style.color = 'red';
+      text.style.fontSize = '24px'; // Notice camelCase instead of font-size
+    });
+    
+    // The preferred way: toggling CSS classes
+    document.getElementById('classBtn').addEventListener('click', () => {
+      text.classList.toggle('highlight');
+      // Other options: .add(), .remove(), .contains()
+    });
+  </script>
+</body>
+</html>

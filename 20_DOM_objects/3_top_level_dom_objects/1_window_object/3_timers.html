@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Window Timers</title>
+</head>
+<body>
+  <h1>Timers: setTimeout & setInterval</h1>
+  <p id="counter">0</p>
+  <button id="stopBtn">Stop Interval</button>
+
+  <!-- 
+    THEORY: ASYNCHRONOUS TIMERS
+    The window object provides the standard JavaScript timers.
+    These are part of the Web APIs provided by the browser.
+
+    - setTimeout: Executes a function ONCE after a delay.
+    - setInterval: Executes a function REPEATEDLY every X milliseconds.
+  -->
+  <script>
+    // setTimeout (runs once)
+    const timeoutId = window.setTimeout(() => {
+      console.log("This logs exactly once after 2 seconds!");
+    }, 2000);
+
+    // setInterval (runs repeatedly)
+    let count = 0;
+    const counterEl = document.getElementById('counter');
+    
+    const intervalId = window.setInterval(() => {
+      count++;
+      counterEl.textContent = count;
+    }, 1000); // Updates every 1000ms (1 second)
+
+    // Stopping the interval
+    document.getElementById('stopBtn').addEventListener('click', () => {
+      window.clearInterval(intervalId); // Stops the loop!
+      console.log("Interval stopped at:", count);
+    });
+  </script>
+</body>
+</html>

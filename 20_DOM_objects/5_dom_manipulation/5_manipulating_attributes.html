@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manipulating Attributes</title>
+</head>
+<body>
+  <img id="myImage" src="placeholder.jpg" alt="A placeholder image" width="200">
+  <br><br>
+  <button id="changeBtn">Change Image Source</button>
+  <button id="disableBtn" disabled>I am disabled</button>
+  
+  <script>
+    const img = document.getElementById('myImage');
+    
+    document.getElementById('changeBtn').addEventListener('click', () => {
+      // Using getAttribute
+      console.log("Old alt text:", img.getAttribute('alt'));
+      
+      // Using setAttribute
+      img.setAttribute('src', 'https://via.placeholder.com/200');
+      img.setAttribute('alt', 'A new placeholder image');
+      
+      // You can also access many standard attributes directly as object properties
+      console.log("New width is:", img.width);
+      
+      // Remove an attribute completely
+      document.getElementById('disableBtn').removeAttribute('disabled');
+    });
+  </script>
+</body>
+</html>

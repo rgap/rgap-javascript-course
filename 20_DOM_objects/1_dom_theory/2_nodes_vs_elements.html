@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nodes vs Elements</title>
+</head>
+<body>
+  <div id="container">
+    <!-- This is a comment node -->
+    <p>This is an element node with text.</p>
+  </div>
+  <script>
+    // Everything in the DOM is a Node. Elements are a specific type of Node.
+    // Text is a Node, Comments are Nodes, but only HTML tags are Elements.
+    
+    const container = document.getElementById('container');
+    
+    console.log("Child Nodes (includes text, comments, elements):");
+    console.log(container.childNodes); // Returns NodeList of text (whitespace), comment, text, p, text
+    
+    console.log("Children (includes ONLY elements):");
+    console.log(container.children); // Returns HTMLCollection of just the <p> tag
+  </script>
+</body>
+</html>

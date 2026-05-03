@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Window Methods</title>
+</head>
+<body>
+  <h1>Window Methods</h1>
+  <button id="alertBtn">Alert</button>
+  <button id="confirmBtn">Confirm</button>
+  <button id="promptBtn">Prompt</button>
+  <button id="openBtn">Open Tab</button>
+
+  <!-- 
+    THEORY: BUILT-IN WINDOW METHODS
+    The window provides methods to interact with the user via system dialogs,
+    or to control the browser tab itself. 
+
+    Note: You don't actually need to type `window.` before these methods 
+    because they are global, but it's good practice for clarity!
+  -->
+  <script>
+    document.getElementById('alertBtn').addEventListener('click', () => {
+      window.alert("This pauses JS execution until dismissed!");
+    });
+
+    document.getElementById('confirmBtn').addEventListener('click', () => {
+      const result = window.confirm("Are you sure you want to proceed?");
+      console.log("User clicked OK?", result); // Returns boolean
+    });
+
+    document.getElementById('promptBtn').addEventListener('click', () => {
+      const name = window.prompt("What is your name?", "Guest");
+      console.log("User typed:", name); // Returns string or null
+    });
+
+    document.getElementById('openBtn').addEventListener('click', () => {
+      // Opens a new window/tab
+      window.open("https://www.google.com", "_blank");
+    });
+  </script>
+</body>
+</html>

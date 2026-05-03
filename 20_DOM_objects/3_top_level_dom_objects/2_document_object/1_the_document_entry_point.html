@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Document Object</title>
+</head>
+<body>
+  <h1>The Document Entry Point</h1>
+  <!-- 
+    THEORY: THE DOCUMENT OBJECT
+    The `window.document` object is your MAIN entry point into the webpage's HTML.
+    While the `window` represents the browser tab, the `document` represents 
+    the actual DOM Tree loaded inside that tab.
+
+    Before we learn how to select and manipulate specific HTML tags, 
+    we can look at global properties of the document itself!
+  -->
+  <script>
+    // You can access it as window.document, but usually we just type document
+    console.log("The entire DOM Tree:", document);
+
+    // Document Properties
+    console.log("Page Title:", document.title);
+    console.log("Page URL:", document.URL);
+    console.log("Domain:", document.domain);
+    console.log("Character Set:", document.characterSet);
+    
+    // You can even change the title dynamically!
+    setTimeout(() => {
+      document.title = "I changed the title!";
+    }, 3000);
+
+    // Cookies can be read and written via the document
+    console.log("Cookies:", document.cookie);
+  </script>
+</body>
+</html>

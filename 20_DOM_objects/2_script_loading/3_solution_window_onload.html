@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Solution: window.onload</title>
+    <!-- 
+      THEORY: THE EVENT-DRIVEN SOLUTION (OLD SCHOOL)
+      What if we MUST put our script in the <head>? 
+      We can use an Event Listener to wait until the page is fully loaded.
+
+      window.onload fires when the ENTIRE page is ready.
+      This includes the HTML parsing, AND all external resources:
+      - All Images
+      - All CSS files
+      - All iframes
+
+      THE DOWNSIDE:
+      Because it waits for heavy resources (like a 5MB image), your 
+      JavaScript execution is delayed unnecessarily. Users might try to 
+      click buttons before the JS is ready!
+    -->
+    <script>
+      window.onload = function () {
+        console.log("Everything (HTML, CSS, Images) is fully loaded!");
+        document.getElementById("id").innerHTML = "Hello World (window.onload)";
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="id">[id]</h1>
+  </body>
+</html>

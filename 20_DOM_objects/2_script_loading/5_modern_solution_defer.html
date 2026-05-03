@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Solution: Defer Attribute</title>
+    <!-- 
+      THEORY: THE MODERN HTML5 STANDARD
+      Today, the best practice is keeping scripts in the <head> but adding 
+      the 'defer' attribute. (Note: This only works for external src scripts).
+
+      How 'defer' works:
+      1. Asynchronous Download: The browser downloads the JS file in the background 
+         WHILE it continues parsing the HTML. It does NOT block parsing!
+      2. Deferred Execution: Even if the script finishes downloading early, 
+         it promises NOT to execute until the HTML is 100% parsed.
+      
+      Result:
+      - Clean <head> organization
+      - Fast HTML rendering
+      - No need for DOMContentLoaded event listeners in your JS file!
+    -->
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <h1 id="id">[id]</h1>
+  </body>
+</html>

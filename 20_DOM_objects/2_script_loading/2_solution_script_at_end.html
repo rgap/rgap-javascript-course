@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Solution: Script at End</title>
+  </head>
+  <body>
+    <h1 id="id">[id]</h1>
+    
+    <!-- 
+      THEORY: THE CLASSIC SOLUTION
+      By placing the <script> tag at the very end of the <body>, we ensure that:
+      1. All HTML above it has already been parsed.
+      2. The DOM nodes (like our <h1>) exist in memory.
+      3. The user sees the visual UI faster (because JS didn't block the HTML rendering).
+
+      This was the standard way to load JavaScript for over a decade!
+    -->
+    <script>
+      console.log("The DOM is already parsed here!");
+      const myElement = document.getElementById("id");
+      
+      // This works perfectly because the <h1> exists now.
+      myElement.innerHTML = "Hello World (Script at end)";
+    </script>
+  </body>
+</html>

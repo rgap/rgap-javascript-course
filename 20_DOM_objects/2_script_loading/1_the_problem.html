@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Parsing Problem</title>
+    <!-- 
+      THEORY: HOW THE BROWSER PARSES HTML
+      1. The browser reads HTML from top to bottom.
+      2. When it encounters a <script> tag, it immediately STOPS parsing HTML.
+      3. It executes the JavaScript.
+      4. Only after JS finishes, it resumes parsing the rest of the HTML.
+
+      THE PROBLEM:
+      Because this <script> is in the <head>, it runs before the <body> is parsed.
+      When we try to select document.getElementById("id"), it returns 'null' 
+      because the <h1> tag hasn't been created in the DOM Tree yet!
+
+      ERROR: "Uncaught TypeError: Cannot set properties of null"
+    -->
+    <script>
+      console.log("Trying to find the h1 element...");
+      const myElement = document.getElementById("id");
+      console.log("Element found:", myElement); // This will be null!
+      
+      // This throws an error and stops the script!
+      myElement.innerHTML = "Hello World"; 
+    </script>
+  </head>
+  <body>
+    <h1 id="id">[id]</h1>
+  </body>
+</html>

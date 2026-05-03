@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Element</title>
+</head>
+<body>
+  <ul id="list">
+    <li>Item 1</li>
+  </ul>
+  <script>
+    // Create a new HTML element
+    const newListItem = document.createElement('li');
+    
+    // Add some text to it
+    newListItem.textContent = 'Item 2 (Created via JS)';
+    
+    // Add it to the list
+    const list = document.getElementById('list');
+    list.appendChild(newListItem);
+  </script>
+</body>
+</html>

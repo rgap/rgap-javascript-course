@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Navigator Object</title>
+</head>
+<body>
+  <h1>Navigator Object (Browser Info)</h1>
+  <!-- 
+    THEORY: THE NAVIGATOR OBJECT
+    The `window.navigator` object contains information about the browser 
+    and operating system of the user.
+
+    It is heavily used for:
+    1. Checking the user's browser (Chrome vs Firefox vs Safari)
+    2. Checking the user's preferred language
+    3. Accessing hardware APIs (like Geolocation or the Camera)
+  -->
+  <script>
+    console.log("The Navigator Object:", navigator);
+
+    console.log("Browser Name/Version:", navigator.userAgent);
+    console.log("User's Preferred Language:", navigator.language);
+    console.log("Is the user online?", navigator.onLine);
+    console.log("Logical CPU Cores:", navigator.hardwareConcurrency);
+
+    // Requesting Geolocation (prompts the user for permission)
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          console.log("Latitude:", position.coords.latitude);
+          console.log("Longitude:", position.coords.longitude);
+        },
+        (error) => {
+          console.log("User denied location access.", error);
+        }
+      );
+    }
+  </script>
+</body>
+</html>

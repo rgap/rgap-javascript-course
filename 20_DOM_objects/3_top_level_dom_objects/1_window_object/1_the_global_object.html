@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Window Object (BOM)</title>
+</head>
+<body>
+  <h1>Check your console!</h1>
+  <!-- 
+    THEORY: THE BOM AND THE GLOBAL OBJECT
+    In a browser environment, the highest level object is the `window`.
+    It represents the browser window (or tab) itself.
+
+    The window object serves two major purposes:
+    1. It is the Global Object for JavaScript. Every global variable or 
+       function you create automatically becomes a property of the window!
+    2. It represents the Browser Object Model (BOM), giving you access to
+       things outside the webpage itself (like the screen size, the URL, history).
+  -->
+  <script>
+    console.log("This is the Global Window Object:", window);
+
+    // 1. Global Variables become window properties
+    var myGlobalVar = "Hello from the window!";
+    console.log("Accessing via window:", window.myGlobalVar);
+
+    // 2. Useful Window Properties (BOM)
+    console.log("Inner Width (viewport):", window.innerWidth);
+    console.log("Inner Height (viewport):", window.innerHeight);
+    console.log("Outer Width (browser window):", window.outerWidth);
+  </script>
+</body>
+</html>

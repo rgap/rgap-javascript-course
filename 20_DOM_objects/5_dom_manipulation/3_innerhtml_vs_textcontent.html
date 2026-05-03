@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>innerHTML vs textContent</title>
+</head>
+<body>
+  <div id="content1"></div>
+  <div id="content2"></div>
+  <script>
+    const div1 = document.getElementById('content1');
+    const div2 = document.getElementById('content2');
+    
+    // innerHTML parses the string as HTML
+    div1.innerHTML = '<strong>This text is bold</strong> because of innerHTML.';
+    
+    // textContent treats the string as plain text (Safer from XSS attacks)
+    div2.textContent = '<strong>This text is NOT bold</strong> because of textContent.';
+  </script>
+</body>
+</html>
