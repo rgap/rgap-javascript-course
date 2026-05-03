@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01 - The Problem</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .box { padding: 1.5rem; border: 2px solid #cbd5e1; border-radius: 8px; background: white; }
+    ul { list-style: none; padding: 0; }
+    li { background: #e2e8f0; margin: 0.5rem 0; padding: 1rem; border-radius: 4px; cursor: pointer; }
+    li:hover { background: #cbd5e1; }
+    #log { margin-top: 1rem; color: #b91c1c; font-family: monospace; }
+  </style>
+</head>
+<body>
+  <h1>01. The Problem: Multiple Listeners</h1>
+  
+  <div class="box">
+    <ul id="item-list">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+    <div id="log">Check the console to see the issue...</div>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 1. The Problem
+      ========================================
+      The novice approach: attaching a listener to EVERY element.
+    */
+    const listItems = document.querySelectorAll('li');
+    const logDiv = document.getElementById('log');
+
+    // We loop and add 3 different listeners
+    listItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        logDiv.textContent = `You clicked: ${item.textContent}`;
+        console.log(`Listener ${index + 1} executed.`);
+      });
+    });
+
+    console.warn("Created", listItems.length, "separate event listeners in memory!");
+    console.warn("If you add an 'Item 4' right now via JS, it won't have a click event.");
+  </script>
+</body>
+</html>

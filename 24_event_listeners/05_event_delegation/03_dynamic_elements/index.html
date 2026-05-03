@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03 - Dynamic Elements</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .box { padding: 1.5rem; border: 2px solid #8b5cf6; border-radius: 8px; background: white; }
+    ul { list-style: none; padding: 0; }
+    li { background: #e2e8f0; margin: 0.5rem 0; padding: 1rem; border-radius: 4px; cursor: pointer; }
+    li:hover { background: #cbd5e1; }
+    button { padding: 0.5rem 1rem; cursor: pointer; background: #8b5cf6; color: white; border: none; border-radius: 4px; font-weight: bold; }
+    #log { margin-top: 1rem; background: #1e293b; color: #10b981; padding: 1rem; font-family: monospace; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>03. Dynamic Elements & Delegation</h1>
+  
+  <div class="box">
+    <button id="add-btn">+ Add Dynamic Item</button>
+    <ul id="item-list">
+      <li>Static Item 1</li>
+      <li>Static Item 2</li>
+    </ul>
+    <div id="log">Try adding items and clicking them.</div>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 3. Dynamic Elements
+      ========================================
+      Delegation guarantees that even elements created 
+      in the future will trigger the logic.
+    */
+    const itemList = document.getElementById('item-list');
+    const logDiv = document.getElementById('log');
+    const addBtn = document.getElementById('add-btn');
+
+    // 1. Setup the delegated listener ONCE on the parent
+    itemList.addEventListener('click', function(event) {
+      if (event.target.tagName === 'LI') {
+        logDiv.innerHTML = `Clicked: <strong>${event.target.textContent}</strong>`;
+      }
+    });
+
+    // 2. Logic to dynamically add items
+    let count = 3;
+    addBtn.addEventListener('click', () => {
+      const newLi = document.createElement('li');
+      newLi.textContent = `Dynamic Item ${count}`;
+      count++;
+      newLi.style.borderLeft = '4px solid #8b5cf6'; // Make it visually distinct
+      
+      itemList.appendChild(newLi);
+      
+      // Notice how we DO NOT add an event listener to 'newLi' here!
+      // The parent UL will catch its clicks anyway.
+    });
+  </script>
+</body>
+</html>

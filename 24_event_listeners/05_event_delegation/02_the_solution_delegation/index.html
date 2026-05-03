@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02 - The Solution: Delegation</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .box { padding: 1.5rem; border: 2px solid #10b981; border-radius: 8px; background: white; }
+    ul { list-style: none; padding: 0; }
+    li { background: #e2e8f0; margin: 0.5rem 0; padding: 1rem; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+    li:hover { background: #cbd5e1; }
+    #log { margin-top: 1rem; background: #1e293b; color: #10b981; padding: 1rem; font-family: monospace; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>02. The Solution: Event Delegation</h1>
+  
+  <div class="box">
+    <ul id="item-list">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+    <div id="log">Click a list item...</div>
+  </div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 2. Event Delegation
+      ========================================
+      We attach ONE listener to the parent (ul).
+      Because events bubble, clicks on the 'li' will reach the 'ul'.
+    */
+    const itemList = document.getElementById('item-list');
+    const logDiv = document.getElementById('log');
+
+    itemList.addEventListener('click', function(event) {
+      // event.target = The specific node (e.g., an LI) the user actually clicked
+      // event.currentTarget = The node with the listener (the UL)
+
+      // We ensure they clicked an LI, not the empty space of the UL
+      if (event.target.tagName === 'LI') {
+        const text = event.target.textContent;
+        logDiv.innerHTML = `Delegation detected click on: <strong>${text}</strong>`;
+        
+        // Visual effect
+        const originalBg = event.target.style.backgroundColor;
+        event.target.style.backgroundColor = '#fef08a';
+        setTimeout(() => event.target.style.backgroundColor = originalBg, 300);
+      }
+    });
+
+    console.log("Created exactly 1 listener on the UL.");
+  </script>
+</body>
+</html>
