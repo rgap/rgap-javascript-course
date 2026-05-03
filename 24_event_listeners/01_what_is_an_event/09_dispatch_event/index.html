@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>09 - dispatchEvent</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    button { padding: 0.5rem 1rem; margin-right: 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>The dispatchEvent() Method</h1>
+  <button id="targetBtn">Target Button</button>
+  <button id="triggerBtn">Trigger Target Remotely</button>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 9. dispatchEvent()
+      ========================================
+      We can fire an event programmatically.
+    */
+    const targetBtn = document.getElementById('targetBtn');
+    const triggerBtn = document.getElementById('triggerBtn');
+
+    // Setup listener on the target
+    targetBtn.addEventListener('click', (e) => {
+      console.log('Target Button was clicked!');
+      console.log('Was this click simulated?', !e.isTrusted); 
+      // isTrusted is false if dispatched via code
+    });
+
+    // Programmatically trigger the event from another button
+    triggerBtn.addEventListener('click', () => {
+      const simulatedClick = new Event('click');
+      targetBtn.dispatchEvent(simulatedClick);
+      console.log('Dispatched event manually.');
+    });
+  </script>
+</body>
+</html>

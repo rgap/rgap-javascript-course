@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>08 - removeEventListener</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    button { padding: 0.5rem 1rem; margin-right: 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>The removeEventListener() Method</h1>
+  <button id="actionBtn">Action Button</button>
+  <button id="stopBtn">Stop Listening</button>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 8. removeEventListener()
+      ========================================
+      We must pass the exact same named function reference to remove it.
+    */
+    const actionBtn = document.getElementById('actionBtn');
+    const stopBtn = document.getElementById('stopBtn');
+
+    // 1. Define a named function
+    function doSomething() {
+      console.log('Action executed!');
+    }
+
+    // 2. Add the listener using the named function
+    actionBtn.addEventListener('click', doSomething);
+
+    // 3. Remove it later using the exact same reference
+    stopBtn.addEventListener('click', () => {
+      actionBtn.removeEventListener('click', doSomething);
+      console.log('Listener removed! Action Button will no longer work.');
+      stopBtn.disabled = true;
+    });
+  </script>
+</body>
+</html>

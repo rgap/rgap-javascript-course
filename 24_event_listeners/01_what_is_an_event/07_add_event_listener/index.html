@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>07 - addEventListener</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    button { padding: 0.5rem 1rem; margin-right: 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>The addEventListener() Method</h1>
+  <button id="normalBtn">Normal Click</button>
+  <button id="onceBtn">Click Me Once</button>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 7. addEventListener()
+      ========================================
+      We can use it to attach multiple listeners, or configure them 
+      with options like 'once: true'.
+    */
+    const normalBtn = document.getElementById('normalBtn');
+    const onceBtn = document.getElementById('onceBtn');
+
+    normalBtn.addEventListener('click', () => {
+      console.log('Normal button clicked!');
+    });
+
+    // The third argument is an options object
+    onceBtn.addEventListener('click', () => {
+      console.log('This will only log ONCE. The listener removes itself.');
+      onceBtn.disabled = true;
+    }, { once: true });
+  </script>
+</body>
+</html>

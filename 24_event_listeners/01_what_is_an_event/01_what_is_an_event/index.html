@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01 - What is an Event?</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    button { padding: 0.5rem 1rem; cursor: pointer; }
+    .box { margin-top: 1rem; padding: 1rem; border: 2px dashed #cbd5e1; }
+  </style>
+</head>
+<body>
+  <h1>What is an Event?</h1>
+  <button id="myButton">Click Me</button>
+  <div id="output" class="box">Waiting for an event...</div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 1. What is an event?
+      ========================================
+      Events are signals that something has happened in the browser.
+      By using JavaScript, we can "listen" to these signals and react.
+      
+      Here, we will listen for a "click" event on the button.
+    */
+    const btn = document.getElementById('myButton');
+    const output = document.getElementById('output');
+
+    btn.addEventListener('click', () => {
+      output.innerHTML += '<p>The "click" event was fired!</p>';
+    });
+  </script>
+</body>
+</html>

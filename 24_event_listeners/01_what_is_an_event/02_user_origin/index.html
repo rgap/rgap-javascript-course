@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02 - User Origin</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    input { padding: 0.5rem; width: 100%; max-width: 300px; margin-bottom: 1rem; }
+    .box { padding: 1rem; border: 2px solid #cbd5e1; height: 100px; }
+  </style>
+</head>
+<body>
+  <h1>Events caused by the user</h1>
+  
+  <input type="text" id="textField" placeholder="Type here...">
+  <div id="hoverBox" class="box">Move your mouse over me!</div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 2. Events caused by the user
+      ========================================
+      The user generates events constantly by interacting with peripherals 
+      (mouse, keyboard, touch screen).
+    */
+    const input = document.getElementById('textField');
+    const box = document.getElementById('hoverBox');
+
+    input.addEventListener('input', (e) => {
+      console.log('User typed:', e.target.value);
+    });
+
+    box.addEventListener('mouseenter', () => {
+      box.style.backgroundColor = '#bfdbfe';
+      console.log('User moved the mouse inside the box');
+    });
+
+    box.addEventListener('mouseleave', () => {
+      box.style.backgroundColor = 'transparent';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>04 - API Origin</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+    .animated-box {
+      width: 100px;
+      height: 100px;
+      background-color: lightcoral;
+      margin-top: 2rem;
+    }
+    @keyframes slide {
+      from { transform: translateX(0); }
+      to { transform: translateX(300px); }
+    }
+    .slide-animation {
+      animation: slide 2s forwards;
+    }
+  </style>
+</head>
+<body>
+  <h1>Events caused by APIs</h1>
+  <button id="startBtn">Start Animation</button>
+  <div id="animBox" class="animated-box"></div>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 4. API / System Events
+      ========================================
+      APIs and CSS engines also emit events. For example, 
+      when a CSS animation finishes, it fires the 'animationend' event.
+    */
+    const btn = document.getElementById('startBtn');
+    const box = document.getElementById('animBox');
+
+    btn.addEventListener('click', () => {
+      box.classList.add('slide-animation');
+      console.log('Animation started...');
+    });
+
+    // Listening to the CSS API event
+    box.addEventListener('animationend', () => {
+      console.log('The animationend event was fired by the browser engine!');
+      box.style.backgroundColor = 'lightgreen';
+    });
+  </script>
+</body>
+</html>

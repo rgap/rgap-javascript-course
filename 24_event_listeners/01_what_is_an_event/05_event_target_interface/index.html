@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>05 - EventTarget Interface</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; color: #334155; }
+  </style>
+</head>
+<body>
+  <h1>The EventTarget Interface</h1>
+  <p>Open the console to see the prototype chain.</p>
+
+  <script>
+    /*
+      ========================================
+      THEORY: 5. EventTarget Interface
+      ========================================
+      All elements that can listen to events inherit from EventTarget.
+    */
+    const btn = document.createElement('button');
+    
+    console.log("Is the button an instance of EventTarget?", btn instanceof EventTarget); // true
+    console.log("Is the document an instance of EventTarget?", document instanceof EventTarget); // true
+    console.log("Is the window an instance of EventTarget?", window instanceof EventTarget); // true
+    
+    // Even an XMLHttpRequest is an EventTarget!
+    const xhr = new XMLHttpRequest();
+    console.log("Is XMLHttpRequest an instance of EventTarget?", xhr instanceof EventTarget); // true
+  </script>
+</body>
+</html>
